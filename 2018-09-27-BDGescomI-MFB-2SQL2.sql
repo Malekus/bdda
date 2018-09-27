@@ -1,49 +1,49 @@
 -- ===============================================================================
--------- Université Sorbonne Paris Cité, Université Paris 13 , Institut Galiée
+-------- Universitï¿½ Sorbonne Paris Citï¿½, Universitï¿½ Paris 13 , Institut Galiï¿½e
 -------- Master 2 EID2 - Promotion 2018-2019
 -------- La Data ; The Data
 
--------- Directeur :  Dr. M. Faouzi Boufarès
+-------- Directeur :  Dr. M. Faouzi Boufarï¿½s
 -------- http://www.lipn.univ-paris13.fr/~boufares
 
--------- Bases de Données Avancées = Advanced Databases (BDA)
--------- Entrepôts de Données = Data Warehouses (DWH, EDON)
+-------- Bases de Donnï¿½es Avancï¿½es = Advanced Databases (BDA)
+-------- Entrepï¿½ts de Donnï¿½es = Data Warehouses (DWH, EDON)
 
 
--------- La Donnée est le monde du futur ; Les données et le monde de l'avenir
+-------- La Donnï¿½e est le monde du futur ; Les donnï¿½es et le monde de l'avenir
 -------- The Data is the world of the future ;  The Data and the future's world
 
--------- DATA -->>> Big Data, Dark Data, Open Data, ... 
+-------- DATA -->>> Big Data, Dark Data, Open Data, ...
 -- ===============================================================================
 
---   Enseignant-Chercheur Responsable        :  Dr. M. Faouzi Boufarès
+--   Enseignant-Chercheur Responsable        :  Dr. M. Faouzi Boufarï¿½s
 --   http://www.lipn.univ-paris13.fr/~boufares/
---        Master2EID2/2018-09-17-GescomI-B20.sql
+--        Master2EID2/2018-09-17-GescomI-Bxy.sql
 
 -- ===============================================================================
 -- ===============================================================================
 ------------- Master 2 EID2 - Promotion 2018-2019
 
--- Groupe de Travail N° (Binôme)  : B20
+-- Groupe de Travail Nï¿½ (Binï¿½me)  : B20
 
--- NOM Prénom 1                   : ELILTHAMILVALAVAN Magilan
--- NOM Prénom 2                   : MOUSSA Abdelkader
+-- NOM Prï¿½nom 1                   : ELILTHAMILVALAVAN Magilan
+-- NOM Prï¿½nom 2                   : MOUSSA Abdelkader
 
 -- ====>>> Votre fichier sql devra s'appeler : 2018-09-17-GescomI-Bxy.sql
 
 -- ===============================================================================
 
---   Projet  BDM : Big Data Management - Gestion des Données Massives
+--   Projet  BDM : Big Data Management - Gestion des Donnï¿½es Massives
 --
---   Data Integration (DI) - Intégration de Données
---   Données structurées ; Données Semi-structurées ; Données NON structurées
+--   Data Integration (DI) - Intï¿½gration de Donnï¿½es
+--   Donnï¿½es structurï¿½es ; Donnï¿½es Semi-structurï¿½es ; Donnï¿½es NON structurï¿½es
 --   Structured data; Semi-structured data; NON-structured data
 
---   Master Data Management (MDM) - Gestion des Données de Référence
---   Data Quality Managment (DQM) - Gestion de la qualité des données
+--   Master Data Management (MDM) - Gestion des Donnï¿½es de Rï¿½fï¿½rence
+--   Data Quality Managment (DQM) - Gestion de la qualitï¿½ des donnï¿½es
 
---   More semantics to better correct the data 
---   Plus de sémantique afin de mieux corriger les données
+--   More semantics to better correct the data
+--   Plus de sï¿½mantique afin de mieux corriger les donnï¿½es
 -- ===============================================================================
 -- ===============================================================================
 --
@@ -51,77 +51,77 @@
 --
 -- Big Data & Clound Computing : Think DIFFERENTLY, BIGGER and SMARTER !
 -- The Excellence in Data Use !
--- EID : L'Excellence dans l'Investigation des Données
+-- EID : L'Excellence dans l'Investigation des Donnï¿½es
 -- EID : Excellence in Data Investigation
 --
--- =============================================================================== 
+-- ===============================================================================
 -- Think DIFFERENTLY, BIGGER and SMARTER ! The Excellence in Data Use !
 -- MISSION IMPOSSIBLE OU POSSIBLE ????? !!!!!!!!!!!
 -- Votre mission, si vous l'acceptez, est de :
--- Développer un outils qui permet de diagnostiquer les anomalies éventuelles dans 
+-- Dï¿½velopper un outils qui permet de diagnostiquer les anomalies ï¿½ventuelles dans
 -- ... les doubles et les similaires
 -- ===============================================================================
--- =============================================================================== 
---   A new ETL   ETL & DQ : Extract-Transform-Load & Data-Quality 
---                    Al ETL Al Jadyd   
+-- ===============================================================================
+--   A new ETL   ETL & DQ : Extract-Transform-Load & Data-Quality
+--                    Al ETL Al Jadyd
 -- ===============================================================================
 -- ===============================================================================
 
 --============================================================================ Remarque 0 ===|||
---=============== Remarque 0 : Nom obligatoire du Fichier 
+--=============== Remarque 0 : Nom obligatoire du Fichier
 -- >>>>>>>>>>>>>>>>>>>>>>>>>>  2018-09-17-GescomI-Bxy.sql
 --============================================================================ Remarque 0 ===|||
-                       
---   Nom du SGBD/DBMS         : ORACLE  /  DB2  /  MySQL  /  ...        
+
+--   Nom du SGBD/DBMS         : ORACLE  /  DB2  /  MySQL  /  ...
 --   Date de creation         : 17/09/2018
----  Lieu                     : Université Sorbonne Paris Cité, Université Paris 13 , Institut Galiée
---   Promotion universitaire  : Master 2 Informatique EID2   2018/2019   
---   Master 2 Informatique - Exploration Informatique des Données et Décisionnel             
--- =============================================================================== 
--- =============================================================================== 
+---  Lieu                     : Universitï¿½ Sorbonne Paris Citï¿½, Universitï¿½ Paris 13 , Institut Galiï¿½e
+--   Promotion universitaire  : Master 2 Informatique EID2   2018/2019
+--   Master 2 Informatique - Exploration Informatique des Donnï¿½es et Dï¿½cisionnel
+-- ===============================================================================
+-- ===============================================================================
 --
 -- ===============================================================================
---   Problématique    :  Intégration de données hétérogènes, distribuées
+--   Problï¿½matique    :  Intï¿½gration de donnï¿½es hï¿½tï¿½rogï¿½nes, distribuï¿½es
 
---   Problématique    :  Traitement des anomalies éventuelles
---   Problématique    :  Plusieurs types d'anomalies INTRA-Colonne ; INTER-COLONNES ; INTER-LIGNES
+--   Problï¿½matique    :  Traitement des anomalies ï¿½ventuelles
+--   Problï¿½matique    :  Plusieurs types d'anomalies INTRA-Colonne ; INTER-COLONNES ; INTER-LIGNES
 
---   Problématique    :  Standardisation de données hétérogènes
---   Problématique    :  Traitement des valeurs nulles
---   Problématique    :  Traitement des redondances sémantiques (Dépendances fonctionnelles)
---   Problématique    :  Elimination des doubles et similaires
+--   Problï¿½matique    :  Standardisation de donnï¿½es hï¿½tï¿½rogï¿½nes
+--   Problï¿½matique    :  Traitement des valeurs nulles
+--   Problï¿½matique    :  Traitement des redondances sï¿½mantiques (Dï¿½pendances fonctionnelles)
+--   Problï¿½matique    :  Elimination des doubles et similaires
 
 
--- ===============================================================================     
+-- ===============================================================================
 --
 -- Les dictons du jour !
 --
--- Aujourd'hui, j'arrête de fumer
+-- Aujourd'hui, j'arrï¿½te de fumer
 -- Le TABAC t'ABAT
--- Fumer nuit grâvement à ta santé et à celle de ton entourage
+-- Fumer nuit grï¿½vement ï¿½ ta santï¿½ et ï¿½ celle de ton entourage
 --
 -- M   T   Dents
 -- SMILE and the World SMILES with you !
 --
 -- MANGER + MANGER = GROSSIR (??? M, A, N, G, E, R, O, S, S, I)
 --
--- Manger & Bouger, 
--- Pour votre santé mangez 5 fruits et légumes par jour
--- Pour votre santé ne mangez pas trop gras, trop salé, trop sucré
--- Pour votre santé faites une activité physique régulière
--- Pour votre santé faites 30 mn de marche par jour
--- Pour votre santé faites des BD !!!
+-- Manger & Bouger,
+-- Pour votre santï¿½ mangez 5 fruits et lï¿½gumes par jour
+-- Pour votre santï¿½ ne mangez pas trop gras, trop salï¿½, trop sucrï¿½
+-- Pour votre santï¿½ faites une activitï¿½ physique rï¿½guliï¿½re
+-- Pour votre santï¿½ faites 30 mn de marche par jour
+-- Pour votre santï¿½ faites des BD !!!
 --
--- Dr. M. Faouzi Boufarès
--- =============================================================================== 
+-- Dr. M. Faouzi Boufarï¿½s
+-- ===============================================================================
 -- ===============================================================================
 
 
 -- ===============================================================================
--- Groupe de Travail N°  : Bxy
+-- Groupe de Travail Nï¿½  : Bxy
 
--- NOM Prénom 1          : np1
--- NOM Prénom 2          : np2
+-- NOM Prï¿½nom 1          : np1
+-- NOM Prï¿½nom 2          : np2
 
 -- ===============================================================================
 
@@ -132,8 +132,8 @@
 -- *************************************************************************
 -- *************************************************************************
 -- *************************************************************************
---       SQL 2 --     SQL 2 -- --       SQL 2 --     SQL 2 -- 
---       SQL 2 --     SQL 2 -- --       SQL 2 --     SQL 2 -- 
+--       SQL 2 --     SQL 2 -- --       SQL 2 --     SQL 2 --
+--       SQL 2 --     SQL 2 -- --       SQL 2 --     SQL 2 --
 -- *************************************************************************
 -- *************************************************************************
 -- *************************************************************************
@@ -142,13 +142,13 @@
 SPOOL GesComI2.lst
 PROMPT =========================================================
 -- Nom du Cas       :  Gestion Commerciale Intelligente : GESCOMI
--- Nom de SGBD      :  ORACLE DBMS                    
--- Date de création :  Septembre 2018
--- Auteur           :  Faouzi BOUFARES 
--- Université       :  Université Sorbonne Paris Cité, Université Paris 13 
--- Formation        :  Master 2 EID 2  
+-- Nom de SGBD      :  ORACLE DBMS
+-- Date de crï¿½ation :  Septembre 2018
+-- Auteur           :  Faouzi BOUFARES
+-- Universitï¿½       :  Universitï¿½ Sorbonne Paris Citï¿½, Universitï¿½ Paris 13
+-- Formation        :  Master 2 EID 2
 PROMPT =========================================================
-PROMPT 
+PROMPT
 PROMPT =========================================================
 PROMPT |                                                       |
 PROMPT |     Exercice 1 :  BD GESCOMI avec SQL 2               |
@@ -163,9 +163,9 @@ PROMPT =========================================================
 ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
 PROMPT =========================================================
 
--- Définition de la structure des données ==================================
+-- Dï¿½finition de la structure des donnï¿½es ==================================
 -- en SQL 2 ================================================================
--- Création des tables =====================================================
+-- Crï¿½ation des tables =====================================================
 
 PROMPT Destruction des tables de la bd GESCOMI EN SQL 2
 PROMPT =========================================================
@@ -178,16 +178,16 @@ PROMPT
 Pause Tapez sur Enter...
 PROMPT
 PROMPT =========================================================
-PROMPT Création des tables de la bd GESCOMI EN SQL 2
+PROMPT Crï¿½ation des tables de la bd GESCOMI EN SQL 2
 PROMPT =========================================================
 PROMPT
 PROMPT =========================================================
-PROMPT >> Table : CLIENTS2                                             
+PROMPT >> Table : CLIENTS2
 PROMPT =========================================================
 PROMPT
 CREATE TABLE CLIENTS2
 (
-	CODCLI		VARCHAR2(10), 
+	CODCLI		VARCHAR2(10),
 	CIVCLI		VARCHAR2(12),
 	NOMCLI		VARCHAR2(20),
 	PRENCLI		VARCHAR2(20),
@@ -216,7 +216,7 @@ PROMPT =========================================================
 PROMPT
 CREATE TABLE COMMANDES2
 (
-	NUMCOM 		VARCHAR2(10), 
+	NUMCOM 		VARCHAR2(10),
 	CODCLI		VARCHAR2(10),
 	DATCOM		DATE,
 	CONSTRAINT PK_COMMANDES2					PRIMARY KEY(NUMCOM),
@@ -232,7 +232,7 @@ PROMPT =========================================================
 PROMPT
 CREATE TABLE ARTICLES2
 (
-	REFART 		VARCHAR2(10), 
+	REFART 		VARCHAR2(10),
 	NOMART		VARCHAR2(50),
 	PVART		NUMBER(10, 2),
 	QSART		NUMBER(3),
@@ -250,7 +250,7 @@ PROMPT =========================================================
 PROMPT
 CREATE TABLE DETAILCOM2
 (
-	NUMCOM 		VARCHAR2(10), 
+	NUMCOM 		VARCHAR2(10),
 	REFART		VARCHAR2(10),
 	QTCOM		NUMBER(3),
 	PUART		NUMBER(10, 2),
@@ -266,13 +266,13 @@ CREATE TABLE DETAILCOM2
 PROMPT
 Pause Tapez sur Enter...
 
--- Insertion des données ===================================================
+-- Insertion des donnï¿½es ===================================================
 -- en SQL 2 ================================================================
 -- Insertion des lignes dans les tables ====================================
 
 PROMPT
 PROMPT =====================================================================
-PROMPT Insertion des données de la bd GESCOMI EN SQL 2 POUR UN MAGASIN donné
+PROMPT Insertion des donnï¿½es de la bd GESCOMI EN SQL 2 POUR UN MAGASIN donnï¿½
 PROMPT =====================================================================
 PROMPT
 PROMPT =========================================================
@@ -319,7 +319,7 @@ INSERT INTO CLIENTS2 (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, C
 VALUES ('C013', 'Monsieur', 'FORT', 'GABRIEL', 5, '1', 'AVENUE DE CARTAGE', '99000', 'TUNIS', 'TUNISIE','gabriel.fort@yahoo.fr');
 
 INSERT INTO CLIENTS2 (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI)
-VALUES ('C014', 'Monsieur', 'ADAM', 'DAVID', 5, '1', 'AVENUE DE ROME', '99001', 'ROME', 'ITALIE','david.adamé@gmail com');
+VALUES ('C014', 'Monsieur', 'ADAM', 'DAVID', 5, '1', 'AVENUE DE ROME', '99001', 'ROME', 'ITALIE','david.adamï¿½@gmail com');
 
 PROMPT
 Pause Tapez sur Enter...
@@ -348,7 +348,7 @@ INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
 VALUES ('20012RB', 'C012', 'MARDI 13-MARS-2001');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20031FB', 'C001', 'VENDREDI 14-février-2003');
+VALUES ('20031FB', 'C001', 'VENDREDI 14-fï¿½vrier-2003');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
 VALUES ('20051FB', 'C003', 'VENDREDI 07-JANVIER-2005');
@@ -376,24 +376,24 @@ VALUES ('20057FB', 'C014', 'VENDREDI 11-MARS-2005');
 -------------------------------------------------------------
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20061FB', 'C010', 'vendredi 14-février-2003');
+VALUES ('20061FB', 'C010', 'vendredi 14-fï¿½vrier-2003');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20062FB', 'C009', 'vendredi 14-février-2003');
+VALUES ('20062FB', 'C009', 'vendredi 14-fï¿½vrier-2003');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20065FB', 'C007', 'vendredi 14-février-2003');
+VALUES ('20065FB', 'C007', 'vendredi 14-fï¿½vrier-2003');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20066FB', 'C002', 'vendredi 14-février-2003');
+VALUES ('20066FB', 'C002', 'vendredi 14-fï¿½vrier-2003');
 
 -------------------------------------------------------------
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20067FB', 'C002', 'vendredi 14-février-2003');
+VALUES ('20067FB', 'C002', 'vendredi 14-fï¿½vrier-2003');
 
 INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
-VALUES ('20068FB', 'C002', 'vendredi 14-février-2003');
+VALUES ('20068FB', 'C002', 'vendredi 14-fï¿½vrier-2003');
 
 -------------------------------------------------------------
 
@@ -668,7 +668,7 @@ INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
 VALUES ('20074FB', 'FB.001', 12, 19.99, 0.00);
 
 PROMPT =========================================================
-PROMPT Validation des insertions dans la bd GESCOMI EN SQL 2 
+PROMPT Validation des insertions dans la bd GESCOMI EN SQL 2
 PROMPT =========================================================
 
 COMMIT;
@@ -676,13 +676,13 @@ COMMIT;
 PROMPT
 Pause Tapez sur Enter...
 
--- Affichage des données ===================================================
+-- Affichage des donnï¿½es ===================================================
 -- en SQL 2 ================================================================
 -- Affichage des lignes dans les tables ====================================
 
 PROMPT
 PROMPT =========================================================
-PROMPT Affichage des tables de la bd GESCOM EN SQL 2 
+PROMPT Affichage des tables de la bd GESCOM EN SQL 2
 PROMPT =========================================================
 
 COLUMN CODCLI  FORMAT A6
@@ -731,128 +731,128 @@ PROMPT
 pause Tapez sur Enter...
 PROMPT
 
--- Manipulations-Interrogations des données ================================
+-- Manipulations-Interrogations des donnï¿½es ================================
 -- en SQL 2 ================================================================
--- Requêtes dans les tables ================================================
+-- Requï¿½tes dans les tables ================================================
 
 PROMPT =========================================================
 PROMPT FB-A : Requetes sur la bd GESCOM EN SQL 2 : A1, A2, ... E6, E7
 PROMPT =========================================================
 PROMPT
 /*
-Exemples de requêtes à Tester : 
+Exemples de requï¿½tes ï¿½ Tester :
 
-Requêtes Ai (Sélections + Projections)
-A01. Les Noms des clients (Avec éventuellement des doublons)
+Requï¿½tes Ai (Sï¿½lections + Projections)
+A01. Les Noms des clients (Avec ï¿½ventuellement des doublons)
 A02. Les Noms des clients (Sans les doublons)
-A03. Articles dont le prix de vente est supérieur ou égal au double du prix d’achat
+A03. Articles dont le prix de vente est supï¿½rieur ou ï¿½gal au double du prix dï¿½achat
 A04. Les articles dont le prix de vente est soit 4 soit 27 soit 35
 A05. Les articles dont le prix de vente est compris entre 30 et 50
 A06. Les commandes du mois de septembre 2015
-A07. Les détails des commandes d’une année donnée (2012)
-A08. Les clients de « Paris » (Civilité Nom Prénom, Ville)
-A09. Les clients dont le nom commence par « C »
-A10. Les articles dont le nom commence par « Barrières de … »
-A11. Les articles du fournisseur « WD »
-A12. Les clients dont le nom de la ville se prononce comme « pari » ou « barizzz »
-A13. Décodification de la catégorie des clients : Transformez la catégorie comme suit : 1 ? Grossiste, 2 ? Demi-Gros, ? Détaillant
-A14. Y-a-t-il des anomalies dans les données ; Quelles sont ces anomalies ? (Qualité des données)
+A07. Les dï¿½tails des commandes dï¿½une annï¿½e donnï¿½e (2012)
+A08. Les clients de ï¿½ Paris ï¿½ (Civilitï¿½ Nom Prï¿½nom, Ville)
+A09. Les clients dont le nom commence par ï¿½ C ï¿½
+A10. Les articles dont le nom commence par ï¿½ Barriï¿½res de ï¿½ ï¿½
+A11. Les articles du fournisseur ï¿½ WD ï¿½
+A12. Les clients dont le nom de la ville se prononce comme ï¿½ pari ï¿½ ou ï¿½ barizzz ï¿½
+A13. Dï¿½codification de la catï¿½gorie des clients : Transformez la catï¿½gorie comme suit : 1 ? Grossiste, 2 ? Demi-Gros, ? Dï¿½taillant
+A14. Y-a-t-il des anomalies dans les donnï¿½es ; Quelles sont ces anomalies ? (Qualitï¿½ des donnï¿½es)
 
-Requêtes Bi (Tris + Sélections + Projections + Calculs)
+Requï¿½tes Bi (Tris + Sï¿½lections + Projections + Calculs)
 B01. Classez les clients par ville, par ordre croissant
-B02. Classez les articles de PV < 20, dans l’ordre décroissant du stock
-B03. Calculez la marge pour chaque article (marge = PV – PA !)
-B04. Calculez la marge pour tous les sièges
-B05. Classez la marge pour tous les sièges, dans l’ordre décroissant de la marge
+B02. Classez les articles de PV < 20, dans lï¿½ordre dï¿½croissant du stock
+B03. Calculez la marge pour chaque article (marge = PV ï¿½ PA !)
+B04. Calculez la marge pour tous les siï¿½ges
+B05. Classez la marge pour tous les siï¿½ges, dans lï¿½ordre dï¿½croissant de la marge
 
-Requêtes Ci (Calculs + Sélections+ Projections)
+Requï¿½tes Ci (Calculs + Sï¿½lections+ Projections)
 C01. Nombre de clients (Femme + Homme)
 C02. Nombre de clientes (Femme)
 C03. Nombre de clients (Homme)
-C04. Le prix de vente le plus élevé
+C04. Le prix de vente le plus ï¿½levï¿½
 C05. Moyenne des prix de vente des articles
-C06. Le chiffre d’affaires global
-C07. Les articles dont le prix de vente est supérieur à la moyenne des prix de vente
+C06. Le chiffre dï¿½affaires global
+C07. Les articles dont le prix de vente est supï¿½rieur ï¿½ la moyenne des prix de vente
 
-Requêtes Di (Calculs + Sous-Totaux + Sélections+ Projections)
-D01. Nombre de clients par catégorie
-D02. Nombre de clients parisiens par catégorie
+Requï¿½tes Di (Calculs + Sous-Totaux + Sï¿½lections+ Projections)
+D01. Nombre de clients par catï¿½gorie
+D02. Nombre de clients parisiens par catï¿½gorie
 D03. Montant de chaque commande
-D04. Nombre de clients parisiens par catégorie, nombre > 2
-D05. Total des quantités commandées par article
-D06. Total des quantités commandées par catégorie d’article
-D07. Total du chiffre d’affaires par catégorie d’article
-D08. Total, moyenne, min et max du chiffre d’affaires par catégorie d’article
-D09. Le chiffre d’affaires par année
+D04. Nombre de clients parisiens par catï¿½gorie, nombre > 2
+D05. Total des quantitï¿½s commandï¿½es par article
+D06. Total des quantitï¿½s commandï¿½es par catï¿½gorie dï¿½article
+D07. Total du chiffre dï¿½affaires par catï¿½gorie dï¿½article
+D08. Total, moyenne, min et max du chiffre dï¿½affaires par catï¿½gorie dï¿½article
+D09. Le chiffre dï¿½affaires par annï¿½e
 
-Requêtes Ei (Jointures + Sélections + Projections)
-E01.   ? Différents types de jointures (équi-jointure)  : voir pages suivantes
+Requï¿½tes Ei (Jointures + Sï¿½lections + Projections)
+E01.   ? Diffï¿½rents types de jointures (ï¿½qui-jointure)  : voir pages suivantes
 E02. full outer join
 E03. left join
 E04. right join
-E05. Produit Cartésien (Le cas le plus général sans clause WHERE ; la jointure est un cas particulier)
-E06. La téta-jointure (téta appartient à < <= > >= <>)
+E05. Produit Cartï¿½sien (Le cas le plus gï¿½nï¿½ral sans clause WHERE ; la jointure est un cas particulier)
+E06. La tï¿½ta-jointure (tï¿½ta appartient ï¿½ < <= > >= <>)
 E07.
-E08. Jointure & Optimisation des requêtes
-E09. Jointure avec une requête dans la clause FROM
-E10. Jointure & Ordre d’exécution des tables
+E08. Jointure & Optimisation des requï¿½tes
+E09. Jointure avec une requï¿½te dans la clause FROM
+E10. Jointure & Ordre dï¿½exï¿½cution des tables
 
-Requêtes Fi (Calculs + Sous-Totaux + Unions + Intersections + Différences + Jointures)
-F01. Clients ayant commandé en septembre 2011
+Requï¿½tes Fi (Calculs + Sous-Totaux + Unions + Intersections + Diffï¿½rences + Jointures)
+F01. Clients ayant commandï¿½ en septembre 2011
 F02. Montant total des commandes de septembre 2011
-F03. Commandes ayant des articles dont le prix vente est supérieur à 20 (Commande, Article, PV)
-F04. Commandes ayant des articles dont le prix vente est supérieur à 20 (Commande, Nombre)
-F05. Commandes ayant 4 articles dont le prix vente est supérieur à 20
-F06. Les clients de paris qui n’ont pas commandé en octobre 2011
-F07. Les clients de paris ou ceux ayant commandé en octobre 2011
+F03. Commandes ayant des articles dont le prix vente est supï¿½rieur ï¿½ 20 (Commande, Article, PV)
+F04. Commandes ayant des articles dont le prix vente est supï¿½rieur ï¿½ 20 (Commande, Nombre)
+F05. Commandes ayant 4 articles dont le prix vente est supï¿½rieur ï¿½ 20
+F06. Les clients de paris qui nï¿½ont pas commandï¿½ en octobre 2011
+F07. Les clients de paris ou ceux ayant commandï¿½ en octobre 2011
 
-Requêtes Gi (Divisions)
+Requï¿½tes Gi (Divisions)
 G01. Les articles qui figurent sur toutes les commandes !
-G02. Articles commandés par tous les parisiens
-G03. Les articles qui figurent sur toutes les commandes d’une période donnée !
+G02. Articles commandï¿½s par tous les parisiens
+G03. Les articles qui figurent sur toutes les commandes dï¿½une pï¿½riode donnï¿½e !
 
-Requêtes Hi (SQL Avancé, SQL pour le multidimensionnel)
+Requï¿½tes Hi (SQL Avancï¿½, SQL pour le multidimensionnel)
 H01. Nombre de clients
 H02. Nombre de pays
-H03. Nombre de clients par catégorie
-H04. Nombre de clients par catégorie et par ville
-H05. Nombre de clients par ville et par catégorie
-H06. Nombre de clients par catégorie et par ville ? fonction CUBE
-H07. Nombre de clients par catégorie et par ville ? fonction ROLLUP
+H03. Nombre de clients par catï¿½gorie
+H04. Nombre de clients par catï¿½gorie et par ville
+H05. Nombre de clients par ville et par catï¿½gorie
+H06. Nombre de clients par catï¿½gorie et par ville ? fonction CUBE
+H07. Nombre de clients par catï¿½gorie et par ville ? fonction ROLLUP
 
-H08. Classez les clients par ordre décroissant du chiffre d’affaires CA
-H09. Classez les clients par ordre décroissant du ca, donnez le rang
-H10. Classez les clients par ordre décroissant du ca, donnez le rang : RANK() OVER…
-H11. Clients par ordre décroissant du ca et de la catégorie, donnez le rang
-H12. Clients par ordre décroissant du ca et de la catégorie, donnez le rang
+H08. Classez les clients par ordre dï¿½croissant du chiffre dï¿½affaires CA
+H09. Classez les clients par ordre dï¿½croissant du ca, donnez le rang
+H10. Classez les clients par ordre dï¿½croissant du ca, donnez le rang : RANK() OVERï¿½
+H11. Clients par ordre dï¿½croissant du ca et de la catï¿½gorie, donnez le rang
+H12. Clients par ordre dï¿½croissant du ca et de la catï¿½gorie, donnez le rang
 
-Requêtes Ii (SQL Gestion de Gros volumes de Données - Export / Import)
-I01. Export depuis une BD gérée par un SGBD vers des fichiers (Extraction/Export/Déchargement)
-Utilisation de l’utilitaire SPOOLER pour extraire/exporter les tables d’une BD vers des fichiers textes
-(sql> spool nomdefichier.txt 		sql>select… 				sql> spool off)
-(sql> spool nomdefichier.lst 		sql>select…				sql> spool off)
-Déchargez toutes les tables de la BD GesComI dans des fichiers CSV en utilisant le « ; » comme séparateur de colonnes.
+Requï¿½tes Ii (SQL Gestion de Gros volumes de Donnï¿½es - Export / Import)
+I01. Export depuis une BD gï¿½rï¿½e par un SGBD vers des fichiers (Extraction/Export/Dï¿½chargement)
+Utilisation de lï¿½utilitaire SPOOLER pour extraire/exporter les tables dï¿½une BD vers des fichiers textes
+(sql> spool nomdefichier.txt 		sql>selectï¿½ 				sql> spool off)
+(sql> spool nomdefichier.lst 		sql>selectï¿½				sql> spool off)
+Dï¿½chargez toutes les tables de la BD GesComI dans des fichiers CSV en utilisant le ï¿½ ; ï¿½ comme sï¿½parateur de colonnes.
 
-I02. Import Depuis des fichiers vers une BD gérée par un SGBD (Import/Chargement)
-Importer/Chargez toutes les tables de la BD GesComI à partir de fichiers de différents types tels que CSV, Excel et autres. 
-Le « ; » est utilisé comme séparateur de colonnes.
+I02. Import Depuis des fichiers vers une BD gï¿½rï¿½e par un SGBD (Import/Chargement)
+Importer/Chargez toutes les tables de la BD GesComI ï¿½ partir de fichiers de diffï¿½rents types tels que CSV, Excel et autres.
+Le ï¿½ ; ï¿½ est utilisï¿½ comme sï¿½parateur de colonnes.
 
-Requêtes Ji (PL/SQL : Déclencheurs-Triggers ; Procédures-Fonctions ; Cohérence globale des données ; Qualité des données)
-J01. Développez une procédure PL/SQL qui permet de vérifier la cohérence de la BD : 
-Vérifiez si toutes les commandes portent au moins sur un article et affichez celles qui sont donc vides !
+Requï¿½tes Ji (PL/SQL : Dï¿½clencheurs-Triggers ; Procï¿½dures-Fonctions ; Cohï¿½rence globale des donnï¿½es ; Qualitï¿½ des donnï¿½es)
+J01. Dï¿½veloppez une procï¿½dure PL/SQL qui permet de vï¿½rifier la cohï¿½rence de la BD :
+Vï¿½rifiez si toutes les commandes portent au moins sur un article et affichez celles qui sont donc vides !
 
-J02. Afin de garder trace (sauvegarde & suivi) des prix unitaires de chaque article, développez un déclencheur qui permet d’enregistrer chaque mise-à-jour de tables des articles !
-Pour développer le déclencheur (Trigger) sur les mouvements des articles, il est nécessaire de créer une table HISTORIQUE_MVTS_ARTICLES.
+J02. Afin de garder trace (sauvegarde & suivi) des prix unitaires de chaque article, dï¿½veloppez un dï¿½clencheur qui permet dï¿½enregistrer chaque mise-ï¿½-jour de tables des articles !
+Pour dï¿½velopper le dï¿½clencheur (Trigger) sur les mouvements des articles, il est nï¿½cessaire de crï¿½er une table HISTORIQUE_MVTS_ARTICLES.
 
-J03. Développez une procédure PL/SQL qui permet d’éliminer les doubles dans la table des clients !
-J04. Développez une procédure PL/SQL qui permet de vérifier certaines dépendances fonctionnelles dans la table des clients !
+J03. Dï¿½veloppez une procï¿½dure PL/SQL qui permet dï¿½ï¿½liminer les doubles dans la table des clients !
+J04. Dï¿½veloppez une procï¿½dure PL/SQL qui permet de vï¿½rifier certaines dï¿½pendances fonctionnelles dans la table des clients !
 
 */
 
 -- QUELQUES REPONSES ET RESULTATS POUR DEMARRER ============================
--- Manipulations-Interrogations des données ================================
+-- Manipulations-Interrogations des donnï¿½es ================================
 -- en SQL 2 ================================================================
--- Requêtes dans les tables ================================================
+-- Requï¿½tes dans les tables ================================================
 
 PROMPT =========================================================
 PROMPT FB-B : Requetes sur la bd GESCOM EN SQL 2
@@ -863,7 +863,7 @@ PROMPT
 SET TIMING ON;
 
 PROMPT =========================================================
-PROMPT >> Requete A01. Les Noms des clients (Avec éventuellement des doublons)
+PROMPT >> Requete A01. Les Noms des clients (Avec ï¿½ventuellement des doublons)
 PROMPT =========================================================
 PROMPT
 SELECT NOMCLI FROM CLIENTS2 ;
@@ -875,7 +875,7 @@ PROMPT
 SELECT DISTINCT NOMCLI FROM CLIENTS2 ;
 
 
--- FB FB FB FB FB FB A compléter
+-- FB FB FB FB FB FB A complï¿½ter
 
 
 
@@ -888,15 +888,15 @@ PROMPT =========================================================
 PROMPT
 TTITLE CENTER 'Requete: permet de determiner le chiffre d affaires par pays' skip 1 -
        LEFT   '=========================================================================' skip 0
-SELECT	c.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaires 
+SELECT	c.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaires
 FROM	DETAILCOM2 d, CLIENTS2 c, COMMANDES2 k
 WHERE	d.NUMCOM  = k.NUMCOM
 AND	 	c.CODCLI = k.CODCLI
 GROUP BY c.PAYSCLI;
 
 -- >>>>>>>>>>>>>>>>>>>>>>>>>>
--- 
--- Résultat généré:
+--
+-- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --   Requete: permet de determiner le chiffre d affaires par pays
 -- ================================================================
@@ -906,7 +906,7 @@ GROUP BY c.PAYSCLI;
 -- ITALIE                                  813,09
 -- TUNISIE                                2498,02
 --
--- Ecoulé : 00 :00 :00.00
+-- Ecoulï¿½ : 00 :00 :00.00
 -- _______________________________________________________________
 
 PROMPT
@@ -915,19 +915,19 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT >> Requete : Articles commandés toujours en quantité > 5
+PROMPT >> Requete : Articles commandï¿½s toujours en quantitï¿½ > 5
 PROMPT =====================================================================
 PROMPT
-TTITLE CENTER 'Requete: les articles toujours commandés en quantité superieure à 5' skip 1 -
+TTITLE CENTER 'Requete: les articles toujours commandï¿½s en quantitï¿½ superieure ï¿½ 5' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT d.NUMCOM, a.REFART, a.NOMART
 FROM   ARTICLES2 a, DETAILCOM2 d
 WHERE  a.REFART = d.REFART
 AND    d.QTCOM > 5;
-      
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
---    Requete: les articles toujours commandés en quantité superieure à 5
+--    Requete: les articles toujours commandï¿½s en quantitï¿½ superieure ï¿½ 5
 -- =========================================================================
 -- NUMCOM     REFART NOMART
 -- ---------- ------ -------------------------
@@ -940,10 +940,10 @@ AND    d.QTCOM > 5;
 -- 20068FB    FB.001 DVD-SPIRIT
 -- 20067FB    FB.001 DVD-SPIRIT
 -- 20071FB    FB.003 DVD-SPIDER MAN 2
--- 
--- 9 ligne(s) sélectionnée(s).
--- 
--- Ecoulé : 00 :00 :00.01
+--
+-- 9 ligne(s) sï¿½lectionnï¿½e(s).
+--
+-- Ecoulï¿½ : 00 :00 :00.01
 -- __________________________________________________________________________
 
 PROMPT
@@ -964,7 +964,7 @@ AND	c.NUMCOM = d.NUMCOM
 AND	d.REFART = a.REFART
 AND	d.REMISE = 0;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --    Requete: Articles sans remise depuis le 1er janvier 2005
 -- =========================================================================
@@ -974,10 +974,10 @@ AND	d.REMISE = 0;
 -- 20054FB    WD.003 K7 VIDEO-WINNIE L OURSON
 -- 20053FB    WD.003 K7 VIDEO-WINNIE L OURSON
 -- 20052FB    WD.003 K7 VIDEO-WINNIE L OURSON
--- 
--- 20 ligne(s) sélectionnée(s).
--- 
--- Ecoulé : 00 :00 :00.03
+--
+-- 20 ligne(s) sï¿½lectionnï¿½e(s).
+--
+-- Ecoulï¿½ : 00 :00 :00.03
 -- __________________________________________________________________________
 
 PROMPT
@@ -985,10 +985,10 @@ pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
-PROMPT >> Requete : Articles commandés par tous les parisiens
+PROMPT >> Requete : Articles commandï¿½s par tous les parisiens
 PROMPT =====================================================================
 PROMPT
-TTITLE CENTER 'Requete: les articles qui sont commandés par tous les parisiens' skip 1 -
+TTITLE CENTER 'Requete: les articles qui sont commandï¿½s par tous les parisiens' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT	REFART, NOMART
 FROM	ARTICLES2
@@ -1003,16 +1003,16 @@ WHERE	NOT EXISTS
 		 AND	DETAILCOM2.REFART = ARTICLES2.REFART
 		 AND	COMMANDES2.CODCLI = CLIENTS2.CODCLI));
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --
--- Requete: les articles qui sont commandés par tous les parisiens
+-- Requete: les articles qui sont commandï¿½s par tous les parisiens
 -- =========================================================================
 -- REFART NOMART
 -- ------ -------------------------
 -- FB.003 DVD-SPIDER MAN 2
--- 
--- Ecoulé : 00 :00 :00.03
+--
+-- Ecoulï¿½ : 00 :00 :00.03
 -- __________________________________________________________________________
 
 PROMPT
@@ -1023,23 +1023,23 @@ PROMPT =========================================================
 PROMPT >> Requete : Trigger sur la mise a jour des prix EN SQL 2
 PROMPT =========================================================
 PROMPT
-TTITLE CENTER 'Requete: Trigger sur la mise à jour des prix' skip 1 -
+TTITLE CENTER 'Requete: Trigger sur la mise ï¿½ jour des prix' skip 1 -
        LEFT   '=========================================================================' skip 0
 
 PROMPT
 PROMPT =========================================================
-PROMPT Il est nécessaire de créer une table HISTORIQUE_PRIX qui permet
-PROMPT de garder le prix des articles avant leurs mises à jour.
-PROMPT C est une table qui aura comme colonne la référence, le nom, le prix
+PROMPT Il est nï¿½cessaire de crï¿½er une table HISTORIQUE_PRIX qui permet
+PROMPT de garder le prix des articles avant leurs mises ï¿½ jour.
+PROMPT C est une table qui aura comme colonne la rï¿½fï¿½rence, le nom, le prix
 PROMPT d achat, le prix de vente (prix catalogue) de l article avant la mise
-PROMPT à jour et la date de la mise à jour.
+PROMPT ï¿½ jour et la date de la mise ï¿½ jour.
 PROMPT =========================================================
 PROMPT
 DROP TABLE HISTORIQUE_PRIX;
 
 CREATE TABLE HISTORIQUE_PRIX
 (
-	REFART 		VARCHAR2(10), 
+	REFART 		VARCHAR2(10),
 	NOMART		VARCHAR2(50),
 	PVART		NUMBER(10, 2),
 	PAART		NUMBER(10, 2),
@@ -1052,7 +1052,7 @@ pause Tapez sur Enter...
 
 PROMPT
 PROMPT =========================================================
-PROMPT Suppression et création du trigger = déclencheur.
+PROMPT Suppression et crï¿½ation du trigger = dï¿½clencheur.
 PROMPT =========================================================
 PROMPT
 DROP TRIGGER MAJ_PRIX_ARTICLES2;
@@ -1078,7 +1078,7 @@ pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
-PROMPT Exemple avec 2 insertions et 2 mises à jour dans la table ARTICLES2
+PROMPT Exemple avec 2 insertions et 2 mises ï¿½ jour dans la table ARTICLES2
 PROMPT =========================================================
 PROMPT
 DELETE	FROM	ARTICLES2
@@ -1105,24 +1105,24 @@ COLUMN PAART	FORMAT 99.99
 COLUMN DATMAJ	FORMAT A26
 
 PROMPT =========================================================
-PROMPT Visualisation des 2 articles insérés dans ARTICLES2
+PROMPT Visualisation des 2 articles insï¿½rï¿½s dans ARTICLES2
 PROMPT =========================================================
-TTITLE CENTER 'Visualisation des 2 articles insérés dans ARTICLES2' skip 1 -
+TTITLE CENTER 'Visualisation des 2 articles insï¿½rï¿½s dans ARTICLES2' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT	*
 FROM	ARTICLES2
 WHERE	REFART in ('WD.010', 'WD.011');
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
---  Visualisation des 2 articles insérés dans ARTICLES2
+--  Visualisation des 2 articles insï¿½rï¿½s dans ARTICLES2
 -- ================================================================
 -- REFART NOMART                     PVART QSART  PAART
 -- ------ ------------------------- ------ ----- ------
 -- WD.010 K7 VIDEO-Exemple de k7     30.00     3  13.00
 -- WD.011 Exemple de DVD             25.00     5  10.00
--- 
--- Ecoulé : 00 :00 :00.01
+--
+-- Ecoulï¿½ : 00 :00 :00.01
 -- ______________________________________________________________
 
 PROMPT
@@ -1133,7 +1133,7 @@ PROMPT =========================================================
 PROMPT MAJ des 2 articles dans ARTICLES2
 PROMPT =========================================================
 PROMPT
-TTITLE CENTER 'Mise à jour des 2 articles insérés dans ARTICLES2' skip 1 -
+TTITLE CENTER 'Mise ï¿½ jour des 2 articles insï¿½rï¿½s dans ARTICLES2' skip 1 -
        LEFT   '=========================================================================' skip 0
 UPDATE	ARTICLES2
 SET	PVART = 45.00, PAART = 15.00
@@ -1157,7 +1157,7 @@ SELECT	*
 FROM	ARTICLES2
 WHERE	REFART in ('WD.010', 'WD.011');
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --
 -- Visualisation des 2 articles MAJ dans ARTICLES2
@@ -1166,8 +1166,8 @@ WHERE	REFART in ('WD.010', 'WD.011');
 -- ------ ------------------------- ------ ----- ------
 -- WD.010 K7 VIDEO-Exemple de k7     45.00     3  15.00
 -- WD.011 Exemple de DVD              2.00     5  10.00
--- 
--- Ecoulé : 00 :00 :00.01
+--
+-- Ecoulï¿½ : 00 :00 :00.01
 -- __________________________________________________________________________
 
 PROMPT
@@ -1183,17 +1183,17 @@ TTITLE CENTER 'Visualisation de la table HISTORIQUE_PRIX' skip 1 -
 SELECT	*
 FROM	HISTORIQUE_PRIX;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --
 --   Visualisation de la table HISTORIQUE_PRIX
 -- =========================================================================
 -- REFART NOMART                     PVART  PAART DATMAJ
 -- ------ ------------------------- ------ ------ --------------------------
--- WD.010 K7 VIDEO-Exemple de k7     30.00  13.00 
--- WD.011 Exemple de DVD             25.00  10.00 
--- 
--- Ecoulé : 00 :00 :00.00
+-- WD.010 K7 VIDEO-Exemple de k7     30.00  13.00
+-- WD.011 Exemple de DVD             25.00  10.00
+--
+-- Ecoulï¿½ : 00 :00 :00.00
 -- __________________________________________________________________________
 
 PROMPT
@@ -1202,19 +1202,19 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT >> Requete : Procedure PL/SQL => vérification cohérence de la BD
+PROMPT >> Requete : Procedure PL/SQL => vï¿½rification cohï¿½rence de la BD
 PROMPT =====================================================================
 PROMPT
 REM Verifier si toutes les commandes portent au moins sur un article et
 REM afficher celles qui sont donc vides!
 
-TTITLE CENTER 'Verification de la cohérence de la base de données' skip 1 -
+TTITLE CENTER 'Verification de la cohï¿½rence de la base de donnï¿½es' skip 1 -
        LEFT   '=========================================================================' skip 0
 
 SET SERVEROUTPUT ON;
 
 PROMPT =====================================================================
-PROMPT Suppression et création de la procédure COHERENCE_BD
+PROMPT Suppression et crï¿½ation de la procï¿½dure COHERENCE_BD
 PROMPT =====================================================================
 PROMPT
 DROP PROCEDURE COHERENCE_BD;
@@ -1225,7 +1225,7 @@ CREATE OR REPLACE PROCEDURE COHERENCE_BD IS
 	MINUS (SELECT NUMCOM FROM DETAILCOM2);
 
 BEGIN
-	DBMS_OUTPUT.PUT_LINE('Le(s) numéro(s) de commande vide(s) sont :');
+	DBMS_OUTPUT.PUT_LINE('Le(s) numï¿½ro(s) de commande vide(s) sont :');
 	FOR i IN curseur LOOP
 		DBMS_OUTPUT.PUT_LINE('-  ' || i.NUMCOM);
 	END LOOP;
@@ -1237,18 +1237,18 @@ pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
-PROMPT Execution de la procédure COHERENCE_BD
+PROMPT Execution de la procï¿½dure COHERENCE_BD
 PROMPT =====================================================================
 PROMPT
 EXECUTE COHERENCE_BD;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
--- Le(s) numéro(s) de commande vide(s) sont :
+-- Le(s) numï¿½ro(s) de commande vide(s) sont :
 --   -  20011RB
 --
--- Procédure PL/SQL terminée avec succès.
--- Ecoulé : 00 :00 :00.01
+-- Procï¿½dure PL/SQL terminï¿½e avec succï¿½s.
+-- Ecoulï¿½ : 00 :00 :00.01
 -- __________________________________________________________________________
 
 PROMPT
@@ -1257,22 +1257,22 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT >> Requete  : Articles toujours commandés ensemble
+PROMPT >> Requete  : Articles toujours commandï¿½s ensemble
 PROMPT =====================================================================
 PROMPT
-TTITLE CENTER 'Requete: les articles qui sont toujours commandés ensemble' skip 1 -
+TTITLE CENTER 'Requete: les articles qui sont toujours commandï¿½s ensemble' skip 1 -
        LEFT   '=========================================================================' skip 0
 
 
-	
 
 
-	
+
+
 
 --======================================================================================
 --======================================================================================
 --======================================================================================
-COMMIT;	   
+COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 --======================================================================================
@@ -1290,17 +1290,17 @@ SPOOL OFF;
 SPOOL GescomIDW2.lst
 PROMPT =========================================================
 -- Nom du Cas       :  Gestion Commerciale Intelligente : GESCOMI
--- Nom de SGBD      :  ORACLE DBMS                    
--- Date de création :  Septembre 2018
--- Auteur           :  Faouzi BOUFARES 
--- Université       :  Université Sorbonne Paris Cité, Université Paris 13 
--- Formation        :  Master 2 EID 2  
+-- Nom de SGBD      :  ORACLE DBMS
+-- Date de crï¿½ation :  Septembre 2018
+-- Auteur           :  Faouzi BOUFARES
+-- Universitï¿½       :  Universitï¿½ Sorbonne Paris Citï¿½, Universitï¿½ Paris 13
+-- Formation        :  Master 2 EID 2
 PROMPT =========================================================
-PROMPT 
+PROMPT
 PROMPT =========================================================
 PROMPT |                                                       |
 PROMPT |     Exercice 2 :  BD GESCOMI***DW avec SQL 2          |
-PROMPT |     Exercice 2 :  Le schéma en étoile avec SQL 2      |
+PROMPT |     Exercice 2 :  Le schï¿½ma en ï¿½toile avec SQL 2      |
 PROMPT |                                                       |
 PROMPT =========================================================
 PROMPT
@@ -1312,9 +1312,9 @@ PROMPT =========================================================
 ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
 PROMPT =========================================================
 
--- Définition de la structure des données ==================================
+-- Dï¿½finition de la structure des donnï¿½es ==================================
 -- en SQL 2 ================================================================
--- Création des tables =====================================================
+-- Crï¿½ation des tables =====================================================
 
 PROMPT =====================================================================
 PROMPT Suppression des tables de la bd GesComI***DW EN SQL 2
@@ -1354,7 +1354,7 @@ CREATE TABLE ARTICLES_DW2
 (
 	NUMART		INTEGER,
 	NOMART		CHAR(20),
-	PUART		NUMBER(7,2),      
+	PUART		NUMBER(7,2),
    	CONSTRAINT PK_ARTICLES_DW2 		PRIMARY KEY(NUMART),
 	CONSTRAINT NN_ARTICLES_DW2_NOMART	CHECK(NOMART IS NOT NULL)
 );
@@ -1368,14 +1368,14 @@ PROMPT >> Table : MAGASINS_DW2
 PROMPT =====================================================================
 CREATE TABLE MAGASINS_DW2
 (
-	NUMMAG		INTEGER,
+	NUMMAG		VARCHAR(4),
 	NOMMAG		CHAR(30),
 	TELMAG		CHAR(15),
 	ADRNUMMAG	VARCHAR2(10),
 	ADRRUEMAG	VARCHAR2(50),
 	ADRCPMAG	VARCHAR2(10),
 	ADRVILLEMAG	VARCHAR2(50),
-	ADRPAYSMAG	VARCHAR2(50),      
+	ADRPAYSMAG	VARCHAR2(50),
    	CONSTRAINT PK_MAGASINS_DW2 		PRIMARY KEY(NUMMAG),
 	CONSTRAINT NN_MAGASINS_DW2_NOMMAG	CHECK(NOMMAG IS NOT NULL),
 	CONSTRAINT CK_MAGASINS_DW2_ADRVILLEMAG	CHECK(ADRVILLEMAG = UPPER(ADRVILLEMAG)),
@@ -1415,7 +1415,7 @@ CREATE TABLE CLIENTS_DW2
 	ADRRUECLI	VARCHAR2(50),
 	ADRCPCLI	VARCHAR2(10),
 	ADRVILLECLI	VARCHAR2(50),
-	ADRPAYSCLI	VARCHAR2(50),      
+	ADRPAYSCLI	VARCHAR2(50),
     	CONSTRAINT PK_CLIENTS_DW2 				PRIMARY KEY(NUMCLI),
 	CONSTRAINT NN_CLIENTS_DW2_NOMCLI		CHECK(NOMCLI IS NOT NULL),
 	CONSTRAINT CK_CLIENTS_DW2_ADRVILLECLI	CHECK(ADRVILLECLI = UPPER(ADRVILLECLI)),
@@ -1429,23 +1429,23 @@ PROMPT
 PROMPT =====================================================================
 PROMPT >> Table : VENTES_DW2
 PROMPT =====================================================================
-CREATE TABLE VENTES_DW2 
-( 
+CREATE TABLE VENTES_DW2
+(
 	NUMVENTE		INTEGER,
 	NUMART			INTEGER,
 	IDTEMPS			INTEGER,
 	NUMCLI			INTEGER,
 	MONTANTVENTE	NUMBER(20,4),
-	NUMMAG			INTEGER,
+	NUMMAG			VARCHAR(4),
 	CONSTRAINT PK_VENTES_DW2		      PRIMARY KEY(NUMVENTE),
-	CONSTRAINT FK_VENTES_DW2_NUMART_ARTICLES2     FOREIGN KEY(NUMART)  
+	CONSTRAINT FK_VENTES_DW2_NUMART_ARTICLES2     FOREIGN KEY(NUMART)
 						      REFERENCES ARTICLES_DW2(NUMART),
-	CONSTRAINT FK_VENTES_DW2_NUMMAG_MAGASINS2     FOREIGN KEY(NUMMAG)  
+	CONSTRAINT FK_VENTES_DW2_NUMMAG_MAGASINS2     FOREIGN KEY(NUMMAG)
 						      REFERENCES MAGASINS_DW2(NUMMAG),
-	CONSTRAINT FK_VENTES_DW2_IDTEMPS_TEMPS2       FOREIGN KEY(IDTEMPS) 
+	CONSTRAINT FK_VENTES_DW2_IDTEMPS_TEMPS2       FOREIGN KEY(IDTEMPS)
 						      REFERENCES TEMPS_DW2(IDTEMPS),
-	CONSTRAINT FK_VENTES_DW2_NUMCLI_CLIENTS2      FOREIGN KEY(NUMCLI)  
-						      REFERENCES CLIENTS_DW2 (NUMCLI)	
+	CONSTRAINT FK_VENTES_DW2_NUMCLI_CLIENTS2      FOREIGN KEY(NUMCLI)
+						      REFERENCES CLIENTS_DW2 (NUMCLI)
 );
 
 PROMPT
@@ -1454,12 +1454,12 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT Insertion des données de la bd GESCOMI***DW EN SQL 2
+PROMPT Insertion des donnï¿½es de la bd GESCOMI***DW EN SQL 2
 PROMPT =====================================================================
 PROMPT
 
 PROMPT =====================================================================
-PROMPT >> Insertion des données de la Table : ARTICLES_DW2
+PROMPT >> Insertion des donnï¿½es de la Table : ARTICLES_DW2
 PROMPT =====================================================================
 PROMPT
 INSERT INTO ARTICLES_DW2 (NUMART, NOMART, PUART)
@@ -1562,47 +1562,52 @@ PROMPT >> Table : MAGASINS_DW2
 PROMPT =====================================================================
 PROMPT
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (1,  'MAG_1_FRANCE', '0142586485', '18', 'BOULEVARD FOCH', '91000', 'EPINAY SUR ORGE', 'FRANCE');
+VALUES ('FR01',  'MAG_1_FRANCE', '0142586485', '18', 'BOULEVARD FOCH', '91000', 'EPINAY SUR ORGE', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (2, 'MAG_2_FRANCE', '0134798614', '21', 'AVENUE D ITALIE', '75013', 'PARIS', 'FRANCE');
-
-INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, 
-ADRPAYSMAG)
-VALUES (3, 'MAG_3_FRANCE','0254974410', '77', 'RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE');
+VALUES ('FR02', 'MAG_2_FRANCE', '+33153800796', '21', 'AVENUE D ITALIE', '75013', 'PARIS', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (4, 'MAG_4_FRANCE', '0657985246', '8 BIS', 'BOULEVARD FOCH', '93800', 'EPINAY SUR SEINE', 'FRANCE');
+VALUES ('FR03', 'MAG_3_FRANCE','0254974410', '77', 'RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (5, 'MAG_5_FRANCE', '0546874430', '55', 'RUE DU JAPON', '94310', 'ORLY VILLE', 'FRANCE');
+VALUES ('FR04', 'MAG_4_FRANCE', '0657985246', '8 BIS', 'BOULEVARD FOCH', '93800', 'EPINAY SUR SEINE', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (6,'MAG_6_FRANCE', '0549876546', '18', 'BOULEVARD FOCH', '93800', 'EPINAY SUR SEINE', 'FRANCE');
+VALUES ('FR05', 'MAG_5_FRANCE', '0546874430', '55', 'RUE DU JAPON', '94310', 'ORLY VILLE', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (7, 'MAG_7_FRANCE', '0466468720', '6', 'RUE DE LA ROSIERE', '75015', 'PARIS', 'FRANCE');
+VALUES ('FR06','MAG_6_FRANCE', '0549876546', '18', 'BOULEVARD FOCH', '93800', 'EPINAY SUR SEINE', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (8, 'MAG_1_BELGIQUE', '003257446571', '13', 'RUE DE LA PAIX', '99999', 'BRUXELLES', 'BELGIQUE');
+VALUES ('FR07', 'MAG_7_FRANCE', '0466468720', '6', 'RUE DE LA ROSIERE', '75015', 'PARIS', 'FRANCE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (9, 'MAG_2_BELGIQUE', '003254987541', '5', 'RUE DE BELLEVILLE', '99999', 'BRUXELLES', 'BELGIQUE');
+VALUES ('BE01', 'MAG_1_BELGIQUE', '003257446571', '13', 'RUE DE LA PAIX', '99999', 'BRUXELLES', 'BELGIQUE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (10, 'MAG_3_BELGIQUE', '0032546713274', '16', 'AVENUE FOCH', '99998', 'ANDERLECK', 'BELGIQUE');
+VALUES ('BE02', 'MAG_2_BELGIQUE', '003254987541', '5', 'RUE DE BELLEVILLE', '99999', 'BRUXELLES', 'BELGIQUE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (11, 'MAG_4_BELGIQUE', '003264787542', '77', 'RUE DE LA LIBERTE', '99998', 'ANDERLECK', 'BELGIQUE');
+VALUES ('BE03', 'MAG_3_BELGIQUE', '0032546713274', '16', 'AVENUE FOCH', '99998', 'ANDERLECK', 'BELGIQUE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (12, 'MAG_5_BELGIQUE', '0032448746842', '134', 'AVENUE DES LILAS', '99999', 'BRUXELLES', 'BELGIQUE');
+VALUES ('BE04', 'MAG_4_BELGIQUE', '003264787542', '77', 'RUE DE LA LIBERTE', '99998', 'ANDERLECK', 'BELGIQUE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (13, 'MAG_1_TUNISIE', '009967687745', '1', 'AVENUE DE CARTAGE', '99000', 'TUNIS', 'TUNISIE');
+VALUES ('BE05', 'MAG_5_BELGIQUE', '0032448746842', '134', 'AVENUE DES LILAS', '99999', 'BRUXELLES', 'BELGIQUE');
 
 INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
-VALUES (14, 'MAG_1_ITALIE', '0099241564315', '1', 'AVENUE DE ROME', '99001', 'ROME', 'ITALIE');
+VALUES ('TN01', 'MAG_1_TUNISIE', '009967687745', '1', 'AVENUE DE CARTAGE', '99000', 'TUNIS', 'TUNISIE');
+
+INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
+VALUES ('TN02', 'MAG_2_TUNISIE', '+21624888222', '11', 'BOULEVARD DU 14 JANVIER 2011', '4001', 'SOUSSE', 'TUNISIE');
+
+INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
+VALUES ('IT01', 'MAG_1_ITALIE', '0099241564315', '1', 'AVENUE DE ROME', '99001', 'ROME', 'ITALIE');
+INSERT INTO MAGASINS_DW2 (NUMMAG, NOMMAG, TELMAG, ADRNUMMAG, ADRRUEMAG, ADRCPMAG, ADRVILLEMAG, ADRPAYSMAG)
+VALUES ('IT02', 'MAG_1_ITALIE', '00315', '1', 'AVENUE DE ROME', '99001', 'ROME', 'ITALIE');
+
 
 PROMPT
 pause Tapez sur Enter...
@@ -1611,16 +1616,16 @@ PROMPT
 --====================================================================================
 --====================================================================================
 --====================================================================================
---==================== Modification de la structure des donnée =======================
+--==================== Modification de la structure des donnï¿½e =======================
 --====================================================================================
 --====================================================================================
 --====================================================================================
 -- Modifier la structure de la table MAGASINS_DW2
 -- Ajouter la colonne MAILMAG de type VARCHAR(30)
--- Insérer les nouvelles données dans cette colonne
--- Vérifier que tous les mails sont corrects !
--- Développer une procédure qui le fait avec comme paramètres par exemple :
--- les noms de la table et de la colonne à vérifier moyennant une EXPRESSION REGULIERE
+-- Insï¿½rer les nouvelles donnï¿½es dans cette colonne
+-- Vï¿½rifier que tous les mails sont corrects !
+-- Dï¿½velopper une procï¿½dure qui le fait avec comme paramï¿½tres par exemple :
+-- les noms de la table et de la colonne ï¿½ vï¿½rifier moyennant une EXPRESSION REGULIERE
 --====================================================================================
 --====================================================================================
 
@@ -1648,7 +1653,7 @@ INSERT INTO TEMPS_DW2 (IDTEMPS, DATEHEURET, ANNEET, MOIST, JOURT)
 VALUES (6,  'MARDI 13-MARS-2001', 2001, 3, 13);
 
 INSERT INTO TEMPS_DW2 (IDTEMPS, DATEHEURET, ANNEET, MOIST, JOURT)
-VALUES (7,  'VENDREDI 14-FéVRIER-2003', 2003, 02, 14);
+VALUES (7,  'VENDREDI 14-Fï¿½VRIER-2003', 2003, 02, 14);
 
 INSERT INTO TEMPS_DW2 (IDTEMPS, DATEHEURET, ANNEET, MOIST, JOURT)
 VALUES (8,  'LUNDI 07-JANVIER-2002', 2002,1, 7);
@@ -1671,7 +1676,7 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT >> Table : CLIENTS_DW2 
+PROMPT >> Table : CLIENTS_DW2
 PROMPT =====================================================================
 PROMPT
 INSERT INTO CLIENTS_DW2 (NUMCLI, NOMCLI, TELCLI, ADRNUMCLI, ADRRUECLI, ADRCPCLI, ADRVILLECLI, ADRPAYSCLI)
@@ -1726,49 +1731,49 @@ PROMPT >> Table : VENTES_DW2
 PROMPT =====================================================================
 PROMPT
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (1, 30, 5, 2, 28.99, 2);
+VALUES (1, 30, 5, 2, 28.99, 'FR02');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (2, 28, 4, 3, 28.99, 4);
+VALUES (2, 28, 4, 3, 28.99, 'FR04');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (3, 26, 6, 1 ,22.00, 6);
+VALUES (3, 26, 6, 1 ,22.00, 'FR06');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (4, 24, 7, 8, 21.00, 8);
+VALUES (4, 24, 7, 8, 21.00, 'BE02');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (5, 22, 5, 9, 24.90, 10);
+VALUES (5, 22, 5, 9, 24.90, 'TN01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (6, 11, 11, 11, 122.00, 10);
+VALUES (6, 11, 11, 11, 122.00, 'TN01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (7, 18, 12, 14 ,44.00, 14);
+VALUES (7, 18, 12, 14 ,44.00, 'IT01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (8, 16, 12, 2, 49.00, 10);
+VALUES (8, 16, 12, 2, 49.00, 'TN01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (9, 14, 2, 4, 7.80, 3);
+VALUES (9, 14, 2, 4, 7.80, 'FR03');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (10, 12, 6, 5, 15.55, 2);
+VALUES (10, 12, 6, 5, 15.55, 'FR02');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (11, 10, 8 ,12, 30.70, 8);
+VALUES (11, 10, 8 ,12, 30.70, 'BE03');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (12, 8, 9, 11, 3.00, 12);
+VALUES (12, 8, 9, 11, 3.00,'TN01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (13, 6, 1, 4, 2.00, 2);
+VALUES (13, 6, 1, 4, 2.00, 'FR02');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (14, 4, 10, 14 ,7.40, 14);
+VALUES (14, 4, 10, 14 ,7.40, 'IT01');
 
 INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
-VALUES (15, 2, 3, 3 , 27.00, 5);
+VALUES (15, 2, 3, 3 , 27.00, 'FR05');
 
 PROMPT
 pause Tapez sur Enter...
@@ -1776,7 +1781,7 @@ PROMPT
 
 
 PROMPT =====================================================================
-PROMPT Affichage des tables de la bd GESCOM EN SQL 2 
+PROMPT Affichage des tables de la bd GESCOM EN SQL 2
 PROMPT =====================================================================
 PROMPT
 COLUMN NUMCLI		FORMAT 999
@@ -1840,8 +1845,8 @@ PROMPT
 TTITLE CENTER 'Vue1: Total des ventes des magasins a partir de 2002, par ville et annee' skip 1 -
        LEFT   '=========================================================================' skip 0
 CREATE OR REPLACE VIEW V1 (VILLE, ANNEE, MONTANT1) AS
-	(SELECT   ADRVILLEMAG, ANNEET, SUM(MONTANTVENTE) 
-	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2   
+	(SELECT   ADRVILLEMAG, ANNEET, SUM(MONTANTVENTE)
+	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2
 	 WHERE    VENTES_DW2.NUMMAG  = MAGASINS_DW2.NUMMAG
 	 AND      VENTES_DW2.IDTEMPS = TEMPS_DW2.IDTEMPS
 	 AND      TEMPS_DW2.ANNEET  >= 2002
@@ -1854,8 +1859,8 @@ PROMPT
 TTITLE CENTER 'Vue2: Total des ventes des magasins en France par ville, annee et mois' skip 1 -
        LEFT   '=========================================================================' skip 0
 CREATE OR REPLACE VIEW V2 (VILLE, ANNEE, MOIS, MONTANT2) AS
-	(SELECT   ADRVILLEMAG, ANNEET, MOIST, SUM(MONTANTVENTE) 
-	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2   
+	(SELECT   ADRVILLEMAG, ANNEET, MOIST, SUM(MONTANTVENTE)
+	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2
 	 WHERE    VENTES_DW2.NUMMAG          = MAGASINS_DW2.NUMMAG
 	 AND      VENTES_DW2.IDTEMPS 	     = TEMPS_DW2.IDTEMPS
 	 AND      UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'FRANCE'
@@ -1869,8 +1874,8 @@ TTITLE CENTER 'Vue3: Total des ventes des magasins en Belgique ,avant <= 2001,' 
        CENTER 'par ville, annee et mois' skip 1 -
        LEFT   '=========================================================================' skip 0
 CREATE OR REPLACE VIEW V3 (VILLE, ANNEE, MOIS, MONTANT3) AS
-	(SELECT   ADRVILLEMAG, ANNEET, MOIST, SUM(MONTANTVENTE) 
-	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2   
+	(SELECT   ADRVILLEMAG, ANNEET, MOIST, SUM(MONTANTVENTE)
+	 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2
 	 WHERE    VENTES_DW2.NUMMAG  	     = MAGASINS_DW2.NUMMAG
 	 AND      VENTES_DW2.IDTEMPS	     = TEMPS_DW2.IDTEMPS
 	 AND      UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'BELGIQUE'
@@ -1890,7 +1895,7 @@ PROMPT
 SET TIMING ON;
 
 TTITLE CENTER 'Requete Q1: Total des ventes des magasins en France ou en Belgique,' skip 1 -
-       CENTER 'pour la periode de 2001 à 2003, par ville et annee' skip 1 -
+       CENTER 'pour la periode de 2001 ï¿½ 2003, par ville et annee' skip 1 -
        LEFT   '=========================================================================' skip 0
 
 COLUMN ADRVILLEMAG	FORMAT A20
@@ -1899,15 +1904,15 @@ SELECT   ADRVILLEMAG, ANNEET, SUM(MONTANTVENTE) AS MONTANT
 FROM     VENTES_DW2, MAGASINS_DW2, TEMPS_DW2
 WHERE    VENTES_DW2.NUMMAG  = MAGASINS_DW2.NUMMAG
 AND      VENTES_DW2.IDTEMPS = TEMPS_DW2.IDTEMPS
-AND      (UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'FRANCE' 
+AND      (UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'FRANCE'
 	  OR UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'BELGIQUE')
 AND      TEMPS_DW2.ANNEET BETWEEN 2001 AND 2003
 GROUP BY ADRVILLEMAG, ANNEET;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --       Requete Q1: Total des ventes des magasins en France ou en Belgique,
---       pour la periode de 2001 à 2003, par ville et annee
+--       pour la periode de 2001 ï¿½ 2003, par ville et annee
 -- =========================================================================
 -- ADRVILLEMAG              ANNEET    MONTANT
 -- -------------------- ---------- ----------
@@ -1917,10 +1922,10 @@ GROUP BY ADRVILLEMAG, ANNEET;
 -- BRUXELLES                  2003         24
 -- EPINAY SUR SEINE           2001         22
 -- EPINAY SUR SEINE           2002      28,99
--- 
--- 6 ligne(s) sélectionnée(s).
--- 
--- Ecoulé : 00 :00 :00.03
+--
+-- 6 ligne(s) sï¿½lectionnï¿½e(s).
+--
+-- Ecoulï¿½ : 00 :00 :00.03
 -- __________________________________________________________________________
 
 PROMPT
@@ -1928,7 +1933,7 @@ pause Tapez sur Enter...
 PROMPT
 
 TTITLE CENTER 'Requete Q1Prim: Total des ventes des magasins en France ou en Belgique,' skip 1 -
-       center 'pour la periode de 2001 à 2003, par ville et annee' skip 1 -
+       center 'pour la periode de 2001 ï¿½ 2003, par ville et annee' skip 1 -
        LEFT   '=========================================================================' skip 0
 
 COLUMN ADRVILLEMAG	FORMAT A20
@@ -1936,7 +1941,7 @@ COLUMN ADRVILLEMAG	FORMAT A20
 	SELECT   ADRVILLEMAG, ANNEE, MONTANT1
 	FROM     V1, (SELECT DISTINCT ADRVILLEMAG
 		      FROM   MAGASINS_DW2
-		      WHERE  UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'FRANCE' 
+		      WHERE  UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'FRANCE'
 		  	     OR UPPER(MAGASINS_DW2.ADRPAYSMAG) = 'BELGIQUE') S1
 	WHERE    V1.VILLE = S1.ADRVILLEMAG
 	AND	 ANNEE   <= 2003
@@ -1950,14 +1955,14 @@ UNION
 	SELECT   S2.ADRVILLEMAG, ANNEE, SUM(MONTANT3)
 	FROM     V3, (SELECT DISTINCT ADRVILLEMAG
 		      FROM   MAGASINS_DW2) S2
-	WHERE    V3.VILLE = S2.ADRVILLEMAG 
+	WHERE    V3.VILLE = S2.ADRVILLEMAG
 	AND      ANNEE    = 2001
 	GROUP BY ADRVILLEMAG, ANNEE;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --     Requete Q1Prim: Total des ventes des magasins en France ou en Belgique,
---       pour la periode de 2001 à 2003, par ville et annee
+--       pour la periode de 2001 ï¿½ 2003, par ville et annee
 -- =========================================================================
 -- ADRVILLEMAG               ANNEE   MONTANT1
 -- -------------------- ---------- ----------
@@ -1967,10 +1972,10 @@ UNION
 -- EPINAY SUR SEINE           2001         22
 -- EPINAY SUR SEINE           2002      28,99
 -- PARIS                      2001      46,54
--- 
--- 6 ligne(s) sélectionnée(s).
--- 
--- Ecoulé : 00 :00 :00.04
+--
+-- 6 ligne(s) sï¿½lectionnï¿½e(s).
+--
+-- Ecoulï¿½ : 00 :00 :00.04
 -- __________________________________________________________________________
 
 
@@ -1978,7 +1983,7 @@ UNION
 --======================================================================================
 --======================================================================================
 --======================================================================================
-COMMIT;	   
+COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 --======================================================================================
@@ -1991,22 +1996,22 @@ SPOOL OFF;
 -- MFB FFF 2
 
 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    *************** 
--- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    *************** 
--- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    *************** 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
--- ************************************************************************************************ 
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    ***************
+-- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    ***************
+-- **********    CORRELATION ENTTRE LES PRIX DES ARTICLE ET LE CHIFFRE D'AFFAIRE    ***************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
+-- ************************************************************************************************
 
 
-PROMPT 
+PROMPT
 PROMPT =====================================================================
 PROMPT |                                                                   |
 PROMPT |      Historique des mouvements des articles                       |
@@ -2024,16 +2029,16 @@ TTITLE CENTER 'Requete: Trigger sur les mouvements des articles' skip 1 -
 
 PROMPT
 PROMPT =====================================================================
-PROMPT Il est nécessaire de créer une table HISTORIQUE_MVTS_ARTICLES.
+PROMPT Il est nï¿½cessaire de crï¿½er une table HISTORIQUE_MVTS_ARTICLES.
 PROMPT =====================================================================
 PROMPT
 DROP TABLE HISTORIQUE_MVTS_ARTICLES;
 
 CREATE TABLE HISTORIQUE_MVTS_ARTICLES
 (
-	NOMUSER		VARCHAR2(15), 
-	TYPEMVT		VARCHAR2(15), 
-	REFART 		VARCHAR2(10), 
+	NOMUSER		VARCHAR2(15),
+	TYPEMVT		VARCHAR2(15),
+	REFART 		VARCHAR2(10),
 	NOMART		VARCHAR2(50),
 	PVART		NUMBER(10, 2),
 	PAART		NUMBER(10, 2),
@@ -2049,7 +2054,7 @@ pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
-PROMPT Suppression et création du trigger.
+PROMPT Suppression et crï¿½ation du trigger.
 PROMPT =====================================================================
 PROMPT
 DROP TRIGGER MOUVEMENTS_ARTICLES2;
@@ -2069,19 +2074,19 @@ DECLARE
 	VI_PVART	NUMBER(10, 2)	:= :NEW.PVART;
 	VI_PAART	NUMBER(10, 2)	:= :NEW.PAART;
 	VI_QSART	NUMBER(3)	:= :NEW.QSART;
-	
+
 BEGIN
 	IF UPDATING THEN
 		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
 		VALUES (USER, 'UPDATE', V_REFART, V_NOMART, V_PVART, V_PAART, V_QSART, SYSDATE);
 	END IF;
 
-	IF DELETING THEN 
+	IF DELETING THEN
 		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
 		VALUES (USER, 'DELETE', V_REFART, V_NOMART, V_PVART, V_PAART, V_QSART, SYSDATE);
 	END IF;
-			
-	IF INSERTING THEN 
+
+	IF INSERTING THEN
 		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
 		VALUES (USER, 'INSERT', VI_REFART, VI_NOMART, VI_PVART, VI_PAART, VI_QSART, SYSDATE);
 	END IF;
@@ -2093,8 +2098,8 @@ PROMPT
 pause Tapez sur Enter...
 PROMPT
 
-COLUMN 	NOMUSER		FORMAT A12 
-COLUMN	TYPEMVT		FORMAT A6 
+COLUMN 	NOMUSER		FORMAT A12
+COLUMN	TYPEMVT		FORMAT A6
 COLUMN	REFART 		FORMAT A6
 COLUMN	NOMART		FORMAT A11
 COLUMN	PVART		FORMAT 999.99
@@ -2114,7 +2119,7 @@ INSERT INTO ARTICLES2 (REFART, NOMART, PVART, QSART, PAART)
 VALUES ('WD.012', 'Exemple de DVD BIS', 25.00, 5, 10.00);
 
 PROMPT =====================================================================
-PROMPT Mouvements dans la table ARTICLES2 effectués par des utilisateurs
+PROMPT Mouvements dans la table ARTICLES2 effectuï¿½s par des utilisateurs
 PROMPT externes: user-y et user-X
 PROMPT =====================================================================
 PROMPT
@@ -2133,8 +2138,8 @@ SELECT	*
 FROM	HISTORIQUE_MVTS_ARTICLES;
 
 -- __________________________________________________________________________
--- 
--- Résultat généré:
+--
+-- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --      Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 -- =========================================================================
@@ -2171,8 +2176,8 @@ SELECT	*
 FROM	HISTORIQUE_MVTS_ARTICLES;
 
 -- __________________________________________________________________________
--- 
--- Résultat généré:
+--
+-- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --      Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 -- =========================================================================
@@ -2182,7 +2187,7 @@ PROMPT
 pause Tapez sur Enter...
 PROMPT
 
-PROMPT 
+PROMPT
 PROMPT =====================================================================
 PROMPT |                                                                   |
 PROMPT |      Historique des mouvements des articles                       |
@@ -2192,7 +2197,7 @@ PROMPT
 PROMPT
 
 PROMPT =====================================================================
-PROMPT Mise à jour dans la table articles2 pour effectuer les tests.
+PROMPT Mise ï¿½ jour dans la table articles2 pour effectuer les tests.
 PROMPT =====================================================================
 PROMPT
 UPDATE	ARTICLES2
@@ -2219,8 +2224,8 @@ SELECT	*
 FROM	HISTORIQUE_MVTS_ARTICLES;
 
 -- __________________________________________________________________________
--- 
--- Résultat généré:
+--
+-- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --      Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 -- =========================================================================
@@ -2230,16 +2235,16 @@ FROM	HISTORIQUE_MVTS_ARTICLES;
 PROMPT =====================================================================
 PROMPT Suppression et creation de la table comparaison_art
 PROMPT Cette table va permettre de stocker les mouvements dans
-PROMPT la table ARTICLES2, pendant une période. Tout ça pour pouvoir ensuite
-PROMPT étudier l impact de ces mouvements sur le chiffre d affaires durant
-PROMPT la période considérée.
+PROMPT la table ARTICLES2, pendant une pï¿½riode. Tout ï¿½a pour pouvoir ensuite
+PROMPT ï¿½tudier l impact de ces mouvements sur le chiffre d affaires durant
+PROMPT la pï¿½riode considï¿½rï¿½e.
 PROMPT =====================================================================
 PROMPT
 DROP TABLE COMPARAISON_ART;
 
 CREATE TABLE COMPARAISON_ART
 (
-	REFART 		VARCHAR2(10), 
+	REFART 		VARCHAR2(10),
 	PVART		NUMBER(10, 2),
 	PAART		NUMBER(10, 2),
 	QSART		NUMBER(3),
@@ -2254,10 +2259,10 @@ PROMPT
 PROMPT =====================================================================
 PROMPT Suppression et creation de la table comparaison_chiffre_affaires.
 PROMPT Cette table va permettre de stocker les informations concernant
-PROMPT le chiffre d affaires moyen des différents pays avant la période où
-PROMPT l on a décidé de regarder l impact des mouvements effectués sur
+PROMPT le chiffre d affaires moyen des diffï¿½rents pays avant la pï¿½riode oï¿½
+PROMPT l on a dï¿½cidï¿½ de regarder l impact des mouvements effectuï¿½s sur
 PROMPT la table ARTICLES2. De garder aussi le chiffre d affaires durant
-PROMPT la période considérée. Et aussi, d inscrire la variation au niveau
+PROMPT la pï¿½riode considï¿½rï¿½e. Et aussi, d inscrire la variation au niveau
 PROMPT des chiffres d affaires.
 PROMPT =====================================================================
 PROMPT
@@ -2280,7 +2285,7 @@ PROMPT
 PROMPT =====================================================================
 PROMPT Creation de vue VUE_ART permettant de garder pour chaque article
 PROMPT de la table ARTICLES2 son prix de vente moyen, son prix d achat moyen
-PROMPT et sa quantité en stock moyen.
+PROMPT et sa quantitï¿½ en stock moyen.
 PROMPT =====================================================================
 PROMPT
 CREATE OR REPLACE VIEW VUE_ART AS
@@ -2298,7 +2303,7 @@ PROMPT
 PROMPT =====================================================================
 PROMPT Creation de vue VUE_MVTS_ART permettant de garder pour chaque article
 PROMPT de la table HISTORIQUE_MVTS_ARTICLES son prix de vente moyen, son
-PROMPT prix d achat moyen et sa quantité en stock moyen. 
+PROMPT prix d achat moyen et sa quantitï¿½ en stock moyen.
 PROMPT =====================================================================
 PROMPT
 CREATE OR REPLACE VIEW VUE_MVTS_ART AS
@@ -2317,12 +2322,12 @@ PROMPT
 
 PROMPT =====================================================================
 PROMPT Creation de vue CHIFFRE_AFFAIRES_AVANT permettant de calculer le
-PROMPT chiffre d affaires de chaque pays avant une période considérée.
+PROMPT chiffre d affaires de chaque pays avant une pï¿½riode considï¿½rï¿½e.
 PROMPT =====================================================================
 PROMPT
 CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_AVANT AS
 (
-	SELECT	cl.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaire 
+	SELECT	cl.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaire
 	FROM	DETAILCOM2 d, CLIENTS2 cl, COMMANDES2 c
 	WHERE	d.NUMCOM  = c.NUMCOM
 	AND	cl.CODCLI = c.CODCLI
@@ -2336,12 +2341,12 @@ PROMPT
 
 PROMPT =====================================================================
 PROMPT Creation de vue CHIFFRE_AFFAIRES_APRES permettant de calculer le
-PROMPT chiffre d affaires de chaque pays durant la période considérée.
+PROMPT chiffre d affaires de chaque pays durant la pï¿½riode considï¿½rï¿½e.
 PROMPT =====================================================================
 PROMPT
-CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_APRES AS 
+CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_APRES AS
 (
-	SELECT	cl.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaire 
+	SELECT	cl.PAYSCLI, sum((d.PUART*d.QTCOM) * (1-(d.REMISE/100))) as chiffre_affaire
 	FROM	DETAILCOM2 d, CLIENTS2 cl, COMMANDES2 c
 	WHERE	d.NUMCOM  = c.NUMCOM
 	AND	cl.CODCLI = c.CODCLI
@@ -2355,24 +2360,24 @@ PROMPT
 
 PROMPT =====================================================================
 PROMPT Creation de procedure MOYENNE_PRIX_ART permettant de calculer le prix
-PROMPT moyen d achat et de vente, et la quantité moyenne en stock de chaque
+PROMPT moyen d achat et de vente, et la quantitï¿½ moyenne en stock de chaque
 PROMPT article. Et ensuite de calculer le chiffre d affaires avant et pendant
-PROMPT une période considérée. Tout cela pour savoir si les mouvements
-PROMPT effectués, durant une période considérée, sur la table ARTICLES2 ont
-PROMPT apporté plus ou moins d argent.
+PROMPT une pï¿½riode considï¿½rï¿½e. Tout cela pour savoir si les mouvements
+PROMPT effectuï¿½s, durant une pï¿½riode considï¿½rï¿½e, sur la table ARTICLES2 ont
+PROMPT apportï¿½ plus ou moins d argent.
 PROMPT =====================================================================
 PROMPT
 CREATE OR REPLACE PROCEDURE MOYENNE_PRIX_ART IS
-	CURSOR curseur IS 
-		SELECT	DISTINCT REFART 
+	CURSOR curseur IS
+		SELECT	DISTINCT REFART
 		FROM	VUE_MVTS_ART;
 
-	CURSOR curseurBIS IS 
-		SELECT	DISTINCT PAYSCLI 
+	CURSOR curseurBIS IS
+		SELECT	DISTINCT PAYSCLI
 		FROM	CLIENTS2;
 
-		
-	V_REFART 	VARCHAR2(10); 
+
+	V_REFART 	VARCHAR2(10);
 	V_PVART		NUMBER(10, 2);
 	V_PAART		NUMBER(10, 2);
 	V_QSART		NUMBER(3);
@@ -2380,11 +2385,11 @@ CREATE OR REPLACE PROCEDURE MOYENNE_PRIX_ART IS
 	V_CA_APRES	NUMBER(10, 2);
 	V_VARIATION	NUMBER(10, 2);
 	V_PAYS		VARCHAR2(20);
-		
+
 	V1_PVART	NUMBER(10, 2);
 	V1_PAART	NUMBER(10, 2);
 	V1_QSART	NUMBER(3);
-	
+
 	V2_PVART	NUMBER(10, 2);
 	V2_PAART	NUMBER(10, 2);
 	V2_QSART	NUMBER(3);
@@ -2392,34 +2397,34 @@ BEGIN
 	FOR c IN curseur LOOP
 		SELECT	REFART, A_PVART, A_PAART, A_QSART INTO V_REFART, V1_PVART, V1_PAART, V1_QSART
 		FROM	VUE_MVTS_ART
-		WHERE	REFART = c.REFART;	
-		
+		WHERE	REFART = c.REFART;
+
 		SELECT	REFART, A_PVART, A_PAART, A_QSART INTO V_REFART, V2_PVART, V2_PAART, V2_QSART
 		FROM	VUE_ART
-		WHERE	REFART = c.REFART;	
-		
+		WHERE	REFART = c.REFART;
+
 		V_PVART := (V1_PVART + V2_PVART) /2;
 		V_PAART := (V1_PAART + V2_PAART) /2;
 		V_QSART := (V1_QSART + V2_QSART) /2;
-	
+
 		INSERT INTO COMPARAISON_ART
 		VALUES (V_REFART, V_PVART, V_PAART, V_QSART, 2006, 2007);
-		
+
 	END LOOP;
 
 	FOR cBIS IN curseurBIS LOOP
 		SELECT	PAYSCLI, CHIFFRE_AFFAIRE INTO V_PAYS, V_CA_AVANT
 		FROM	CHIFFRE_AFFAIRE_AVANT
 		WHERE	PAYSCLI = cBIS.PAYSCLI;
-			
+
 		SELECT	PAYSCLI, CHIFFRE_AFFAIRE INTO V_PAYS, V_CA_APRES
 		FROM	CHIFFRE_AFFAIRE_APRES
 		WHERE	PAYSCLI = cBIS.PAYSCLI;
-		
-		V_VARIATION := V_CA_APRES - V_CA_AVANT;		
-		
+
+		V_VARIATION := V_CA_APRES - V_CA_AVANT;
+
 		INSERT INTO COMPARAISON_CHIFFRE_AFFAIRE
-		VALUES (V_PAYS, 2006, 2007, V_CA_AVANT, V_CA_APRES, V_VARIATION); 
+		VALUES (V_PAYS, 2006, 2007, V_CA_AVANT, V_CA_APRES, V_VARIATION);
 	END LOOP;
 END;
 /
@@ -2448,7 +2453,7 @@ TTITLE CENTER 'Visualisation de la table COMPARAISON_ART' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT * FROM COMPARAISON_ART;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --    Visualisation de la table COMPARAISON_ART
 -- =========================================================================
@@ -2456,7 +2461,7 @@ SELECT * FROM COMPARAISON_ART;
 -- ------ ------- ------- ----- ---------- ----------
 -- WD.012   30.00    9.87    30       2006       2007
 -- WD.023   35.20   17.23    10       2006       2007
--- 
+--
 -- __________________________________________________________________________
 
 PROMPT
@@ -2467,7 +2472,7 @@ TTITLE CENTER 'Visualisation de la table COMPARAISON_CHIFFRE_AFFAIRE' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT * FROM COMPARAISON_CHIFFRE_AFFAIRE;
 
--- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Résultat généré:
+-- >>>>>>>>>>>>>>>>>>>>>>>>>> -- Rï¿½sultat gï¿½nï¿½rï¿½:
 --
 --      Visualisation de la table COMPARAISON_CHIFFRE_AFFAIRE
 -- =========================================================================
@@ -2483,7 +2488,7 @@ SELECT * FROM COMPARAISON_CHIFFRE_AFFAIRE;
 --======================================================================================
 --======================================================================================
 --======================================================================================
-COMMIT;	   
+COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 --======================================================================================
@@ -2613,17 +2618,135 @@ ALTER SESSION SET NLS_DATE_FORMAT = '???? HiHi HaHa' ;
 
 /*
 A vous les requetes suivantes :
-Donnez la représentation graphique sous EXCEL !
+Donnez la reprï¿½sentation graphique sous EXCEL !
 Gestion des "Reporting"
 
-Chiffre d’affaires pour l’année 2010
-Chiffre d’affaires pour l’année 2011
-Chiffre d’affaires pour les deux années 2012 et 2013
-Chiffre d’affaires de 2010 à 2018
-Statistiques sur le chiffre d’affaires – Période de 2010 à 2018
+Chiffre dï¿½affaires pour lï¿½annï¿½e 2010
+Chiffre dï¿½affaires pour lï¿½annï¿½e 2011
+Chiffre dï¿½affaires pour les deux annï¿½es 2012 et 2013
+Chiffre dï¿½affaires de 2010 ï¿½ 2018
+Statistiques sur le chiffre dï¿½affaires ï¿½ Pï¿½riode de 2010 ï¿½ 2018
 
 */
 
+--======================================================================================
+--======================================================================================
+--======================================================================================
 
+-- MFB FFF 4
 
+-- INTEGRATION DE BASES DE DONNEES ; DATA INTEGRATION
+-- QUALITE DES DONNEES ; DATA QUALITY
 
+--======================================================================================
+--======================================================================================
+--======================================================================================
+
+/*
+
+-- Etant donnï¿½ l'ensemble des magasins cf ci-haut la table des magasins
+
+-- Chaque binï¿½me aura ï¿½ cï¿½er sa propore BD GesComI !
+
+-- Afficher la table MAGASINS_DW2
+
+-- Dï¿½veloppez une procï¿½dure AJOUTECOLONNE qui permet d'ajouter ï¿½ une table une colonne qui porte le nom de MAGASIN
+-- Le contenu de cette colonne est l'identifiant du magasin NUMMAG
+-- En entrï¿½e le nom de la table et le contenu de la colonne ; En sortie une nouvelle table dont le nom est le nom de la table en entrï¿½e concatï¿½nï¿½ au _NUMMAG
+
+-- L'exï¿½cution de la procï¿½dure permet donc d'affecter les donnï¿½es ï¿½ un seul magasin
+
+-- EXEC AJOUTECOLONNE('CLIENTS', 'FR02')
+
+-- Corrigez le contenu de la nouvelle table CLIENTS_FR02 ; Comment savoir qu'elle peut contenir des anomalies et lesquelles ?
+
+-- On considï¿½re que les donnï¿½es dans les tables CLIENTS2, ARTICLES2, COMMANDES2 et DETAILCOM2 sont celles du magasin FR03
+
+-- EXEC AJOUTECOLONNE('CLIENTS2', 'FR03')
+
+-- Assemblez (intï¿½grer, fusionner) dans une nouvelle table, de nom LESCLIENTS, tous les clients des diffï¿½rents magasins
+
+-- Corrigez le contenu de la nouvelle table LESCLIENTS ; Comment savoir qu'elle peut contenir des anomalies et lesquelles ?
+*/
+
+-- NOUVELLES DONNEES == NOUVELLES DONNEES  == NOUVELLES DONNEES
+-- Les clients du magasin FR02 c est celui de Paris
+
+CREATE TABLE CLIENTS (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50), Col6 VARCHAR(50), Col7 VARCHAR(50), Col8 VARCHAR(50), Col9 VARCHAR(50), Col10 VARCHAR(50));
+INSERT INTO CLIENTS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3', '8, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', 'FRANCE', 'clemence.rahma@up13.fr');
+INSERT INTO CLIENTS VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1', '5, RUE DE BELLEVILLE', '75019', 'PARIS', 'FRANCE', 'alexandre.clemence@up13.fr');
+INSERT INTO CLIENTS VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2', '13, AVENUE J. B. CLEMENT', '93430', 'VILLETANEUSE', 'FRANCE', 'adam.traifor@up13.fr');
+INSERT INTO CLIENTS VALUES ('2997777', 'Mademoiselle', 'LE BON', 'CLEMENTINE', '1', '18, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', '', 'clementine.le bon@up13.fr');
+INSERT INTO CLIENTS VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1', '13, RUE DE LA PAIX', '93800', 'EPINAY SUR SEINE', 'FRANCE', 'ines.chevalier@up13.fr');
+INSERT INTO CLIENTS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'FRANCE', 'adam.le bon@up13.fr');
+INSERT INTO CLIENTS VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2', '6, RUE DE LA ROSIERE', '75015', 'PARIS', '', 'alice.traifor@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1', '16, AVENUE FOCH', '75016', 'PARIS', 'FRANCE', 'ford.harissa@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000107', 'MOï¿½NSIEUR', 'ONRI', 'PANDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE', 'panda.onri@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1', '21, AVENUE D ITALIE', '75013', 'PARIS', '', 'fiat.edite@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3', '55, RUE DU JAPON', '94310', 'ORLY VILLE', 'FRANCE', 'jackson.toyota@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANC', 'honda.onri@up13.fr');
+INSERT INTO CLIENTS VALUES ('3000111', 'Madame', 'GENEREUX', 'EVE', '1', '18, BOULEVARD FOCH', '91000', 'EPINAY SUR ORGE', 'FR', 'eve.genereux@up13.fr');
+INSERT INTO CLIENTS VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1', '18, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', 'FRANCE', 'clementine.bon@up13.fr');
+INSERT INTO CLIENTS VALUES ('3001', 'M.', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'Paris', '', 'adam.le bon@up13.fr');
+INSERT INTO CLIENTS VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'france', 'adem.le bon@up13.fr');
+
+-- Les articles du magasin FR02 c est celui de Paris
+
+CREATE TABLE ARTICLES (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+INSERT INTO ARTICLES VALUES ('00.37291', 'SIEGE DE TABLE', '55.00 ï¿½', '10', '26.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37325', 'CASQUE CYCLISTE PROTECTION', '27.00 ï¿½', '20', '20.00 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37341', 'BONNET PARE-CHOCS', '10.71 ï¿½', '100', '05.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37366', 'STORE DE PROTECTION', '07.43 ï¿½', '5', '04.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37408', 'COINS DE PROTECTION', '04.00 ï¿½', '100', '01.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37424', 'CACHE PRISE DE COURANT', '02.29 ï¿½', '500', '00.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37432', 'BLOQUE PORTE', '05.00 ï¿½', '4', '02.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37457', 'BANDE DE FERMETURE', '02.29 ï¿½', '4', '01.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37465', 'PROTECTION DE FOUR', '37.86 ï¿½', '10', '26.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37473', 'PROTECTION DE CUISINIERE', '30.71 ï¿½', '10', '22.86 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37515', 'BABY PHONE', '80.71 ï¿½', '3', '45.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.37630', 'BRETELLE DE SECURITE REMOND', '15.57 ï¿½', '8', '11.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.39321', 'HAUSSE-CHAISE', '42.71 ï¿½', '1', '25.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('00.39495', 'COUVRE ROBINETTERIE', '07.86 ï¿½', '12', '04.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.36613', 'BARRIERE DE PORTE, EN BOIS', '32.71 ï¿½', '2', '25.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.36639', 'BARRIERE DE PORTE, EN METAL', '79.14 ï¿½', '3', '28.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.36860', 'BARRIERE DE LIT', '23.71 ï¿½', '10', '15.71 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.37108', 'PORTE-BEBE', '44.86 ï¿½', '6', '34.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.37173', 'SIEGE-AUTO COSMOS', '126.86 ï¿½', '2', '71.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '121.29 ï¿½', '2', '71.43 ï¿½');
+INSERT INTO ARTICLES VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '21.29 ï¿½', '10', '09.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('WD.002', 'DVD - TOY STORY 2', '34.29 ï¿½', '10', '12.14 ï¿½');
+INSERT INTO ARTICLES VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '32.86 ï¿½', '5', '09.29 ï¿½');
+INSERT INTO ARTICLES VALUES ('MV.001', 'Jeux Vidï¿½o PS4 SPIDER-MAN', '59.00 ï¿½', '250', '19.00 ï¿½');
+
+-- Les commandes du magasin FR02 c est celui de Paris
+
+CREATE TABLE COMMANDES (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50));
+INSERT INTO COMMANDES VALUES ('20150917BB0001', '2997007', '17/09/2015');
+INSERT INTO COMMANDES VALUES ('20150917BB0002', '2998500', '17/09/2015');
+INSERT INTO COMMANDES VALUES ('20151016BB0001', '2996100', '16/10/2015');
+INSERT INTO COMMANDES VALUES ('20151024BB0001', '2996100', '24/10/2015');
+INSERT INTO COMMANDES VALUES ('20120156BB0001', '2996100', '16/01/2012');
+INSERT INTO COMMANDES VALUES ('20120157BB0007', '2996100', '17/01/2012');
+INSERT INTO COMMANDES VALUES ('20180917BB0007', '3001777', '17/09/2018');
+
+-- Les dï¿½tails des commandes du magasin FR02 c est celui de Paris
+
+CREATE TABLE DETAILSCOM (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37291', '2', '35.00 ï¿½', '10.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37341', '4', '10.71 ï¿½', '10.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '11.36639', '2', '49.14 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', 'WD.001', '1', '21.29 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', '00.37291', '2', '35.00 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.001', '1', '21.29 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.002', '1', '34.29 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.003', '1', '22.86 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.001', '1', '21.29 ï¿½', '20.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.002', '1', '34.29 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.003', '1', '22.86 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151024BB0001', '00.37457', '2', '03.29 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20120156BB0001', 'WD.003', '2', '25.00 ï¿½', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.001', '5', '22.00 ï¿½', '50.00%');
+INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.002', '10', '34.29 ï¿½', '50.00%');
+INSERT INTO DETAILSCOM VALUES ('20180917BB0007', 'MV.001', '2', '59.00 ï¿½', '10.00%');
+
+COMMIT;
