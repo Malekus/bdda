@@ -1,0 +1,820 @@
+=========================================================
+=========================================================
+
+=========================================================
+|                                                       |
+|     Exercice 2 :  BD GESCOMI***DW avec SQL 2          |
+|     Exercice 2 :  Le schï¿½ma en ï¿½toile avec SQL 2      |
+|                                                       |
+=========================================================
+
+
+=========================================================
+Ceci permet d initialiser le type de la date
+=========================================================
+
+Session modifiée.
+
+=========================================================
+=====================================================================
+Suppression des tables de la bd GesComI***DW EN SQL 2
+=====================================================================
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Suppression des vues de la bd GesComI***DW EN SQL 2
+=====================================================================
+
+
+Vue supprimée.
+
+
+Vue supprimée.
+
+
+Vue supprimée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation des tables pour la BD GesComI***DW en sql 2
+=====================================================================
+
+=====================================================================
+>> Table : ARTICLES_DW2
+=====================================================================
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : MAGASINS_DW2
+=====================================================================
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : TEMPS_DW2
+=====================================================================
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : CLIENTS_DW2
+=====================================================================
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : VENTES_DW2
+=====================================================================
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Insertion des donnï¿½es de la bd GESCOMI***DW EN SQL 2
+=====================================================================
+
+=====================================================================
+>> Insertion des donnï¿½es de la Table : ARTICLES_DW2
+=====================================================================
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : MAGASINS_DW2
+=====================================================================
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : TEMPS_DW2
+=====================================================================
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+VALUES (7,  'VENDREDI 14-Fï¿½VRIER-2003', 2003, 02, 14)
+            *
+ERREUR à la ligne 2 :
+ORA-01843: ce n'est pas un mois valide 
+
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : CLIENTS_DW2
+=====================================================================
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Table : VENTES_DW2
+=====================================================================
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+INSERT INTO VENTES_DW2 (NUMVENTE, NUMART, IDTEMPS, NUMCLI, MONTANTVENTE, NUMMAG)
+*
+ERREUR à la ligne 1 :
+ORA-02291: violation de contrainte d'intégrité 
+(M2EID_20.FK_VENTES_DW2_IDTEMPS_TEMPS2) - clé parent introuvable 
+
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+1 ligne créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Affichage des tables de la bd GESCOM EN SQL 2
+=====================================================================
+
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+  NUMVENTE NUMART    IDTEMPS NUMCLI MONTANTVENTE NUMM                           
+---------- ------ ---------- ------ ------------ ----                           
+         1     30          5      2        28,99 FR02                           
+         2     28          4      3        28,99 FR04                           
+         3     26          6      1           22 FR06                           
+         5     22          5      9         24,9 TN01                           
+         6     11         11     11          122 TN01                           
+         7     18         12     14           44 IT01                           
+         8     16         12      2           49 TN01                           
+         9     14          2      4          7,8 FR03                           
+        10     12          6      5        15,55 FR02                           
+        11     10          8     12         30,7 BE03                           
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+  NUMVENTE NUMART    IDTEMPS NUMCLI MONTANTVENTE NUMM                           
+---------- ------ ---------- ------ ------------ ----                           
+        12      8          9     11            3 TN01                           
+        13      6          1      4            2 FR02                           
+        14      4         10     14          7,4 IT01                           
+        15      2          3      3           27 FR05                           
+
+14 lignes sélectionnées.
+
+
+Tapez sur Enter...
+
+
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+     1 CLEMENT  0174454454  18        BOULEVARD  91000     EPINAY SUR FRANCE    
+                                      FOCH                  ORGE                
+                                                                                
+                                                                                
+     2 LESEUL   0165441122  21        AVENUE D I 75013     PARIS      FRANCE    
+                                      TALIE                                     
+                                                                                
+                                                                                
+     3 UNIQUE   0246454621  77        RUE DE LA  13001     MARSEILLE  FRANCE    
+                                      LIBERTE                                   
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+                                                                                
+                                                                                
+     4 CLEMENCE 0520354631  8 BIS     BOULEVARD  93800     EPINAY SUR FRANCE    
+                                      FOCH                  SEINE               
+                                                                                
+                                                                                
+     5 FORT     04967465431 55        RUE DU JAP 94310     ORLY VILLE FRANCE    
+                                      ON                                        
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+     6 LE BON   0549746454  18        BOULEVARD  93800     EPINAY SUR FRANCE    
+                                      FOCH                  SEINE               
+                                                                                
+                                                                                
+     7 TRAIFOR  044676872   6         RUE DE LA  75015     PARIS      FRANCE    
+                                      ROSIERE                                   
+                                                                                
+                                                                                
+     8 VIVANT   00323249875 13        RUE DE LA  99999     BRUXELLES  BELGIQUE  
+                4                     PAIX                                      
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+                                                                                
+                                                                                
+     9 CLEMENCE 00326748746 5         RUE DE BEL 99999     BRUXELLES  BELGIQUE  
+                7                     LEVILLE                                   
+                                                                                
+                                                                                
+    10 TRAIFOR  00325676798 16        AVENUE FOC 99998     ANDERLECK  BELGIQUE  
+                7                     H                                         
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+    11 PREMIER  00321657544 77        RUE DE LA  99998     ANDERLECK  BELGIQUE  
+                5                     LIBERTE                                   
+                                                                                
+                                                                                
+    12 CLEMENT  405465482   132       AVENUE DES 99999     BRUXELLES  BELGIQUE  
+                                       LILAS                                    
+                                                                                
+                                                                                
+    13 FORT     065476545   1         AVENUE DE  99000     TUNIS      TUNISIE   
+                                      CARTAGE                                   
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMCLI NOMCLI   TELCLI      ADRNUMCLI ADRRUECLI  ADRCPCLI  ADRVILLECL ADRPAYSCL 
+------ -------- ----------- --------- ---------- --------- ---------- --------- 
+                                                                                
+                                                                                
+    14 ADAM     035479875   1         AVENUE DE  99001     ROME       ITALIE    
+                                      ROME                                      
+                                                                                
+                                                                                
+
+14 lignes sélectionnées.
+
+
+Tapez sur Enter...
+
+
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+   IDTEMPS DATEHEURET                     ANNEET      MOIST      JOURT          
+---------- -------------------------- ---------- ---------- ----------          
+         1 LUNDI    17-SEPTEMBRE-2001       2001          9         17          
+         2 DIMANCHE 17-SEPTEMBRE-2000       2000          9         17          
+         3 LUNDI    16-OCTOBRE  -2000       2000         10         16          
+         4 JEUDI    24-OCTOBRE  -2002       2002         10         24          
+         5 LUNDI    22-JANVIER  -2001       2001          1         22          
+         6 MARDI    13-MARS     -2001       2001          3         13          
+         8 LUNDI    07-JANVIER  -2002       2002          1          7          
+         9 MARDI    14-JANVIER  -2003       2003          1         14          
+        10 JEUDI    10-MARS     -2005       2005          3         10          
+        11 LUNDI    14-MARS     -2005       2005          3         24          
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+   IDTEMPS DATEHEURET                     ANNEET      MOIST      JOURT          
+---------- -------------------------- ---------- ---------- ----------          
+        12 VENDREDI 11-MARS     -2005       2005          9         11          
+
+11 lignes sélectionnées.
+
+
+Tapez sur Enter...
+
+
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+FR01 MAG_1_FR 0142586485  18        BOULEVARD  91000     EPINAY SUR FRANCE      
+     ANCE                           FOCH                  ORGE                  
+                                                                                
+                                                                                
+                                                                                
+FR02 MAG_2_FR +3315380079 21        AVENUE D I 75013     PARIS      FRANCE      
+     ANCE     6                     TALIE                                       
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+FR03 MAG_3_FR 0254974410  77        RUE DE LA  13001     MARSEILLE  FRANCE      
+     ANCE                           LIBERTE                                     
+                                                                                
+                                                                                
+                                                                                
+FR04 MAG_4_FR 0657985246  8 BIS     BOULEVARD  93800     EPINAY SUR FRANCE      
+     ANCE                           FOCH                  SEINE                 
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+FR05 MAG_5_FR 0546874430  55        RUE DU JAP 94310     ORLY VILLE FRANCE      
+     ANCE                           ON                                          
+                                                                                
+                                                                                
+                                                                                
+FR06 MAG_6_FR 0549876546  18        BOULEVARD  93800     EPINAY SUR FRANCE      
+     ANCE                           FOCH                  SEINE                 
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+FR07 MAG_7_FR 0466468720  6         RUE DE LA  75015     PARIS      FRANCE      
+     ANCE                           ROSIERE                                     
+                                                                                
+                                                                                
+                                                                                
+BE01 MAG_1_BE 00325744657 13        RUE DE LA  99999     BRUXELLES  BELGIQUE    
+     LGIQUE   1                     PAIX                                        
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+BE02 MAG_2_BE 00325498754 5         RUE DE BEL 99999     BRUXELLES  BELGIQUE    
+     LGIQUE   1                     LEVILLE                                     
+                                                                                
+                                                                                
+                                                                                
+BE03 MAG_3_BE 00325467132 16        AVENUE FOC 99998     ANDERLECK  BELGIQUE    
+     LGIQUE   74                    H                                           
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+BE04 MAG_4_BE 00326478754 77        RUE DE LA  99998     ANDERLECK  BELGIQUE    
+     LGIQUE   2                     LIBERTE                                     
+                                                                                
+                                                                                
+                                                                                
+BE05 MAG_5_BE 00324487468 134       AVENUE DES 99999     BRUXELLES  BELGIQUE    
+     LGIQUE   42                     LILAS                                      
+                                                                                
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+TN01 MAG_1_TU 00996768774 1         AVENUE DE  99000     TUNIS      TUNISIE     
+     NISIE    5                     CARTAGE                                     
+                                                                                
+                                                                                
+                                                                                
+TN02 MAG_2_TU +2162488822 11        BOULEVARD  4001      SOUSSE     TUNISIE     
+     NISIE    2                     DU 14 JANV                                  
+                                    IER 2011                                    
+                                                                                
+                                                                                
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMM NOMMAG   TELMAG      ADRNUMMAG ADRRUEMAG  ADRCPMAG  ADRVILLEMA ADRPAYSMA   
+---- -------- ----------- --------- ---------- --------- ---------- ---------   
+IT01 MAG_1_IT 00992415643 1         AVENUE DE  99001     ROME       ITALIE      
+     ALIE     15                    ROME                                        
+                                                                                
+                                                                                
+                                                                                
+IT02 MAG_1_IT 00315       1         AVENUE DE  99001     ROME       ITALIE      
+     ALIE                           ROME                                        
+                                                                                
+                                                                                
+                                                                                
+
+16 lignes sélectionnées.
+
+
+Tapez sur Enter...
+
+
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMART NOMART                  PUART                                            
+------ -------------------- --------                                            
+     1 SIEGE DE TABLE          35.00                                            
+     2 CASQ CYCLIST PROTECT    27.00                                            
+     3 BONNET PARE-CHOCS       10.71                                            
+     4 STORE DE PROTECTION      7.43                                            
+     5 COINS DE PROTECTION      4.00                                            
+     6 CACHE PRISE COURANT      2.29                                            
+     7 BLOQUE PORTE             5.00                                            
+     8 BANDE DE FERMETURE       3.29                                            
+     9 PROTECTION DE FOUR      37.86                                            
+    10 PROTECT CUISINIERE      30.71                                            
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMART NOMART                  PUART                                            
+------ -------------------- --------                                            
+    11 BABY PHONE              80.71                                            
+    12 BRETELLE DE SECURITE    15.57                                            
+    13 HAUSSE-CHAISE           42.71                                            
+    14 COUVRE ROBINETTERIE      7.86                                            
+    15 BARR PORTE, EN BOIS     32.71                                            
+    16 BARR PORTE, EN METAL    49.14                                            
+    17 BARRIERE DE LIT         23.71                                            
+    18 PORTE-BEBE              44.86                                            
+    19 SIEGE-AUTO COSMOS      126.86                                            
+    20 SIEGE-AUTO EUROSEAT    121.29                                            
+
+          Requete: les articles qui sont toujours commandï¿½s ensemble          
+=========================================================================       
+NUMART NOMART                  PUART                                            
+------ -------------------- --------                                            
+    21 DVD-SPIRIT              24.90                                            
+    22 DVD-SPIDER MAN          24.90                                            
+    23 DVD-SPIDER MAN 2        24.90                                            
+    24 K7 VIDEO-TOY STORY      21.29                                            
+    25 DVD-TOY STORY 2         34.29                                            
+    26 K7-WINNIE L OURSON      22.86                                            
+    27 DVD-FRERES DES OURS     35.00                                            
+    28 K7-LE ROI LION          30.00                                            
+    29 K7-LE ROI LION 2        30.00                                            
+    30 K7-LE ROI LION 3        30.00                                            
+
+30 lignes sélectionnées.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation des vues pour la BD GesComIDW en sql 2
+=====================================================================
+
+
+Vue créée.
+
+
+Tapez sur Enter...
+
+
+
+Vue créée.
+
+
+Tapez sur Enter...
+
+
+
+Vue créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation des requetes pour la BD GesComIDW en sql 2
+=====================================================================
+
+
+       Requete Q1: Total des ventes des magasins en France ou en Belgique,      
+              pour la periode de 2001 ï¿½ 2003, par ville et annee              
+=========================================================================       
+ADRVILLEMAG              ANNEET    MONTANT                                      
+-------------------- ---------- ----------                                      
+ANDERLECK                  2002       30,7                                      
+PARIS                      2001      46,54                                      
+EPINAY SUR SEINE           2001         22                                      
+EPINAY SUR SEINE           2002      28,99                                      
+
+Ecoulé : 00 :00 :00.01
+
+Tapez sur Enter...
+
+
+
+     Requete Q1Prim: Total des ventes des magasins en France ou en Belgique,    
+              pour la periode de 2001 ï¿½ 2003, par ville et annee              
+=========================================================================       
+ADRVILLEMAG               ANNEE   MONTANT1                                      
+-------------------- ---------- ----------                                      
+ANDERLECK                  2002       30,7                                      
+EPINAY SUR SEINE           2001         22                                      
+EPINAY SUR SEINE           2002      28,99                                      
+PARIS                      2001      46,54                                      
+
+Ecoulé : 00 :00 :00.07
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00

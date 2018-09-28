@@ -1,4 +1,7 @@
+set lines 130;
+set pages 60;
 
+DROP TABLE CLIENTS;
 CREATE TABLE CLIENTS (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50), Col6 VARCHAR(50), Col7 VARCHAR(50), Col8 VARCHAR(50), Col9 VARCHAR(50), Col10 VARCHAR(50));
 INSERT INTO CLIENTS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3', '8, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', 'FRANCE', 'clemence.rahma@up13.fr');
 INSERT INTO CLIENTS VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1', '5, RUE DE BELLEVILLE', '75019', 'PARIS', 'FRANCE', 'alexandre.clemence@up13.fr');
@@ -39,6 +42,6 @@ insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 
-insert into clients(col9) values('ARGENTINE);
+insert into clients(col9) values('ARGENTINE');
 
 update clients set col9 = upper(col9);
