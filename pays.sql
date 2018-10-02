@@ -20,13 +20,10 @@ INSERT INTO CLIENTS VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1', '18, BO
 INSERT INTO CLIENTS VALUES ('3001', 'M.', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'Paris', '', 'adam.le bon@up13.fr');
 INSERT INTO CLIENTS VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'france', 'adem.le bon@up13.fr');
 
-
-
 insert into clients(col9) values('Belgique');
 insert into clients(col9) values('Belgique');
 insert into clients(col9) values('Belgique');
 insert into clients(col9) values('Belgie');
-
 insert into clients(col9) values('Algerie');
 insert into clients(col9) values('Algerie');
 insert into clients(col9) values('Algerie');
@@ -34,14 +31,11 @@ insert into clients(col9) values('Algerie');
 insert into clients(col9) values('Algerie');
 insert into clients(col9) values('Algeri');
 insert into clients(col9) values('Alger');
-
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ALLEMAGNE');
-
 insert into clients(col9) values('ARGENTINE');
-
 update clients set col9 = upper(col9);
