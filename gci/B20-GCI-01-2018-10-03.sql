@@ -91,8 +91,8 @@
 
 -- Groupe de Travail N° (Binôme)  : Bxy
 
--- NOM Prénom 1                   : np1
--- NOM Prénom 2                   : np2
+-- NOM Prénom 1                   : ELILTHAMILVALAVAN Magilan
+-- NOM Prénom 2                   : MOUSSA Abdelkader
 
 -- ====>>> Vos fichiers sql devront s'appeler : Bxy-GCI-01.sql
 
