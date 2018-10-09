@@ -40,21 +40,3 @@ insert into clients(col9) values('ALLEMAGNE');
 insert into clients(col9) values('ARGENTINE');
 update clients set col9 = upper(col9);
 
-
-  create or replace view test(f,s,d) as
-  select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) as distance from (select col1 as first from vilpays group by col1 order by col1),(select col1 as second from vilpays group by col1 order by col1)
-  where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) < 30;
-  -- Vue ville et le nombre d'occurence
-  create or replace view villeCount(ville, nombre) as
-  select col1, count(*) from vilpays group by col1 order by col1;
-
-  create or replace view v1(v, n) as
-  select * from villeCount where upper(ville) like '%BR%';
-
-  select * from v1 where n = (select max(n) from v1);
-
-  select * from VILLECOUNT;
-
-  select * from VILPAYS;
-
-  select substr(col1,0,3) from VILPAYS group by col1 order by col1;
