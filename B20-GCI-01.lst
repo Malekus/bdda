@@ -1,0 +1,2037 @@
+=========================================================
+=========================================================
+
+=========================================================
+|                                                       |
+|     Exercice 1 :  BD GESCOMI avec SQL 2               |
+|     Manipulations-Interrogations de BD                |
+|                                                       |
+=========================================================
+
+
+=========================================================
+Ceci permet d initialiser le type de la date
+=========================================================
+
+Session modifié(e).
+
+=========================================================
+Destruction des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+
+Table DETAILCOM supprimé(e).
+
+
+Table ARTICLES supprimé(e).
+
+
+Table COMMANDES supprimé(e).
+
+
+Table CLIENTS supprimé(e).
+
+
+
+=========================================================
+Création des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+=========================================================
+>> Table : CLIENTS
+=========================================================
+
+
+Table CLIENTS créé(e).
+
+
+
+=========================================================
+>> Table : COMMANDES
+=========================================================
+
+
+Table COMMANDES créé(e).
+
+
+
+=========================================================
+>> Table : ARTICLES
+=========================================================
+
+
+Table ARTICLES créé(e).
+
+
+
+=========================================================
+>> Table : DETAILCOM
+=========================================================
+
+
+Table DETAILCOM créé(e).
+
+
+
+=====================================================================
+Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
+=====================================================================
+
+=========================================================
+>> Insertion dans la Table : CLIENTS
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+
+=========================================================
+>> Insertion dans la Table : COMMANDES
+=========================================================
+
+
+Erreur commençant à la ligne: 340 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20001AB', 'C012', 'SUNDAY 17-SEPTEMBER-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 343 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20002AB', 'C001', 'SUNDAY 17-SEPTEMBER-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 346 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20003AB', 'C006', ' MONDAY 16-OCTOBER-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 349 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20004AB', 'C006', 'TUESDAY 24-OCTOBER-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 352 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20011RB', 'C012', 'MONDAY 22-JANUARY-2001')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 355 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20012RB', 'C012', 'TUESDAY 13-MARCH-2001')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 358 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20031FB', 'C001', 'FRIDAY 14-FEBRURAY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 361 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20051FB', 'C003', 'FRIDAY 07-JANUARY-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 364 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20052FB', 'C003', 'Wednesday 12-JANUARY-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 367 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20053FB', 'C012', 'THURSDAY 10-MARCH-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 370 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20054FB', 'C007', 'MONDAY 14-MARCH-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 373 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20055FB', 'C012', 'FRIDAY 11-MARCH-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 376 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20056FB', 'C013', 'MONDAY 14-MARCH-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 379 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20057FB', 'C014', 'FRIDAY 11-MARCH-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 382 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20061FB', 'C010', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 385 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20062FB', 'C009', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 388 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20065FB', 'C007', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 391 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20066FB', 'C002', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 394 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20067FB', 'C002', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 397 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20068FB', 'C002', 'FRIDAY 14-FEBRUARY-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 400 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20069FB', 'C002', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 403 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20070FB', 'C002', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 406 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20071FB', 'C013', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 409 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20072FB', 'C013', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 412 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20073FB', 'C014', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 415 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20074FB', 'C014', 'TUESDAY 30-JANUARY-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 418 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20184FB', 'C014', 'MONDAY 17-SEPTEMBER-2018')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+Erreur commençant à la ligne: 421 de la commande -
+INSERT INTO COMMANDES (NUMCOM, CODCLI, DATCOM)
+VALUES ('20181AB', 'C012', 'MONDAY 17-SEPTEMBER-2018')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
+
+
+
+=========================================================
+>> Insertion dans la Table : ARTICLES
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+
+=========================================================
+>> Insertion dans la Table : DETAILCOM
+=========================================================
+
+
+Erreur commençant à la ligne: 530 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.001', 2, 35.00, 2.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 533 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.003', 4, 10.71, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 536 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.013', 2, 49.14, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 539 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 542 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'F1.001', 2, 33.00, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 545 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 548 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.002', 1, 34.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 551 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 554 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'FB.001', 5, 21.00, 4.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 557 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'WD.002', 1, 34.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 560 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 563 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20004AB', 'F1.008', 2, 3.29, 3.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 566 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20004AB', 'WD.001', 1, 21.29, 2.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 569 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'F1.007', 5, 5.00, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 572 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'F1.009', 1, 37.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 575 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 578 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'F1.008', 2, 3.29, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 581 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 584 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'FB.001', 5, 21.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 587 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20051FB', 'F1.008', 2, 3.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 590 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20051FB', 'FB.001', 5, 21.00, 4.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 593 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.001', 2, 35.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 596 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.003', 4, 10.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 599 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.013', 2, 49.14, 3.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 602 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 605 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 608 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20053FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 611 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20054FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 614 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.008', 5, 3.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 617 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.009', 1, 37.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 620 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.011', 2, 80.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 623 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 626 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20056FB', 'F1.011', 2, 80.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 629 de la commande -
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20057FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 632 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20061FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 635 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20062FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 638 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20065FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 641 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20066FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 644 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20067FB', 'FB.001', 22, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 647 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20068FB', 'FB.001', 22, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 650 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20069FB', 'FB.001', 25, 58.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 653 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20070FB', 'FB.001', 50, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 656 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20071FB', 'FB.001', 37, 27.90, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 659 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20072FB', 'FB.001', 8, 34.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 662 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20073FB', 'FB.001', 35, 15.50, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 665 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20074FB', 'FB.001', 12, 19.99, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+
+Erreur commençant à la ligne: 668 de la commande -
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20181AB', 'FB.001', 7, 17.77, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYSTEM.FK_DETAILCOM_NUMCOM_COM) violated - parent key not found
+
+=========================================================
+Validation des insertions dans la bd EN SQL 2
+=========================================================
+Validation (commit) terminée.
+
+
+=========================================================
+Affichage des tables de la bd EN SQL 2
+=========================================================
+Ecoulé : 00:00:00.398
+
+
+Ecoulé : 00:00:00.389
+
+
+Ecoulé : 00:00:00.363
+
+
+Ecoulé : 00:00:00.380
+
+
+=========================================================
+FB-A : Requetes sur la bd EN SQL 2 : A, B, C, D, E, F, I, J...
+=========================================================
+
+=========================================================
+FB-B : Requetes sur la bd EN SQL 2
+=========================================================
+
+=========================================================
+>> Requete : Les Noms des clients (Avec éventuellement des doublons)
+=========================================================
+
+Ecoulé : 00:00:00.361
+
+
+=========================================================
+>> Requete : Les Noms des clients (Sans les doublons)
+=========================================================
+
+Ecoulé : 00:00:00.359
+
+
+=========================================================
+>> Requete : Les Noms des clients NON MAJUSCULEs !
+=========================================================
+
+Ecoulé : 00:00:00.362
+
+
+=========================================================
+>> Requete : Les Noms des clients NON Alphabétiques !
+=========================================================
+
+Ecoulé : 00:00:00.372
+
+
+=====================================================================
+>> Requete : Articles sans remise depuis le 1er JANUARY 2005
+=====================================================================
+
+Ecoulé : 00:00:00.359
+
+
+=========================================================
+>> Requete : Chiffre d affaires global du magasin en question
+=========================================================
+
+
+
+=========================================================
+>> Requete : Chiffre d affaires par jour
+=========================================================
+
+
+
+=========================================================
+>> Requete : Chiffre d affaires par mois
+=========================================================
+
+
+
+=========================================================
+>> Requete : Chiffre d affaires par année
+=========================================================
+
+
+
+=========================================================
+>> Requete : Chiffre d affaires par ville du client
+=========================================================
+
+
+
+=========================================================
+>> Requete : Chiffre d affaires par pays du client
+=========================================================
+
+Ecoulé : 00:00:00.895
+
+
+=========================================================
+>> Requete : Chiffre d affaires par pays et par ville du client
+=========================================================
+
+
+
+=====================================================================
+>> Requete : Articles commandés par tous les parisiens
+=====================================================================
+
+Ecoulé : 00:00:00.356
+
+
+
+Table MAGASINS supprimé(e).
+
+Ecoulé : 00:00:00.055
+=====================================================================
+>> Table : MAGASINS
+=====================================================================
+
+Table MAGASINS créé(e).
+
+Ecoulé : 00:00:00.044
+=====================================================================
+Insertion des données de la bd GESCOMI EN SQL 2
+=====================================================================
+
+=====================================================================
+>> Table : MAGASINS
+=====================================================================
+
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.005
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.006
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.005
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.005
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.005
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+Validation (commit) terminée.
+Ecoulé : 00:00:00.004
+
+
+=====================================================================
+Affichage des magasins de  l entreprise BB EN SQL 2
+=====================================================================
+
+Ecoulé : 00:00:00.356
+
+
+=====================================================================
+Affichage des magasins de  l entreprise BB EN SQL 2
+=====================================================================
+
+Ecoulé : 00:00:00.355
+
+
+Ecoulé : 00:00:00.359
+
+View CLISANSTEL créé(e).
+
+Ecoulé : 00:00:00.022
+Ecoulé : 00:00:00.348
+
+Erreur commençant à la ligne: 1 315 de la commande -
+CREATE OR REPLACE VIEW CLIINVALIDMAIL (Code, Nom, Mail)
+AS SELECT CODCLI, NOMCLI, MAILCLI FROM CLIENTS 
+WHERE MAILCLI IS NULL OR NOT           -- Regexe;
+SELECT * FROM CLIINVALIDMAIL
+Rapport d'erreur -
+ORA-00936: missing expression
+00936. 00000 -  "missing expression"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.018
+
+Erreur commençant à la ligne: 1 321 de la commande -
+CREATE OR REPLACE VIEW CLIINVALIDTEL (Code, Nom, Tel)
+AS SELECT CODCLI, NOMCLI, TELCLI FROM CLIENTS 
+WHERE TELCLI IS NULL OR NOT           -- Regexe;
+SELECT * FROM CLIINVALIDTEL
+Rapport d'erreur -
+ORA-00936: missing expression
+00936. 00000 -  "missing expression"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.014
+
+Erreur commençant à la ligne: 1 329 de la commande -
+CREATE OR REPLACE VIEW CLIINVALIDNAME (Code, Nom, Prenom)
+AS SELECT CODCLI, NOMCLI, PRENCLI FROM CLIENTS 
+WHERE -- ;
+SELECT * FROM CLIINVALIDNAME
+Rapport d'erreur -
+ORA-00936: missing expression
+00936. 00000 -  "missing expression"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.012
+
+Erreur commençant à la ligne: 1 341 de la commande -
+CREATE TABLE REGULAREXPRES
+(
+CATEGORY 								VARCHAR2(20), 
+REGULAREXPR 							VARCHAR2(200),
+CONSTRAINT PK_REGULAREXPRES				PRIMARY KEY(CATEGORY),
+CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY)
+)
+Rapport d'erreur -
+ORA-00907: missing right parenthesis
+00907. 00000 -  "missing right parenthesis"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.012
+
+Erreur commençant à la ligne: 1 351 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('MAIL', 'son expression')
+Erreur à la ligne de commande: 1 351 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 353 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELFR-I', 'son expression')
+Erreur à la ligne de commande: 1 353 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 355 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELFR', 'son expression')
+Erreur à la ligne de commande: 1 355 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 357 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELBE-I', 'son expression')
+Erreur à la ligne de commande: 1 357 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 359 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELBE', 'son expression')
+Erreur à la ligne de commande: 1 359 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 361 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELTN-I', 'son expression')
+Erreur à la ligne de commande: 1 361 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 363 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TELTN', 'son expression')
+Erreur à la ligne de commande: 1 363 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 366 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('DATEFR', 'son expression')
+Erreur à la ligne de commande: 1 366 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 368 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('DATEAM', 'son expression')
+Erreur à la ligne de commande: 1 368 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 370 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('ALPHABETIQUE', 'son expression')
+Erreur à la ligne de commande: 1 370 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.018
+
+Erreur commençant à la ligne: 1 372 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('NUMERIQUE', 'son expression')
+Erreur à la ligne de commande: 1 372 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 374 de la commande -
+INSERT INTO REGULAREXPRES VALUES
+('TEMPERATURECF', 'son expression')
+Erreur à la ligne de commande: 1 374 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+Validation (commit) terminée.
+Ecoulé : 00:00:00.002
+
+Erreur commençant à la ligne: 1 423 de la commande -
+CREATE TABLE VILPAYS (COL1 VARCHAR2(20), COL2 VARCHAR2(20))
+Rapport d'erreur -
+ORA-00955: name is already used by an existing object
+00955. 00000 -  "name is already used by an existing object"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.014
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.006
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.004
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.023
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.003
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.002
+Validation (commit) terminée.
+Ecoulé : 00:00:00.008
+Ecoulé : 00:00:00.368
+
+436 lignes mis à jour.
+
+Ecoulé : 00:00:00.014
+
+436 lignes mis à jour.
+
+Ecoulé : 00:00:00.011
+Validation (commit) terminée.
+Ecoulé : 00:00:00.004
+Ecoulé : 00:00:00.365
+Ecoulé : 00:00:00.833
+Ecoulé : 00:00:00.383
+Ecoulé : 00:00:00.364
+
+Erreur commençant à la ligne: 1 563 de la commande -
+CREATE OR REPLACE VIEW V1 (VILLE, NOMBRE) SELECT COL1, COUNT(*) FROM VILPAYS GROUP BY COL1 ORDER BY 1
+Rapport d'erreur -
+ORA-00905: missing keyword
+00905. 00000 -  "missing keyword"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.012
+Ecoulé : 00:00:00.375
+
+Erreur commençant à la ligne: 1 565 de la commande -
+CREATE OR REPLACE VIEW V2 (PAYS, NOMBRE) SELECT COL2, COUNT(*) FROM VILPAYS GROUP BY COL2 ORDER BY 1
+Rapport d'erreur -
+ORA-00905: missing keyword
+00905. 00000 -  "missing keyword"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.020
+Ecoulé : 00:00:00.350
+
+Erreur commençant à la ligne: 1 592 de la commande -
+CREATE TABLE TABCLI (COL1 VARCHAR(10), COL2 VARCHAR(12), COL3 VARCHAR(10), COL4 VARCHAR(10), COL1 VARCHAR(1))
+Rapport d'erreur -
+ORA-00957: duplicate column name
+00957. 00000 -  "duplicate column name"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.013
+
+Erreur commençant à la ligne: 1 593 de la commande -
+INSERT INTO TABCLI VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3')
+Erreur à la ligne de commande: 1 593 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 594 de la commande -
+INSERT INTO TABCLI VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1')
+Erreur à la ligne de commande: 1 594 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 595 de la commande -
+INSERT INTO TABCLI VALUES ('3000107', 'MO NSIEUR', 'ONRI', 'PANDA', '2')
+Erreur à la ligne de commande: 1 595 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 596 de la commande -
+INSERT INTO TABCLI VALUES ('2997777', 'Mademoiselle', 'LE BON', 'CLEMENTINE', '1')
+Erreur à la ligne de commande: 1 596 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 597 de la commande -
+INSERT INTO TABCLI VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1')
+Erreur à la ligne de commande: 1 597 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 598 de la commande -
+INSERT INTO TABCLI VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2')
+Erreur à la ligne de commande: 1 598 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 599 de la commande -
+INSERT INTO TABCLI VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1')
+Erreur à la ligne de commande: 1 599 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 600 de la commande -
+INSERT INTO TABCLI VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1')
+Erreur à la ligne de commande: 1 600 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 601 de la commande -
+INSERT INTO TABCLI VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1')
+Erreur à la ligne de commande: 1 601 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 602 de la commande -
+INSERT INTO TABCLI VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3')
+Erreur à la ligne de commande: 1 602 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 603 de la commande -
+INSERT INTO TABCLI VALUES ('3000111', 'Madame', 'GENEREUX', 'EVE', '1')
+Erreur à la ligne de commande: 1 603 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 604 de la commande -
+INSERT INTO TABCLI VALUES ('3001778', 'Mr', 'COURTOIS', 'Bruno', '1')
+Erreur à la ligne de commande: 1 604 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.021
+
+Erreur commençant à la ligne: 1 605 de la commande -
+INSERT INTO TABCLI VALUES ('3001779', 'Monsieur', 'VANDERHOTE', 'Ivan', '1')
+Erreur à la ligne de commande: 1 605 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 606 de la commande -
+INSERT INTO TABCLI VALUES ('3001780', 'Monsieur', 'Hollanda', 'Francis', '1')
+Erreur à la ligne de commande: 1 606 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.022
+
+Erreur commençant à la ligne: 1 607 de la commande -
+INSERT INTO TABCLI VALUES ('3001781', 'Monsieur', 'Bernard', 'Hugues', '1')
+Erreur à la ligne de commande: 1 607 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.021
+
+Erreur commençant à la ligne: 1 608 de la commande -
+INSERT INTO TABCLI VALUES ('3001782', 'Monsieur', 'LATIFOU', 'Ilyas', '1')
+Erreur à la ligne de commande: 1 608 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 609 de la commande -
+INSERT INTO TABCLI VALUES ('3001783', 'Madame', 'LALLEMAND', 'Ines', '1')
+Erreur à la ligne de commande: 1 609 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 610 de la commande -
+INSERT INTO TABCLI VALUES ('3001784', 'Monsieur', 'DEUTCH', 'Hans', '1')
+Erreur à la ligne de commande: 1 610 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 611 de la commande -
+INSERT INTO TABCLI VALUES ('3001785', 'Madame', 'ALMANI', 'Eve', '1')
+Erreur à la ligne de commande: 1 611 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 612 de la commande -
+INSERT INTO TABCLI VALUES ('3001786', 'Madame', 'MERQUELLE', 'Angela', '1')
+Erreur à la ligne de commande: 1 612 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 613 de la commande -
+INSERT INTO TABCLI VALUES ('3001', 'M.', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 613 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 614 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1')
+Erreur à la ligne de commande: 1 614 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 615 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 615 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 616 de la commande -
+INSERT INTO TABCLI VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2')
+Erreur à la ligne de commande: 1 616 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 617 de la commande -
+INSERT INTO TABCLI VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2')
+Erreur à la ligne de commande: 1 617 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+
+Erreur commençant à la ligne: 1 618 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 618 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 619 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 619 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 620 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '')
+Erreur à la ligne de commande: 1 620 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.015
+
+Erreur commençant à la ligne: 1 621 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 621 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.016
+
+Erreur commençant à la ligne: 1 622 de la commande -
+INSERT INTO TABCLI VALUES ('3001777', 'Monsieùr', 'LE BON', 'Adam', '1')
+Erreur à la ligne de commande: 1 622 Colonne: 13
+Rapport d'erreur -
+Erreur SQL : ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+Validation (commit) terminée.
+Ecoulé : 00:00:00.002
+Ecoulé : 00:00:00.362
+Ecoulé : 00:00:00.375
+Ecoulé : 00:00:00.357
+Ecoulé : 00:00:00.378
+=====================================================================
+>> Requete : Procedure PL/SQL => vérification cohérence de la BD
+=====================================================================
+
+=====================================================================
+Suppression et création de la procédure COHERENCE_BD
+=====================================================================
+
+
+Procedure COHERENCE_BD supprimé(e).
+
+Ecoulé : 00:00:00.037
+
+Elément Procedure COHERENCE_BD compilé
+
+Ecoulé : 00:00:00.043
+
+
+=====================================================================
+Execution de la procédure COHERENCE_BD
+=====================================================================
+
+Le(s) numéro(s) de commande vide(s) sont :
+
+
+Procédure PL/SQL terminée.
+
+Ecoulé : 00:00:00.017
+
+
+
+Erreur commençant à la ligne: 1 713 de la commande -
+CREATE TABLE DIAGNOSTICDATA 
+(ANOMALIES VARCHAR(20), VALIDCOL NUMBER(2), INVALIDCOL NUMBER(2), NULLCOL NUMBER(2))
+Rapport d'erreur -
+ORA-00955: name is already used by an existing object
+00955. 00000 -  "name is already used by an existing object"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.049
+
+Erreur commençant à la ligne: 1 715 de la commande -
+INSERT INTO DIAGNOSTICDATA (''
+Erreur à la ligne de commande: 1 715 Colonne: 29
+Rapport d'erreur -
+Erreur SQL : ORA-00928: missing SELECT keyword
+00928. 00000 -  "missing SELECT keyword"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.017
+SP2-0734: unknown command beginning "0, 0, 0)..." - rest of line ignored.

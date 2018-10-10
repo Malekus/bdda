@@ -1217,11 +1217,20 @@ PROMPT
 --====================================================================================
 -- Modifiez la structure de la table MAGASINS
 -- Ajoutez la colonne MAILMAG de type VARCHAR(30)
-
+alter table MAGASINS add MAILMAG VARCHAR(30);
 -- Développez une procédure CREERMAILMAG qui permet d Insérer les nouvelles données dans cette colonne
 -- Le mail d un magasin (en minuscule) est composé de : 'bb' + NUMMAG + '@gmail.com'
 
--- ????????????      FB FB FB FB FB FB A compléter ??????????????
+CREATE OR REPLACE PROCEDURE CREERMAILMAG
+AS
+BEGIN
+    FOR ligne IN (SELECT NUMMAG , LOWER('bb'||NUMMAG||'@gmail.com') AS email FROM MAGASINS WHeRE MAILMAG IS NULL) LOOP
+        UPDATE MAGASINS
+        SET MAILMAG = ligne.email
+        WHERE NUMMAG = ligne.NUMMAG;
+    END LOOP;
+END;
+/
 
 PROMPT =====================================================================
 PROMPT Affichage des magasins de  l entreprise BB EN SQL 2 
