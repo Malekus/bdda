@@ -1,0 +1,1280 @@
+=========================================================
+=========================================================
+
+=========================================================
+|                                                       |
+|     Exercice 2 :  BD GESCOMI avec SQL 2               |
+|     Enrichissement du schéma d une BD :               |
+|                                                       |
+=========================================================
+
+
+=========================================================
+Ceci permet d initialiser le type de la date
+=========================================================
+
+Session modifié(e).
+
+=========================================================
+Destruction des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+
+Table DETAILCOM2 supprimé(e).
+
+
+Table ARTICLES2 supprimé(e).
+
+
+Table COMMANDES2 supprimé(e).
+
+
+Table CLIENTS2 supprimé(e).
+
+
+
+=========================================================
+Création des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+=========================================================
+>> Table : CLIENTS2
+=========================================================
+
+
+Table CLIENTS2 créé(e).
+
+
+
+=========================================================
+>> Table : COMMANDES2
+=========================================================
+
+
+Table COMMANDES2 créé(e).
+
+
+
+=========================================================
+>> Table : ARTICLES2
+=========================================================
+
+
+Table ARTICLES2 créé(e).
+
+
+
+=========================================================
+>> Table : DETAILCOM2
+=========================================================
+
+
+Table DETAILCOM2 créé(e).
+
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+
+=========================================================
+Il est nécessaire de créer une table qui permet
+de garder le prix des articles avant leurs mises à jour.
+C est une table qui aura comme colonne la référence, le nom, le prix
+d achat, le prix de vente (prix catalogue) de l article avant la mise
+à jour et la date de la mise à jour.
+=========================================================
+
+
+=====================================================================
+Il est nécessaire de créer une table HISTORIQUE_MVTS_ARTICLES.
+=====================================================================
+
+
+Erreur commençant à la ligne: 289 de la commande -
+DROP TABLE HISTORIQUE_MVTS_ARTICLES
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Table HISTORIQUE_MVTS_ARTICLES créé(e).
+
+
+
+=====================================================================
+>> Trigger sur les mouvements des articles
+=====================================================================
+=====================================================================
+Suppression et création du Trigger.
+=====================================================================
+
+
+Erreur commençant à la ligne: 320 de la commande -
+DROP TRIGGER MOUVEMENTS_ARTICLES2
+Rapport d'erreur -
+ORA-04080: trigger 'MOUVEMENTS_ARTICLES2' does not exist
+04080. 00000 -  "trigger '%s' does not exist"
+*Cause:    The TRIGGER name is invalid.
+*Action:   Check the trigger name.
+
+Elément Trigger MOUVEMENTS_ARTICLES2 compilé
+
+
+=====================================================================
+Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
+=====================================================================
+
+=========================================================
+>> Insertion dans la Table : CLIENTS2
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+
+=========================================================
+>> Insertion dans la Table : COMMANDES2
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+
+=========================================================
+>> Insertion dans la Table : ARTICLES2
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+
+=========================================================
+>> Insertion dans la Table : DETAILCOM2
+=========================================================
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+
+1 ligne inséré.
+
+=========================================================
+Validation des insertions dans la bd EN SQL 2
+=========================================================
+Validation (commit) terminée.
+
+
+=========================================================
+Affichage des tables de la bd EN SQL 2
+=========================================================
+
+CODCLI CIVCLI   NOMCLI   PRENCLI  CATCLI ADNCLI ADRCLI     CPCLI VILCLI PAYSCLI MAILCLI    TELCLI    
+------ -------- -------- -------- ------ ------ ---------- ----- ------ ------- ---------- ----------
+C001   Madame   CLEMENT  EVE           1 18     BOULEVARD  91000 EPINAY FRANCE  eve.clemen +337778899
+                                                FOCH             -SUR-O         t@gmail.co 11        
+                                                                 RGE            m                    
+
+C002   Madame   LESEUL   MARIE         1 21     AVENUE D I 75013 PARIS  FRANCE  marieleseu 0617586565
+                                                TALIE                           l@yahoo.fr           
+
+C003   Madame   UNIQUE   MARINE        2 77     RUE DE LA  13001 MARSEI FRANCE  munique@gm +337778899
+                                                LIBERTE          LLE            ail.com    22        
+
+C004   Madame   CLEMENCE EVELYNE       3 8 BIS  BOULEVARD  93800 EPINAY FRANCE  clemence e +337778899
+                                                FOCH             -SUR-S         velyne@gma 33        
+                                                                 EINE           il.com               
+
+C005   Madame   FORT     JEANNE        3 55     RUE DU JAP 94310 ORLY V FRANCE  jfort\@hot +337778899
+                                                ON               ILLE           mail.fr    44        
+
+C006   Mademois LE BON   CLEMENCE      1 18     BOULEVARD  93800 EPINAY FRANCE  clemence.l 0033777889
+       elle                                     FOCH             -SUR-S         e bon@cfo. 955       
+                                                                 EINE           fr                   
+
+C007   Mademois TRAIFOR  ALICE         2 6      RUE DE LA  75015 PARIS  FRANCE  alice.trai +337778899
+       elle                                     ROSIERE                         for@yahoo. 66        
+                                                                                fr                   
+
+C008   Monsieur VIVANT   JEAN-BAP      1 13     RUE DE LA  93800 EPINAY FRANCE  jeanbaptis 0607      
+                         TISTE                  PAIX             -SUR-S         te@                  
+                                                                 EINE                                
+
+C009   Monsieur CLEMENCE ALEXANDR      1 5      RUE DE BEL 75019 PARIS  FRANCE  alexandre. +331494040
+                         E                      LEVILLE                         clemence@u 71        
+                                                                                p13.fr               
+
+C010   Monsieur TRAIFOR  ALEXANDR      1 16     AVENUE FOC 75016 PARIS  FRA     alexandre. 06070809  
+                         E                      H                               traifor@up           
+                                                                                13.fr                
+
+C011   Monsieur PREMIER  JOSEPH        2 77     RUE DE LA  13001 MARSEI FRANCE  josef@prem +337778899
+                                                LIBERTE          LLE            ier        77        
+
+C012   Monsieur CLEMENT  ADAM          2 13     AVENUE JEA 9430  VILLET FRANCE  adam.cleme +331494040
+                                                N BAPTISTE       ANEUSE         nt@gmail.c 72        
+                                                 CLEMENT                        om                   
+
+C013   Monsieur FORT     GABRIEL       5 1      AVENUE DE  99000 TUNIS  TUNISIE gabriel.fo +216248017
+                                                CARTAGE                         rt@yahoo.f 77        
+                                                                                r                    
+
+C014   Monsieur ADAM     DAVID         5 1      AVENUE DE  99001 ROME   ITALIE  david.adam +???      
+                                                ROME                            é@gmail co           
+                                                                                m                    
+
+
+14 lignes sélectionnées. 
+
+Ecoulé : 00:00:00.144
+
+
+
+NUMCOM     CODCLI DATCOM                      
+---------- ------ ----------------------------
+20001AB    C012   DIMANCHE 17-SEPTEMBRE-2000  
+20002AB    C001   DIMANCHE 17-SEPTEMBRE-2000  
+20003AB    C006   LUNDI    16-OCTOBRE  -2000  
+20004AB    C006   MARDI    24-OCTOBRE  -2000  
+20011RB    C012   LUNDI    22-JANVIER  -2001  
+20012RB    C012   MARDI    13-MARS     -2001  
+20031FB    C001   VENDREDI 14-FÉVRIER  -2003  
+20051FB    C003   VENDREDI 07-JANVIER  -2005  
+20052FB    C003   MERCREDI 12-JANVIER  -2005  
+20053FB    C012   JEUDI    10-MARS     -2005  
+20054FB    C007   LUNDI    14-MARS     -2005  
+20055FB    C012   VENDREDI 11-MARS     -2005  
+20056FB    C013   LUNDI    14-MARS     -2005  
+20057FB    C014   VENDREDI 11-MARS     -2005  
+20061FB    C010   VENDREDI 14-FÉVRIER  -2003  
+20062FB    C009   VENDREDI 14-FÉVRIER  -2003  
+20065FB    C007   VENDREDI 14-FÉVRIER  -2003  
+20066FB    C002   VENDREDI 14-FÉVRIER  -2003  
+20067FB    C002   VENDREDI 14-FÉVRIER  -2003  
+20068FB    C002   VENDREDI 14-FÉVRIER  -2003  
+20069FB    C002   MARDI    30-JANVIER  -2007  
+20070FB    C002   MARDI    30-JANVIER  -2007  
+20071FB    C013   MARDI    30-JANVIER  -2007  
+20072FB    C013   MARDI    30-JANVIER  -2007  
+20073FB    C014   MARDI    30-JANVIER  -2007  
+20074FB    C014   MARDI    30-JANVIER  -2007  
+
+26 lignes sélectionnées. 
+
+Ecoulé : 00:00:00.123
+
+
+
+REFART   NOMART                      PVART QSART   PAART
+-------- ------------------------- ------- ----- -------
+F1.001   SIEGE DE TABLE              35.00    10   26.43
+F1.002   CASQUE CYCLISTE PROTECTIO   27.00    20   20.00
+         N                                              
+
+F1.003   BONNET PARE-CHOCS           10.71 ###      5.71
+F1.004   STORE DE PROTECTION          7.43     5    4.29
+F1.005   COINS DE PROTECTION          4.00 ###      1.71
+F1.006   CACHE PRISE DE COURANT       2.29 ###       .71
+F1.007   BLOQUE PORTE                 5.00     4    2.29
+F1.008   BANDE DE FERMETURE           3.29     4    1.71
+F1.009   PROTECTION DE FOUR          37.86    10   26.43
+F1.010   PROTECTION DE CUISINIERE    30.71    10   22.86
+F1.011   BABY PHONE                  80.71     3   45.71
+F1.012   BRETELLE DE SECURITE        15.57     8   11.43
+F1.013   HAUSSE-CHAISE               42.71     1   25.43
+F1.014   COUVRE ROBINETTERIE          7.86    12    4.29
+F2.001   BARRIERE DE PORTE, EN BOI   32.71     2   25.71
+         S                                              
+
+F2.002   BARRIERE DE PORTE, EN MET   49.14     3   28.43
+         AL                                             
+
+F2.003   BARRIERE DE LIT             23.71    10   15.71
+F2.004   PORTE-BEBE                  44.86     6   34.29
+F2.005   SIEGE-AUTO COSMOS          126.86     2   71.43
+F2.006   SIEGE-AUTO EUROSEAT        121.29     2   71.43
+FB.001   DVD-SPIRIT                  24.90     2   12.00
+FB.002   DVD-SPIDER MAN              24.90     2   12.00
+FB.003   DVD-SPIDER MAN 2            24.90     2   12.00
+WD.001   K7 VIDEO-TOY STORY          21.29    10    9.29
+WD.002   DVD-TOY STORY 2             34.29    10   12.14
+WD.003   K7 VIDEO-WINNIE L OURSON    22.86     5    9.29
+WD.004   DVD-FRERES DES OURS         35.00     3   13.00
+WD.005   K7 VIDEO-LE ROI LION        30.00     1   13.00
+WD.006   K7 VIDEO-LE ROI LION 2      30.00     4   13.00
+WD.007   K7 VIDEO-LE ROI LION 3      30.00     3   13.00
+
+30 lignes sélectionnées. 
+
+Ecoulé : 00:00:00.069
+
+
+
+NUMCOM     REFART   QTCOM   PUART  REMISE
+---------- -------- ----- ------- -------
+20001AB    F1.001       2   35.00    2.50
+20001AB    F1.003       4   10.71    3.00
+20001AB    F1.013       2   49.14     .00
+20001AB    WD.001       1   21.29     .00
+20002AB    F1.001       2   33.00    3.00
+20002AB    WD.001       1   21.29     .00
+20002AB    WD.002       1   34.29     .00
+20002AB    WD.003       1   22.86     .00
+20003AB    FB.001       5   21.00    4.00
+20003AB    WD.002       1   34.29     .00
+20003AB    WD.003       1   22.86     .00
+20004AB    F1.008       2    3.29    3.50
+20004AB    WD.001       1   21.29    2.50
+20012RB    F1.007       5    5.00    3.00
+20012RB    F1.009       1   37.86     .00
+20012RB    FB.003       5   24.00     .00
+20031FB    F1.008       2    3.29    3.00
+20031FB    F2.001       1   30.71     .00
+20031FB    FB.001       5   21.00     .00
+20051FB    F1.008       2    3.29     .00
+20051FB    FB.001       5   21.00    4.00
+20052FB    F1.001       2   35.00     .00
+20052FB    F1.003       4   10.71     .00
+20052FB    F1.013       2   49.14    3.50
+20052FB    WD.001       1   21.29     .00
+20052FB    WD.003       1   22.86     .00
+20053FB    WD.003       1   22.86     .00
+20054FB    WD.003       1   22.86     .00
+20055FB    F1.008       5    3.29     .00
+20055FB    F1.009       1   37.86     .00
+20055FB    F1.011       2   80.71     .00
+20055FB    F2.001       1   30.71     .00
+20056FB    F1.011       2   80.71     .00
+20057FB    F2.001       1   30.71     .00
+20061FB    FB.003       5   24.00     .00
+20062FB    FB.003       5   24.00     .00
+20065FB    FB.003       5   24.00     .00
+20066FB    FB.003       5   24.00     .00
+20067FB    FB.001      22   24.00     .00
+20068FB    FB.001      22   24.00     .00
+20069FB    FB.001      25   58.00     .00
+20070FB    FB.001      50   24.00     .00
+20071FB    FB.001      37   27.90     .00
+20072FB    FB.001       8   34.00     .00
+20073FB    FB.001      35   15.50     .00
+20074FB    FB.001      12   19.99     .00
+
+46 lignes sélectionnées. 
+
+Ecoulé : 00:00:00.077
+
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+
+
+=====================================================================
+Suppression et Insertion dans la table articles2 (par user-X par exemple)
+=====================================================================
+
+
+0 lignes supprimé.
+
+Ecoulé : 00:00:00.013
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.008
+=====================================================================
+Mouvements dans la table ARTICLES2 effectués par des utilisateurs
+externes: user-y et user-X
+=====================================================================
+
+
+
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
+------------ ------ ------ ----------- ------- ------- ----- -------------------
+SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
+                           BLE                                 -2018            
+
+SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
+                           ISTE PROTEC                         -2018            
+                           TION                                                 
+
+SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
+                           -CHOCS                              -2018            
+
+SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
+                            DE COURANT                         -2018            
+
+SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
+                           E                                   -2018            
+
+SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
+                           RMETURE                             -2018            
+
+SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
+                           DE FOUR                             -2018            
+
+SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
+                           DE CUISINIE                         -2018            
+                           RE                                                   
+
+SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
+                            SECURITE                           -2018            
+
+SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
+                           SE                                  -2018            
+
+SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
+                           NETTERIE                            -2018            
+
+SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           BOIS                                                 
+
+SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           METAL                                                
+
+SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
+                            LIT                                -2018            
+
+SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
+                           COSMOS                              -2018            
+
+SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
+                           EUROSEAT                            -2018            
+
+SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN                                 -2018            
+
+SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN 2                               -2018            
+
+SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
+                           Y STORY                             -2018            
+
+SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
+                           RY 2                                -2018            
+
+SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
+                           NNIE L OURS                         -2018            
+                           ON                                                   
+
+SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
+                           DES OURS                            -2018            
+
+SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
+                            ROI LION                           -2018            
+
+SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
+                            ROI LION 2                         -2018            
+
+SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
+                            ROI LION 3                         -2018            
+
+SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
+                           DVD BIS                             -2018            
+
+
+31 lignes sélectionnées. 
+
+Ecoulé : 00:00:01.010
+
+
+=====================================================================
+Suppression et insertion dans la table articles2.
+=====================================================================
+
+
+1 ligne supprimé.
+
+Ecoulé : 00:00:00.048
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.007
+
+1 ligne inséré.
+
+Ecoulé : 00:00:00.006
+Validation (commit) terminée.
+Ecoulé : 00:00:00.005
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
+------------ ------ ------ ----------- ------- ------- ----- -------------------
+SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
+                           BLE                                 -2018            
+
+SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
+                           ISTE PROTEC                         -2018            
+                           TION                                                 
+
+SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
+                           -CHOCS                              -2018            
+
+SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
+                            DE COURANT                         -2018            
+
+SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
+                           E                                   -2018            
+
+SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
+                           RMETURE                             -2018            
+
+SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
+                           DE FOUR                             -2018            
+
+SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
+                           DE CUISINIE                         -2018            
+                           RE                                                   
+
+SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
+                            SECURITE                           -2018            
+
+SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
+                           SE                                  -2018            
+
+SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
+                           NETTERIE                            -2018            
+
+SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           BOIS                                                 
+
+SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           METAL                                                
+
+SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
+                            LIT                                -2018            
+
+SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
+                           COSMOS                              -2018            
+
+SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
+                           EUROSEAT                            -2018            
+
+SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN                                 -2018            
+
+SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN 2                               -2018            
+
+SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
+                           Y STORY                             -2018            
+
+SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
+                           RY 2                                -2018            
+
+SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
+                           NNIE L OURS                         -2018            
+                           ON                                                   
+
+SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
+                           DES OURS                            -2018            
+
+SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
+                            ROI LION                           -2018            
+
+SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
+                            ROI LION 2                         -2018            
+
+SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
+                            ROI LION 3                         -2018            
+
+SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
+                           DVD BIS                             -2018            
+
+SYSTEM       DELETE WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
+                           DVD BIS                             -2018            
+
+SYSTEM       INSERT WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
+                           a jungle 1                          -2018            
+
+SYSTEM       INSERT WD.023 le roi de l   39.99   21.00     5 MARDI    09-OCTOBRE
+                           a jungle 2                          -2018            
+
+
+34 lignes sélectionnées. 
+
+Ecoulé : 00:00:00.827
+
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+=====================================================================
+Mise à jour dans la table articles2 pour effectuer les tests.
+=====================================================================
+
+Erreur commençant à la ligne: 1 013 de la commande -
+PROE	REFART = 'WD.012'
+Rapport d'erreur -
+Commande inconnue
+
+
+1 ligne mis à jour.
+
+Ecoulé : 00:00:00.014
+
+1 ligne mis à jour.
+
+Ecoulé : 00:00:00.008
+Validation (commit) terminée.
+Ecoulé : 00:00:00.003
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
+------------ ------ ------ ----------- ------- ------- ----- -------------------
+SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
+                           BLE                                 -2018            
+
+SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
+                           ISTE PROTEC                         -2018            
+                           TION                                                 
+
+SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
+                           -CHOCS                              -2018            
+
+SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
+                           OTECTION                            -2018            
+
+SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
+                            DE COURANT                         -2018            
+
+SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
+                           E                                   -2018            
+
+SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
+                           RMETURE                             -2018            
+
+SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
+                           DE FOUR                             -2018            
+
+SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
+                           DE CUISINIE                         -2018            
+                           RE                                                   
+
+SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
+                            SECURITE                           -2018            
+
+SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
+                           SE                                  -2018            
+
+SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
+                           NETTERIE                            -2018            
+
+SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           BOIS                                                 
+
+SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
+                            PORTE, EN                          -2018            
+                           METAL                                                
+
+SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
+                            LIT                                -2018            
+
+SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
+                           COSMOS                              -2018            
+
+SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
+                           EUROSEAT                            -2018            
+
+SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
+                                                               -2018            
+
+SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN                                 -2018            
+
+SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
+                           MAN 2                               -2018            
+
+SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
+                           Y STORY                             -2018            
+
+SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
+                           RY 2                                -2018            
+
+SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
+                           NNIE L OURS                         -2018            
+                           ON                                                   
+
+SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
+                           DES OURS                            -2018            
+
+SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
+                            ROI LION                           -2018            
+
+SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
+                            ROI LION 2                         -2018            
+
+SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
+                            ROI LION 3                         -2018            
+
+SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
+                           DVD BIS                             -2018            
+
+SYSTEM       DELETE WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
+                           DVD BIS                             -2018            
+
+SYSTEM       INSERT WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
+                           a jungle 1                          -2018            
+
+SYSTEM       INSERT WD.023 le roi de l   39.99   21.00     5 MARDI    09-OCTOBRE
+                           a jungle 2                          -2018            
+
+SYSTEM       UPDATE WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
+                           a jungle 1                          -2018            
+
+SYSTEM       UPDATE WD.012 le roi de l   50.00   25.00    10 MARDI    09-OCTOBRE
+                           a jungle 1                          -2018            
+
+
+36 lignes sélectionnées. 
+
+Ecoulé : 00:00:01.044
+=====================================================================
+Suppression et creation de la table comparaison_art
+Cette table va permettre de stocker les mouvements dans
+la table ARTICLES2, pendant une période. Tout ça pour pouvoir ensuite
+étudier l impact de ces mouvements sur le chiffre d affaires durant
+la période considérée.
+=====================================================================
+
+
+Erreur commençant à la ligne: 1 051 de la commande -
+DROP TABLE COMPARAISON_ART
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.019
+
+Table COMPARAISON_ART créé(e).
+
+Ecoulé : 00:00:00.025
+
+
+=====================================================================
+Suppression et creation de la table comparaison_chiffre_affaires.
+Cette table va permettre de stocker les informations concernant
+le chiffre d affaires moyen des différents pays avant la période où
+l on a décidé de regarder l impact des mouvements effectués sur
+la table ARTICLES2. De garder aussi le chiffre d affaires durant
+la période considérée. Et aussi, d inscrire la variation au niveau
+des chiffres d affaires.
+=====================================================================
+
+
+Erreur commençant à la ligne: 1 077 de la commande -
+DROP TABLE COMPARAISON_CHIFFRE_AFFAIRE
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.018
+
+Table COMPARAISON_CHIFFRE_AFFAIRE créé(e).
+
+Ecoulé : 00:00:00.030
+
+
+=====================================================================
+Creation de vue VUE_ART permettant de garder pour chaque article
+de la table ARTICLES2 son prix de vente moyen, son prix d achat moyen
+et sa quantité en stock moyen.
+=====================================================================
+
+
+View VUE_ART créé(e).
+
+Ecoulé : 00:00:00.033
+
+
+=====================================================================
+Creation de vue VUE_MVTS_ART permettant de garder pour chaque article
+de la table HISTORIQUE_MVTS_ARTICLES son prix de vente moyen, son
+prix d achat moyen et sa quantité en stock moyen.
+=====================================================================
+
+
+View VUE_MVTS_ART créé(e).
+
+Ecoulé : 00:00:00.040
+
+
+=====================================================================
+Creation de vue CHIFFRE_AFFAIRES_AVANT permettant de calculer le
+chiffre d affaires de chaque pays avant une période considérée.
+=====================================================================
+
+
+View CHIFFRE_AFFAIRES_AVANT créé(e).
+
+Ecoulé : 00:00:00.021
+
+
+=====================================================================
+Creation de vue CHIFFRE_AFFAIRES_APRES permettant de calculer le
+chiffre d affaires de chaque pays durant la période considérée.
+=====================================================================
+
+
+View CHIFFRE_AFFAIRES_APRES créé(e).
+
+Ecoulé : 00:00:00.027
+
+
+=====================================================================
+Creation de procedure MOYENNE_PRIX_ART permettant de calculer le prix
+moyen d achat et de vente, et la quantité moyenne en stock de chaque
+article. Et ensuite de calculer le chiffre d affaires avant et pendant
+une période considérée. Tout cela pour savoir si les mouvements
+effectués, durant une période considérée, sur la table ARTICLES2 ont
+apporté plus ou moins d argent.
+=====================================================================
+
+
+Elément Procedure MOYENNE_PRIX_ART compilé
+
+Erreurs : consulter le journal du compilateur
+Ecoulé : 00:00:00.161
+
+
+=====================================================================
+Execution de procedure
+=====================================================================
+
+
+Erreur commençant à la ligne: 1 248 de la commande -
+BEGIN MOYENNE_PRIX_ART; END;
+Rapport d'erreur -
+ORA-06550: line 1, column 7:
+PLS-00905: object SYSTEM.MOYENNE_PRIX_ART is invalid
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+06550. 00000 -  "line %s, column %s:\n%s"
+*Cause:    Usually a PL/SQL compilation error.
+*Action:
+Ecoulé : 00:00:00.024
+
+
+=====================================================================
+Visualisation des tables COMPARAISON_ART et
+COMPARAISON_CHIFFRE_AFFAIRE
+=====================================================================
+
+aucune ligne sélectionnée
+Ecoulé : 00:00:00.014

@@ -440,7 +440,7 @@ INSERT INTO CLIENTS2 (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, C
 VALUES ('C011', 'Monsieur', 'PREMIER', 'JOSEPH', 2, '77', 'RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE','josef@premier', '+33777889977');
 
 INSERT INTO CLIENTS2 (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
-VALUES ('C012', 'Monsieur', 'CLEMENT', 'ADAM', 2, '13', 'AVENUE JEAN BAPTISTE CLEMENT', '9430', 'VILLETANEUSE', 'FRANCE','adam.clement@gmail.com', '+33149404072');
+VALUES ('C012', 'Monsieur', 'CLEMENT', 'ADAM', 2, '13', 'AVENUE JEAN BAPTISTE CLEMENT', '93430', 'VILLETANEUSE', 'FRANCE','adam.clement@gmail.com', '+33149404072');
 
 INSERT INTO CLIENTS2 (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
 VALUES ('C013', 'Monsieur', 'FORT', 'GABRIEL', 5, '1', 'AVENUE DE CARTAGE', '99000', 'TUNIS', 'TUNISIE','gabriel.fort@yahoo.fr', '+21624801777');
@@ -945,8 +945,7 @@ PROMPT =====================================================================
 PROMPT
 TTITLE CENTER 'Visualisation de la table HISTORIQUE_MVTS_ARTICLES' skip 1 -
        LEFT   '=========================================================================' skip 0
-SELECT	*
-FROM	HISTORIQUE_MVTS_ARTICLES;
+
 
 -- __________________________________________________________________________
 -- 
@@ -984,7 +983,6 @@ PROMPT
 TTITLE CENTER 'Visualisation de la table HISTORIQUE_MVTS_ARTICLES' skip 1 -
        LEFT   '=========================================================================' skip 0
 SELECT	*
-FROM	HISTORIQUE_MVTS_ARTICLES;
 
 -- __________________________________________________________________________
 -- 
@@ -1030,8 +1028,7 @@ PROMPT Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 PROMPT =====================================================================
 PROMPT
 TTITLE CENTER 'Visualisation de la table HISTORIQUE_MVTS_ARTICLES' skip 1 -
-       LEFT   '=========================================================================' skip 0
-SELECT	*
+
 FROM	HISTORIQUE_MVTS_ARTICLES;
 
 -- __________________________________________________________________________

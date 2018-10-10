@@ -1,5 +1,4 @@
-alter table MAGASINS_DW2
-add MAILMAG VARCHAR(30);
+alter table MAGASINS_DW2 add MAILMAG VARCHAR(30);
 
 create or replace procedure CREERMAILMAG
 as
@@ -13,3 +12,8 @@ END;
 /
 
 exec CREERMAILMAG;
+
+drop table expression;
+create table expression(nom varchar2(255), regex varchar2(255), PRIMARY key (nom, regex));
+insert into expression values('telephone','^(0|\+33|0033)[1-9][0-9]');
+insert into expression values('mail','^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
