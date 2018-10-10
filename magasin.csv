@@ -1,16 +1,38 @@
-FR01;BB-BE KIND;0142586485;18;AVENUE FOCH;91000;PARIS;FRANCE;PARIS;bbfr01@gmail.com;
-FR02;BB-SAY PLEASE;+33153800796;21;AVENUE D ITALIE;75013;PARIS;FRANCE;PARIS;bbfr02@gmail.com;
-FR03;BB-SAY THANK YOU;0254974410;77;RUE DE LA LIBERTE;13001;MARCHEILLE;FRANCE;MARCHEILLE;bbfr03@gmail.com;
-FR04;BB-WORK HARD;0657985246;8 BIS;BOULEVARD FOCH;93800;EPINAY-SUR-SEINE;FRANCE;EPINAY-SUR-SEINE;bbfr04@gmail.com;
-FR05;BB-ENCOURAGE EACH OTHER;0546874430;55;RUE DU JAPON;94310;ORLY-VILLE;FRANCE;ORLY-VILLE;bbfr05@gmail.com;
-FR06;BB-SAY I M SORRY;0549876546;18;BOULEVARD FOCH;93800;LYON;FRANCE;LYON;bbfr06@gmail.com;
-FR07;BB-LIBERTE EGALITE FRATERNITE;0466468720;6;RUE DE LA ROSIERE;75015;PARIS;FRANCE;PARIS;bbfr07@gmail.com;
-BE01;BB-YES WEEK-END;003257446571;13;RUE DE LA PAIX;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe01@gmail.com;
-BE02;BB-FAMILY RULES;003254987541;5;RUE DE BELLEVILLE;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe02@gmail.com;
-BE03;BB-DO YOUR BEST;0032546713274;16;AVENUE FOCH;99998;ANDERLECK;BELGIQUE;ANDERLECK;bbbe03@gmail.com;
-BE04;BB-FORGIVE OTHERS;003264787542;77;RUE DE LA LIBERTE;99998;ANDERLECK;BELGIQUE;ANDERLECK;bbbe04@gmail.com;
-BE05;BB-SERVICES;0032448746842;134;AVENUE DES LILAS;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe05@gmail.com;
-TN01;BB-AZIZ M@M@;009967687745;1;AVENUE DE CARTAGE;99000;TUNIS;TUNISIE;TUNIS;bbtn01@gmail.com;
-TN02;BB-SALEM ALIK;+21624888222;11;BOULEVARD DU 14 JANUARY 2011;4001;SOUSSE;TUNISIE;SOUSSE;bbtn02@gmail.com;
-IT01;BB-BELLA CIAO;0099241564315;1;AVENUE DE ROME;99001;ROME;ITALIE;ROME;bbit01@gmail.com;
-Ecoulé : 00:00:00.014
+SQL> set lines 200
+SQL> set pages 0
+SP2-0267: pagesize option 0 out of range (2 through 50000)
+SQL> SET heading off
+SQL> set feedback off
+SQL> SELECT
+    trim(NUMMAG || ';' ||
+    trim(NOMMAG)|| ';' ||
+    trim(TELMAG)|| ';' ||
+    ADRNUMMAG   || ';' ||
+    ADRRUEMAG   || ';' ||
+    ADRCPMAG    || ';' ||
+    ADRVILLEMAG || ';' ||
+    ADRPAYSMAG  || ';' ||
+    ADRVILLEMAG || ';' ||
+    MAILMAG || ';')
+FROM MAGASINS;
+
+                                                                        Requete:lesarticlesquisontcommandï¿½spartouslesparisiens                                                                        
+=========================================================================                                                                                                                               
+                                                                                                                                                                                                        
+FR01;BB-BE KIND;0142586485;18;AVENUE FOCH;91000;PARIS;FRANCE;PARIS;bbfr01@gmail.com;                                                                                                                    
+FR02;BB-SAY PLEASE;+33153800796;21;AVENUE D ITALIE;75013;PARIS;FRANCE;PARIS;bbfr02@gmail.com;                                                                                                           
+FR03;BB-SAY THANK YOU;0254974410;77;RUE DE LA LIBERTE;13001;MARCHEILLE;FRANCE;MARCHEILLE;bbfr03@gmail.com;                                                                                              
+FR04;BB-WORK HARD;0657985246;8 BIS;BOULEVARD FOCH;93800;EPINAY-SUR-SEINE;FRANCE;EPINAY-SUR-SEINE;bbfr04@gmail.com;                                                                                      
+FR05;BB-ENCOURAGE EACH OTHER;0546874430;55;RUE DU JAPON;94310;ORLY-VILLE;FRANCE;ORLY-VILLE;bbfr05@gmail.com;                                                                                            
+FR06;BB-SAY I M SORRY;0549876546;18;BOULEVARD FOCH;93800;LYON;FRANCE;LYON;bbfr06@gmail.com;                                                                                                             
+FR07;BB-LIBERTE EGALITE FRATERNITE;0466468720;6;RUE DE LA ROSIERE;75015;PARIS;FRANCE;PARIS;bbfr07@gmail.com;                                                                                            
+BE01;BB-YES WEEK-END;003257446571;13;RUE DE LA PAIX;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe01@gmail.com;                                                                                                
+BE02;BB-FAMILY RULES;003254987541;5;RUE DE BELLEVILLE;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe02@gmail.com;                                                                                              
+BE03;BB-DO YOUR BEST;0032546713274;16;AVENUE FOCH;99998;ANDERLECK;BELGIQUE;ANDERLECK;bbbe03@gmail.com;                                                                                                  
+BE04;BB-FORGIVE OTHERS;003264787542;77;RUE DE LA LIBERTE;99998;ANDERLECK;BELGIQUE;ANDERLECK;bbbe04@gmail.com;                                                                                           
+BE05;BB-SERVICES;0032448746842;134;AVENUE DES LILAS;99999;BRUXELLES;BELGIQUE;BRUXELLES;bbbe05@gmail.com;                                                                                                
+TN01;BB-AZIZ M@M@;009967687745;1;AVENUE DE CARTAGE;99000;TUNIS;TUNISIE;TUNIS;bbtn01@gmail.com;                                                                                                          
+TN02;BB-SALEM ALIK;+21624888222;11;BOULEVARD DU 14 JANUARY 2011;4001;SOUSSE;TUNISIE;SOUSSE;bbtn02@gmail.com;                                                                                            
+IT01;BB-BELLA CIAO;0099241564315;1;AVENUE DE ROME;99001;ROME;ITALIE;ROME;bbit01@gmail.com;                                                                                                              
+Elapsed: 00:00:00.018
+SQL> spool off
