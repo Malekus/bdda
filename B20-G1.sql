@@ -208,6 +208,7 @@ PROMPT =========================================================
 PROMPT >> Table : COMMANDES
 PROMPT =========================================================
 PROMPT
+alter session set nls_date_language = 'english';
 CREATE TABLE COMMANDES
 (
 	NUMCOM 		VARCHAR2(10), 
@@ -1358,13 +1359,16 @@ CREATE TABLE REGULAREXPRES
 CATEGORY 								VARCHAR2(20), 
 REGULAREXPR 							VARCHAR2(200),
 CONSTRAINT PK_REGULAREXPRES				PRIMARY KEY(CATEGORY),
-CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY)
+CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY))
 );
+
+;
+
 
 -- Des catégories sémantiques de données définies avec des expressions régulières
 -- Le nombre de valeurs clés est infini
 INSERT INTO REGULAREXPRES VALUES
-('MAIL', 'son expression');
+('MAIL', '^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
 INSERT INTO REGULAREXPRES VALUES
 ('TELFR-I', 'son expression');
 INSERT INTO REGULAREXPRES VALUES
@@ -1383,12 +1387,13 @@ INSERT INTO REGULAREXPRES VALUES
 INSERT INTO REGULAREXPRES VALUES
 ('DATEAM', 'son expression');
 INSERT INTO REGULAREXPRES VALUES
-('ALPHABETIQUE', 'son expression');
+('ALPHABETIQUE', '[[:alpha:]]');
 INSERT INTO REGULAREXPRES VALUES
 ('NUMERIQUE', 'son expression');
 INSERT INTO REGULAREXPRES VALUES
 ('TEMPERATURECF', 'son expression');
 
+select 
 -- Des catégories sémantiques de données définies avec des expressions régulières
 -- Le nombre de valeurs (ou mots) clés est fini
 -- La civilité (CIVILITY) est définie par exemple par : 
@@ -1397,7 +1402,23 @@ Madame, MADAME, MAdame, Mme, MME... Mademoiselle, MADEMOISELLE, MADEMoiselle, Ml
 Madam, MADAM, MaDAm, Mrs, MRS, Miss, MISS...
 Monsieur, MONSIEUR, M., ...
 Sir, SIR, Mr., M.,...
+
 */
+
+Delete from REGULAREXPRES where category = 'CIVILITE';
+
+INSERT INTO REGULAREXPRES VALUES ('CIVILITE', '[Madame | Monsieur | Mademoiselle]');
+
+select civcli from clients where REGEXP_LIKE (civcli, (select REGULAREXPR from REGULAREXPRES where category = 'CIVILITE'));
+
+select * from clients;
+
+desc clients;
+
+select * from commandes;
+
+
+
 -- Le sexe (SEX) est défini par exemple par : 
 /*
 Femme, FEMME, Femelle, F
@@ -1405,11 +1426,18 @@ Woman, Wife, Female, F
 Homme, HOMME, Male, MALe, M, H
 MAN, Man, Male, MALe, M
 */
+
+INSERT INTO REGULAREXPRES VALUES ('SEXF', '^[fF]{1}[eE]{1}[mM]{2}[eE]{1}$|^[fF]{1}$|^[Ff]{1}[eE]{1}[mM]{1}[[eE]|[aA]]{1}$|^([Ff]{1}[eE]{1}[mM]{1})([eE]{1}[lL]{2}[eE]{1}|[aA]{1}[lL]{1}[eE]{1})$');
+INSERT INTO REGULAREXPRES VALUES ('SEXH', '^$');
+
+select * from REGULAREXPRES where category ='SEXF';
 -- Le groupe sanguin (BLOODGROUP) est définie par les seules valeurs MAJUSCULES 
 -- fondées sur les systèmes ABO et Rhésus : 
 /*
 A+, A-, B+, B-, AB+, AB-, O+ et O-
 */
+
+INSERT INTO REGULAREXPRES VALUES ('BLOODGROUP', '^(A|B|O|AB)(\+|\-)$');
 
 COMMIT;
 
@@ -1720,7 +1748,7 @@ PROMPT
 --====================================================================================
 --====================================================================================
 --==================== Modification de la structure des données ======================
---========================== Diagnostiquer les anomalies =============================
+--========================== Diagnostiquer les anomalies =========x====================
 --====================================================================================
 --====================================================================================
 -- Ajoutez 4 colonnes à la table CLIENTS afin de diagnostiquer les éventuelles anomalies

@@ -20,17 +20,37 @@ Destruction des tables de la bd GESCOMI EN SQL 2
 =========================================================
 
 
-Table DETAILCOM2 supprimé(e).
+Erreur commençant à la ligne: 166 de la commande -
+DROP TABLE DETAILCOM2
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
 
+Erreur commençant à la ligne: 167 de la commande -
+DROP TABLE ARTICLES2
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
 
-Table ARTICLES2 supprimé(e).
+Erreur commençant à la ligne: 168 de la commande -
+DROP TABLE COMMANDES2
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
 
-
-Table COMMANDES2 supprimé(e).
-
-
-Table CLIENTS2 supprimé(e).
-
+Erreur commençant à la ligne: 169 de la commande -
+DROP TABLE CLIENTS2
+Rapport d'erreur -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
 
 
 =========================================================
@@ -123,8 +143,44 @@ ORA-04080: trigger 'MOUVEMENTS_ARTICLES2' does not exist
 *Cause:    The TRIGGER name is invalid.
 *Action:   Check the trigger name.
 
-Elément Trigger MOUVEMENTS_ARTICLES2 compilé
+Erreur commençant à la ligne: 322 de la commande -
+CREATE OR REPLACE TRIGGER MOUVEMENTS_ARTICLES2
+	AFTER UPDATE OR INSERT OR DELETE ON ARTICLES2
+	FOR EACH ROW
+DECLARE
+	V_REFART	VARCHAR2(10)	:= :OLD.REFART;
+	V_NOMART	VARCHAR2(50)	:= :OLD.NOMART;
+	V_PVART		NUMBER(10, 2)	:= :OLD.PVART;
+	V_PAART		NUMBER(10, 2)	:= :OLD.PAART;
+	V_QSART		NUMBER(3)	:= :OLD.QSART;
 
+	VI_REFART	VARCHAR2(10)	:= :NEW.REFART;
+	VI_NOMART	VARCHAR2(50)	:= :NEW.NOMART;
+	VI_PVART	NUMBER(10, 2)	:= :NEW.PVART;
+	VI_PAART	NUMBER(10, 2)	:= :NEW.PAART;
+	VI_QSART	NUMBER(3)	:= :NEW.QSART;
+
+BEGIN
+	IF UPDATING THEN
+		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
+		VALUES (USER, 'UPDATE', V_REFART, V_NOMART, V_PVART, V_PAART, V_QSART, SYSDATE);
+	END IF;
+
+	IF DELETING THEN 
+		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
+		VALUES (USER, 'DELETE', V_REFART, V_NOMART, V_PVART, V_PAART, V_QSART, SYSDATE);
+	END IF;
+
+	IF INSERTING THEN 
+		INSERT INTO HISTORIQUE_MVTS_ARTICLES (NOMUSER, TYPEMVT, REFART, NOMART, PVART, PAART, QSART, DATMVT)
+		VALUES (USER, 'INSERT', VI_REFART, VI_NOMART, VI_PVART, VI_PAART, VI_QSART, SYSDATE);
+	END IF;
+END;
+Rapport d'erreur -
+ORA-04089: cannot create triggers on objects owned by SYS
+04089. 00000 -  "cannot create triggers on objects owned by SYS"
+*Cause:    An attempt was made to create a trigger on an object owned by SYS.
+*Action:   Do not create triggers on objects owned by SYS.
 
 =====================================================================
 Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
@@ -183,82 +239,186 @@ Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
 =========================================================
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 460 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20001AB', 'C012', 'DIMANCHE 17-SEPTEMBRE-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 463 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20002AB', 'C001', 'DIMANCHE 17-SEPTEMBRE-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 466 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20003AB', 'C006', ' LUNDI 16-OCTOBRE-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 469 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20004AB', 'C006', 'MARDI 24-OCTOBRE-2000')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 472 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20011RB', 'C012', 'LUNDI 22-JANVIER-2001')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 475 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20012RB', 'C012', 'MARDI 13-MARS-2001')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 478 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20031FB', 'C001', 'VENDREDI 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 481 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20051FB', 'C003', 'VENDREDI 07-JANVIER-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 484 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20052FB', 'C003', 'MERCREDI 12-JANVIER-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 487 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20053FB', 'C012', 'JEUDI 10-MARS-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 490 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20054FB', 'C007', 'LUNDI 14-MARS-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 493 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20055FB', 'C012', 'VENDREDI 11-MARS-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 496 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20056FB', 'C013', 'LUNDI 14-MARS-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 499 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20057FB', 'C014', 'VENDREDI 11-MARS-2005')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 502 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20061FB', 'C010', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 505 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20062FB', 'C009', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 508 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20065FB', 'C007', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 511 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20066FB', 'C002', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 514 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20067FB', 'C002', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 517 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20068FB', 'C002', 'vendredi 14-février-2003')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 520 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20069FB', 'C002', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 523 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20070FB', 'C002', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 526 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20071FB', 'C013', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 529 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20072FB', 'C013', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 532 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20073FB', 'C014', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 535 de la commande -
+INSERT INTO COMMANDES2 (NUMCOM, CODCLI, DATCOM)
+VALUES ('20074FB', 'C014', 'MARDI 30-JANVIER-2007')
+Rapport d'erreur -
+ORA-01846: not a valid day of the week
 
 
 
@@ -363,142 +523,326 @@ Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
 =========================================================
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 644 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.001', 2, 35.00, 2.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 647 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.003', 4, 10.71, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 650 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'F1.013', 2, 49.14, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 653 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20001AB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 656 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'F1.001', 2, 33.00, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 659 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 662 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.002', 1, 34.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 665 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20002AB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 668 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'FB.001', 5, 21.00, 4.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 671 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'WD.002', 1, 34.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 674 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20003AB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 677 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20004AB', 'F1.008', 2, 3.29, 3.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 680 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20004AB', 'WD.001', 1, 21.29, 2.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 683 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'F1.007', 5, 5.00, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 686 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'F1.009', 1, 37.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 689 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20012RB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 692 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'F1.008', 2, 3.29, 3.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 695 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 698 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20031FB', 'FB.001', 5, 21.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 701 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20051FB', 'F1.008', 2, 3.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 704 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20051FB', 'FB.001', 5, 21.00, 4.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 707 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.001', 2, 35.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 710 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.003', 4, 10.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 713 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'F1.013', 2, 49.14, 3.50)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 716 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'WD.001', 1, 21.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 719 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20052FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 722 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20053FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 725 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20054FB', 'WD.003', 1, 22.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 728 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.008', 5, 3.29, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 731 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.009', 1, 37.86, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 734 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F1.011', 2, 80.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 737 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20055FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 742 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20056FB', 'F1.011', 2, 80.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 745 de la commande -
+INSERT INTO DETAILCOM2 (NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20057FB', 'F2.001', 1, 30.71, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 750 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20061FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 753 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20062FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 756 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20065FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 759 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20066FB', 'FB.003', 5, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 764 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20067FB', 'FB.001', 22, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 767 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20068FB', 'FB.001', 22, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 772 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20069FB', 'FB.001', 25, 58.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 775 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20070FB', 'FB.001', 50, 24.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 778 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20071FB', 'FB.001', 37, 27.90, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 781 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20072FB', 'FB.001', 8, 34.00, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 784 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20073FB', 'FB.001', 35, 15.50, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 
-1 ligne inséré.
+Erreur commençant à la ligne: 787 de la commande -
+INSERT INTO DETAILCOM2(NUMCOM, REFART, QTCOM, PUART, REMISE)
+VALUES ('20074FB', 'FB.001', 12, 19.99, 0.00)
+Rapport d'erreur -
+ORA-02291: integrity constraint (SYS.FK_DETAIL2_NUMCOM_COM2) violated - parent key not found
 
 =========================================================
 Validation des insertions dans la bd EN SQL 2
@@ -552,7 +896,7 @@ C010   Monsieur TRAIFOR  ALEXANDR      1 16     AVENUE FOC 75016 PARIS  FRA     
 C011   Monsieur PREMIER  JOSEPH        2 77     RUE DE LA  13001 MARSEI FRANCE  josef@prem +337778899
                                                 LIBERTE          LLE            ier        77        
 
-C012   Monsieur CLEMENT  ADAM          2 13     AVENUE JEA 9430  VILLET FRANCE  adam.cleme +331494040
+C012   Monsieur CLEMENT  ADAM          2 13     AVENUE JEA 93430 VILLET FRANCE  adam.cleme +331494040
                                                 N BAPTISTE       ANEUSE         nt@gmail.c 72        
                                                  CLEMENT                        om                   
 
@@ -567,42 +911,11 @@ C014   Monsieur ADAM     DAVID         5 1      AVENUE DE  99001 ROME   ITALIE  
 
 14 lignes sélectionnées. 
 
-Ecoulé : 00:00:00.144
+Ecoulé : 00:00:00.060
 
 
-
-NUMCOM     CODCLI DATCOM                      
----------- ------ ----------------------------
-20001AB    C012   DIMANCHE 17-SEPTEMBRE-2000  
-20002AB    C001   DIMANCHE 17-SEPTEMBRE-2000  
-20003AB    C006   LUNDI    16-OCTOBRE  -2000  
-20004AB    C006   MARDI    24-OCTOBRE  -2000  
-20011RB    C012   LUNDI    22-JANVIER  -2001  
-20012RB    C012   MARDI    13-MARS     -2001  
-20031FB    C001   VENDREDI 14-FÉVRIER  -2003  
-20051FB    C003   VENDREDI 07-JANVIER  -2005  
-20052FB    C003   MERCREDI 12-JANVIER  -2005  
-20053FB    C012   JEUDI    10-MARS     -2005  
-20054FB    C007   LUNDI    14-MARS     -2005  
-20055FB    C012   VENDREDI 11-MARS     -2005  
-20056FB    C013   LUNDI    14-MARS     -2005  
-20057FB    C014   VENDREDI 11-MARS     -2005  
-20061FB    C010   VENDREDI 14-FÉVRIER  -2003  
-20062FB    C009   VENDREDI 14-FÉVRIER  -2003  
-20065FB    C007   VENDREDI 14-FÉVRIER  -2003  
-20066FB    C002   VENDREDI 14-FÉVRIER  -2003  
-20067FB    C002   VENDREDI 14-FÉVRIER  -2003  
-20068FB    C002   VENDREDI 14-FÉVRIER  -2003  
-20069FB    C002   MARDI    30-JANVIER  -2007  
-20070FB    C002   MARDI    30-JANVIER  -2007  
-20071FB    C013   MARDI    30-JANVIER  -2007  
-20072FB    C013   MARDI    30-JANVIER  -2007  
-20073FB    C014   MARDI    30-JANVIER  -2007  
-20074FB    C014   MARDI    30-JANVIER  -2007  
-
-26 lignes sélectionnées. 
-
-Ecoulé : 00:00:00.123
+aucune ligne sélectionnée
+Ecoulé : 00:00:00.014
 
 
 
@@ -647,62 +960,11 @@ WD.007   K7 VIDEO-LE ROI LION 3      30.00     3   13.00
 
 30 lignes sélectionnées. 
 
-Ecoulé : 00:00:00.069
+Ecoulé : 00:00:00.046
 
 
-
-NUMCOM     REFART   QTCOM   PUART  REMISE
----------- -------- ----- ------- -------
-20001AB    F1.001       2   35.00    2.50
-20001AB    F1.003       4   10.71    3.00
-20001AB    F1.013       2   49.14     .00
-20001AB    WD.001       1   21.29     .00
-20002AB    F1.001       2   33.00    3.00
-20002AB    WD.001       1   21.29     .00
-20002AB    WD.002       1   34.29     .00
-20002AB    WD.003       1   22.86     .00
-20003AB    FB.001       5   21.00    4.00
-20003AB    WD.002       1   34.29     .00
-20003AB    WD.003       1   22.86     .00
-20004AB    F1.008       2    3.29    3.50
-20004AB    WD.001       1   21.29    2.50
-20012RB    F1.007       5    5.00    3.00
-20012RB    F1.009       1   37.86     .00
-20012RB    FB.003       5   24.00     .00
-20031FB    F1.008       2    3.29    3.00
-20031FB    F2.001       1   30.71     .00
-20031FB    FB.001       5   21.00     .00
-20051FB    F1.008       2    3.29     .00
-20051FB    FB.001       5   21.00    4.00
-20052FB    F1.001       2   35.00     .00
-20052FB    F1.003       4   10.71     .00
-20052FB    F1.013       2   49.14    3.50
-20052FB    WD.001       1   21.29     .00
-20052FB    WD.003       1   22.86     .00
-20053FB    WD.003       1   22.86     .00
-20054FB    WD.003       1   22.86     .00
-20055FB    F1.008       5    3.29     .00
-20055FB    F1.009       1   37.86     .00
-20055FB    F1.011       2   80.71     .00
-20055FB    F2.001       1   30.71     .00
-20056FB    F1.011       2   80.71     .00
-20057FB    F2.001       1   30.71     .00
-20061FB    FB.003       5   24.00     .00
-20062FB    FB.003       5   24.00     .00
-20065FB    FB.003       5   24.00     .00
-20066FB    FB.003       5   24.00     .00
-20067FB    FB.001      22   24.00     .00
-20068FB    FB.001      22   24.00     .00
-20069FB    FB.001      25   58.00     .00
-20070FB    FB.001      50   24.00     .00
-20071FB    FB.001      37   27.90     .00
-20072FB    FB.001       8   34.00     .00
-20073FB    FB.001      35   15.50     .00
-20074FB    FB.001      12   19.99     .00
-
-46 lignes sélectionnées. 
-
-Ecoulé : 00:00:00.077
+aucune ligne sélectionnée
+Ecoulé : 00:00:00.012
 
 
 
@@ -722,7 +984,7 @@ Suppression et Insertion dans la table articles2 (par user-X par exemple)
 
 0 lignes supprimé.
 
-Ecoulé : 00:00:00.013
+Ecoulé : 00:00:00.010
 
 1 ligne inséré.
 
@@ -739,114 +1001,6 @@ Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 =====================================================================
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
------------- ------ ------ ----------- ------- ------- ----- -------------------
-SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
-                           BLE                                 -2018            
-
-SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
-                           ISTE PROTEC                         -2018            
-                           TION                                                 
-
-SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
-                           -CHOCS                              -2018            
-
-SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
-
-SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
-
-SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
-                            DE COURANT                         -2018            
-
-SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
-                           E                                   -2018            
-
-SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
-                           RMETURE                             -2018            
-
-SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
-                           DE FOUR                             -2018            
-
-SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
-                           DE CUISINIE                         -2018            
-                           RE                                                   
-
-SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
-                            SECURITE                           -2018            
-
-SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
-                           SE                                  -2018            
-
-SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
-                           NETTERIE                            -2018            
-
-SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           BOIS                                                 
-
-SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           METAL                                                
-
-SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
-                            LIT                                -2018            
-
-SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
-                           COSMOS                              -2018            
-
-SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
-                           EUROSEAT                            -2018            
-
-SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN                                 -2018            
-
-SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN 2                               -2018            
-
-SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
-                           Y STORY                             -2018            
-
-SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
-                           RY 2                                -2018            
-
-SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
-                           NNIE L OURS                         -2018            
-                           ON                                                   
-
-SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
-                           DES OURS                            -2018            
-
-SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
-                            ROI LION                           -2018            
-
-SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
-                            ROI LION 2                         -2018            
-
-SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
-                            ROI LION 3                         -2018            
-
-SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
-                           DVD BIS                             -2018            
-
-
-31 lignes sélectionnées. 
-
-Ecoulé : 00:00:01.010
-
 
 =====================================================================
 Suppression et insertion dans la table articles2.
@@ -855,294 +1009,80 @@ Suppression et insertion dans la table articles2.
 
 1 ligne supprimé.
 
-Ecoulé : 00:00:00.048
+Ecoulé : 00:00:00.015
 
 1 ligne inséré.
 
-Ecoulé : 00:00:00.007
+Ecoulé : 00:00:00.005
 
 1 ligne inséré.
 
 Ecoulé : 00:00:00.006
 Validation (commit) terminée.
-Ecoulé : 00:00:00.005
+Ecoulé : 00:00:00.002
 =====================================================================
 Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 =====================================================================
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
------------- ------ ------ ----------- ------- ------- ----- -------------------
-SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
-                           BLE                                 -2018            
+Erreur commençant à la ligne: 985 de la commande -
+SELECT	*
 
-SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
-                           ISTE PROTEC                         -2018            
-                           TION                                                 
+-- __________________________________________________________________________
+-- 
+-- Résultat généré:
+--
+--      Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+-- =========================================================================
+-- __________________________________________________________________________
 
-SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
-                           -CHOCS                              -2018            
+PROMPT
+pause Tapez sur Enter...
+PROMPT
 
-SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
+PROMPT 
+PROMPT =====================================================================
+PROMPT |                                                                   |
+PROMPT |      Historique des mouvements des articles                       |
+PROMPT |                                                                   |
+PROMPT =====================================================================
+PROMPT
+PROMPT
 
-SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
+PROMPT =====================================================================
+PROMPT Mise à jour dans la table articles2 pour effectuer les tests.
+PROMPT =====================================================================
+PROMPT
+UPDATE	ARTICLES2
+SET	PVART = 35.00, PAART = 10.90, QSART = 12
+WHERE	REFART = 'WD.012'
+Erreur à la ligne de commande: 995 Colonne: 5
+Rapport d'erreur -
+Erreur SQL : ORA-00923: FROM keyword not found where expected
+00923. 00000 -  "FROM keyword not found where expected"
+*Cause:    
+*Action:
+Ecoulé : 00:00:00.023
 
-SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
-                            DE COURANT                         -2018            
+1 ligne mis à jour.
 
-SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
-                           E                                   -2018            
+Ecoulé : 00:00:00.006
 
-SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
-                           RMETURE                             -2018            
+1 ligne mis à jour.
 
-SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
-                           DE FOUR                             -2018            
-
-SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
-                           DE CUISINIE                         -2018            
-                           RE                                                   
-
-SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
-                            SECURITE                           -2018            
-
-SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
-                           SE                                  -2018            
-
-SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
-                           NETTERIE                            -2018            
-
-SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           BOIS                                                 
-
-SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           METAL                                                
-
-SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
-                            LIT                                -2018            
-
-SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
-                           COSMOS                              -2018            
-
-SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
-                           EUROSEAT                            -2018            
-
-SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN                                 -2018            
-
-SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN 2                               -2018            
-
-SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
-                           Y STORY                             -2018            
-
-SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
-                           RY 2                                -2018            
-
-SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
-                           NNIE L OURS                         -2018            
-                           ON                                                   
-
-SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
-                           DES OURS                            -2018            
-
-SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
-                            ROI LION                           -2018            
-
-SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
-                            ROI LION 2                         -2018            
-
-SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
-                            ROI LION 3                         -2018            
-
-SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
-                           DVD BIS                             -2018            
-
-SYSTEM       DELETE WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
-                           DVD BIS                             -2018            
-
-SYSTEM       INSERT WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
-                           a jungle 1                          -2018            
-
-SYSTEM       INSERT WD.023 le roi de l   39.99   21.00     5 MARDI    09-OCTOBRE
-                           a jungle 2                          -2018            
-
-
-34 lignes sélectionnées. 
-
-Ecoulé : 00:00:00.827
-
-
-
+Ecoulé : 00:00:00.006
+Validation (commit) terminée.
+Ecoulé : 00:00:00.002
 =====================================================================
-|                                                                   |
-|      Historique des mouvements des articles                       |
-|                                                                   |
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
 =====================================================================
 
 
-=====================================================================
-Mise à jour dans la table articles2 pour effectuer les tests.
-=====================================================================
-
-Erreur commençant à la ligne: 1 013 de la commande -
-PROE	REFART = 'WD.012'
+Erreur commençant à la ligne: 1 032 de la commande -
+FROM	HISTORIQUE_MVTS_ARTICLES
 Rapport d'erreur -
 Commande inconnue
 
-
-1 ligne mis à jour.
-
-Ecoulé : 00:00:00.014
-
-1 ligne mis à jour.
-
-Ecoulé : 00:00:00.008
-Validation (commit) terminée.
-Ecoulé : 00:00:00.003
-=====================================================================
-Visualisation de la table HISTORIQUE_MVTS_ARTICLES
-=====================================================================
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Visualisation de la table HISTORIQUE_MVTS_ARTICLES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-NOMUSER      TYPEMV REFART NOMART        PVART   PAART QSART DATMVT             
------------- ------ ------ ----------- ------- ------- ----- -------------------
-SYSTEM       INSERT F1.001 SIEGE DE TA   35.00   26.43    10 MARDI    09-OCTOBRE
-                           BLE                                 -2018            
-
-SYSTEM       INSERT F1.002 CASQUE CYCL   27.00   20.00    20 MARDI    09-OCTOBRE
-                           ISTE PROTEC                         -2018            
-                           TION                                                 
-
-SYSTEM       INSERT F1.003 BONNET PARE   10.71    5.71   100 MARDI    09-OCTOBRE
-                           -CHOCS                              -2018            
-
-SYSTEM       INSERT F1.004 STORE DE PR    7.43    4.29     5 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
-
-SYSTEM       INSERT F1.005 COINS DE PR    4.00    1.71   100 MARDI    09-OCTOBRE
-                           OTECTION                            -2018            
-
-SYSTEM       INSERT F1.006 CACHE PRISE    2.29     .71   500 MARDI    09-OCTOBRE
-                            DE COURANT                         -2018            
-
-SYSTEM       INSERT F1.007 BLOQUE PORT    5.00    2.29     4 MARDI    09-OCTOBRE
-                           E                                   -2018            
-
-SYSTEM       INSERT F1.008 BANDE DE FE    3.29    1.71     4 MARDI    09-OCTOBRE
-                           RMETURE                             -2018            
-
-SYSTEM       INSERT F1.009 PROTECTION    37.86   26.43    10 MARDI    09-OCTOBRE
-                           DE FOUR                             -2018            
-
-SYSTEM       INSERT F1.010 PROTECTION    30.71   22.86    10 MARDI    09-OCTOBRE
-                           DE CUISINIE                         -2018            
-                           RE                                                   
-
-SYSTEM       INSERT F1.011 BABY PHONE    80.71   45.71     3 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F1.012 BRETELLE DE   15.57   11.43     8 MARDI    09-OCTOBRE
-                            SECURITE                           -2018            
-
-SYSTEM       INSERT F1.013 HAUSSE-CHAI   42.71   25.43     1 MARDI    09-OCTOBRE
-                           SE                                  -2018            
-
-SYSTEM       INSERT F1.014 COUVRE ROBI    7.86    4.29    12 MARDI    09-OCTOBRE
-                           NETTERIE                            -2018            
-
-SYSTEM       INSERT F2.001 BARRIERE DE   32.71   25.71     2 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           BOIS                                                 
-
-SYSTEM       INSERT F2.002 BARRIERE DE   49.14   28.43     3 MARDI    09-OCTOBRE
-                            PORTE, EN                          -2018            
-                           METAL                                                
-
-SYSTEM       INSERT F2.003 BARRIERE DE   23.71   15.71    10 MARDI    09-OCTOBRE
-                            LIT                                -2018            
-
-SYSTEM       INSERT F2.004 PORTE-BEBE    44.86   34.29     6 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT F2.005 SIEGE-AUTO   126.86   71.43     2 MARDI    09-OCTOBRE
-                           COSMOS                              -2018            
-
-SYSTEM       INSERT F2.006 SIEGE-AUTO   121.29   71.43     2 MARDI    09-OCTOBRE
-                           EUROSEAT                            -2018            
-
-SYSTEM       INSERT FB.001 DVD-SPIRIT    24.90   12.00     2 MARDI    09-OCTOBRE
-                                                               -2018            
-
-SYSTEM       INSERT FB.002 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN                                 -2018            
-
-SYSTEM       INSERT FB.003 DVD-SPIDER    24.90   12.00     2 MARDI    09-OCTOBRE
-                           MAN 2                               -2018            
-
-SYSTEM       INSERT WD.001 K7 VIDEO-TO   21.29    9.29    10 MARDI    09-OCTOBRE
-                           Y STORY                             -2018            
-
-SYSTEM       INSERT WD.002 DVD-TOY STO   34.29   12.14    10 MARDI    09-OCTOBRE
-                           RY 2                                -2018            
-
-SYSTEM       INSERT WD.003 K7 VIDEO-WI   22.86    9.29     5 MARDI    09-OCTOBRE
-                           NNIE L OURS                         -2018            
-                           ON                                                   
-
-SYSTEM       INSERT WD.004 DVD-FRERES    35.00   13.00     3 MARDI    09-OCTOBRE
-                           DES OURS                            -2018            
-
-SYSTEM       INSERT WD.005 K7 VIDEO-LE   30.00   13.00     1 MARDI    09-OCTOBRE
-                            ROI LION                           -2018            
-
-SYSTEM       INSERT WD.006 K7 VIDEO-LE   30.00   13.00     4 MARDI    09-OCTOBRE
-                            ROI LION 2                         -2018            
-
-SYSTEM       INSERT WD.007 K7 VIDEO-LE   30.00   13.00     3 MARDI    09-OCTOBRE
-                            ROI LION 3                         -2018            
-
-SYSTEM       INSERT WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
-                           DVD BIS                             -2018            
-
-SYSTEM       DELETE WD.012 Exemple de    25.00   10.00     5 MARDI    09-OCTOBRE
-                           DVD BIS                             -2018            
-
-SYSTEM       INSERT WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
-                           a jungle 1                          -2018            
-
-SYSTEM       INSERT WD.023 le roi de l   39.99   21.00     5 MARDI    09-OCTOBRE
-                           a jungle 2                          -2018            
-
-SYSTEM       UPDATE WD.012 le roi de l   29.99   13.00     5 MARDI    09-OCTOBRE
-                           a jungle 1                          -2018            
-
-SYSTEM       UPDATE WD.012 le roi de l   50.00   25.00    10 MARDI    09-OCTOBRE
-                           a jungle 1                          -2018            
-
-
-36 lignes sélectionnées. 
-
-Ecoulé : 00:00:01.044
 =====================================================================
 Suppression et creation de la table comparaison_art
 Cette table va permettre de stocker les mouvements dans
@@ -1163,7 +1103,7 @@ Ecoulé : 00:00:00.019
 
 Table COMPARAISON_ART créé(e).
 
-Ecoulé : 00:00:00.025
+Ecoulé : 00:00:00.020
 
 
 =====================================================================
@@ -1188,7 +1128,7 @@ Ecoulé : 00:00:00.018
 
 Table COMPARAISON_CHIFFRE_AFFAIRE créé(e).
 
-Ecoulé : 00:00:00.030
+Ecoulé : 00:00:00.021
 
 
 =====================================================================
@@ -1200,7 +1140,7 @@ et sa quantité en stock moyen.
 
 View VUE_ART créé(e).
 
-Ecoulé : 00:00:00.033
+Ecoulé : 00:00:00.027
 
 
 =====================================================================
@@ -1212,7 +1152,7 @@ prix d achat moyen et sa quantité en stock moyen.
 
 View VUE_MVTS_ART créé(e).
 
-Ecoulé : 00:00:00.040
+Ecoulé : 00:00:00.015
 
 
 =====================================================================
@@ -1223,7 +1163,7 @@ chiffre d affaires de chaque pays avant une période considérée.
 
 View CHIFFRE_AFFAIRES_AVANT créé(e).
 
-Ecoulé : 00:00:00.021
+Ecoulé : 00:00:00.025
 
 
 =====================================================================
@@ -1234,7 +1174,7 @@ chiffre d affaires de chaque pays durant la période considérée.
 
 View CHIFFRE_AFFAIRES_APRES créé(e).
 
-Ecoulé : 00:00:00.027
+Ecoulé : 00:00:00.018
 
 
 =====================================================================
@@ -1250,7 +1190,7 @@ apporté plus ou moins d argent.
 Elément Procedure MOYENNE_PRIX_ART compilé
 
 Erreurs : consulter le journal du compilateur
-Ecoulé : 00:00:00.161
+Ecoulé : 00:00:00.180
 
 
 =====================================================================
@@ -1262,13 +1202,13 @@ Erreur commençant à la ligne: 1 248 de la commande -
 BEGIN MOYENNE_PRIX_ART; END;
 Rapport d'erreur -
 ORA-06550: line 1, column 7:
-PLS-00905: object SYSTEM.MOYENNE_PRIX_ART is invalid
+PLS-00905: object SYS.MOYENNE_PRIX_ART is invalid
 ORA-06550: line 1, column 7:
 PL/SQL: Statement ignored
 06550. 00000 -  "line %s, column %s:\n%s"
 *Cause:    Usually a PL/SQL compilation error.
 *Action:
-Ecoulé : 00:00:00.024
+Ecoulé : 00:00:00.101
 
 
 =====================================================================
@@ -1277,4 +1217,44 @@ COMPARAISON_CHIFFRE_AFFAIRE
 =====================================================================
 
 aucune ligne sélectionnée
+Ecoulé : 00:00:00.013
+
+
+aucune ligne sélectionnée
 Ecoulé : 00:00:00.014
+=====================================================================
+>> Requete : Procedure PL/SQL => vérification cohérence de la BD
+=====================================================================
+
+=====================================================================
+Suppression et création de la procédure COHERENCE_BD
+=====================================================================
+
+
+Procedure COHERENCE_BD supprimé(e).
+
+Ecoulé : 00:00:00.082
+
+Elément Procedure COHERENCE_BD compilé
+
+Ecoulé : 00:00:00.039
+
+
+=====================================================================
+Execution de la procédure COHERENCE_BD
+=====================================================================
+
+Le(s) numéro(s) de commande vide(s) sont :
+
+
+Procédure PL/SQL terminée.
+
+Ecoulé : 00:00:00.012
+
+
+=====================================================================
+>> Requete  : Articles toujours commandés ensemble
+=====================================================================
+
+Validation (commit) terminée.
+Ecoulé : 00:00:00.005
