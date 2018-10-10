@@ -1217,7 +1217,7 @@ PROMPT
 --====================================================================================
 -- Modifiez la structure de la table MAGASINS
 -- Ajoutez la colonne MAILMAG de type VARCHAR(30)
-alter table MAGASINS add MAILMAG VARCHAR(30);
+ALTER TABLE MAGASINS ADD MAILMAG VARCHAR(30);
 -- Développez une procédure CREERMAILMAG qui permet d Insérer les nouvelles données dans cette colonne
 -- Le mail d un magasin (en minuscule) est composé de : 'bb' + NUMMAG + '@gmail.com'
 
@@ -1231,6 +1231,8 @@ BEGIN
     END LOOP;
 END;
 /
+
+exec CREERMAILMAG;
 
 PROMPT =====================================================================
 PROMPT Affichage des magasins de  l entreprise BB EN SQL 2 
@@ -1259,20 +1261,24 @@ PROMPT
 -- MFB FFF ++++++++ Déchargement des données des magasins dans un fichier au format CSV
 -- MFB FFF ++++++++ Le séparateur est ;
 --======================================================================================
-
+spool magasin.csv
+set lines 200
+set pages 0
+SET heading off
+set feedback off
 SELECT 
-NUMMAG      || ';' ||
-NOMMAG      || ';' ||
-TELMAG      || ';' ||
-ADRNUMMAG   || ';' ||
-ADRRUEMAG   || ';' ||
-ADRCPMAG    || ';' ||
-ADRVILLEMAG || ';' ||
-ADRPAYSMAG  || ';' ||
-ADRVILLEMAG || ';' ||
-MAILMAG
+    trim(NUMMAG || ';' ||
+    trim(NOMMAG)|| ';' ||
+    trim(TELMAG)|| ';' ||
+    ADRNUMMAG   || ';' ||
+    ADRRUEMAG   || ';' ||
+    ADRCPMAG    || ';' ||
+    ADRVILLEMAG || ';' ||
+    ADRPAYSMAG  || ';' ||
+    ADRVILLEMAG || ';' ||
+    MAILMAG || ';')
 FROM MAGASINS;
-
+spool off;
 --======================================================================================
 --======================================================================================
 --======================================================================================
