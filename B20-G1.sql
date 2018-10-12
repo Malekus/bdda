@@ -1801,7 +1801,71 @@ END;
 
 select prencli from clients where not REGEXP_LIKE(PRENCLI, (select REGULAREXPR from REGULAREXPRES where category = 'NOM'));
 
-exec proc_anomalie;
+exec proc_anomalie();
+
+create or replace procedure anomality(wordCompared IN VARCHAR, wordRegex IN VARCHAR, v_valide IN OUT NUMBER, v_invalide IN OUT NUMBER, v_null IN OUT NUMBER)
+is
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(wordCompared);
+    DBMS_OUTPUT.PUT_LINE(wordRegex);
+    /*
+    DBMS_OUTPUT.PUT_LINE(v_valide);
+    DBMS_OUTPUT.PUT_LINE(v_invalide);
+    DBMS_OUTPUT.PUT_LINE(v_null);
+    */
+END;
+/
+
+DECLARE
+    v_v NUMBER;
+    v_i NUMBER;
+    v_n NUMBER;
+BEGIN
+    exec anomality('toto', 'sqldevr', v_v, v_i, v_n);
+END;
+/
+
+create or replace procedure addAnnomalie(codeClient in VARCHAR)
+is
+    v_Client CLIENTS%ROWTYPE;
+    v_word Varchar(255) := '';
+    v_valide NUMBER := 0;
+    v_invalide NUMBER := 0;
+    v_null NUMBER := 0;
+    v_existe VARCHAR(255) := '';
+BEGIN
+    SELECT * INTO v_Client FROM clients WHERE codCli = codeClient;
+    SELECT regularexpr INTO v_word FROM REGULAREXPRES WHERE category = 'NOM';
+    IF (v_client.prencli is not null) THEN
+        IF REGEXP_LIKE(v_client.prencli, v_word) THEN
+            v_valide := v_valide + 1;
+        ELSE
+            v_invalide := v_invalide + 1;
+        END IF;
+    ELSE
+        v_null := v_null + 1;
+    END IF;
+    
+    SELECT ANOMALIES INTO v_existe from DIAGNOSTICDATA where ANOMALIES = v_client.codcli;
+    
+    IF v_existe is null THEN
+        INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
+    ELSE
+        DELETE FROM DIAGNOSTICDATA WHERE anomalies = v_client.codcli;
+        INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
+    END IF;
+    
+END;
+/
+
+show errors;
+
+exec addAnnomalie('C001');
+
+select * from clients where codCLi = 'C001';
+select * from DIAGNOSTICDATA;
+insert into DIAGNOSTICDATA values('',0,0,0);
+(select regularexpr from REGULAREXPRES where category = 'NOM');
 
 
 
