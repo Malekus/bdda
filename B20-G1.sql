@@ -153,6 +153,7 @@ PROMPT =========================================================
 PROMPT Ceci permet d initialiser le type de la date
 PROMPT =========================================================
 ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
+ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH' ;
 PROMPT =========================================================
 
 -- ===============================================================================
@@ -178,6 +179,7 @@ PROMPT =========================================================
 PROMPT >> Table : CLIENTS
 PROMPT =========================================================
 PROMPT
+
 CREATE TABLE CLIENTS
 (
 	CODCLI		VARCHAR2(10), 
@@ -208,7 +210,7 @@ PROMPT =========================================================
 PROMPT >> Table : COMMANDES
 PROMPT =========================================================
 PROMPT
-alter session set nls_date_language = 'english';
+
 CREATE TABLE COMMANDES
 (
 	NUMCOM 		VARCHAR2(10),
@@ -1354,6 +1356,7 @@ SELECT * FROM CLIINVALIDNAME;
 -- Cr�er une table pour stocker les expressions r�guli�res par cat�gorie s�mantique de donn�es
 --====================================================================================
 --====================================================================================
+DROP TABLE REGULAREXPRES;
 CREATE TABLE REGULAREXPRES
 (
 CATEGORY 								VARCHAR2(20),
@@ -1362,7 +1365,7 @@ CONSTRAINT PK_REGULAREXPRES				PRIMARY KEY(CATEGORY),
 CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY))
 );
 
-;
+
 
 
 -- Des cat�gories s�mantiques de donn�es d�finies avec des expressions r�guli�res
@@ -1803,76 +1806,98 @@ select prencli from clients where not REGEXP_LIKE(PRENCLI, (select REGULAREXPR f
 
 exec proc_anomalie();
 
-create or replace procedure anomality(wordCompared IN VARCHAR, wordRegex IN VARCHAR, v_valide IN OUT NUMBER, v_invalide IN OUT NUMBER, v_null IN OUT NUMBER)
-is
+
+
+DECLARE
+    v_e VARCHAR(500) := '';
+    v_v NUMBER := 0;
+    v_i NUMBER := 0;
+    v_n NUMBER := 0;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE(wordCompared);
-    DBMS_OUTPUT.PUT_LINE(wordRegex);
-    /*
-    DBMS_OUTPUT.PUT_LINE(v_valide);
-    DBMS_OUTPUT.PUT_LINE(v_invalide);
-    DBMS_OUTPUT.PUT_LINE(v_null);
-    */
+    anomality('"', getRegex('nom'), v_e, v_v, v_i, v_n);
+    dbms_output.put_line(v_e);
 END;
 /
 
-DECLARE
-    v_v NUMBER;
-    v_i NUMBER;
-    v_n NUMBER;
+create or replace procedure anomality(
+    wordCompared IN VARCHAR, 
+    wordRegex IN VARCHAR,
+    v_errorIndicator IN OUT VARCHAR,
+    v_valide IN OUT NUMBER,
+    v_invalide IN OUT NUMBER,
+    v_null IN OUT NUMBER)
+is
 BEGIN
-    exec anomality('toto', 'sqldevr', v_v, v_i, v_n);
+    IF wordCompared is null THEN
+        v_null := v_null + 1;
+        v_errorIndicator := v_errorIndicator || 'N';
+    ELSE
+        IF REGEXP_LIKE(wordCompared, wordRegex) THEN
+            v_valide := v_valide + 1;
+            v_errorIndicator := v_errorIndicator || 'T';
+        ELSE
+            v_invalide := v_invalide + 1;
+            v_errorIndicator := v_errorIndicator || 'F';
+        END IF;
+    END IF;
 END;
 /
+
+create or replace function getRegex(categorie VARCHAR)
+    return VARCHAR IS
+    expression VARCHAR(255) := '';
+BEGIN
+  select regularexpr into expression from REGULAREXPRES where category = UPPER(categorie);
+  return expression;
+END;
+/
+
 
 create or replace procedure addAnnomalie(codeClient in VARCHAR)
 is
     v_Client CLIENTS%ROWTYPE;
-    v_word Varchar(255) := '';
+    v_errorIndi Varchar(255) := '';
     v_valide NUMBER := 0;
     v_invalide NUMBER := 0;
     v_null NUMBER := 0;
     v_existe VARCHAR(255) := '';
 BEGIN
     SELECT * INTO v_Client FROM clients WHERE codCli = codeClient;
-    SELECT regularexpr INTO v_word FROM REGULAREXPRES WHERE category = 'NOM';
-    IF (v_client.prencli is not null) THEN
-        IF REGEXP_LIKE(v_client.prencli, v_word) THEN
-            v_valide := v_valide + 1;
-        ELSE
-            v_invalide := v_invalide + 1;
-        END IF;
-    ELSE
-        v_null := v_null + 1;
-    END IF;
     
+    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    DELETE FROM DIAGNOSTICDATA WHERE anomalies = v_errorIndi;
+    INSERT INTO DIAGNOSTICDATA VALUES(v_errorIndi,v_valide, v_invalide, v_null);
+    /*
     SELECT ANOMALIES INTO v_existe from DIAGNOSTICDATA where ANOMALIES = v_client.codcli;
-    
     IF v_existe is null THEN
         INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
     ELSE
         DELETE FROM DIAGNOSTICDATA WHERE anomalies = v_client.codcli;
         INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
     END IF;
+    */
     
 END;
 /
 
-show errors;
-
 exec addAnnomalie('C001');
-
-select * from clients where codCLi = 'C001';
 select * from DIAGNOSTICDATA;
-insert into DIAGNOSTICDATA values('',0,0,0);
-(select regularexpr from REGULAREXPRES where category = 'NOM');
-
 
 
 DROP TABLE DIAGNOCLIENTS;
 CREATE TABLE DIAGNOCLIENTS
 AS SELECT * FROM CLIENTS, DIAGNOSTICDATA;
 SELECT * FROM DIAGNOCLIENTS;
+select * from clients;
 
 -- D�veloppez le m�canisme VERIFYDATACLI qui permet de faire :
 -- Pour chaque ligne de la table
