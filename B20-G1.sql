@@ -1381,9 +1381,9 @@ INSERT INTO REGULAREXPRES VALUES
 INSERT INTO REGULAREXPRES VALUES
 ('TELBE', 'son expression');
 INSERT INTO REGULAREXPRES VALUES
-('TELTN-I', 'son expression');
+('TELTN-I', '');
 INSERT INTO REGULAREXPRES VALUES
-('TELTN', 'son expression');
+('TELTN', '^(0|\+33)(\d){9}$');
 -- et d'autres tï¿½lï¿½phone selon votre pays d origine et plus
 INSERT INTO REGULAREXPRES VALUES
 ('DATEFR', 'son expression');
@@ -1392,44 +1392,36 @@ INSERT INTO REGULAREXPRES VALUES
 INSERT INTO REGULAREXPRES VALUES
 ('ALPHABETIQUE', '[[:alpha:]]');
 INSERT INTO REGULAREXPRES VALUES
-('NUMERIQUE', 'son expression');
+('NUMERIQUE', '^(\d)+$');
 INSERT INTO REGULAREXPRES VALUES
 ('TEMPERATURECF', '^(\-?[0-9]+(\,[0-9]+)?)(°F|°C)$');
 INSERT INTO REGULAREXPRES VALUES
 ('NOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\-][a-zA-Z]+)$');
-
--- Des catï¿½gories sï¿½mantiques de donnï¿½es dï¿½finies avec des expressions rï¿½guliï¿½res
--- Le nombre de valeurs (ou mots) clï¿½s est fini
--- La civilitï¿½ (CIVILITY) est dï¿½finie par exemple par :
-/*
-Madame, MADAME, MAdame, Mme, MME... Mademoiselle, MADEMOISELLE, MADEMoiselle, Mlle...
-Madam, MADAM, MaDAm, Mrs, MRS, Miss, MISS...
-Monsieur, MONSIEUR, M., ...
-Sir, SIR, Mr., M.,...
-
-*/
-
-
--- Le sexe (SEX) est dï¿½fini par exemple par :
-/*
-Femme, FEMME, Femelle, F
-Woman, Wife, Female, F
-Homme, HOMME, Male, MALe, M, H
-MAN, Man, Male, MALe, M
-*/
-INSERT INTO REGULAREXPRES VALUES ('SEXE_F', '^([fF])([eE][mM]{2}[eE]|[eE][mM][eE][lL]{2}[eE]|[eE][mM][aA][lL][eE])?$|^([wW])([iI][fF][eE]|[oO][mM][aA][nN])$');
-INSERT INTO REGULAREXPRES VALUES ('SEXE_H', '^([mM]{1})(([aA][nN])|([aA][lL][eE]))?$|^([hH])([oO][mM]{2}[eE])?$');
-
-
--- Le groupe sanguin (BLOODGROUP) est dï¿½finie par les seules valeurs MAJUSCULES
--- fondï¿½es sur les systï¿½mes ABO et Rhï¿½sus :
-/*
-A+, A-, B+, B-, AB+, AB-, O+ et O-
-*/
-
-INSERT INTO REGULAREXPRES VALUES ('BLOODGROUP', '^(A|B|O|AB)(\+|\-)$');
-
+INSERT INTO REGULAREXPRES VALUES
+('PRENOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\-][a-zA-Z]+)$');
+INSERT INTO REGULAREXPRES VALUES
+('CATEGORIE', '^([1-7])$');
+INSERT INTO REGULAREXPRES VALUES
+('SEXE_F', '^([fF])([eE][mM]{2}[eE]|[eE][mM][eE][lL]{2}[eE]|[eE][mM][aA][lL][eE])?$|^([wW])([iI][fF][eE]|[oO][mM][aA][nN])$');
+INSERT INTO REGULAREXPRES VALUES
+('SEXE_H', '^([mM]{1})(([aA][nN])|([aA][lL][eE]))?$|^([hH])([oO][mM]{2}[eE])?$');
+INSERT INTO REGULAREXPRES VALUES
+('BLOODGROUP', '^(A|B|O|AB)(\+|\-)$');
+INSERT INTO REGULAREXPRES VALUES
+('ADRNUM', '^(\d)+( bis| Bis| BIS)?$');
+INSERT INTO REGULAREXPRES VALUES
+('ADRRUE', '^([ ]?[\w][ ]?)+([^ ])$');
+INSERT INTO REGULAREXPRES VALUES
+('CP', '^(\d){5}$');
+INSERT INTO REGULAREXPRES VALUES
+('VILLE', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z\-]+)([^-])$');
+INSERT INTO REGULAREXPRES VALUES
+('PAYS', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z\-]+)([^-])$');
+INSERT INTO REGULAREXPRES VALUES
+('CIVILITE', '^(Madame|Monsieur|Mademoiselle)$');
 COMMIT;
+
+select * from REGULAREXPRES;
 
 -- Crï¿½eer une fonction qui permet de dire si une valeur vï¿½rifie une expression rï¿½guliï¿½re
 -- CREATE OR REPLACE FUNCTION VerifRegExpr (...Valeur ...CategExpReg) renvoie Vrai ou Faux
@@ -1743,81 +1735,14 @@ PROMPT
 --====================================================================================
 -- Ajoutez 4 colonnes ï¿½ la table CLIENTS afin de diagnostiquer les ï¿½ventuelles anomalies
 -- ANOMALIES de type VARCHAR(20), VALIDCOL NUMBER(2), INVALIDCOL NUMBER(2), NULLCOL NUMBER(2)
+DROP TABLE DIAGNOSTICDATA;
 CREATE TABLE DIAGNOSTICDATA
 (ANOMALIES VARCHAR(20), VALIDCOL NUMBER(2), INVALIDCOL NUMBER(2), NULLCOL NUMBER(2));
-INSERT INTO DIAGNOSTICDATA (''; 0, 0, 0);
 /*
 CREATE OR REPLACE VIEW DIAGNOCLIENTS
 AS SELECT * FROM CLIENTS, DIAGNOSTICDATA;
 SELECT * FROM DIAGNOCLIENTS;
 */
-
-select * from clients;
-
-set SERVEROUTPUT ON;
-
-
-create or replace trigger trigger_anomalie
-AFTER 
-INSERT OR UPDATE OR DELETE
-ON CLIENTS
-DECLARE
-BEGIN
-  DBMS_OUTPUT.PUT_LINE('Ya un truc');
-END;
-/
-
-
-create or replace function test_regex(maTable in VARCHAR, maColonne in VARCHAR, monExpression in VARCHAR)
-return NUMBER IS
-  retour NUMBER := 0;
-BEGiN
-
-  return retour;
-END;
-/
-
-
-
-DECLARE
-td NUMBER := true;
-BEGIN
- td := TEST_REGEX('a', 'b', 'sdfghj');
- SYS.DBMS_OUTPUT.PUT_LINE('' || td);
-END;
-/
-
-
-create or replace procedure proc_anomalie
-is
-  Cursor mesClients is
-  select * from clients;
-  v_valide NUMBER :=0;
-  v_null NUMBER :=0;
-  v_non_valide NUMBER := 0;
-BEGIN
-  FOR monClient in mesClients LOOP
-    DBMS_OUTPUT.PUT_LINE(monClient.nomcli);
-  END LOOP;
-END;
-/
-
-select prencli from clients where not REGEXP_LIKE(PRENCLI, (select REGULAREXPR from REGULAREXPRES where category = 'NOM'));
-
-exec proc_anomalie();
-
-
-
-DECLARE
-    v_e VARCHAR(500) := '';
-    v_v NUMBER := 0;
-    v_i NUMBER := 0;
-    v_n NUMBER := 0;
-BEGIN
-    anomality('"', getRegex('nom'), v_e, v_v, v_i, v_n);
-    dbms_output.put_line(v_e);
-END;
-/
 
 create or replace procedure anomality(
     wordCompared IN VARCHAR, 
@@ -1852,8 +1777,7 @@ BEGIN
 END;
 /
 
-
-create or replace procedure addAnnomalie(codeClient in VARCHAR)
+create or replace procedure addAnomality(codeClient in VARCHAR)
 is
     v_Client CLIENTS%ROWTYPE;
     v_errorIndi Varchar(255) := '';
@@ -1863,41 +1787,40 @@ is
     v_existe VARCHAR(255) := '';
 BEGIN
     SELECT * INTO v_Client FROM clients WHERE codCli = codeClient;
-    
+    anomality(v_client.civcli, getRegex('civilite'),v_errorIndi, v_valide, v_invalide, v_null);
     anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.nomcli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
-    anomality(v_client.prencli, getRegex('nom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.prencli, getRegex('prenom'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.catcli, getRegex('categorie'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.adncli, getRegex('adrNum'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.adrcli, getRegex('adrRue'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.cpcli, getRegex('cp'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.vilcli, getRegex('ville'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.payscli, getRegex('pays'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.mailcli, getRegex('mail'),v_errorIndi, v_valide, v_invalide, v_null);
+    anomality(v_client.telcli, getRegex('teltn'),v_errorIndi, v_valide, v_invalide, v_null);
     DELETE FROM DIAGNOSTICDATA WHERE anomalies = v_errorIndi;
-    INSERT INTO DIAGNOSTICDATA VALUES(v_errorIndi,v_valide, v_invalide, v_null);
-    /*
-    SELECT ANOMALIES INTO v_existe from DIAGNOSTICDATA where ANOMALIES = v_client.codcli;
-    IF v_existe is null THEN
-        INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
-    ELSE
-        DELETE FROM DIAGNOSTICDATA WHERE anomalies = v_client.codcli;
-        INSERT INTO DIAGNOSTICDATA VALUES(v_client.codcli,v_valide, v_invalide, v_null);
-    END IF;
-    */
-    
+    INSERT INTO DIAGNOSTICDATA VALUES(v_client.codCli||v_errorIndi,v_valide, v_invalide, v_null);
 END;
 /
 
-exec addAnnomalie('C001');
+create or replace procedure addAbnormalities
+is
+    Cursor mesClients is
+    select codCli from clients;
+BEGIN
+    FOR monClient in mesClients LOOP
+        addAnomality(monClient.codCli);
+    END LOOP;
+END;
+/
+delete from DIAGNOSTICDATA;
+exec addAbnormalities;
 select * from DIAGNOSTICDATA;
-
 
 DROP TABLE DIAGNOCLIENTS;
 CREATE TABLE DIAGNOCLIENTS
-AS SELECT * FROM CLIENTS, DIAGNOSTICDATA;
+AS SELECT * FROM CLIENTS, DIAGNOSTICDATA where anomalies like  codCli ||'%';
 SELECT * FROM DIAGNOCLIENTS;
-select * from clients;
 
 -- Dï¿½veloppez le mï¿½canisme VERIFYDATACLI qui permet de faire :
 -- Pour chaque ligne de la table
