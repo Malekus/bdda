@@ -1090,6 +1090,32 @@ PROMPT
 -- pause Tapez sur Enter...
 PROMPT
 
+--correction ville
+create or replace view test(f,s,d) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance from (select col1 as first from vilpays group by col1 order by count(*) desc),(select col1 as second from vilpays group by col1 order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) > 60 and (select count(*) from vilpays where col1=first)>=(select count(*) from vilpays where col1=second);
+
+update vilpays set col1=(select f from test where s=col1 and ROWNUM <=1) where col1=ANY(select s from test);
+
+select col1,count(*) from vilpays group by col1 order by col1;
+
+--- Nous avons choisi de ne pas faire de choix lorsque 2 pays se ressemblant ont le meme nombre d'entr√©es car on ne peut pas faire un choix juste parmis ces 2 pays. Nous attendrons donc d'autres insertion pour relancer ce script  
+
+
+
+---correction pays
+create or replace view test(f,s,d,c) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance,c from (select col2 as first,count(*) as c from vilpays group by col2 order by count(*) desc),(select col2 as second from vilpays group by col2 order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 50 and (SOUNDEX(first)=SOUNDEX(second))and (select count(*) from vilpays where col2=first)>=(select count(*) from vilpays where col2=second) order by c desc;
+
+update vilpays set col2=(select f from test where s=col2 and ROWNUM <=1) where col2=ANY(select s from test);
+
+select col2,count(*) from vilpays group by col2 order by col2;
+
+
+
+
+--- correction pays grace au ville
+
+create or replace view test(c1,c2,conc,count) as select col1,col2,concat(col1,col2),count(*) as conc from vilpays group by col1,col2,concat(col1,col2) order by conc desc;
+
+update vilpays set col2=(select c2 from test where c1=col1 and ROWNUM <=1) ;
 
 -- ????????????      FB FB FB FB FB FB A complÔøΩter ??????????????
 
@@ -1394,7 +1420,7 @@ INSERT INTO REGULAREXPRES VALUES
 INSERT INTO REGULAREXPRES VALUES
 ('NUMERIQUE', '^(\d)+$');
 INSERT INTO REGULAREXPRES VALUES
-('TEMPERATURECF', '^(\-?[0-9]+(\,[0-9]+)?)(∞F|∞C)$');
+('TEMPERATURECF', '^(\-?[0-9]+(\,[0-9]+)?)(?F|?C)$');
 INSERT INTO REGULAREXPRES VALUES
 ('NOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\-][a-zA-Z]+)$');
 INSERT INTO REGULAREXPRES VALUES
@@ -1536,7 +1562,7 @@ INSERT INTO VILPAYS VALUES ('Alger', 'ALGERIE');
 INSERT INTO VILPAYS VALUES ('ALGER', 'ALGER');
 INSERT INTO VILPAYS VALUES ('CAIRO', 'Egypt');
 INSERT INTO VILPAYS VALUES ('Marrakech', 'Marroc');
-INSERT INTO VILPAYS VALUES ('FËs', 'Maroc');
+INSERT INTO VILPAYS VALUES ('F?', 'Maroc');
 INSERT INTO VILPAYS VALUES ('Rabat', 'Marok');
 INSERT INTO VILPAYS VALUES ('Rabat', 'Maroc');
 INSERT INTO VILPAYS VALUES ('Rabat', 'Maroc');
@@ -1646,6 +1672,67 @@ INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '');
 INSERT INTO TABCLI VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1');
 INSERT INTO TABCLI VALUES ('3001777', 'MonsieÔøΩr', 'LE BON', 'Adam', '1');
 COMMIT;
+
+/*mise en majuscule de la table */
+update tabcli set col1=UPPER(col1);
+update tabcli set col2=UPPER(col2);
+update tabcli set col3=UPPER(col3);
+update tabcli set col4=UPPER(col4);
+update tabcli set col5=UPPER(col5);
+/*mise en majuscule de la table */
+/* correction colonne 2 partielle */
+create or replace view test(f,s,d,c) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance, c from (select col2 as first,count(*) as c from tabcli group by col2 order by count(*) desc),(select col2 as second from tabcli group by col2 order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 50 and (select count(*) from TABCLI where col2=first)>=(select count(*) from TABCLI where col2=second) order by c desc;
+
+update TABCLI set col2=(select f from test where s=col2 and ROWNUM <=1) where col2=ANY(select s from test);
+update TABCLI set col2='MADEMOISELLE' where col2='MLLE';
+update TABCLI set col2='MONSIEUR' where col2='MR';
+update TABCLI set col2='MADAME' where col2='MME';
+/* correction colonne 2 partielle */
+
+
+/* correction colonne 1 */
+create or replace view test(c1,c2,c3,c4,c5,count,conc,conc4,conc3,conc4b) as select col1,col2,col3,col4,col5,count(*),concat(concat(concat(col1,col2),concat(col3,col4)),col5) as conc , concat(concat(col2,col3),concat(col4,col5)) as conc4, concat(concat(col2,col4),col5) as conc3, concat(concat(col2,col3),col5) as conc4b from tabcli group by col1,col2,col3,col4,col5 order by count(*) desc;
+
+update tabcli set col1=(select c1 from test where (concat(concat(col2,col3),concat(col4,col5))=conc4 or (concat(concat(col2,col4),col5)=conc3 and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col3, c3)>=50) or(concat(concat(col2,col3),col5)=conc4b and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col4, c4)>=50)) and ROWNUM <=1) ;
+/* correction colonne 1 */
+
+
+/* correction colonne 2 */
+create or replace view test(c1,c2,c3,c4,c5,count,conc,conc4,conc3,conc4b) as select col1,col2,col3,col4,col5,count(*),concat(concat(concat(col1,col2),concat(col3,col4)),col5) as conc , concat(concat(col1,col3),concat(col4,col5)) as conc4, concat(concat(col1,col4),col5) as conc3, concat(concat(col1,col3),col5) as conc4b from tabcli group by col1,col2,col3,col4,col5 order by count(*) desc;
+
+update tabcli set col2=(select c2 from test where (concat(concat(col1,col3),concat(col4,col5))=conc4 or (concat(concat(col1,col4),col5)=conc3 and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col3, c3)>=50) or(concat(concat(col1,col3),col5)=conc4b and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col4, c4)>=50)) and ROWNUM <=1) ;
+/* correction colonne 2 */
+
+
+/* correction colonne 3 */
+create or replace view test(c1,c2,c3,c4,c5,count,conc,conc4,conc4b) as select col1,col2,col3,col4,col5,count(*),concat(concat(concat(col1,col2),concat(col3,col4)),col5) as conc , concat(concat(col1,col2),concat(col4,col5)) as conc4, concat(concat(col1,col2),col5) as conc4b from tabcli group by col1,col2,col3,col4,col5 order by count(*) desc;
+
+update tabcli set col3=(select c3 from test where (concat(concat(col1,col2),concat(col4,col5))=conc4 or (concat(concat(col1,col2),col5)=conc4b and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col4, c4)>=50)) and ROWNUM <=1) ;
+/* correction colonne 3 */
+
+
+/* correction colonne 4 */
+create or replace view test(c1,c2,c3,c4,c5,count,conc,conc4,conc3) as select col1,col2,col3,col4,col5,count(*),concat(concat(concat(col1,col2),concat(col3,col4)),col5) as conc , concat(concat(col1,col2),concat(col3,col5)) as conc4, concat(concat(col1,col2),col5) as conc3 from tabcli group by col1,col2,col3,col4,col5 order by count(*) desc;
+
+update tabcli set col4=(select c4 from test where (concat(concat(col1,col2),concat(col3,col5))=conc4 or (concat(concat(col1,col2),col5)=conc3 and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col3, c3)>=50)) and ROWNUM <=1) ;
+/* correction colonne 4 */
+
+
+/* correction colonne 5 */
+create or replace view test(c1,c2,c3,c4,c5,count,conc,conc4,conc3,conc4b) as select col1,col2,col3,col4,col5,count(*),concat(concat(concat(col1,col2),concat(col3,col4)),col5) as conc , concat(concat(col1,col2),concat(col3,col4)) as conc4, concat(concat(col1,col2),col4) as conc3, concat(concat(col1,col2),col3) as conc4b from tabcli group by col1,col2,col3,col4,col5 order by count(*) desc;
+
+update tabcli set col5=(select c5 from test where (concat(concat(col1,col2),concat(col3,col4))=conc4 or (concat(concat(col1,col2),col4)=conc3 and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col3, c3)>=50) or(concat(concat(col1,col2),col3)=conc4b and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(col4, c4)>=50)) and ROWNUM <=1) ;
+/* correction colonne 5 */
+
+
+/* suppressions des lignes doubl√©s*/
+DELETE FROM TABCLI
+                WHERE ROWID IN (
+                            SELECT ROWID
+                            FROM   ( SELECT ROWID,COL1, ROW_NUMBER ( ) OVER ( PARTITION BY (col1 || col2 || col3 || col4 || col5) ORDER BY col1 || col2 ) num_ligne
+                                    FROM   TABCLI ) t2
+                            WHERE  num_ligne >1 );
+/* suppressions des lignes doubl√©s*/
 
 --======================================================================================
 --======================================================================================
