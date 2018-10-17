@@ -89,10 +89,10 @@
 -- ===============================================================================
 -------------------- Master 2 EID2 - Promotion 2018-2019 -------------------------
 
--- Groupe de Travail N° (Binôme)  : Bxy
+-- Groupe de Travail N° (Binôme)  : B20
 
--- NOM Prénom 1                   : np1
--- NOM Prénom 2                   : np2
+-- NOM Prénom 1                   : ELILTHAMILVALAVAN Magilan
+-- NOM Prénom 2                   : MOUSSA Abdelkader
 
 -- ====>>> Vos fichiers sql devront s'appeler : Bxy-G2.sql
 
