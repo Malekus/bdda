@@ -1,0 +1,1903 @@
+=========================================================
+=========================================================
+
+=========================================================
+|                                                       |
+|     Exercice 2 :  BD GESCOMI avec SQL 2               |
+|     Enrichissement du schéma d une BD :               |
+|                                                       |
+=========================================================
+
+
+=========================================================
+Ceci permet d initialiser le type de la date
+=========================================================
+
+Session modifiée.
+
+=========================================================
+Destruction des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Table supprimée.
+
+
+Tapez sur Enter...
+
+
+=========================================================
+Création des tables de la bd GESCOMI EN SQL 2
+=========================================================
+
+=========================================================
+>> Table : CLIENTS
+=========================================================
+
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Table : COMMANDES
+=========================================================
+
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Table : ARTICLES
+=========================================================
+
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Table : DETAILCOM
+=========================================================
+
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+
+=========================================================
+Il est nécessaire de créer une table qui permet
+de garder le prix des articles avant leurs mises à jour.
+C est une table qui aura comme colonnes la référence, le nom, le prix
+d achat, le prix de vente (prix catalogue) de l article avant la mise
+à jour et la date de la mise à jour.
+=========================================================
+
+
+=====================================================================
+Il est nécessaire de créer une table HISTORIQUE_MVTS_ARTICLES.
+=====================================================================
+
+
+Table supprimée.
+
+
+Table créée.
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Trigger sur les mouvements des articles
+=====================================================================
+=====================================================================
+Suppression et création du Trigger.
+=====================================================================
+
+DROP TRIGGER MOUVEMENTS_ARTICLES
+*
+ERREUR à la ligne 1 :
+ORA-04080: déclencheur 'MOUVEMENTS_ARTICLES' n'existe pas 
+
+
+
+Déclencheur créé.
+
+
+=========================================================
+Il est nécessaire de créer une table qui permet
+de garder toutes les données sur les clients avant leurs mises à jour.
+C est une table qui aura comme colonnes toutes celles de départ avant la mise
+à jour et la date de la mise à jour, l'utilisateur ayant fait la lise à jour, etc...
+=========================================================
+
+
+=====================================================================
+Il est nécessaire de créer une table HISTORIQUE_MVTS_CLIENTS.
+=====================================================================
+
+
+=====================================================================
+Insertion des données de la bd EN SQL 2 POUR UN MAGASIN donné Le FR01 de Paris
+=====================================================================
+
+=========================================================
+>> Insertion dans la Table : CLIENTS
+=========================================================
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CPCLI, VILCLI, PAYSCLI, MAILCLI, TELCLI)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Insertion dans la Table : COMMANDES
+=========================================================
+
+VALUES ('20001AB', 'C012', 'SUNDAY 17-SEPTEMBER-2000')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20002AB', 'C001', 'SUNDAY 17-SEPTEMBER-2000')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20003AB', 'C006', ' MONDAY 16-OCTOBER-2000')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20004AB', 'C006', 'TUESDAY 24-OCTOBER-2000')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20011RB', 'C012', 'MONDAY 22-JANUARY-2001')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20012RB', 'C012', 'TUESDAY 13-MARCH-2001')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20031FB', 'C001', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20051FB', 'C003', 'FRIDAY 07-JANUARY-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20052FB', 'C003', 'Wednesday 12-JANUARY-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20053FB', 'C012', 'THURSDAY 10-MARCH-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20054FB', 'C007', 'MONDAY 14-MARCH-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20055FB', 'C012', 'FRIDAY 11-MARCH-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20056FB', 'C013', 'MONDAY 14-MARCH-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20057FB', 'C014', 'FRIDAY 11-MARCH-2005')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20061FB', 'C010', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20062FB', 'C009', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20065FB', 'C007', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20066FB', 'C002', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20067FB', 'C002', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20068FB', 'C002', 'FRIDAY 14-FEBRURAY-2003')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20069FB', 'C002', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20070FB', 'C002', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20071FB', 'C013', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20072FB', 'C013', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20073FB', 'C014', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20074FB', 'C014', 'TUESDAY 30-JANUARY-2007')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20184FB', 'C014', 'MONDAY 17-SEPTEMBER-2018')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+VALUES ('20181AB', 'C012', 'MONDAY 17-SEPTEMBER-2018')
+                           *
+ERREUR à la ligne 2 :
+ORA-01846: ce n'est pas un jour de semaine valide 
+
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Insertion dans la Table : ARTICLES
+=========================================================
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+
+Tapez sur Enter...
+
+
+=========================================================
+>> Insertion dans la Table : DETAILCOM
+=========================================================
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM (NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+INSERT INTO DETAILCOM(NUMCOM, REFART, QTCOM, PUART, REMISE)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+=========================================================
+Validation des insertions dans la bd EN SQL 2
+=========================================================
+
+Validation effectuée.
+
+
+Tapez sur Enter...
+
+
+=========================================================
+Affichage des tables de la bd EN SQL 2
+=========================================================
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.01
+
+Tapez sur Enter...
+
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+
+Tapez sur Enter...
+
+
+=========================================================
+Exemple avec 2 insertions et 2 mises à jour dans la table ARTICLES
+=========================================================
+
+
+0 lignes supprimées.
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.31
+
+0 lignes supprimées.
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.18
+
+Tapez sur Enter...
+
+
+=========================================================
+Visualisation des articles insérés dans ARTICLES
+=========================================================
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.01
+
+Tapez sur Enter...
+
+
+=========================================================
+MAJ des articles dans ARTICLES
+=========================================================
+
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.00
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+=====================================================================
+Visualisation des 2 articles MAJ dans ARTICLES
+=====================================================================
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+=====================================================================
+Visualisation de la table HISTORIQUE_PRIX
+=====================================================================
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Visualisation de la table HISTORIQUE_PRIX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+REFART NOMART                     PVART  PAART DATMAJ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+------ ------------------------- ------ ------ --------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+WD.010 K7 VIDEO-Exemple de k7     30.00  13.00 MARDI    09-OCTOBRE  -2018                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+WD.011 Exemple de DVD             25.00  10.00 MARDI    09-OCTOBRE  -2018                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+Ecoulé : 00 :00 :00.01
+
+Tapez sur Enter...
+
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Suppression et Insertion dans la table ARTICLES (par user-X par exemple)
+=====================================================================
+
+
+0 lignes supprimées.
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+=====================================================================
+Mouvements dans la table ARTICLES effectués par des utilisateurs
+externes: user-y et user-X
+=====================================================================
+
+
+Tapez sur Enter...
+
+
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.01
+
+Tapez sur Enter...
+
+
+=====================================================================
+Suppression et insertion dans la table ARTICLES.
+=====================================================================
+
+
+0 lignes supprimées.
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.21
+INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+
+=====================================================================
+|                                                                   |
+|      Historique des mouvements des articles                       |
+|                                                                   |
+=====================================================================
+
+
+=====================================================================
+Mise à jour dans la table ARTICLES pour effectuer les tests.
+=====================================================================
+
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.01
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.00
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.00
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
+=====================================================================
+Visualisation de la table HISTORIQUE_MVTS_ARTICLES
+=====================================================================
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+=====================================================================
+Suppression et creation de la table comparaison_art
+Cette table va permettre de stocker les mouvements dans
+la table ARTICLES, pendant une période. Tout ça pour pouvoir ensuite
+étudier l impact de ces mouvements sur le chiffre d affaires durant
+la période considérée.
+=====================================================================
+
+
+Table supprimée.
+
+Ecoulé : 00 :00 :00.06
+
+Table créée.
+
+Ecoulé : 00 :00 :00.03
+
+Tapez sur Enter...
+
+
+=====================================================================
+Suppression et creation de la table comparaison_chiffre_affaires.
+Cette table va permettre de stocker les informations concernant
+le chiffre d affaires moyen des différents pays avant la période où
+l on a décidé de regarder l impact des mouvements effectués sur
+la table ARTICLES. De garder aussi le chiffre d affaires durant
+la période considérée. Et aussi, d inscrire la variation au niveau
+des chiffres d affaires.
+=====================================================================
+
+DROP TABLE COMPARAISON_CHIFFRE_AFFAIRES
+           *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.03
+
+Table créée.
+
+Ecoulé : 00 :00 :00.04
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation de vue VUE_ART permettant de garder pour chaque article
+de la table ARTICLES son prix de vente moyen, son prix d achat moyen
+et sa quantité en stock moyen.
+=====================================================================
+
+
+Vue créée.
+
+Ecoulé : 00 :00 :00.04
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation de vue VUE_MVTS_ART permettant de garder pour chaque article
+de la table HISTORIQUE_MVTS_ARTICLES son prix de vente moyen, son
+prix d achat moyen et sa quantité en stock moyen.
+=====================================================================
+
+
+Vue créée.
+
+Ecoulé : 00 :00 :00.03
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation de vue CHIFFRE_AFFAIRES_AVANT permettant de calculer le
+chiffre d affaires de chaque pays avant une période considérée.
+=====================================================================
+
+
+Vue créée.
+
+Ecoulé : 00 :00 :00.03
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation de vue CHIFFRE_AFFAIRES_APRES permettant de calculer le
+chiffre d affaires de chaque pays durant la période considérée.
+=====================================================================
+
+CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_APRES (PAYSCLI, CHIFFAFF, ) AS
+                                                                  *
+ERREUR à la ligne 1 :
+ORA-00904:  : identificateur non valide 
+
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+=====================================================================
+Creation de procedure MOYENNE_PRIX_ART permettant de calculer le prix
+moyen d achat et de vente, et la quantité moyenne en stock de chaque
+article. Et ensuite de calculer le chiffre d affaires avant et pendant
+une période considérée. Tout cela pour savoir si les mouvements
+effectués, durant une période considérée, sur la table ARTICLES ont
+apporté plus ou moins d argent.
+=====================================================================
+
+
+Avertissement : Procédure créée avec erreurs de compilation.
+
+Ecoulé : 00 :00 :00.04
+
+Tapez sur Enter...
+
+
+=====================================================================
+Execution de procedure
+=====================================================================
+
+BEGIN MOYENNE_PRIX_ART; END;
+
+      *
+ERREUR à la ligne 1 :
+ORA-06550: Ligne 1, colonne 7 : 
+PLS-00905: l'objet M2EID_20.MOYENNE_PRIX_ART n'est pas valide 
+ORA-06550: Ligne 1, colonne 7 : 
+PL/SQL: Statement ignored 
+
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+=====================================================================
+Visualisation des tables COMPARAISON_ART et
+COMPARAISON_CHIFFRE_AFFAIRE
+=====================================================================
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Tapez sur Enter...
+
+
+=====================================================================
+>> Requete  : Articles toujours commandés ensemble
+=====================================================================
+
+DROP TABLE VILPAYSDF 
+           *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.03
+
+Table créée.
+
+Ecoulé : 00 :00 :00.03
+INSERT INTO VILPAYSDF VALUES ('EPINAY-SUR-SEINE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.21
+INSERT INTO VILPAYSDF VALUES ('PARIS', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.23
+INSERT INTO VILPAYSDF VALUES ('VILLETANEUSE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+INSERT INTO VILPAYSDF VALUES ('EPINAY-SUR-SEINE', '')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.14
+INSERT INTO VILPAYSDF VALUES ('EPINAY SUR SEINE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.37
+INSERT INTO VILPAYSDF VALUES ('PARIS', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+INSERT INTO VILPAYSDF VALUES ('PARIS', '')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.18
+INSERT INTO VILPAYSDF VALUES ('PARIS', 'FRANCE')
+*
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.13
+INSERT INTO VILPAYSDF VALUES ('MARSEILLE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.18
+INSERT INTO VILPAYSDF VALUES ('ORLY-VILLE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.28
+INSERT INTO VILPAYSDF VALUES ('MARSEILLE', 'FRANC')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.22
+INSERT INTO VILPAYSDF VALUES ('PARYS', 'FR')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+INSERT INTO VILPAYSDF VALUES ('EPINAY-SUR-SEINE', 'FRANCE')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.13
+INSERT INTO VILPAYSDF VALUES ('PARIS', 'france')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.15
+INSERT INTO VILPAYSDF VALUES ('Bruxelles', 'Belgique')
+            *
+ERREUR à la ligne 1 :
+ORA-00604: une erreur s'est produite au niveau SQL récursif 1 
+ORA-22914: opération DROP non acceptée sur les tables imbriquées 
+
+
+Ecoulé : 00 :00 :00.19
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.00
+
+0 lignes mises à jour.
+
+Ecoulé : 00 :00 :00.01
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Vue créée.
+
+Ecoulé : 00 :00 :00.03
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+Vue créée.
+
+Ecoulé : 00 :00 :00.04
+
+aucune ligne sélectionnée
+
+Ecoulé : 00 :00 :00.00
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Requete: les articles qui sont toujours commandés ensemble                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+=========================================================================                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+  MAXOCCUR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
+Ecoulé : 00 :00 :00.00
+DROP TABLE TABCLIDS 
+           *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.03
+CREATE TABLE TABCLIDS (COL1 VARCHAR(10), COL2 VARCHAR(12), COL3 VARCHAR(10), COL4 VARCHAR(10), COL1 VARCHAR(1))
+                                                                                               *
+ERREUR à la ligne 1 :
+ORA-00957: nom de colonne en double 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3000107', 'MO NSIEUR', 'ONRI', 'PANDA', '2')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2997777', 'Mademoiselle', 'LE BON', 'CLEMENTINE', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3000111', 'Madame', 'GENEREUX', 'EVE', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001778', 'Mr', 'COURTOIS', 'Bruno', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('3001779', 'Monsieur', 'VANDERHOTE', 'Ivan', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001780', 'Monsieur', 'Hollanda', 'Francis', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001781', 'Monsieur', 'Bernard', 'Hugues', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001782', 'Monsieur', 'LATIFOU', 'Ilyas', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001783', 'Madame', 'LALLEMAND', 'Ines', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001784', 'Monsieur', 'DEUTCH', 'Hans', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('3001785', 'Madame', 'ALMANI', 'Eve', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001786', 'Madame', 'MERQUELLE', 'Ange', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001', 'M.', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieùr', 'LE BON', 'Adam', '1')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENSE', '3')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2997007', '', 'TRAIFOR', 'ADAM', '2')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+INSERT INTO TABCLIDS VALUES ('2997007', '', 'TRAIFOR', 'ADAM', '')
+            *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
+SELECT COUNT(*) AS NbrCli FROM TABCLIDS
+                               *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.01
+SELECT * FROM TABCLIDS
+              *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+SELECT COUNT(DISTINCT *) FROM TABCLIDS 
+                      *
+ERREUR à la ligne 1 :
+ORA-00936: expression absente 
+
+
+Ecoulé : 00 :00 :00.00
+SELECT DISTINCT * FROM TABCLIDS 
+                       *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+Ecoulé : 00 :00 :00.00
+
+Validation effectuée.
+
+Ecoulé : 00 :00 :00.00
