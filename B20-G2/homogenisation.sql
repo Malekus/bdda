@@ -42,7 +42,24 @@ INSERT INTO REGULAREXPRES VALUES
 ('VILLE', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z\-]+)([^-])$');
 INSERT INTO REGULAREXPRES VALUES
 ('PAYS', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z\-]+)([^-])$');
+INSERT INTO REGULAREXPRES VALUES
+('IDTABCLIDS', '^[1-9][0-9]{6}$');
 COMMIT;
+
+CREATE OR REPLACE FUNCTION correctionIdTabClids(idClient in VARCHAR)
+  return VARCHAR
+as
+BEGIN
+    IF REGEXP_LIKE(idClient, '^[1-9][0-9]{6}$') THEN
+        return idClient;
+    ELSE
+        return '';
+    END IF;
+  
+END;
+/
+
+
 
 CREATE OR REPLACE FUNCTION correctionNom(nom in VARCHAR)
   return VARCHAR
@@ -98,6 +115,9 @@ BEGIN
           INTO variableCorrection;
           requeteUpdate := 'UPDATE ' || maTable || ' SET ' || maColonne || '=''' || variableCorrection || ''' WHERE ' || maColonne || '=''' || maVariable || '''';
           EXECUTE IMMEDIATE requeteUpdate;
+        ELSE
+            requeteUpdate := 'UPDATE ' || maTable || ' SET ' || maColonne || '= null WHERE ' || maColonne || '=''' || maVariable || '''';
+            EXECUTE IMMEDIATE requeteUpdate;
         END IF;
       EXIT WHEN vCursor%NOTFOUND;
     END LOOP;
@@ -106,7 +126,22 @@ END;
 /
 
 select * from TABCLIDS;
+exec correctionIntra('COL1', 'TABCLIDS', 'IDTABCLIDS');
 exec correctionIntra('COL2', 'TABCLIDS', 'CIVILITE');
 exec correctionIntra('COL3', 'TABCLIDS', 'NOM');
 exec correctionIntra('COL4', 'TABCLIDS', 'PRENOM');
 select * from TABCLIDS;
+
+
+SELECT   COUNT(*) AS nbr_doublon, col1, col2, col3, col4, col5
+FROM     TABCLIDS
+GROUP BY col1, col2, col3, col4, col5
+HAVING   COUNT(*) > 1;
+
+select count(*) from tabclids where col1 is not null group by col1 having count(col1);
+
+(select count(*) from tabclids where col1 is not null);
+
+select * from ALL_OBJECT_TABLES;
+
+create or replace function nbColonneNotNull(maColonne in)
