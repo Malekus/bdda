@@ -1,81 +1,85 @@
-CREATE OR REPLACE PROCEDURE TESTDF(col1 in varchar,col2 in varchar,tabledf in varchar)
-AS
-BEGIN
-	REM VISUALISATION DES DONNEES
-	SELECT * FROM tabledf;
-/*
-
-
-
-	-- Algorithme pour vérifier la DF entre 2 colonnes :
-	CREATE OR REPLACE VIEW LISTAVERIFIER_VP (col1, col2) AS
-	SELECT DISTINCT * FROM tabledf;
-
-	SELECT * FROM LISTAVERIFIER_VP ;
-
-	CREATE OR REPLACE VIEW VERIFDF_VP (col1, NBR) AS
-	SELECT col1, COUNT(*) AS NBR FROM LISTAVERIFIER_VP GROUP BY col1 ORDER BY col1;
-	SELECT * FROM VERIFDF_VP ;
-
-	SELECT MAX(NBR) AS MAXOCCUR FROM VERIFDF_VP;
-	-- REM Si MAXOCCUR > 1 Alors la DF n'est pas vérifiée !
-*/
-
-END;
-/
+--Procedure pour tester si il y a df de la premiere colonne vers la deuxieme
 
 CREATE OR REPLACE PROCEDURE TESTDF(colonne1 in varchar,colonne2 in varchar,tabledf in varchar)
 AS
-	stock varchar(1000) := '';
+
 	homogen varchar(1000):= '';
 	homogen2 varchar(1000):= '';
-	view1 varchar(1000):= '';
-
+	view1 varchar(1000) := '';
+	view2 varchar(1000) := '';
+	max1 varchar(1000) := '';
+	max2 integer;
 BEGIN
-
-	
-	homogen:='UPDATE ' || tabledf || ' SET ' || colonne1 ||'  = upper( ' || colonne1 || ' )';
+	homogen:='UPDATE ' || tabledf || ' SET ' || colonne1 ||'=UPPER(' || colonne1 || ')';
 	execute immediate homogen;
-	homogen2:='UPDATE ' || tabledf || ' SET '|| colonne2 ||'  = lower( ' || colonne2 || ' )';
+	homogen2:='UPDATE ' || tabledf || ' SET '|| colonne2 ||'=UPPER(' || colonne2 || ' )';
 	execute immediate homogen2;
-	
-	view1:='CREATE OR REPLACE VIEW LISTAVERIFIER_VP ('||col1||', '||col2||') AS
-	SELECT DISTINCT * FROM '||tabledf;
+	view1:='CREATE OR REPLACE VIEW LISTAVERIFIER_VP ('||colonne1||', '||colonne2||') AS
+	SELECT DISTINCT * FROM '||tabledf||'';
+	execute immediate view1;
+
+	view2:='CREATE OR REPLACE VIEW VERIFDF_VP ('||colonne1||', NBR) AS
+	SELECT '||colonne1||', COUNT(*) AS NBR FROM LISTAVERIFIER_VP GROUP BY '||colonne1||' ORDER BY '||colonne1||'';
+	execute immediate view2;
+
+	max1:='SELECT MAX(NBR) AS MAXOCCUR FROM VERIFDF_VP';
+	execute immediate max1 into max2;
+	IF max2>1 THEN 
+		dbms_output.put_line('Il n y a pas de df de '|| colonne1 ||' vers '|| colonne2||'.');
+	Else
+		dbms_output.put_line('Il y a une df de '|| colonne1 ||' vers '|| colonne2||'.');
+	End if;
 
 	
 END;
 /
 
-for toto in (SELECT colonne1 FROM tabledf)LOOP
-	dbms_output.put_line(toto.colonne1);
-END LOOP;
+--procedure pour corriger 2 colonne d'une table pour avoir une df de la premiere colonne vers la deuxieme
+CREATE OR REPLACE PROCEDURE TESTCORR(colonne1 in varchar,colonne2 in varchar,tabledf in varchar)
+AS
+
+	homogen varchar(1000):= '';
+	homogen2 varchar(1000):= '';
+	view1 varchar(1000) := '';
+	upda1 varchar(1000) := '';
+	view2 varchar(1000) := '';
+	upda2 varchar(1000) := '';
+	view3 varchar(1000) := '';
+	upda3 varchar(1000) := '';
+	
+BEGIN
+	homogen:='UPDATE ' || tabledf || ' SET ' || colonne1 ||'=UPPER(' || colonne1 || ')';
+	execute immediate homogen;
+	homogen2:='UPDATE ' || tabledf || ' SET '|| colonne2 ||'=UPPER(' || colonne2 || ' )';
+	execute immediate homogen2;
 
 
---correction ville
-create or replace view test(f,s,d) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance from (select col1 as first from vilpaysdf group by col1 order by count(*) desc),(select col1 as second from vilpaysdf group by col1 order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) > 60 and (select count(*) from vilpaysdf where col1=first)>=(select count(*) from vilpaysdf where col1=second);
+	--correction col1
+	view1:='create or replace view test(f,s,d) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance from (select '||colonne1||' as first from ' || tabledf || ' group by '||colonne1||' order by count(*) desc),(select '||colonne1||' as second from ' || tabledf || ' group by '||colonne1||' order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 60 and (SOUNDEX(first)=SOUNDEX(second)) and (select count(*) from ' || tabledf || ' where '||colonne1||'=first)>=(select count(*) from ' || tabledf || ' where '||colonne1||'=second)';
+	execute immediate view1;
 
-update vilpaysdf set col1=(select f from test where s=col1 and ROWNUM <=1) where col1=ANY(select s from test);
+	upda1:='update ' || tabledf || ' set ' || colonne1 ||'=(select f from test where s=' || colonne1 ||' and ROWNUM <=1) where ' || colonne1 ||'=ANY(select s from test)';
+	execute immediate upda1;
 
-select col1,count(*) from vilpaysdf group by col1 order by col1;
+	--correction col2
+	view2:='create or replace view test(f,s,d,c) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance,c from (select ' || colonne2 || ' as first,count(*) as c from ' || tabledf || ' group by ' || colonne2 || ' order by count(*) desc),(select ' || colonne2 || ' as second from ' || tabledf || ' group by ' || colonne2 || ' order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 50 and (SOUNDEX(first)=SOUNDEX(second)) and (select count(*) from ' || tabledf || ' where ' || colonne2 || '=first)>=(select count(*) from ' || tabledf || ' where ' || colonne2 || '=second) order by c desc';
+	execute immediate view2;
 
---- Nous avons choisi de ne pas faire de choix lorsque 2 pays se ressemblant ont le meme nombre d'entrÃ©es car on ne peut pas faire un choix juste parmis ces 2 pays. Nous attendrons donc d'autres insertion pour relancer ce script  
+	upda2:='update ' || tabledf || ' set ' || colonne2 || '=(select f from test where s=' || colonne2 || ' and ROWNUM <=1) where ' || colonne2 || '=ANY(select s from test)';
+	execute immediate upda2;
+
+	--correction col2 car df
+	view3:='create or replace view test(c1,c2,conc,count) as select '||colonne1||',' || colonne2 || ',concat('||colonne1||',' || colonne2 || '),count(*) as conc from ' || tabledf || ' group by '||colonne1||',' || colonne2 || ',concat('||colonne1||',' || colonne2 || ') order by conc desc';
+	execute immediate view3;
+	
+	upda3:='update ' || tabledf || ' set ' || colonne2 || '=(select c2 from test where c1='||colonne1||' and ROWNUM <=1)';
+	execute immediate upda3;
+
+	
+END;
+/
 
 
 
----correction pays
-create or replace view test(f,s,d,c) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance,c from (select col2 as first,count(*) as c from vilpaysdf group by col2 order by count(*) desc),(select col2 as second from vilpaysdf group by col2 order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 50 and (SOUNDEX(first)=SOUNDEX(second))and (select count(*) from vilpaysdf where col2=first)>=(select count(*) from vilpaysdf where col2=second) order by c desc;
-
-update vilpaysdf set col2=(select f from test where s=col2 and ROWNUM <=1) where col2=ANY(select s from test);
-
-select col2,count(*) from vilpaysdf group by col2 order by col2;
-
-
-
-
---- correction pays grace au ville
-
-create or replace view test(c1,c2,conc,count) as select col1,col2,concat(col1,col2),count(*) as conc from vilpaysdf group by col1,col2,concat(col1,col2) order by conc desc;
-
-update vilpaysdf set col2=(select c2 from test where c1=col1 and ROWNUM <=1) ;
 
 
