@@ -1,10 +1,48 @@
+DROP TABLE TABCLIDS ;
+CREATE TABLE TABCLIDS (COL1 VARCHAR(10), COL2 VARCHAR(12), COL3 VARCHAR(10), COL4 VARCHAR(10), COL5 VARCHAR(1));
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3');
+INSERT INTO TABCLIDS VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1');
+INSERT INTO TABCLIDS VALUES ('3000107', 'MO�NSIEUR', 'ONRI', 'PANDA', '2');
+INSERT INTO TABCLIDS VALUES ('2997777', 'Mademoiselle', 'LE BON', 'CLEMENTINE', '1');
+INSERT INTO TABCLIDS VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1');
+INSERT INTO TABCLIDS VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2');
+INSERT INTO TABCLIDS VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1');
+INSERT INTO TABCLIDS VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1');
+INSERT INTO TABCLIDS VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1');
+INSERT INTO TABCLIDS VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3');
+INSERT INTO TABCLIDS VALUES ('3000111', 'Madame', 'GENEREUX', 'EVE', '1');
+INSERT INTO TABCLIDS VALUES ('3001778', 'Mr', 'COURTOIS', 'Bruno', '1');
+INSERT INTO TABCLIDS VALUES ('3001779', 'Monsieur', 'VANDERHOTE', 'Ivan', '1');
+INSERT INTO TABCLIDS VALUES ('3001780', 'Monsieur', 'Hollanda', 'Francis', '1');
+INSERT INTO TABCLIDS VALUES ('3001781', 'Monsieur', 'Bernard', 'Hugues', '1');
+INSERT INTO TABCLIDS VALUES ('3001782', 'Monsieur', 'LATIFOU', 'Ilyas', '1');
+INSERT INTO TABCLIDS VALUES ('3001783', 'Madame', 'LALLEMAND', 'Ines', '1');
+INSERT INTO TABCLIDS VALUES ('3001784', 'Monsieur', 'DEUTCH', 'Hans', '1');
+INSERT INTO TABCLIDS VALUES ('3001785', 'Madame', 'ALMANI', 'Eve', '1');
+INSERT INTO TABCLIDS VALUES ('3001786', 'Madame', 'MERQUELLE', 'Ange', '1');
+INSERT INTO TABCLIDS VALUES ('3001', 'M.', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2');
+INSERT INTO TABCLIDS VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('3001777', 'Monsie�r', 'LE BON', 'Adam', '1');
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3');
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3');
+INSERT INTO TABCLIDS VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENSE', '3');
+INSERT INTO TABCLIDS VALUES ('2997007', '', 'TRAIFOR', 'ADAM', '2');
+INSERT INTO TABCLIDS VALUES ('2997007', '', 'TRAIFOR', 'ADAM', '');
+COMMIT;
+
 DROP TABLE REGULAREXPRES;
-CREATE TABLE REGULAREXPRES
-(
-CATEGORY 								VARCHAR2(20),
-REGULAREXPR 							VARCHAR2(200),
-CONSTRAINT PK_REGULAREXPRES				PRIMARY KEY(CATEGORY),
-CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY))
+CREATE TABLE REGULAREXPRES(
+    CATEGORY 								VARCHAR2(20),
+    REGULAREXPR 							VARCHAR2(200),
+    CONSTRAINT PK_REGULAREXPRES				PRIMARY KEY(CATEGORY),
+    CONSTRAINT CK_REGULAREXPRES_CATEGORY	CHECK(CATEGORY = UPPER(CATEGORY))
 );
 INSERT INTO REGULAREXPRES VALUES
 ('MAIL', '^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
@@ -17,7 +55,7 @@ INSERT INTO REGULAREXPRES VALUES
 INSERT INTO REGULAREXPRES VALUES
 ('TEMPERATURECF', '^(\-?[0-9]+(\,[0-9]+)?)(?F|?C)$');
 INSERT INTO REGULAREXPRES VALUES
-('NOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\-][a-zA-Z]+)$');
+('NOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\- ][a-zA-Z]+)$');
 INSERT INTO REGULAREXPRES VALUES
 ('PRENOM', '^([a-zA-Z])([a-zA-Z]+|[a-zA-Z]+[\-][a-zA-Z]+)$');
 INSERT INTO REGULAREXPRES VALUES
@@ -46,6 +84,15 @@ INSERT INTO REGULAREXPRES VALUES
 ('IDTABCLIDS', '^[1-9][0-9]{6}$');
 COMMIT;
 
+CREATE OR REPLACE FUNCTION getRegex(categorie VARCHAR)
+    return VARCHAR IS
+    expression VARCHAR(2000);
+BEGIN
+  select regularexpr into expression from REGULAREXPRES where category = UPPER(categorie);
+  return expression;
+END;
+/
+
 CREATE OR REPLACE FUNCTION correctionIdTabClids(idClient in VARCHAR)
   return VARCHAR
 as
@@ -58,8 +105,6 @@ BEGIN
   
 END;
 /
-
-
 
 CREATE OR REPLACE FUNCTION correctionNom(nom in VARCHAR)
   return VARCHAR
@@ -88,12 +133,6 @@ BEGIN
   END IF;
 END;
 /
-
-/*
-    Gestion des doublons et des similaires
-    1) Correction intra colonne
-    2) Comparaison avec les autres tuples
-*/
 
 CREATE OR REPLACE PROCEDURE correctionIntra(maColonne IN VARCHAR, maTable IN VARCHAR, wordRegex IN VARCHAR)
 is
@@ -125,23 +164,43 @@ BEGIN
 END;
 /
 
+create or replace function nbColonneNotNull(maColonne in VARCHAR, maTable in VARCHAR)
+RETURN NUMBER
+AS
+    req VARCHAR(2000);
+    nbNull NUMBER;
+BEGIN
+    req := 'select count(*) from ' || maTable || ' where ' || maColonne || ' is not null';
+    EXECUTE IMMEDIATE req
+    INTO nbNull;
+    RETURN nbNull;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE allCorrectionIntra
+as
+BEGIN
+    correctionIntra('COL1', 'TABCLIDS', 'IDTABCLIDS');
+    correctionIntra('COL2', 'TABCLIDS', 'CIVILITE');
+    correctionIntra('COL3', 'TABCLIDS', 'NOM');
+    correctionIntra('COL4', 'TABCLIDS', 'PRENOM');
+END;
+/
+
+exec allCorrectionIntra();
+
 select * from TABCLIDS;
-exec correctionIntra('COL1', 'TABCLIDS', 'IDTABCLIDS');
-exec correctionIntra('COL2', 'TABCLIDS', 'CIVILITE');
-exec correctionIntra('COL3', 'TABCLIDS', 'NOM');
-exec correctionIntra('COL4', 'TABCLIDS', 'PRENOM');
-select * from TABCLIDS;
+select col1, col2, col3, col4, col5, count(*) as nb from TABCLIDS group by col1, col2, col3, col4, col5 having count(*) > 1;
 
+select nbColonneNotNull('COL1', 'TABCLIDS') from dual;
 
-SELECT   COUNT(*) AS nbr_doublon, col1, col2, col3, col4, col5
-FROM     TABCLIDS
-GROUP BY col1, col2, col3, col4, col5
-HAVING   COUNT(*) > 1;
+(select distinct col1 as ville from vilpays);
 
-select count(*) from tabclids where col1 is not null group by col1 having count(col1);
+select town1, town2
+from (select T1.ville as town1, T2.ville as town2 from (select distinct col1 as ville from vilpays) T1, (select distinct col1 as ville from vilpays) T2 where T1.ville != T2.ville group by T1.ville, T2.ville) L;
 
-(select count(*) from tabclids where col1 is not null);
+create or replace view toto as (select distinct col1 as ville from vilpays);
 
-select * from ALL_OBJECT_TABLES;
+select ville as v1 from toto order by ville;
 
-create or replace function nbColonneNotNull(maColonne in)
+select * from (select ville as v1 from toto order by ville) T1 join (select ville as v2 from toto order by ville) T2 where v1 != v2 and v2 not in (select * from toto where ville = v1) and rownum <= ((select count(*) from toto) * (select count(*) from toto) - (select count(*) from toto)) / 2;
