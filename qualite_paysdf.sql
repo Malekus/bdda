@@ -3,13 +3,9 @@ AS
 BEGIN
 	REM VISUALISATION DES DONNEES
 	SELECT * FROM tabledf;
+/*
 
-/*REM HOMOGENEISATION DES DONNEES : TOUT EN MAJUSCULE
-	UPDATE tabledf SET col1 = UPPER(col1);
-	UPDATE tabledf SET col2 = UPPER(col2);
-	COMMIT;
 
-	SELECT * FROM VILPAYSDF;
 
 	-- Algorithme pour vérifier la DF entre 2 colonnes :
 	CREATE OR REPLACE VIEW LISTAVERIFIER_VP (col1, col2) AS
@@ -30,14 +26,23 @@ END;
 
 CREATE OR REPLACE PROCEDURE TESTDF(colonne1 in varchar,colonne2 in varchar,tabledf in varchar)
 AS
-	v_popo varchar(30);
+	stock varchar(1000) := '';
+	homogen varchar(1000):= '';
+	homogen2 varchar(1000):= '';
+	view1 varchar(1000):= '';
+
 BEGIN
 
-	execute immediate 'select :maColonne FROM vilpaysdf where rownum = 1'
-	into v_popo 
-	using colonne1 ;
-	dbms_output.put_line(v_popo);
+	
+	homogen:='UPDATE ' || tabledf || ' SET ' || colonne1 ||'  = upper( ' || colonne1 || ' )';
+	execute immediate homogen;
+	homogen2:='UPDATE ' || tabledf || ' SET '|| colonne2 ||'  = lower( ' || colonne2 || ' )';
+	execute immediate homogen2;
+	
+	view1:='CREATE OR REPLACE VIEW LISTAVERIFIER_VP ('||col1||', '||col2||') AS
+	SELECT DISTINCT * FROM '||tabledf;
 
+	
 END;
 /
 
