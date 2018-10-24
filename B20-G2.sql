@@ -3450,7 +3450,7 @@ BEGIN
 
 
 	--correction col1
-	view1:='create or replace view test(f,s,d) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance from (select '||colonne1||' as first from ' || tabledf || ' group by '||colonne1||' order by count(*) desc),(select '||colonne1||' as second from ' || tabledf || ' group by '||colonne1||' order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 60 and (SOUNDEX(first)=SOUNDEX(second)) and (select count(*) from ' || tabledf || ' where '||colonne1||'=first)>=(select count(*) from ' || tabledf || ' where '||colonne1||'=second)';
+	view1:='create or replace view test(f,s,d) as select first, second, UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second)  as distance from (select '||colonne1||' as first from ' || tabledf || ' group by '||colonne1||' order by count(*) desc),(select '||colonne1||' as second from ' || tabledf || ' group by '||colonne1||' order by count(*) desc) where first != second and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(first, second) >= 50 and (SOUNDEX(first)=SOUNDEX(second)) and (select count(*) from ' || tabledf || ' where '||colonne1||'=first)>=(select count(*) from ' || tabledf || ' where '||colonne1||'=second)';
 	execute immediate view1;
 
 	upda1:='update ' || tabledf || ' set ' || colonne1 ||'=(select f from test where s=' || colonne1 ||' and ROWNUM <=1) where ' || colonne1 ||'=ANY(select s from test)';
