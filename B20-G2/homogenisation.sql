@@ -164,16 +164,29 @@ BEGIN
 END;
 /
 
+DROP TABLE ColonneNotNull;
+CREATE TABLE ColonneNotNull(
+    NOM VARCHAR(255),
+    NBNOTNULL NUMBER(5),
+    NBROW NUMBER(5)
+);
+
 create or replace function nbColonneNotNull(maColonne in VARCHAR, maTable in VARCHAR)
 RETURN NUMBER
 AS
     req VARCHAR(2000);
-    nbNull NUMBER;
+    nbNotNull NUMBER;
+    nbRow NUMBER;
 BEGIN
-    req := 'select count(*) from ' || maTable || ' where ' || maColonne || ' is not null';
+    req := 'SELECT COUNT(*) FROM ' || maTable || ' WHERE ' || maColonne || ' IS NOT NULL';
     EXECUTE IMMEDIATE req
-    INTO nbNull;
-    RETURN nbNull;
+    INTO nbNotNull;
+    req := 'SELECT COUNT(*) FROM ' || maTable;
+    EXECUTE IMMEDIATE req
+    INTO nbRow;
+    req := 'INSERT INTO ColonneNotNull VALUES(''' || maColonne || ''',''' || nbNotNull || ''',''' || NBROW || ''')';
+    EXECUTE IMMEDIATE req;
+    RETURN nbNotNull;
 END;
 /
 
@@ -189,18 +202,10 @@ END;
 
 exec allCorrectionIntra();
 
-select * from TABCLIDS;
-select col1, col2, col3, col4, col5, count(*) as nb from TABCLIDS group by col1, col2, col3, col4, col5 having count(*) > 1;
-
 select nbColonneNotNull('COL1', 'TABCLIDS') from dual;
+select nbColonneNotNull('COL2', 'TABCLIDS') from dual;
+select nbColonneNotNull('COL3', 'TABCLIDS') from dual;
+select nbColonneNotNull('COL4', 'TABCLIDS') from dual;
+select nbColonneNotNull('COL5', 'TABCLIDS') from dual;
 
-(select distinct col1 as ville from vilpays);
-
-select town1, town2
-from (select T1.ville as town1, T2.ville as town2 from (select distinct col1 as ville from vilpays) T1, (select distinct col1 as ville from vilpays) T2 where T1.ville != T2.ville group by T1.ville, T2.ville) L;
-
-create or replace view toto as (select distinct col1 as ville from vilpays);
-
-select ville as v1 from toto order by ville;
-
-select * from (select ville as v1 from toto order by ville) T1 join (select ville as v2 from toto order by ville) T2 where v1 != v2 and v2 not in (select * from toto where ville = v1) and rownum <= ((select count(*) from toto) * (select count(*) from toto) - (select count(*) from toto)) / 2;
+select * from TABCLIDS;
