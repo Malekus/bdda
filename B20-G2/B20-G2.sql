@@ -1868,12 +1868,6 @@ END;
 CREATE OR REPLACE PROCEDURE allCorrectionIntra
 as
 BEGIN
-	select nbColonneNotNull('COL1', 'TABCLIDS') from dual;
-	select nbColonneNotNull('COL2', 'TABCLIDS') from dual;
-	select nbColonneNotNull('COL3', 'TABCLIDS') from dual;
-	select nbColonneNotNull('COL4', 'TABCLIDS') from dual;
-	select nbColonneNotNull('COL5', 'TABCLIDS') from dual;
-
     correctionIntra('COL1', 'TABCLIDS', 'IDTABCLIDS');
     correctionIntra('COL2', 'TABCLIDS', 'CIVILITE');
     correctionIntra('COL3', 'TABCLIDS', 'NOM');
