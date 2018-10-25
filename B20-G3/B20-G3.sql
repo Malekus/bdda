@@ -1,19 +1,19 @@
 -- ===============================================================================
--------- Université Sorbonne Paris Cité, Université Paris 13 , Institut Galiée
--------- Master 2, Informatique, Exploration Informatique des Données et Décisionnel
+-------- UniversitÃ© Sorbonne Paris CitÃ©, UniversitÃ© Paris 13 , Institut GaliÃ©e
+-------- Master 2, Informatique, Exploration Informatique des DonnÃ©es et DÃ©cisionnel
 -------- M2 EID2
 
 -- ===============================================================================
 -------- La Data ; The Data
--------- La Donnée est le monde du futur ; Les données et le monde de l'avenir
+-------- La DonnÃ©e est le monde du futur ; Les donnÃ©es et le monde de l'avenir
 -------- The Data is the world of the future ;  The Data and the future's world
 
 -------- DATA -->>> Big Data, Dark Data, Open Data, ... 
 -- ===============================================================================
--------- Bases de Données Avancées = Advanced Databases (BDA)
--------- Entrepôts de Données = Data Warehouses (DWH, EDON)
+-------- Bases de DonnÃ©es AvancÃ©es = Advanced Databases (BDA)
+-------- EntrepÃ´ts de DonnÃ©es = Data Warehouses (DWH, EDON)
 
--------- Directeur :  Dr. M. Faouzi Boufarès
+-------- Directeur :  Dr. M. Faouzi BoufarÃ¨s
 -------- Enseignant-Chercheur Responsable      
 
 -------- Page Web : http://www.lipn.univ-paris13.fr/~boufares
@@ -22,20 +22,20 @@
 
 -- ===============================================================================
 -- ===============================================================================
---   Projet  BDM : Big Data Management - Gestion des Données Massives
+--   Projet  BDM : Big Data Management - Gestion des DonnÃ©es Massives
 --
---   Data Manipulation (DI) - Manipulation de Données
---   Data Integration (DI) - Intégration de Données
---   Données structurées ; Données Semi-structurées ; Données NON structurées
+--   Data Manipulation (DI) - Manipulation de DonnÃ©es
+--   Data Integration (DI) - IntÃ©gration de DonnÃ©es
+--   DonnÃ©es structurÃ©es ; DonnÃ©es Semi-structurÃ©es ; DonnÃ©es NON structurÃ©es
 --   Structured data; Semi-structured data; NON-structured data
 
---   Master Data Management (MDM) - Gestion des Données de Référence
---   Data Quality Managment (DQM) - Gestion de la qualité des données
---   Data Cleaning - Nettayage des données
+--   Master Data Management (MDM) - Gestion des DonnÃ©es de RÃ©fÃ©rence
+--   Data Quality Managment (DQM) - Gestion de la qualitÃ© des donnÃ©es
+--   Data Cleaning - Nettayage des donnÃ©es
 --   Data deduplication - Elimination des doubles et des similaires
 
 --   More semantics to better correct the data 
---   Plus de sémantique afin de mieux corriger les données
+--   Plus de sÃ©mantique afin de mieux corriger les donnÃ©es
 -- ===============================================================================
 -- ===============================================================================
 --
@@ -43,21 +43,21 @@
 --
 -- Big Data & Clound Computing : Think DIFFERENTLY, BIGGER and SMARTER !
 -- The Excellence in Data Use !
--- EID : L'Excellence dans l'Investigation des Données
+-- EID : L'Excellence dans l'Investigation des DonnÃ©es
 -- EID : Excellence in Data Investigation
 --
 -- =============================================================================== 
 -- Think DIFFERENTLY, BIGGER and SMARTER ! The Excellence in Data Use !
 -- MISSION IMPOSSIBLE OU POSSIBLE ????? !!!!!!!!!!!
--- Votre mission, si vous l’acceptez, est : The Excellence in Data Use !
--- Si vous échouez, nous nierons avoir eu connaissance de vos agissements !
+-- Votre mission, si vous lÂ’acceptez, est : The Excellence in Data Use !
+-- Si vous Ã©chouez, nous nierons avoir eu connaissance de vos agissements !
 
 -- ===============================================================================
 -- Les dictons du jour !
 --
--- Aujourd'hui, j'arrête de fumer
+-- Aujourd'hui, j'arrÃªte de fumer
 -- Le TABAC t'ABAT
--- Fumer nuit grâvement à ta santé et à celle de ton entourage
+-- Fumer nuit grÃ¢vement Ã  ta santÃ© et Ã  celle de ton entourage
 --
 -- M   T   Dents
 -- SMILE and the World SMILES with you !
@@ -65,13 +65,13 @@
 -- MANGER + MANGER = GROSSIR (??? M, A, N, G, E, R, O, S, S, I)
 --
 -- Manger & Bouger, 
--- Pour votre santé mangez 5 fruits et légumes par jour
--- Pour votre santé ne mangez pas trop gras, trop salé, trop sucré
--- Pour votre santé faites une activité physique régulière
--- Pour votre santé faites 30 mn de marche par jour
--- Pour votre santé faites des BD !!!
+-- Pour votre santÃ© mangez 5 fruits et lÃ©gumes par jour
+-- Pour votre santÃ© ne mangez pas trop gras, trop salÃ©, trop sucrÃ©
+-- Pour votre santÃ© faites une activitÃ© physique rÃ©guliÃ¨re
+-- Pour votre santÃ© faites 30 mn de marche par jour
+-- Pour votre santÃ© faites des BD !!!
 --
--- Dr. M. Faouzi Boufarès
+-- Dr. M. Faouzi BoufarÃ¨s
 -- =============================================================================== 
 -- =============================================================================== 
 --   A new ETL   ETL & DQ : Extract-Transform-Load & Data-Quality 
@@ -84,15 +84,15 @@
 -- ===============================================================================                   
 --   Nom du SGBD/DBMS  : ORACLE  /  DB2  /  MySQL  /  ...        
 --   Date de creation  : 17/09/2018 --- 16/10/2018
----  Lieu              : Université Sorbonne Paris Cité, Université Paris 13, Institut Galiée
+---  Lieu              : UniversitÃ© Sorbonne Paris CitÃ©, UniversitÃ© Paris 13, Institut GaliÃ©e
 -- =============================================================================== 
 -- ===============================================================================
 -------------------- Master 2 EID2 - Promotion 2018-2019 -------------------------
 
--- Groupe de Travail N° (Binôme)  : Bxy
+-- Groupe de Travail NÂ° (BinÃ´me)  : B20
 
--- NOM Prénom 1                   : np1
--- NOM Prénom 2                   : np2
+-- NOM Prï¿½nom 1                   : ELILTHAMILVALAVAN Magilan
+-- NOM Prï¿½nom 2                   : MOUSSA Abdelkader
 
 -- ====>>> Vos fichiers sql devront s'appeler : Bxy-G03.sql
 
@@ -100,17 +100,17 @@
 -- =============================================================================== 
 -- ===============================================================================
 -- ===============================================================================
---   Problématique    :  Intégration de données hétérogènes, distribuées
+--   ProblÃ©matique    :  IntÃ©gration de donnÃ©es hÃ©tÃ©rogÃ¨nes, distribuÃ©es
 
---   Problématique    :  Traitement des anomalies éventuelles
---   Problématique    :  Plusieurs types d'anomalies INTRA-Colonne ; INTER-COLONNES ; INTER-LIGNES
+--   ProblÃ©matique    :  Traitement des anomalies Ã©ventuelles
+--   ProblÃ©matique    :  Plusieurs types d'anomalies INTRA-Colonne ; INTER-COLONNES ; INTER-LIGNES
 
---   Problématique    :  Standardisation de données hétérogènes
---   Problématique    :  Traitement des valeurs invalides syntaxiquement
---   Problématique    :  Traitement des valeurs invalides sémantiquement
---   Problématique    :  Traitement des valeurs nulles
---   Problématique    :  Traitement des redondances sémantiques (Dépendances fonctionnelles)
---   Problématique    :  Elimination des doubles et similaires
+--   ProblÃ©matique    :  Standardisation de donnÃ©es hÃ©tÃ©rogÃ¨nes
+--   ProblÃ©matique    :  Traitement des valeurs invalides syntaxiquement
+--   ProblÃ©matique    :  Traitement des valeurs invalides sÃ©mantiquement
+--   ProblÃ©matique    :  Traitement des valeurs nulles
+--   ProblÃ©matique    :  Traitement des redondances sÃ©mantiques (DÃ©pendances fonctionnelles)
+--   ProblÃ©matique    :  Elimination des doubles et similaires
 
 -- =============================================================================== 
 -- ===============================================================================
@@ -138,16 +138,16 @@ SET PAGES 1000
 PROMPT =========================================================
 -- Nom du Cas       :  Gestion Commerciale Intelligente : GESCOMI : GCI
 -- Nom de SGBD      :  ORACLE DBMS                    
--- Date de création :  Septembre 2018
+-- Date de crÃ©ation :  Septembre 2018
 -- Auteur           :  Faouzi BOUFARES 
--- Université       :  Université Sorbonne Paris Cité, Université Paris 13 
+-- UniversitÃ©       :  UniversitÃ© Sorbonne Paris CitÃ©, UniversitÃ© Paris 13 
 -- Formation        :  Master 2 EID 2  
 PROMPT =========================================================
 PROMPT 
 PROMPT =========================================================
 PROMPT |                                                       |
 PROMPT |     Exercice 3 :  BD GESCOMI avec SQL 2               |
-PROMPT |     Intégration de BD                                 |
+PROMPT |     IntÃ©gration de BD                                 |
 PROMPT |                                                       |
 PROMPT =========================================================
 PROMPT
@@ -167,11 +167,11 @@ PROMPT =========================================================
 
 /*
 
-Entre parenthèses hihi haha FFF !
+Entre parenthÃ¨ses hihi haha FFF !
 
-Etant donné la table CACLI suivante :
+Etant donnÃ© la table CACLI suivante :
 Elle est issue de plusieurs calculs sur les tables de la BD GesComI... 
-Faire les requêtes ci-dessous : Statistiques sur le chiffre d’affaires
+Faire les requÃªtes ci-dessous : Statistiques sur le chiffre dÂ’affaires
 */
 
 
@@ -285,23 +285,23 @@ COMMIT;
 
 /*
 A vous les requetes suivantes :
-Donnez la représentation graphique sous EXCEL !
+Donnez la reprÃ©sentation graphique sous EXCEL !
 Gestion des "Reporting"
 
-Chiffre d’affaires pour l’année 2010
-Chiffre d’affaires pour l’année 2011
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2010
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2011
 
-Chiffre d’affaires pour l’année 2018
-Chiffre d’affaires de 2018 par trimestre
-Chiffre d’affaires de 2018 par semestre
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2018
+Chiffre dÂ’affaires de 2018 par trimestre
+Chiffre dÂ’affaires de 2018 par semestre
 
-Chiffre d’affaires pour les deux années 2012 et 2013
-Chiffre d’affaires de 2010 à 2018
+Chiffre dÂ’affaires pour les deux annÃ©es 2012 et 2013
+Chiffre dÂ’affaires de 2010 Ã  2018
 
-Chiffre d’affaires de 2010 à 2018 par trimestre
-Chiffre d’affaires de 2010 à 2018 par semestre
+Chiffre dÂ’affaires de 2010 Ã  2018 par trimestre
+Chiffre dÂ’affaires de 2010 Ã  2018 par semestre
 
-Statistiques sur le chiffre d’affaires – Période de 2010 à 2018
+Statistiques sur le chiffre dÂ’affaires Â– PÃ©riode de 2010 Ã  2018
 
 */
 
@@ -313,13 +313,13 @@ Statistiques sur le chiffre d’affaires – Période de 2010 à 2018
 
 
 -- ===============================================================================
--- Définition de la structure des données ================= DEBUT    =============
+-- DÃ©finition de la structure des donnÃ©es ================= DEBUT    =============
 -- en SQL 2 ======================================================================
 -- Utilisation des tables ========== Magasin FR01 ====== PARIS   =================
 -- CLIENTS, ARTICLES, COMMANDES et DETAILCOM
 
--- Création des tables ============= Magasin FR02 ====== PARIS   =================
--- Création des tables ============= Magasin TN02 ====== SOUSSE  =================
+-- CrÃ©ation des tables ============= Magasin FR02 ====== PARIS   =================
+-- CrÃ©ation des tables ============= Magasin TN02 ====== SOUSSE  =================
 
 
 -- INTEGRATION DE BASES DE DONNEES ; DATA INTEGRATION
@@ -331,18 +331,18 @@ Statistiques sur le chiffre d’affaires – Période de 2010 à 2018
 
 /*
 
--- Etant donné l'ensemble des magasins
+-- Etant donnÃ© l'ensemble des magasins
 
--- Chaque binôme aura à céer sa propore BD GesComI (On verra ultérieurement!)!
+-- Chaque binÃ´me aura Ã  cÃ©er sa propore BD GesComI (On verra ultÃ©rieurement!)!
 
 -- Afficher la table MAGASINS
 
--- Développez une procédure AJOUTECOLONNE qui permet d'ajouter à une table une colonne qui porte le nom de MAGASIN
+-- DÃ©veloppez une procÃ©dure AJOUTECOLONNE qui permet d'ajouter Ã  une table une colonne qui porte le nom de MAGASIN
 -- Le contenu de cette colonne est l'identifiant du magasin NUMMAG
--- En entrée le nom de la table et le contenu de la colonne ; En sortie une nouvelle table dont le nom est le nom de la table en entrée concaténé au _NUMMAG
+-- En entrÃ©e le nom de la table et le contenu de la colonne ; En sortie une nouvelle table dont le nom est le nom de la table en entrÃ©e concatÃ©nÃ© au _NUMMAG
 
--- L'exécution de la procédure permet donc d'affecter les données à un seul magasin
--- On considère que les données dans les tables CLIENTS, ARTICLES, COMMANDES et DETAILCOM sont celles du magasin FR01
+-- L'exÃ©cution de la procÃ©dure permet donc d'affecter les donnÃ©es Ã  un seul magasin
+-- On considÃ¨re que les donnÃ©es dans les tables CLIENTS, ARTICLES, COMMANDES et DETAILCOM sont celles du magasin FR01
 
 -- EXEC AJOUTECOLONNE('CLIENTS', 'FR01')
 
@@ -354,14 +354,14 @@ Statistiques sur le chiffre d’affaires – Période de 2010 à 2018
 
 -- Corrigez le contenu de la nouvelle table CLIENTS_TN02 ; Comment savoir si elle contient des anomalies et lesquelles ? et lesquelles ?
 
--- Assemblez (intégrer, fusionner) dans une nouvelle table, de nom TOUSCLIENTS, tous les clients des différents magasins
+-- Assemblez (intÃ©grer, fusionner) dans une nouvelle table, de nom TOUSCLIENTS, tous les clients des diffÃ©rents magasins
 
 -- Corrigez le contenu de la nouvelle table TOUSCLIENTS ; Comment savoir si elle contient des anomalies et lesquelles ? et lesquelles ?
 
--- Faire de même pour les autres tables !!!
+-- Faire de mÃªme pour les autres tables !!!
 
--- Assemblez (intégrer, fusionner) dans une nouvelle BDDWBD l'ensemble des tables des différents magasins et tout le nécessaire
--- Le résultat est : TOUSCLIENTS, TOUSARTICLES, TOUSCOMMANDES, TOUSDETAILSCOM, TOUSMAGASINS, etc...
+-- Assemblez (intÃ©grer, fusionner) dans une nouvelle BDDWBD l'ensemble des tables des diffÃ©rents magasins et tout le nÃ©cessaire
+-- Le rÃ©sultat est : TOUSCLIENTS, TOUSARTICLES, TOUSCOMMANDES, TOUSDETAILSCOM, TOUSMAGASINS, etc...
 
 */
 
@@ -385,7 +385,7 @@ INSERT INTO CLIENTS VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1', '13
 INSERT INTO CLIENTS VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'FRANCE', 'adam.le bon@up13.fr', '0717586561');
 INSERT INTO CLIENTS VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2', '6, RUE DE LA ROSIERE', '75015', 'PARIS', '', 'alice.traifor@up13.fr', '0717586562');
 INSERT INTO CLIENTS VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1', '16, AVENUE FOCH', '75016', 'PARIS', 'FRANCE', 'ford.harissa@up13.fr', '0606');
-INSERT INTO CLIENTS VALUES ('3000107', 'MO NSIEUR', 'ONRI', 'PANDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE', 'panda.onri@up13.fr', '+33');
+INSERT INTO CLIENTS VALUES ('3000107', 'MOÂ NSIEUR', 'ONRI', 'PANDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE', 'panda.onri@up13.fr', '+33');
 INSERT INTO CLIENTS VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1', '21, AVENUE D ITALIE', '75013', 'PARIS', '', 'fiat.edite@up13.fr', '');
 INSERT INTO CLIENTS VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3', '55, RUE DU JAPON', '94310', 'ORLY VILLE', 'FRANCE', 'jackson.toyota@up13.fr', '');
 INSERT INTO CLIENTS VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANC', 'honda.onri@up13.fr', '');
@@ -406,30 +406,30 @@ INSERT INTO CLIENTS VALUES ('3001786', 'Madame', 'MERQUELLE', 'Ange', '1', '', '
 -- Les articles du magasin FR02 c est celui de Paris en France
 
 CREATE TABLE ARTICLES (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
-INSERT INTO ARTICLES VALUES ('00.37291', 'SIEGE DE TABLE', '55.00 €', '10', '26.43 €');
-INSERT INTO ARTICLES VALUES ('00.37325', 'CASQUE CYCLISTE PROTECTION', '27.00 €', '20', '20.00 €');
-INSERT INTO ARTICLES VALUES ('00.37341', 'BONNET PARE-CHOCS', '10.71 €', '100', '05.71 €');
-INSERT INTO ARTICLES VALUES ('00.37366', 'STORE DE PROTECTION', '07.43 €', '5', '04.29 €');
-INSERT INTO ARTICLES VALUES ('00.37408', 'COINS DE PROTECTION', '04.00 €', '100', '01.71 €');
-INSERT INTO ARTICLES VALUES ('00.37424', 'CACHE PRISE DE COURANT', '02.29 €', '500', '00.71 €');
-INSERT INTO ARTICLES VALUES ('00.37432', 'BLOQUE PORTE', '05.00 €', '4', '02.29 €');
-INSERT INTO ARTICLES VALUES ('00.37457', 'BANDE DE FERMETURE', '02.29 €', '4', '01.71 €');
-INSERT INTO ARTICLES VALUES ('00.37465', 'PROTECTION DE FOUR', '37.86 €', '10', '26.43 €');
-INSERT INTO ARTICLES VALUES ('00.37473', 'PROTECTION DE CUISINIERE', '30.71 €', '10', '22.86 €');
-INSERT INTO ARTICLES VALUES ('00.37515', 'BABY PHONE', '80.71 €', '3', '45.71 €');
-INSERT INTO ARTICLES VALUES ('00.37630', 'BRETELLE DE SECURITE REMOND', '15.57 €', '8', '11.43 €');
-INSERT INTO ARTICLES VALUES ('00.39321', 'HAUSSE-CHAISE', '42.71 €', '1', '25.43 €');
-INSERT INTO ARTICLES VALUES ('00.39495', 'COUVRE ROBINETTERIE', '07.86 €', '12', '04.29 €');
-INSERT INTO ARTICLES VALUES ('11.36613', 'BARRIERE DE PORTE, EN BOIS', '32.71 €', '2', '25.71 €');
-INSERT INTO ARTICLES VALUES ('11.36639', 'BARRIERE DE PORTE, EN METAL', '79.14 €', '3', '28.43 €');
-INSERT INTO ARTICLES VALUES ('11.36860', 'BARRIERE DE LIT', '23.71 €', '10', '15.71 €');
-INSERT INTO ARTICLES VALUES ('11.37108', 'PORTE-BEBE', '44.86 €', '6', '34.29 €');
-INSERT INTO ARTICLES VALUES ('11.37173', 'SIEGE-AUTO COSMOS', '126.86 €', '2', '71.43 €');
-INSERT INTO ARTICLES VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '121.29 €', '2', '71.43 €');
-INSERT INTO ARTICLES VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '21.29 €', '10', '09.29 €');
-INSERT INTO ARTICLES VALUES ('WD.002', 'DVD - TOY STORY 2', '34.29 €', '10', '12.14 €');
-INSERT INTO ARTICLES VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '32.86 €', '5', '09.29 €');
-INSERT INTO ARTICLES VALUES ('MV.001', 'Jeux Vidéo PS4 SPIDER-MAN', '59.00 €', '250', '19.00 €');
+INSERT INTO ARTICLES VALUES ('00.37291', 'SIEGE DE TABLE', '55.00 Â€', '10', '26.43 Â€');
+INSERT INTO ARTICLES VALUES ('00.37325', 'CASQUE CYCLISTE PROTECTION', '27.00 Â€', '20', '20.00 Â€');
+INSERT INTO ARTICLES VALUES ('00.37341', 'BONNET PARE-CHOCS', '10.71 Â€', '100', '05.71 Â€');
+INSERT INTO ARTICLES VALUES ('00.37366', 'STORE DE PROTECTION', '07.43 Â€', '5', '04.29 Â€');
+INSERT INTO ARTICLES VALUES ('00.37408', 'COINS DE PROTECTION', '04.00 Â€', '100', '01.71 Â€');
+INSERT INTO ARTICLES VALUES ('00.37424', 'CACHE PRISE DE COURANT', '02.29 Â€', '500', '00.71 Â€');
+INSERT INTO ARTICLES VALUES ('00.37432', 'BLOQUE PORTE', '05.00 Â€', '4', '02.29 Â€');
+INSERT INTO ARTICLES VALUES ('00.37457', 'BANDE DE FERMETURE', '02.29 Â€', '4', '01.71 Â€');
+INSERT INTO ARTICLES VALUES ('00.37465', 'PROTECTION DE FOUR', '37.86 Â€', '10', '26.43 Â€');
+INSERT INTO ARTICLES VALUES ('00.37473', 'PROTECTION DE CUISINIERE', '30.71 Â€', '10', '22.86 Â€');
+INSERT INTO ARTICLES VALUES ('00.37515', 'BABY PHONE', '80.71 Â€', '3', '45.71 Â€');
+INSERT INTO ARTICLES VALUES ('00.37630', 'BRETELLE DE SECURITE REMOND', '15.57 Â€', '8', '11.43 Â€');
+INSERT INTO ARTICLES VALUES ('00.39321', 'HAUSSE-CHAISE', '42.71 Â€', '1', '25.43 Â€');
+INSERT INTO ARTICLES VALUES ('00.39495', 'COUVRE ROBINETTERIE', '07.86 Â€', '12', '04.29 Â€');
+INSERT INTO ARTICLES VALUES ('11.36613', 'BARRIERE DE PORTE, EN BOIS', '32.71 Â€', '2', '25.71 Â€');
+INSERT INTO ARTICLES VALUES ('11.36639', 'BARRIERE DE PORTE, EN METAL', '79.14 Â€', '3', '28.43 Â€');
+INSERT INTO ARTICLES VALUES ('11.36860', 'BARRIERE DE LIT', '23.71 Â€', '10', '15.71 Â€');
+INSERT INTO ARTICLES VALUES ('11.37108', 'PORTE-BEBE', '44.86 Â€', '6', '34.29 Â€');
+INSERT INTO ARTICLES VALUES ('11.37173', 'SIEGE-AUTO COSMOS', '126.86 Â€', '2', '71.43 Â€');
+INSERT INTO ARTICLES VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '121.29 Â€', '2', '71.43 Â€');
+INSERT INTO ARTICLES VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '21.29 Â€', '10', '09.29 Â€');
+INSERT INTO ARTICLES VALUES ('WD.002', 'DVD - TOY STORY 2', '34.29 Â€', '10', '12.14 Â€');
+INSERT INTO ARTICLES VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '32.86 Â€', '5', '09.29 Â€');
+INSERT INTO ARTICLES VALUES ('MV.001', 'Jeux VidÃ©o PS4 SPIDER-MAN', '59.00 Â€', '250', '19.00 Â€');
 
 -- Les commandes du magasin FR02 c est celui de Paris en France
 
@@ -442,25 +442,25 @@ INSERT INTO COMMANDES VALUES ('20120156BB0001', '2996100', '16/01/2012');
 INSERT INTO COMMANDES VALUES ('20120157BB0007', '2996100', '17/01/2012');
 INSERT INTO COMMANDES VALUES ('20180917BB0007', '3001777', '17/09/2018');
 
--- Les détails des commandes du magasin FR02 c est celui de Paris en France
+-- Les dÃ©tails des commandes du magasin FR02 c est celui de Paris en France
 
 CREATE TABLE DETAILSCOM (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
-INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37291', '2', '35.00 €', '10.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37341', '4', '10.71 €', '10.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '11.36639', '2', '49.14 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0001', 'WD.001', '1', '21.29 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0002', '00.37291', '2', '35.00 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.001', '1', '21.29 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.002', '1', '34.29 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.003', '1', '22.86 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.001', '1', '21.29 €', '20.00%');
-INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.002', '1', '34.29 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.003', '1', '22.86 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20151024BB0001', '00.37457', '2', '03.29 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20120156BB0001', 'WD.003', '2', '25.00 €', '00.00%');
-INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.001', '5', '22.00 €', '50.00%');
-INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.002', '10', '34.29 €', '50.00%');
-INSERT INTO DETAILSCOM VALUES ('20180917BB0007', 'MV.001', '2', '59.00 €', '10.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37291', '2', '35.00 Â€', '10.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '00.37341', '4', '10.71 Â€', '10.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', '11.36639', '2', '49.14 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0001', 'WD.001', '1', '21.29 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', '00.37291', '2', '35.00 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.001', '1', '21.29 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.002', '1', '34.29 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20150917BB0002', 'WD.003', '1', '22.86 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.001', '1', '21.29 Â€', '20.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.002', '1', '34.29 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151016BB0001', 'WD.003', '1', '22.86 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20151024BB0001', '00.37457', '2', '03.29 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20120156BB0001', 'WD.003', '2', '25.00 Â€', '00.00%');
+INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.001', '5', '22.00 Â€', '50.00%');
+INSERT INTO DETAILSCOM VALUES ('20120157BB0007', 'WD.002', '10', '34.29 Â€', '50.00%');
+INSERT INTO DETAILSCOM VALUES ('20180917BB0007', 'MV.001', '2', '59.00 Â€', '10.00%');
 
 COMMIT;
 */
@@ -529,7 +529,7 @@ INSERT INTO ARTICLES VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '257.15 Dt', '2'
 INSERT INTO ARTICLES VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '33.44 Dt', '10', '27.87 Dt');
 INSERT INTO ARTICLES VALUES ('WD.002', 'DVD - TOY STORY 2', '43.70 Dt', '10', '36.42 Dt');
 INSERT INTO ARTICLES VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '33.44 Dt', '5', '27.87 Dt');
-INSERT INTO ARTICLES VALUES ('MV.001', 'Jeu Vidéo PS4 SPIDER-MAN', '68.40 Dt', '250', '57.00 Dt');
+INSERT INTO ARTICLES VALUES ('MV.001', 'Jeu VidÃ©o PS4 SPIDER-MAN', '68.40 Dt', '250', '57.00 Dt');
 
 -- Les commandes du magasin TN02 c est celui de Sousse en Tunisie
 
@@ -542,7 +542,7 @@ INSERT INTO COMMANDES VALUES ('KTN005', 'TN0001', '16/01/2012');
 INSERT INTO COMMANDES VALUES ('KTN006', 'TN0022', '17/01/2017');
 INSERT INTO COMMANDES VALUES ('KTN007', 'TN0022', '17/09/2018');
 
--- Les détails des commandes du magasin TN02 c est celui de Sousse en Tunisie
+-- Les dÃ©tails des commandes du magasin TN02 c est celui de Sousse en Tunisie
 
 CREATE TABLE DETAILSCOM-MAG7 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
 INSERT INTO ARTICLES VALUES ('KTN001', '00.37291', '2', '95.15 Dt', '30.00%');
