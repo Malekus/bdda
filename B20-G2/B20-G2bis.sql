@@ -2197,13 +2197,11 @@ SELECT ARTICLE FROM V_C001;
 --======================================================================================
 --======================================================================================
 --======================================================================================
-COMMIT;	   
-SET TIMING OFF;
-SPOOL OFF;
 
+/*
+    CREATION DUN SYSTEME DE RECOMMANDATION BASE SUR LES ARTICLES COMMANDES EN COMMUN
+*/
 CREATE OR REPLACE VIEW CombinaisonClient(Client1, Client2) as select A.codCli, B.codCli from clients A, clients B where A.codCli < B.codCli;
-
-
 
 CREATE OR REPLACE PROCEDURE vueArticleDuClient(codeClient IN VARCHAR, dateDebut IN VARCHAR, dateFin IN VARCHAR)
 as
@@ -2246,8 +2244,6 @@ BEGIN
 END;
 /
 
-select getNbArtCm('C001', 'C007') from dual;
-
 CREATE OR REPLACE PROCEDURE systemeRecommandation(pourcentageAmi IN NUMBER, dateDebut IN VARCHAR, dateFin IN VARCHAR)
 as
     req VARCHAR(2000) := '';
@@ -2275,4 +2271,10 @@ END;
 /
 
 exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
+
+
 select * from V_RcmdAmi;
+
+COMMIT;	   
+SET TIMING OFF;
+SPOOL OFF;
