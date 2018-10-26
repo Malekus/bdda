@@ -129,7 +129,7 @@
 -- *******************************************************************************
 
 
-SPOOL Bxy-GCI-02.lst
+SPOOL B20-GCI-02.lst
 
 PROMPT =========================================================
 -- Nom du Cas       :  Gestion Commerciale Intelligente : GESCOMI : GCI
@@ -153,7 +153,7 @@ PROMPT =========================================================
 PROMPT Ceci permet d initialiser le type de la date
 PROMPT =========================================================
 ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
---ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH' ;
+ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH' ;
 --ALTER SESSION SET NLS_DATE_LANGUAGE = 'AMERICAN' ;
 PROMPT =========================================================
 
@@ -170,7 +170,7 @@ DROP TABLE ARTICLES;
 DROP TABLE COMMANDES;
 DROP TABLE CLIENTS;
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 PROMPT =========================================================
 PROMPT Création des tables de la bd GESCOMI EN SQL 2
@@ -204,7 +204,7 @@ CREATE TABLE CLIENTS
 	CONSTRAINT CK_CLIENTS_PAYSCLI		CHECK(PAYSCLI = UPPER(PAYSCLI))
 );
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 PROMPT =========================================================
 PROMPT >> Table : COMMANDES
@@ -220,7 +220,7 @@ CREATE TABLE COMMANDES
 	CONSTRAINT FK_COMMANDES_CODCLI_CLIENTS	FOREIGN KEY(CODCLI)	REFERENCES CLIENTS(CODCLI)
 );
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 PROMPT =========================================================
 PROMPT >> Table : ARTICLES
@@ -238,7 +238,7 @@ CREATE TABLE ARTICLES
 	CONSTRAINT CK_ARTICLES_QSART		CHECK(QSART < 1000)
 );
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 PROMPT =========================================================
 PROMPT >> Table : DETAILCOM
@@ -260,7 +260,7 @@ CREATE TABLE DETAILCOM
 	CONSTRAINT FK_DETAILCOM_REFART_ARTICLES	FOREIGN KEY(REFART)	REFERENCES ARTICLES(REFART)
 );
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 
 -- ===============================================================================
 -- Définition de la structure des données =========== FIN     ====================
@@ -311,7 +311,7 @@ CREATE TABLE HISTORIQUE_PRIX
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 
 PROMPT
 PROMPT =========================================================
@@ -373,7 +373,7 @@ CREATE TABLE HISTORIQUE_MVTS_ARTICLES
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -471,7 +471,7 @@ CREATE TABLE HISTORIQUE_MVTS_CLIENTS
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 */
 
@@ -571,7 +571,7 @@ INSERT INTO CLIENTS (CODCLI, CIVCLI, NOMCLI, PRENCLI, CATCLI, ADNCLI, ADRCLI, CP
 VALUES ('C056', 'Madame', 'RAHYM', 'KARYM', 1, '1', 'RUE DES GENTILS', '1000', 'CARTHAGE', 'TUNISIE','karym.rahym@gmail.com', '+21624808444');
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
@@ -664,7 +664,7 @@ VALUES ('20181AB', 'C012', 'MONDAY 17-SEPTEMBER-2018');
 
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
@@ -762,7 +762,7 @@ INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
 VALUES ('WD.007', 'K7 VIDEO-LE ROI LION 3', 30.00, 3, 13.00);
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
@@ -1068,7 +1068,7 @@ PROMPT =========================================================
 COMMIT;
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 
 -- Affichage des données ===================================================
 -- en SQL 2 ================================================================
@@ -1110,25 +1110,25 @@ COLUMN REMISE  FORMAT 999.99
 SELECT * FROM CLIENTS;
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 SELECT * FROM COMMANDES;
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 SELECT * FROM ARTICLES;
 
 PROMPT
-Pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 SELECT * FROM DETAILCOM;
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 -- ===============================================================================
 -- Insertion des données ============================ FIN ========================
@@ -1160,7 +1160,7 @@ PROMPT
 -- Table des Articles
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
@@ -1180,7 +1180,7 @@ INSERT INTO ARTICLES (REFART, NOMART, PVART, QSART, PAART)
 VALUES ('WD.011', 'Exemple de DVD', 25.00, 5, 10.00);
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 COLUMN REFART	FORMAT A6
@@ -1203,7 +1203,7 @@ WHERE	REFART IN ('WD.010', 'WD.011');
 -- ??? 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =========================================================
@@ -1221,7 +1221,7 @@ SET	PVART = 2.00
 WHERE	REFART = 'WD.011';
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1238,7 +1238,7 @@ WHERE	REFART IN ('WD.010', 'WD.011');
 -- ??? 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1254,7 +1254,7 @@ FROM	HISTORIQUE_PRIX;
 -- ??? 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 
@@ -1269,7 +1269,7 @@ PROMPT
 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 COLUMN 	NOMUSER		FORMAT A12 
@@ -1299,7 +1299,7 @@ PROMPT =====================================================================
 PROMPT
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1322,7 +1322,7 @@ FROM	HISTORIQUE_MVTS_ARTICLES;
 -- __________________________________________________________________________
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1358,7 +1358,7 @@ FROM	HISTORIQUE_MVTS_ARTICLES;
 -- __________________________________________________________________________
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT 
@@ -1427,7 +1427,7 @@ CREATE TABLE COMPARAISON_ART
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1453,7 +1453,7 @@ CREATE TABLE COMPARAISON_CHIFFRE_AFFAIRES
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1471,7 +1471,7 @@ CREATE OR REPLACE VIEW VUE_ART (REFART, A_PVART, A_PAART, A_QSART) AS
 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1491,7 +1491,7 @@ CREATE OR REPLACE VIEW VUE_MVTS_ART (REFART, A_PVART, A_PAART, A_QSART) AS
 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1510,7 +1510,7 @@ CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_AVANT AS
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1529,7 +1529,7 @@ CREATE OR REPLACE VIEW CHIFFRE_AFFAIRES_APRES (PAYSCLI, CHIFFAFF, ) AS
 );
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1604,7 +1604,7 @@ END;
 /
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1615,7 +1615,7 @@ EXECUTE MOYENNE_PRIX_ART;
 
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 PROMPT =====================================================================
@@ -1633,7 +1633,7 @@ SELECT * FROM COMPARAISON_ART;
 -- ??
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 TTITLE CENTER 'Visualisation de la table COMPARAISON_CHIFFRE_AFFAIRES' skip 1 -
@@ -1646,7 +1646,7 @@ SELECT * FROM COMPARAISON_CHIFFRE_AFFAIRES;
 --??
 
 PROMPT
-pause Tapez sur Enter...
+--Pause Tapez sur Enter...
 PROMPT
 
 --======================================================================================
@@ -2054,7 +2054,11 @@ Etc...
 FB6.1. Construisez la vue « Vi » qui contient les articles commandés par un client donné « Ci »
 (pour une période donnée, exemple septembre 2018).
 Généralisez dans une procédure PL/SQL !
+*/
 
+
+
+/*
 FB6.2. Construisez la vue « Vij » qui contient les articles commandés à la fois 
 par les deux clients « Ci » et « Cj ».
 On pourrait considérer que les deux clients « Ci » et « Cj » sont « amis-voisins » 
@@ -2071,6 +2075,7 @@ mais qui doivent appartenir à la même catégorie !
 Discussions & Généralisation !
 
 */
+
 
 -- ????????????      FB FB FB FB FB FB A compléter ??????????????
 
@@ -2196,5 +2201,78 @@ COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 
+CREATE OR REPLACE VIEW CombinaisonClient(Client1, Client2) as select A.codCli, B.codCli from clients A, clients B where A.codCli < B.codCli;
 
 
+
+CREATE OR REPLACE PROCEDURE vueArticleDuClient(codeClient IN VARCHAR, dateDebut IN VARCHAR, dateFin IN VARCHAR)
+as
+    req VARCHAR(2000) := '';
+BEGIN
+    req := 'CREATE OR REPLACE VIEW V_' || codeClient || '(CLIENT, ARTICLE, QUANTITE) AS SELECT K.CODCLI, D.REFART, SUM(D.QTCOM) FROM COMMANDES K, DETAILCOM D WHERE K.NUMCOM = D.NUMCOM AND K.DATCOM >= ''' || dateDebut || ''' AND K.DATCOM <= ''' || dateFin || ''' AND K.CODCLI = ''' || codeClient || ''' GROUP BY K.CODCLI, D.REFART ORDER BY 1, 2';
+    EXECUTE IMMEDIATE req;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE vueArticleDesClients(codeClient1 IN VARCHAR, dateDebut1 IN VARCHAR, dateFin1 IN VARCHAR, codeClient2 IN VARCHAR, dateDebut2 IN VARCHAR, dateFin2 IN VARCHAR)
+as
+    req VARCHAR(2000) := '';
+BEGIN
+    vueArticleDuClient(codeClient1,dateDebut1,dateFin1);
+    vueArticleDuClient(codeClient2,dateDebut2,dateFin2);
+    req := 'CREATE OR REPLACE VIEW V_'||codeClient1||'_'||codeClient2||'_A (ARTICLE) AS SELECT ARTICLE FROM V_'||codeClient1||' INTERSECT SELECT ARTICLE FROM V_'||codeClient2;
+    EXECUTE IMMEDIATE req;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE vueArticleNonDesClients(codeClient1 IN VARCHAR, dateDebut1 IN VARCHAR, dateFin1 IN VARCHAR, codeClient2 IN VARCHAR, dateDebut2 IN VARCHAR, dateFin2 IN VARCHAR)
+as
+    req VARCHAR(2000) := '';
+BEGIN
+    vueArticleDuClient(codeClient1,dateDebut1,dateFin1);
+    vueArticleDuClient(codeClient2,dateDebut2,dateFin2);
+    req := 'CREATE OR REPLACE VIEW V_Non_'||codeClient1||'_'||codeClient2||'_A (ARTICLE) AS SELECT ARTICLE FROM V_'||codeClient1||' MINUS SELECT ARTICLE FROM V_'||codeClient2;
+    EXECUTE IMMEDIATE req;
+END;
+/
+
+CREATE OR REPLACE FUNCTION getNbArtCm(c1 IN VARCHAR, c2 IN VARCHAR)
+RETURN NUMBER AS
+    nbArtCm NUMBER := 0;
+BEGIN
+    EXECUTE IMMEDIATE 'SELECT COUNT(*) FROM V_' || c1 || '_' || c2 || '_A'
+    INTO nbArtCm;
+    return nbArtCm;
+END;
+/
+
+select getNbArtCm('C001', 'C007') from dual;
+
+CREATE OR REPLACE PROCEDURE systemeRecommandation(pourcentageAmi IN NUMBER, dateDebut IN VARCHAR, dateFin IN VARCHAR)
+as
+    req VARCHAR(2000) := '';
+    reqIn VARCHAR(2000) := '';
+    nbArticle NUMBER := 0;
+BEGIN
+    -- Suppresion et Création de la table qui va contenir les articles qu'on les clients en commun
+    EXECUTE IMMEDIATE 'DROP TABLE totalArticleCommun';
+    EXECUTE IMMEDIATE 'CREATE TABLE totalArticleCommun(client1 VARCHAR(30), client2 VARCHAR(30), nbArtCm NUMBER)';
+    -- Parcours sur tous les clients pour creer une vue Vij avec i et j des clients différents
+    FOR mesClients in (SELECT * FROM combinaisonClient) LOOP
+        vueArticleDesClients(''||mesClients.client1||'', dateDebut, dateFin, ''||mesClients.client2||'', dateDebut, dateFin);
+        req := 'SELECT COUNT(*) FROM V_' || mesClients.client1 || '_' || mesClients.client2 || '_A';
+        EXECUTE IMMEDIATE req
+        INTO nbArticle;
+        reqIn := 'INSERT INTO totalArticleCommun values (''' || mesClients.client1 || ''', ''' || mesClients.client2 || ''', ' || nbArticle || ')';
+        EXECUTE IMMEDIATE reqIn;
+    END LOOP;
+    -- On cree une vue avec les clietns et le nombre d'article en commun
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_NBArtCm (client1, client2, nbArtCm) as (select client1, client2, (select getNbArtCm(client1, client2) from dual) from CombinaisonClient)';
+    -- Et pour finir on creer une vue qui est composé que des clients qui possède un nombre d'article supérieur au seuil définir.
+    -- Ces clients sont considérer comme Ami
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_RcmdAmi (client1, client2) as select client1, client2 from (select client1, client2, nbArtCm from V_NBArtCm group by client1, client2, nbArtCm having nbArtCm >=   (select FLOOR(max(nbArtCm) * ' || pourcentageAmi || ' / 100) from V_NBArtCm)) order by client1, client2';
+END;
+/
+
+exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
+select * from V_RcmdAmi;
