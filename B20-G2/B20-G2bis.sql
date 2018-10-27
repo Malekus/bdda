@@ -2231,8 +2231,14 @@ BEGIN
     vueArticleDuClient(codeClient2,dateDebut2,dateFin2);
     req := 'CREATE OR REPLACE VIEW V_Non_'||codeClient1||'_'||codeClient2||'_A (ARTICLE) AS SELECT ARTICLE FROM V_'||codeClient1||' MINUS SELECT ARTICLE FROM V_'||codeClient2;
     EXECUTE IMMEDIATE req;
+    req := 'CREATE OR REPLACE VIEW V_Non_'||codeClient2||'_'||codeClient1||'_A (ARTICLE) AS SELECT ARTICLE FROM V_'||codeClient2||' MINUS SELECT ARTICLE FROM V_'||codeClient1;
+    EXECUTE IMMEDIATE req;
 END;
 /
+
+exec vueArticleNonDesClients('C001', 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018', 'C003', 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
+select * from V_NON_C001_C003_A;
+select * from V_NON_C003_C001_A;
 
 CREATE OR REPLACE FUNCTION getNbArtCm(c1 IN VARCHAR, c2 IN VARCHAR)
 RETURN NUMBER AS
@@ -2243,6 +2249,8 @@ BEGIN
     return nbArtCm;
 END;
 /
+
+CREATE TABLE totalArticleCommun(client1 VARCHAR(30), client2 VARCHAR(30), nbArtCm NUMBER);
 
 CREATE OR REPLACE PROCEDURE systemeRecommandation(pourcentageAmi IN NUMBER, dateDebut IN VARCHAR, dateFin IN VARCHAR)
 as
@@ -2267,6 +2275,8 @@ BEGIN
     -- Et pour finir on creer une vue qui est composé que des clients qui possède un nombre d'article supérieur au seuil définir.
     -- Ces clients sont considérer comme Ami
     EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_RcmdAmi (client1, client2) as select client1, client2 from (select client1, client2, nbArtCm from V_NBArtCm group by client1, client2, nbArtCm having nbArtCm >=   (select FLOOR(max(nbArtCm) * ' || pourcentageAmi || ' / 100) from V_NBArtCm)) order by client1, client2';
+    -- Maintenant qu'on a une table contenant tous les amis il faut recommander tous les articles du client C1 au client C2 et inversement
+    -- On utilisea la procedure vueArticleNonDesClients
 END;
 /
 
@@ -2278,3 +2288,4 @@ select * from V_RcmdAmi;
 COMMIT;	   
 SET TIMING OFF;
 SPOOL OFF;
+
