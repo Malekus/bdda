@@ -2328,7 +2328,6 @@ show error;
 exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
 select * from V_ListArtARecom;
 
-select * from V_RcmdAmi;
 
 COMMIT;	   
 SET TIMING OFF;
