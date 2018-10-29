@@ -2250,7 +2250,39 @@ BEGIN
 END;
 /
 
+DROP TABLE totalArticleCommun;
 CREATE TABLE totalArticleCommun(client1 VARCHAR(30), client2 VARCHAR(30), nbArtCm NUMBER);
+DROP TABLE articleARecomder;
+CREATE TABLE articleARecomder(client1 VARCHAR(30), client2 VARCHAR(30), article VARCHAR(30));
+
+
+CREATE OR REPLACE PROCEDURE propositionArticle(codeClient1 IN VARCHAR, codeClient2 IN VARCHAR,dateDebut IN VARCHAR, dateFin IN VARCHAR)
+is
+    Type curseurType IS REF CURSOR;
+    monCurseur curseurType;
+    requete VARCHAR(2000);
+    v_Article VARCHAR(55);
+BEGIN
+    vueArticleNonDesClients(codeClient1, dateDebut, dateFin, codeClient2, dateDebut, dateFin);
+    requete := 'SELECT article FROM V_Non_' || codeClient1 || '_' || codeClient2 || '_A';
+    OPEN monCurseur FOR requete;
+        LOOP
+            FETCH monCurseur INTO v_Article;
+            EXECUTE IMMEDIATE 'INSERT INTO articleARecomder values ('''||codeClient1||''','''||codeClient2||''',''' ||v_Article|| ''')';
+            EXIT WHEN monCurseur%NOTFOUND;
+        END LOOP;
+    CLOSE monCurseur;
+    
+    requete := 'SELECT article FROM V_Non_' || codeClient2 || '_' || codeClient1 || '_A';
+    OPEN monCurseur FOR requete;
+        LOOP
+            FETCH monCurseur INTO v_Article;
+            EXECUTE IMMEDIATE 'INSERT INTO articleARecomder values ('''||codeClient2||''','''||codeClient1||''',''' ||v_Article|| ''')';
+            EXIT WHEN monCurseur%NOTFOUND;
+        END LOOP;
+    CLOSE monCurseur;
+END;
+/
 
 CREATE OR REPLACE PROCEDURE systemeRecommandation(pourcentageAmi IN NUMBER, dateDebut IN VARCHAR, dateFin IN VARCHAR)
 as
@@ -2276,12 +2308,25 @@ BEGIN
     -- Ces clients sont considérer comme Ami
     EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_RcmdAmi (client1, client2) as select client1, client2 from (select client1, client2, nbArtCm from V_NBArtCm group by client1, client2, nbArtCm having nbArtCm >=   (select FLOOR(max(nbArtCm) * ' || pourcentageAmi || ' / 100) from V_NBArtCm)) order by client1, client2';
     -- Maintenant qu'on a une table contenant tous les amis il faut recommander tous les articles du client C1 au client C2 et inversement
-    -- On utilisea la procedure vueArticleNonDesClients
+    -- On utilise la procedure vueArticleNonDesClients
+    -- Suppresion et creation de la table qui va contenir le client 1 qui va recommander au client 2 l'article X
+    execute immediate 'DROP TABLE articleARecomder';
+    execute immediate 'CREATE TABLE articleARecomder(client1 VARCHAR(30), client2 VARCHAR(30), article VARCHAR(30))';
+    -- Pour tous clients considérés comme ami nous allons recommander les articles de sont client ami
+    FOR mesClients IN (SELECT * FROM V_RcmdAmi) LOOP
+        propositionArticle(mesClients.client1, mesClients.client2, dateDebut, dateFin);
+    END LOOP;
+    -- Pour finir on creee la vue qui ne contient que les clients et les articles qu'on souhaite leur recommander
+    -- Cette étape n'est pas obligatiore mais elle nous permet de supprimer les doublons au niveau des recommandations
+    -- De ce fait, un client aura une seule fois un article recommandé
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ListArtARecom(client, article)  as select distinct client2,article from articleARecomder where article is not null order by client2, article';
 END;
 /
 
-exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
+show error;
 
+exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
+select * from V_ListArtARecom;
 
 select * from V_RcmdAmi;
 
