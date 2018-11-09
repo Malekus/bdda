@@ -2323,7 +2323,10 @@ BEGIN
 END;
 /
 
-SHOW ERROR;
+
+
+exec systemeRecommandationAvance(categorieClient=>'toto', categorieArticle=>'toto', toto=>'on est');
+
 
 exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
 select * from V_ListArtARecom;
@@ -2333,27 +2336,54 @@ COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 
-CREATE TABLE CategorieClient(categorie VARCHAR(30), requete VARCHAR(255));
 
-CREATE TABLE CategorieArticle(categorie VARCHAR(30), requete VARCHAR(255));
 
-INSERT INTO CategorieClient VALUES('V_Cat_C_All', 'CREATE OR REPLACE VIEW V_Cat_C_All(client) AS SELECT codcli FROM clients');
-delete from CATEGORIECLIENT where categorie = 'V_Cat_C_All';
 
-select * from CATEGORIECLIENT;
 
-select CODCLI from clients;
 
-CREATE OR REPLACE PROCEDURE testProcCategCli(maCategorie IN VARCHAR)
-as
-  v_view VARCHAR(255);
+
+CREATE OR REPLACE PROCEDURE initSysRecomnAvance
+AS
 BEGIN
-  SELECT requete into v_view from categorieClient where categorie = maCategorie;
-  EXECUTE IMMEDIATE v_view;
-  -- J'ai ouvblié de croisé les clients entre eux
+  EXECUTE IMMEDIATE 'DROP TABLE CategorieClient';
+  EXECUTE IMMEDIATE 'DROP TABLE CategorieArticle';
+  EXECUTE IMMEDIATE 'CREATE TABLE CategorieClient(categorie VARCHAR(30), requete VARCHAR(255))';
+  EXECUTE IMMEDIATE 'CREATE TABLE CategorieArticle(categorie VARCHAR(30), requete VARCHAR(255))';
+  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ARTICLE_COMMANDE AS SELECT * FROM detailcom NATURAL JOIN commandes';
+  INSERT INTO CategorieClient VALUES ('V_CAT_CLIENT_', 'CREATE OR REPLACE VIEW V_CAT_CLIENT_TEMPLATE_NAME(client1, client2) AS SELECT C1.codcli, C2.codcli FROM clients C1, clients C2 WHERE C1.codcli < C2.codcli TEMPLATE_COND');
+  INSERT INTO CategorieArticle VALUES ('V_CAT_ARTICLE_', 'CREATE OR REPLACE VIEW V_CAT_ARTICLE_TEMPLATE_NAME(article, client) AS SELECT refart, codCli FROM V_ARTICLE_COMMANDE TEMPLATE_COND');
+  --EXECUTE IMMEDIATE 'INSERT INTO CategorieClient VALUES (''V_CAT_CLIENT_'', ''CREATE OR REPLACE VIEW V_CAT_CLIENT_TEMPLATE_NAME(client1, client2) AS SELECT C1.codcli, C2.codcli FROM clients C1, clients C2 WHERE C1.codcli < C2.codcli TEMPLATE_COND'')';
+  --EXECUTE IMMEDIATE 'INSERT INTO CategorieArticle VALUES (''V_CAT_ARTICLE_'', ''CREATE OR REPLACE VIEW V_CAT_ARTICLE_TEMPLATE_NAME(article, client) AS SELECT refart, codCli FROM V_ARTICLE_COMMANDE TEMPLATE_COND'')';
 END;
 /
 
-exec testProcCategCli('V_Cat_C_All');
+CREATE OR REPLACE PROCEDURE creationCategorieClient(nomCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieClient IN VARCHAR DEFAULT NULL)
+AS
+BEGIN
+  FOR nvCatClient IN (SELECT * FROM CATEGORIECLIENT where categorie = 'V_CAT_CLIENT_') LOOP
+    EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatClient.requete, 'TEMPLATE_NAME', nomCategorieClient), 'TEMPLATE_COND', conditionCategorieClient);
+  END LOOP;
+END;
+/
 
-select * from V_Cat_C_All;
+CREATE OR REPLACE PROCEDURE createCategorieArticle(nomCategorieArticle IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ARTICLE_COMMANDE AS SELECT * FROM detailcom NATURAL JOIN commandes';
+  
+  FOR nvCatArticle IN (SELECT * FROM CATEGORIEARTICLE where categorie = 'V_CAT_ARTICLE_') LOOP
+    EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatArticle.requete, 'TEMPLATE_NAME', nomCategorieArticle), 'TEMPLATE_COND', conditionCategorieArticle);
+  END LOOP;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE systemeRecommandationAvance (categorieClient IN VARCHAR, categorieArticle in VARCHAR, dateDebut  IN VARCHAR DEFAULT '01/01/00', dateFin IN VARCHAR DEFAULT SYSDATE)
+AS
+BEGIN
+  initSysRecomnAvance();
+  creationCategorieClient();
+  createCategorieArticle();  
+END;
+/
+
+exec systemeRecommandationAvance();
