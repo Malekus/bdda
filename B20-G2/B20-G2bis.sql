@@ -2352,38 +2352,96 @@ BEGIN
   EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ARTICLE_COMMANDE AS SELECT * FROM detailcom NATURAL JOIN commandes';
   INSERT INTO CategorieClient VALUES ('V_CAT_CLIENT_', 'CREATE OR REPLACE VIEW V_CAT_CLIENT_TEMPLATE_NAME(client1, client2) AS SELECT C1.codcli, C2.codcli FROM clients C1, clients C2 WHERE C1.codcli < C2.codcli TEMPLATE_COND');
   INSERT INTO CategorieArticle VALUES ('V_CAT_ARTICLE_', 'CREATE OR REPLACE VIEW V_CAT_ARTICLE_TEMPLATE_NAME(article, client) AS SELECT refart, codCli FROM V_ARTICLE_COMMANDE TEMPLATE_COND');
-  --EXECUTE IMMEDIATE 'INSERT INTO CategorieClient VALUES (''V_CAT_CLIENT_'', ''CREATE OR REPLACE VIEW V_CAT_CLIENT_TEMPLATE_NAME(client1, client2) AS SELECT C1.codcli, C2.codcli FROM clients C1, clients C2 WHERE C1.codcli < C2.codcli TEMPLATE_COND'')';
-  --EXECUTE IMMEDIATE 'INSERT INTO CategorieArticle VALUES (''V_CAT_ARTICLE_'', ''CREATE OR REPLACE VIEW V_CAT_ARTICLE_TEMPLATE_NAME(article, client) AS SELECT refart, codCli FROM V_ARTICLE_COMMANDE TEMPLATE_COND'')';
+  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ARTICLE_COMMANDE AS SELECT * FROM detailcom NATURAL JOIN commandes';
 END;
 /
 
 CREATE OR REPLACE PROCEDURE creationCategorieClient(nomCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieClient IN VARCHAR DEFAULT NULL)
 AS
 BEGIN
-  FOR nvCatClient IN (SELECT * FROM CATEGORIECLIENT where categorie = 'V_CAT_CLIENT_') LOOP
-    EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatClient.requete, 'TEMPLATE_NAME', nomCategorieClient), 'TEMPLATE_COND', conditionCategorieClient);
-  END LOOP;
+  IF nomCategorieClient IS NULL THEN
+    FOR nvCatClient IN (SELECT * FROM CATEGORIECLIENT where categorie = 'V_CAT_CLIENT_') LOOP
+      EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatClient.requete, 'TEMPLATE_NAME', nomCategorieClient), 'TEMPLATE_COND', conditionCategorieClient);
+    END LOOP;
+  END IF;
 END;
 /
 
-CREATE OR REPLACE PROCEDURE createCategorieArticle(nomCategorieArticle IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
+select * from CATEGORIECLIENT;
+
+CREATE OR REPLACE PROCEDURE creationCategorieArticle(nomCategorieArticle IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
 AS
 BEGIN
-  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ARTICLE_COMMANDE AS SELECT * FROM detailcom NATURAL JOIN commandes';
-  
-  FOR nvCatArticle IN (SELECT * FROM CATEGORIEARTICLE where categorie = 'V_CAT_ARTICLE_') LOOP
-    EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatArticle.requete, 'TEMPLATE_NAME', nomCategorieArticle), 'TEMPLATE_COND', conditionCategorieArticle);
-  END LOOP;
+  IF nomCategorieArticle IS NULL THEN
+    FOR nvCatArticle IN (SELECT * FROM CATEGORIEARTICLE where categorie = 'V_CAT_ARTICLE_') LOOP
+      EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatArticle.requete, 'TEMPLATE_NAME', nomCategorieArticle), 'TEMPLATE_COND', conditionCategorieArticle);
+    END LOOP;
+  END IF ;
 END;
 /
 
-CREATE OR REPLACE PROCEDURE systemeRecommandationAvance (categorieClient IN VARCHAR, categorieArticle in VARCHAR, dateDebut  IN VARCHAR DEFAULT '01/01/00', dateFin IN VARCHAR DEFAULT SYSDATE)
+CREATE OR REPLACE PROCEDURE systemeRecommandationAvance (categorieClient IN VARCHAR DEFAULT NULL, categorieArticle in VARCHAR DEFAULT NULL, dateDebut  IN VARCHAR DEFAULT '01/01/00', dateFin IN VARCHAR DEFAULT SYSDATE, conditionCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
 AS
 BEGIN
-  initSysRecomnAvance();
   creationCategorieClient();
-  createCategorieArticle();  
+  creationCategorieArticle();
+  --creationVueClients(categorieClient);
 END;
 /
 
-exec systemeRecommandationAvance();
+
+CREATE OR REPLACE PROCEDURE creationVueClient(categorieClient IN VARCHAR DEFAULT 'V_CAT_CLIENT_', categorieArticle IN VARCHAR DEFAULT 'V_CAT_ARTICLE_')
+AS
+BEGIN
+
+  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_TMP_CLIENT(client) AS SELECT client1 from ' || categorieClient || ' UNION SELECT CLIENT2 FROM ' || categorieClient; 
+  FOR cli IN (SELECT * FROM V_TMP_CLIENT) LOOP
+    DBMS_OUTPUT.PUT_LINE(cli.client);
+  END LOOP;
+END;
+/
+
+exec creationVueClient();
+
+
+
+
+
+drop view V_TMP_CLIENT;
+
+select * from CategorieClient;
+select * from CategorieArticle;
+
+
+SELECT article FROM V_CAT_ARTICLE_ WHERE client = ;
+
+SELECT * FROM V_CAT_ARTICLE_;
+SELECT * FROM V_CAT_Client_;
+
+
+SELECT * FROM (SELECT DISTINCT article, 'pour C002' as categorie from V_CAT_ARTICLE_ where client = 'C001') A 
+FULL JOIN (SELECT DISTINCT article, 'pour C001' as categorie from V_CAT_ARTICLE_ where client = 'C002') B 
+ON A.categorie = B.categorie WHERE A.categorie IS NULL OR B.categorie IS NULL;
+
+SELECT DISTINCT article from V_CAT_ARTICLE_ where client = 'C001';
+
+SELECT DISTINCT article, 'pour C001' as categorie from V_CAT_ARTICLE_ where client = 'C002' and article not in (SELECT DISTINCT article from V_CAT_ARTICLE_ where client = 'C001')
+UNION
+SELECT DISTINCT article, 'pour C002' as categorie from V_CAT_ARTICLE_ where client = 'C001' and article not in (SELECT DISTINCT article from V_CAT_ARTICLE_ where client = 'C002');
+
+
+/*
+SELECT *
+FROM A
+FULL JOIN B ON A.key = B.key
+WHERE A.key IS NULL
+OR B.key IS NULL
+*/
+
+
+exec initSysRecomnAvance();
+
+
+exec systemeRecommandationAvance;
+
+drop procedure systemeRecommandationAvance;
