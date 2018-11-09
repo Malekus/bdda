@@ -2246,7 +2246,7 @@ RETURN NUMBER AS
 BEGIN
     EXECUTE IMMEDIATE 'SELECT COUNT(*) FROM V_' || c1 || '_' || c2 || '_A'
     INTO nbArtCm;
-    return nbArtCm;
+    RETURN nbArtCm;
 END;
 /
 
@@ -2257,7 +2257,7 @@ CREATE TABLE articleARecomder(client1 VARCHAR(30), client2 VARCHAR(30), article 
 
 
 CREATE OR REPLACE PROCEDURE propositionArticle(codeClient1 IN VARCHAR, codeClient2 IN VARCHAR,dateDebut IN VARCHAR, dateFin IN VARCHAR)
-is
+IS
     Type curseurType IS REF CURSOR;
     monCurseur curseurType;
     requete VARCHAR(2000);
@@ -2319,11 +2319,11 @@ BEGIN
     -- Pour finir on creee la vue qui ne contient que les clients et les articles qu'on souhaite leur recommander
     -- Cette étape n'est pas obligatiore mais elle nous permet de supprimer les doublons au niveau des recommandations
     -- De ce fait, un client aura une seule fois un article recommandé
-    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ListArtARecom(client, article)  as select distinct client2,article from articleARecomder where article is not null order by client2, article';
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_ListArtARecom(client, article)  AS SELECT DISTINCT client2, article FROM articleARecomder WHERE ARTICLE IS NOT NULL ORDER BY client2, article';
 END;
 /
 
-show error;
+SHOW ERROR;
 
 exec systemeRecommandation(80, 'SATURDAY 01-SEPTEMBER-2018' ,'SUNDAY 30-SEPTEMBER-2018');
 select * from V_ListArtARecom;
@@ -2333,3 +2333,27 @@ COMMIT;
 SET TIMING OFF;
 SPOOL OFF;
 
+CREATE TABLE CategorieClient(categorie VARCHAR(30), requete VARCHAR(255));
+
+CREATE TABLE CategorieArticle(categorie VARCHAR(30), requete VARCHAR(255));
+
+INSERT INTO CategorieClient VALUES('V_Cat_C_All', 'CREATE OR REPLACE VIEW V_Cat_C_All(client) AS SELECT codcli FROM clients');
+delete from CATEGORIECLIENT where categorie = 'V_Cat_C_All';
+
+select * from CATEGORIECLIENT;
+
+select CODCLI from clients;
+
+CREATE OR REPLACE PROCEDURE testProcCategCli(maCategorie IN VARCHAR)
+as
+  v_view VARCHAR(255);
+BEGIN
+  SELECT requete into v_view from categorieClient where categorie = maCategorie;
+  EXECUTE IMMEDIATE v_view;
+  -- J'ai ouvblié de croisé les clients entre eux
+END;
+/
+
+exec testProcCategCli('V_Cat_C_All');
+
+select * from V_Cat_C_All;
