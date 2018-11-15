@@ -152,8 +152,8 @@ PROMPT
 PROMPT =========================================================
 PROMPT Ceci permet d initialiser le type de la date
 PROMPT =========================================================
-ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
-ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH' ;
+ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY';
+ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH';
 --ALTER SESSION SET NLS_DATE_LANGUAGE = 'AMERICAN' ;
 PROMPT =========================================================
 
@@ -2376,7 +2376,6 @@ AS
 BEGIN
   SELECT COUNT(*) INTO catExiste FROM CATEGORIECLIENT WHERE categorie = 'V_CAT_CLI_' || nomCategorieClient;
   IF catExiste != 0 THEN
-    DBMS_OUTPUT.PUT_LINE('Cette categorie existe');
     RETURN;
   END IF ;
   IF nomCategorieClient IS NULL THEN
@@ -2401,7 +2400,6 @@ AS
 BEGIN
   SELECT COUNT(*) INTO catExiste FROM CATEGORIEARTICLE WHERE categorie = 'V_CAT_ART_' || nomCategorieArticle;
   IF catExiste != 0 THEN
-    DBMS_OUTPUT.PUT_LINE('Cette categorie existe');
     RETURN;
   END IF ;
   IF nomCategorieArticle IS NULL THEN
@@ -2428,16 +2426,16 @@ BEGIN
   || categorieArticle || ''')) as nbArticleCmn FROM V_CAT_CLI_' || categorieClient || ') * ' || seuil || ' / 100';
   
   EXECUTE IMMEDIATE 'DROP MATERIALIZED VIEW MV_' || categorieClient || '_' || categorieArticle;  
-  EXECUTE IMMEDIATE 'CREATE MATERIALIZED VIEW MV_' || categorieClient || '_' || categorieArticle || ' AS (SELECT DISTINCT article, V_' || categorieClient || '_' || categorieArticle || '.client1 as recommander, sysdate dateRecommander 
-  from V_CAT_ART_' || categorieArticle || ', V_' || categorieClient || '_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client2 and article not in (SELECT DISTINCT article from V_CAT_ART_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client1)
+  EXECUTE IMMEDIATE 'CREATE MATERIALIZED VIEW MV_' || categorieClient || '_' || categorieArticle || ' AS (SELECT DISTINCT article, V_' || categorieClient || '_' || categorieArticle || '.client1 AS recommander, sysdate dateRecommander 
+  FROM V_CAT_ART_' || categorieArticle || ', V_' || categorieClient || '_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client2 and article NOT IN (SELECT DISTINCT article from V_CAT_ART_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client1)
   UNION
   SELECT DISTINCT article, V_' || categorieClient || '_' || categorieArticle || '.client2 as recommander, sysdate dateRecommander 
-  from V_CAT_ART_' || categorieArticle || ', V_' || categorieClient || '_' || categorieArticle || '  where client = V_' || categorieClient || '_' || categorieArticle || '.client1 and article not in (SELECT DISTINCT article from V_CAT_ART_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client2))';
+  FROM V_CAT_ART_' || categorieArticle || ', V_' || categorieClient || '_' || categorieArticle || '  WHERE client = V_' || categorieClient || '_' || categorieArticle || '.client1 AND article NOT IN (SELECT DISTINCT article from V_CAT_ART_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client2))';
   DBMS_OUTPUT.PUT_LINE('Vue MV_' || categorieClient || '_' || categorieArticle || ' créé(e)');
 END;
 /
 
-CREATE OR REPLACE PROCEDURE systemeRecommandationAvance (categorieClient IN VARCHAR DEFAULT 'V_CAT_CLI_', categorieArticle in VARCHAR DEFAULT 'V_CAT_ART_', seuil IN NUMBER DEFAULT 50, conditionCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
+CREATE OR REPLACE PROCEDURE systemeRecommandationAvance (categorieClient IN VARCHAR DEFAULT 'V_CAT_CLI_', categorieArticle IN VARCHAR DEFAULT 'V_CAT_ART_', seuil IN NUMBER DEFAULT 50, conditionCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
 AS
 BEGIN
   creationCategorieClient(categorieClient, conditionCategorieClient);
@@ -2447,7 +2445,7 @@ END;
 /
 
 exec initSysRecomnAvance;
-
+set serveroutput on
 exec systemeRecommandationAvance(categorieClient=>'FRANCAIS', conditionCategorieClient=>'AND UPPER(''france'') in (c1.payscli, c2.payscli)');
 exec systemeRecommandationAvance(categorieClient=>'DAME', conditionCategorieClient=>'AND INITCAP(''madame'') in (c1.civcli, c2.civcli)', categorieArticle=>'REMISE_NN', conditionCategorieArticle=>'WHERE remise != 0');
 
@@ -2457,3 +2455,5 @@ select * from MV_FRANCAIS_V_CAT_ART_;
 select * from MV_DAME_REMISE_NN;
 
 select * from CategorieClient;
+
+select * from SYSTEM.MAGASINS;

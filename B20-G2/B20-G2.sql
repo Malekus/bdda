@@ -152,7 +152,8 @@ PROMPT
 PROMPT =========================================================
 PROMPT Ceci permet d initialiser le type de la date
 PROMPT =========================================================
-ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY' ;
+ALTER SESSION SET NLS_DATE_FORMAT = 'DAY DD-MONTH-YYYY';
+ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH';
 PROMPT =========================================================
 
 -- ===============================================================================

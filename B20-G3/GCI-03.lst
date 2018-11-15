@@ -1,0 +1,1502 @@
+SQL> SET TIMING ON
+SQL> SET LINES 1000
+SQL> SET PAGES 1000
+SQL> PROMPT =========================================================
+=========================================================
+SQL> -- Nom du Cas       :  Gestion Commerciale Intelligente : GESCOMI : GCI
+SQL> -- Nom de SGBD      :  ORACLE DBMS                    
+SQL> -- Date de crÃ©ation :  Septembre 2018
+SQL> -- Auteur           :  Faouzi BOUFARES 
+SQL> -- UniversitÃ©       :  UniversitÃ© Sorbonne Paris CitÃ©, UniversitÃ© Paris 13 
+SQL> -- Formation        :  Master 2 EID 2  
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT 
+
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT |                                                       |
+|                                                       |
+SQL> PROMPT |     Exercice 3 :  BD GESCOMI avec SQL 2               |
+|     Exercice 3 :  BD GESCOMI avec SQL 2               |
+SQL> PROMPT |     IntÃ©gration de BD                                 |
+|     IntÃ©gration de BD                                 |
+SQL> PROMPT |                                                       |
+|                                                       |
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT
+
+SQL> PROMPT
+
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT Ceci permet d initialiser le type de la date
+Ceci permet d initialiser le type de la date
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT =========================================================
+=========================================================
+SQL> PROMPT Ceci permet d initialiser le type de la date
+Ceci permet d initialiser le type de la date
+SQL> PROMPT =========================================================
+=========================================================
+SQL> ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY';
+
+Session modifié(e).
+
+Elapsed: 00:00:00.003
+SQL> ALTER SESSION SET NLS_DATE_LANGUAGE = 'ENGLISH';
+
+Session modifié(e).
+
+Elapsed: 00:00:00.002
+SQL> --ALTER SESSION SET NLS_DATE_LANGUAGE = 'AMERICAN' ;
+SQL> PROMPT =========================================================
+=========================================================
+SQL> /*
+
+Entre parenthÃ¨ses hihi haha FFF !
+
+Etant donnÃ© la table CACLI suivante :
+Elle est issue de plusieurs calculs sur les tables de la BD GesComI... 
+Faire les requÃªtes ci-dessous : Statistiques sur le chiffre dÂ’affaires
+*/
+SQL> DROP TABLE CACLI;
+
+Table CACLI supprimé(e).
+
+Elapsed: 00:00:00.010
+SQL> CREATE TABLE CACLI (DATECA DATE, MONTANTCA NUMBER);
+
+Table CACLI créé(e).
+
+Elapsed: 00:00:00.006
+SQL> INSERT INTO CACLI VALUES ('01-01-2010', 72);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2010', 88);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-03-2010', 90);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-04-2010', 74);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-05-2010', 79);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-06-2010', 72);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-07-2010', 76);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2010', 89);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-09-2010', 90);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-10-2010', 80);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-11-2010', 69);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-12-2010', 90);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-01-2011', 78);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2011', 93);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-03-2011', 81);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-04-2011', 72);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-05-2011', 94);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-06-2011', 70);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-07-2011', 93);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-08-2011', 72);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-09-2011', 82);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-10-2011', 74);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-11-2011', 90);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-12-2011', 73);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-01-2012', 63);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2012', 67);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-03-2012', 74);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-04-2012', 64);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-05-2012', 66);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-06-2012', 60);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-07-2012', 69);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2012', 68);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-09-2012', 69);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-10-2012', 75);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-11-2012', 61);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-12-2012', 60);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-01-2013', 75);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-02-2013', 63);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-03-2013', 69);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-04-2013', 61);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-05-2013', 63);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-06-2013', 62);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-07-2013', 58);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2013', 60);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-09-2013', 61);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-10-2013', 59);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-11-2013', 72);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-12-2013', 59);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-01-2014', 50);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2014', 54);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-03-2014', 59);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-04-2014', 60);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-05-2014', 50);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-06-2014', 54);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-07-2014', 55);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-08-2014', 58);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-09-2014', 60);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-10-2014', 56);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-11-2014', 56);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-12-2014', 55);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-01-2015', 55);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-02-2015', 55);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-03-2015', 51);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-04-2015', 55);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-05-2015', 56);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-06-2015', 56);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-07-2015', 56);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-08-2015', 52);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-09-2015', 58);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-10-2015', 59);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-11-2015', 57);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-12-2015', 50);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-01-2016', 18);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2016', 16);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-03-2016', 18);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-04-2016', 19);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-05-2016', 20);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-06-2016', 10);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-07-2016', 18);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2016', 13);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-09-2016', 19);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-10-2016', 18);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-11-2016', 20);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-12-2016', 12);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-01-2017', 14);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-02-2017', 12);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-03-2017', 17);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO CACLI VALUES ('01-04-2017', 12);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-05-2017', 20);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-06-2017', 14);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-07-2017', 16);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2017', 19);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-09-2017', 12);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-10-2017', 12);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-11-2017', 19);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-12-2017', 20);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-01-2018', 15);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-02-2018', 11);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CACLI VALUES ('01-03-2018', 14);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-04-2018', 17);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-05-2018', 13);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-06-2018', 13);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-07-2018', 11);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-08-2018', 10);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CACLI VALUES ('01-09-2018', 13);
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> COMMIT;
+Validation (commit) terminée.
+Elapsed: 00:00:00.001
+SQL> /*
+A vous les requetes suivantes :
+Donnez la reprÃ©sentation graphique sous EXCEL !
+Gestion des "Reporting"
+
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2010
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2011
+
+Chiffre dÂ’affaires pour lÂ’annÃ©e 2018
+Chiffre dÂ’affaires de 2018 par trimestre
+Chiffre dÂ’affaires de 2018 par semestre
+
+Chiffre dÂ’affaires pour les deux annÃ©es 2012 et 2013
+Chiffre dÂ’affaires de 2010 Ã  2018
+
+Chiffre dÂ’affaires de 2010 Ã  2018 par trimestre
+Chiffre dÂ’affaires de 2010 Ã  2018 par semestre
+
+Statistiques sur le chiffre dÂ’affaires Â– PÃ©riode de 2010 Ã  2018
+
+*/
+SQL> --======================================================================================
+SQL> --======================================================================================
+SQL> --======================================================================================
+SQL> -- ===============================================================================
+SQL> -- DÃ©finition de la structure des donnÃ©es ================= DEBUT    =============
+SQL> -- en SQL 2 ======================================================================
+SQL> -- Utilisation des tables ========== Magasin FR01 ====== PARIS   =================
+SQL> -- CLIENTS, ARTICLES, COMMANDES et DETAILCOM
+SQL> -- CrÃ©ation des tables ============= Magasin FR02 ====== PARIS   =================
+SQL> -- CrÃ©ation des tables ============= Magasin TN02 ====== SOUSSE  =================
+SQL> -- INTEGRATION DE BASES DE DONNEES ; DATA INTEGRATION
+SQL> -- QUALITE DES DONNEES ; DATA QUALITY
+SQL> --======================================================================================
+SQL> --======================================================================================
+SQL> --======================================================================================
+SQL> /*
+
+-- Etant donnÃ© l'ensemble des magasins
+
+-- Chaque binÃ´me aura Ã  crÃ©er sa propore BD GesComI (On verra ultÃ©rieurement!)!
+
+-- Afficher la table MAGASINS
+
+-- DÃ©veloppez une procÃ©dure AJOUTECOLONNE qui permet d'ajouter Ã  une table une colonne qui porte le nom de MAGASIN
+-- Le contenu de cette colonne est l'identifiant du magasin NUMMAG
+-- En entrÃ©e le nom de la table et le contenu de la colonne ; En sortie une nouvelle table dont le nom est le nom de la table en entrÃ©e concatÃ©nÃ© au _NUMMAG
+
+-- L'exÃ©cution de la procÃ©dure permet donc d'affecter les donnÃ©es Ã  un seul magasin
+-- On considÃ¨re que les donnÃ©es dans les tables CLIENTS, ARTICLES, COMMANDES et DETAILCOM sont celles du magasin FR01
+
+-- EXEC AJOUTECOLONNE('CLIENTS', 'FR01')
+
+-- EXEC AJOUTECOLONNE('CLIENTS', 'FR02')
+
+-- Corrigez le contenu de la nouvelle table CLIENTS_FR02 ; Comment savoir si elle contient des anomalies et lesquelles ?
+
+-- EXEC AJOUTECOLONNE('CLIENTS', 'TN02')
+
+-- Corrigez le contenu de la nouvelle table CLIENTS_TN02 ; Comment savoir si elle contient des anomalies et lesquelles ? et lesquelles ?
+
+-- Assemblez (intÃ©grer, fusionner) dans une nouvelle table, de nom TOUSCLIENTS, tous les clients des diffÃ©rents magasins
+
+-- Corrigez le contenu de la nouvelle table TOUSCLIENTS ; Comment savoir si elle contient des anomalies et lesquelles ? et lesquelles ?
+
+-- Faire de mÃªme pour les toutes les autres tables !!!
+
+-- Assemblez (intÃ©grer, fusionner) dans une nouvelle BDDWBD l'ensemble des tables des diffÃ©rents magasins et tout le nÃ©cessaire
+-- Le rÃ©sultat est : TOUSCLIENTS (avec l'historique des mouvements), TOUSARTICLES (avec l'historique des mouvements), TOUSCOMMANDES, TOUSDETAILSCOM, TOUSMAGASINS (avec l'historique des mouvements), etc...
+
+*/
+SQL> --=====================================================================================================================
+SQL> --=====================================================================================================================
+SQL> -- NOUVELLES DONNEES == NOUVELLES DONNEES  == NOUVELLES DONNEES
+SQL> --=====================================================================================================================
+SQL> --=====================================================================================================================
+SQL> -- Les clients du magasin FR02 c est celui de Paris en France
+SQL> DROP TABLE CLIENTS_FR02;
+
+Table CLIENTS_FR02 supprimé(e).
+
+Elapsed: 00:00:00.012
+SQL> CREATE TABLE CLIENTS_FR02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50), Col6 VARCHAR(50), Col7 VARCHAR(50), Col8 VARCHAR(50), Col9 VARCHAR(50), Col10 VARCHAR(50), Col11 VARCHAR(20));
+
+Table CLIENTS_FR02 créé(e).
+
+Elapsed: 00:00:00.006
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2994570', 'Madame', 'RAHMA', 'CLEMENCE', '3', '8, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', 'FRANCE', 'clemence.rahma@up13.fr', '+33617586565');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2996100', 'Monsieur', 'CLEMENCE', 'ALEXANDRE', '1', '5, RUE DE BELLEVILLE', '75019', 'PARIS', 'FRANCE', 'alexandre.clemence@up13.fr', '+33617586566');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2', '13, AVENUE J. B. CLEMENT', '93430', 'VILLETANEUSE', 'FRANCE', 'adam.traifor@up13.fr', '+33617586567');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2997777', 'Mademoiselle', 'LE BON', 'CLEMENTINE', '1', '18, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', '', 'clementine.le bon@up13.fr', '+33617586568');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2998500', 'Monsieur', 'CHEVALIER', 'INES', '1', '13, RUE DE LA PAIX', '93800', 'EPINAY SUR SEINE', 'FRANCE', 'ines.chevalier@up13.fr', '0717586560');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001777', 'Monsieur', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'FRANCE', 'adam.le bon@up13.fr', '0717586561');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('2998505', 'Mademoiselle', 'TRAIFOR', 'ALICE', '2', '6, RUE DE LA ROSIERE', '75015', 'PARIS', '', 'alice.traifor@up13.fr', '0717586562');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000106', 'Monsieur', 'HARISSA', 'FORD', '1', '16, AVENUE FOCH', '75016', 'PARIS', 'FRANCE', 'ford.harissa@up13.fr', '0606');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000107', 'MOÂ NSIEUR', 'ONRI', 'PANDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANCE', 'panda.onri@up13.fr', '+33');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000108', 'Madame', 'EDITE', 'FIAT', '1', '21, AVENUE D ITALIE', '75013', 'PARIS', '', 'fiat.edite@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000109', 'Madame', 'TOYOTA', 'JACKSON', '3', '55, RUE DU JAPON', '94310', 'ORLY VILLE', 'FRANCE', 'jackson.toyota@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000110', 'MADAME', 'ONRI', 'HONDA', '2', '77, RUE DE LA LIBERTE', '13001', 'MARSEILLE', 'FRANC', 'honda.onri@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3000111', 'Madame', 'GENEREUX', 'EVE', '1', '18, BOULEVARD KELLERMAN', '75013', 'PARYS', 'FR', 'eve.genereux@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('299PPPP', 'Mlle', 'BON', 'CLEMENTINE', '1', '18, BOULEVARD FOCH', '93800', 'EPINAY-SUR-SEINE', 'FRANCE', 'clementine.bon@up13.fr', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001', 'M.', 'LE BON', 'Adam', '1', '186, AVENUE D ITALIE', '75013', 'Paris', '', 'adam.le bon@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001777', 'Mr', 'LE BON', 'Adem', '1', '186, AVENUE D ITALIE', '75013', 'PARIS', 'france', 'adem.le bon@up13.fr', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001778', 'Mr', 'COURTOIS', 'Bruno', '1', '', '', 'Bruxelles', 'Belgique', 'bruno.courtois@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001779', 'Monsieur', 'VANDERHOTE', 'Ivan', '1', '', '', 'Bruxelles', 'Belgique', 'ivan.vanderhote@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001780', 'Monsieur', 'Hollanda', 'Francis', '1', '', '', 'Bruxelles', 'Belgique', 'francis.hollanda@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001781', 'Monsieur', 'Bernard', 'Hugues', '1', '', '', 'Bruxelles', 'Belgique', 'hugues.bernard@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001782', 'Monsieur', 'LATIFOU', 'Ilyas', '1', '', '', 'Brusselle', 'Belgic', 'ilyas.latifou@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001783', 'Madame', 'LALLEMAND', 'Ines', '1', '', '', 'Berlin', 'ALLEMANGNE', 'ines.lallemand@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001784', 'Monsieur', 'DEUTCH', 'Hans', '1', '', '', 'Berlin', 'ALLEMANGNE', 'hans.deutch@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001785', 'Madame', 'ALMANI', 'Eve', '1', '', '', 'Berlin', 'ALLEMANGNE', 'eve.almani@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_FR02 VALUES ('3001786', 'Madame', 'MERQUELLE', 'Ange', '1', '', '', 'Dublin', 'ALEMANGNE', 'angela.merquelle@gmail.com', '');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> -- Les articles du magasin FR02 c est celui de Paris en France
+SQL> DROP TABLE ARTICLES_FR02;
+
+Table ARTICLES_FR02 supprimé(e).
+
+Elapsed: 00:00:00.011
+SQL> CREATE TABLE ARTICLES_FR02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+
+Table ARTICLES_FR02 créé(e).
+
+Elapsed: 00:00:00.006
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37291', 'SIEGE DE TABLE', '55.00 â‚¬', '10', '26.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37325', 'CASQUE CYCLISTE PROTECTION', '27.00 â‚¬', '20', '20.00 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37341', 'BONNET PARE-CHOCS', '10.71 â‚¬', '100', '05.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37366', 'STORE DE PROTECTION', '07.43 â‚¬', '5', '04.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37408', 'COINS DE PROTECTION', '04.00 â‚¬', '100', '01.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37424', 'CACHE PRISE DE COURANT', '02.29 â‚¬', '500', '00.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37432', 'BLOQUE PORTE', '05.00 â‚¬', '4', '02.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37457', 'BANDE DE FERMETURE', '02.29 â‚¬', '4', '01.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37465', 'PROTECTION DE FOUR', '37.86 â‚¬', '10', '26.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37473', 'PROTECTION DE CUISINIERE', '30.71 â‚¬', '10', '22.86 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37515', 'BABY PHONE', '80.71 â‚¬', '3', '45.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.37630', 'BRETELLE DE SECURITE REMOND', '15.57 â‚¬', '8', '11.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.39321', 'HAUSSE-CHAISE', '42.71 â‚¬', '1', '25.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('00.39495', 'COUVRE ROBINETTERIE', '07.86 â‚¬', '12', '04.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.36613', 'BARRIERE DE PORTE, EN BOIS', '32.71 â‚¬', '2', '25.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.36639', 'BARRIERE DE PORTE, EN METAL', '79.14 â‚¬', '3', '28.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.36860', 'BARRIERE DE LIT', '23.71 â‚¬', '10', '15.71 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.37108', 'PORTE-BEBE', '44.86 â‚¬', '6', '34.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.37173', 'SIEGE-AUTO COSMOS', '126.86 â‚¬', '2', '71.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '121.29 â‚¬', '2', '71.43 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '21.29 â‚¬', '10', '09.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('WD.002', 'DVD - TOY STORY 2', '34.29 â‚¬', '10', '12.14 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '32.86 â‚¬', '5', '09.29 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_FR02 VALUES ('MV.001', 'Jeux VidÃ©o PS4 SPIDER-MAN', '59.00 â‚¬', '250', '19.00 â‚¬');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> -- Les commandes du magasin FR02 c est celui de Paris en France
+SQL> DROP TABLE COMMANDES_FR02;
+
+Table COMMANDES_FR02 supprimé(e).
+
+Elapsed: 00:00:00.011
+SQL> CREATE TABLE COMMANDES_FR02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50));
+
+Table COMMANDES_FR02 créé(e).
+
+Elapsed: 00:00:00.005
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20150917BB0001', '2997007', '17/09/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20150917BB0002', '2998500', '17/09/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20151016BB0001', '2996100', '16/10/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20151024BB0001', '2996100', '24/10/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20120156BB0001', '2996100', '16/01/2012');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20120157BB0007', '2996100', '17/01/2012');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO COMMANDES_FR02 VALUES ('20180917BB0007', '3001777', '17/09/2018');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> -- Les dÃ©tails des commandes du magasin FR02 c est celui de Paris en France
+SQL> DROP TABLE DETAILSCOM_FR02;
+
+Table DETAILSCOM_FR02 supprimé(e).
+
+Elapsed: 00:00:00.012
+SQL> CREATE TABLE DETAILSCOM_FR02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+
+Table DETAILSCOM_FR02 créé(e).
+
+Elapsed: 00:00:00.005
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0001', '00.37291', '2', '35.00 â‚¬', '10.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0001', '00.37341', '4', '10.71 â‚¬', '10.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0001', '11.36639', '2', '49.14 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0001', 'WD.001', '1', '21.29 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0002', '00.37291', '2', '35.00 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0002', 'WD.001', '1', '21.29 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0002', 'WD.002', '1', '34.29 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20150917BB0002', 'WD.003', '1', '22.86 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20151016BB0001', 'WD.001', '1', '21.29 â‚¬', '20.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20151016BB0001', 'WD.002', '1', '34.29 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20151016BB0001', 'WD.003', '1', '22.86 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20151024BB0001', '00.37457', '2', '03.29 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20120156BB0001', 'WD.003', '2', '25.00 â‚¬', '00.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20120157BB0007', 'WD.001', '5', '22.00 â‚¬', '50.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20120157BB0007', 'WD.002', '10', '34.29 â‚¬', '50.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_FR02 VALUES ('20180917BB0007', 'MV.001', '2', '59.00 â‚¬', '10.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> COMMIT;
+Validation (commit) terminée.
+Elapsed: 00:00:00.001
+SQL> --=====================================================================================================================
+SQL> --=====================================================================================================================
+SQL> -- NOUVELLES DONNEES == NOUVELLES DONNEES  == NOUVELLES DONNEES
+SQL> --=====================================================================================================================
+SQL> --=====================================================================================================================
+SQL> -- Les clients du magasin TN02 c est celui de Sousse en Tunisie
+SQL> DROP TABLE CLIENTS_TN02;
+
+Table CLIENTS_TN02 supprimé(e).
+
+Elapsed: 00:00:00.013
+SQL> CREATE TABLE CLIENTS_TN02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50), Col6 VARCHAR(50), Col7 VARCHAR(50), Col8 VARCHAR(50), Col9 VARCHAR(50), Col10 VARCHAR(50), Col11 VARCHAR(20));
+
+Table CLIENTS_TN02 créé(e).
+
+Elapsed: 00:00:00.006
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0001', 'Madame', 'RAHMA', 'LINA', '3', '', '', 'TUNIS', 'TUNISIE', 'lina.rahma@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0002', 'Madame', 'SFAXI', 'KENZA', '3', '', '', 'SOUSSE', 'TUNISIE', 'kenza.sfaxi@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0003', 'Madame', 'GARROU', 'LINDA', '3', '', '', 'SOUSSE', 'Italie', 'linda.garrou@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0004', 'Madame', 'FARES', 'LEILA', '3', '', '', 'SOUSSE', 'TUNISIE', 'leila.fares@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0005', 'Madame', 'FARES', 'INES', '3', '', '', 'SOUSSE', 'TUNISIE', 'ines.fares@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0006', 'Madame', 'FARES', 'INES', '3', '', '', 'SOUSSE', 'TUNISIE', 'ines.fares@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0007', 'Madame', 'FARES', 'MARIA', '3', '', '', 'SOUSSE', 'TUNISIE', 'maria.fares@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0008', 'Madame', 'FARES', 'INES', '1', '', '', 'SOUSSE', 'TUNISIE', 'ines.fares@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0009', 'Madame', 'DIAB', 'SONIA', '2', '', '', 'SOUSSE', 'TUNISIE', 'sonia.diab@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0010', 'Madame', 'MAGREBI', 'HAYET', '1', '', '', 'SOUSSE', 'TUNISIE', 'hayet.magrebi@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0011', 'Madame', 'SLIMANE', 'AZIZA', '3', '', '', 'SOUSSE', 'TUNISIE', 'aziza.slimane@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0012', 'Madame', 'SLIMANE', 'BEYYA', '2', '', '', 'BIZERTE', 'TUNISIE', 'beyya.slimane@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0013', 'Madame', 'SAHLOUL', 'MERIAM', '1', '', '', 'BIZERTE', 'TUNISIE', 'meriam.sahloul@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0014', 'Monsieur', 'BONBON', 'FAOUZI', '1', '', '', 'BIZERTE', 'TUNISIE', 'faouzi.bonbon@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0015', 'Monsieur', 'ZIZOU', 'ADAM', '1', '', '', 'BIZERTE', 'TUNISIE', 'adam.zizou@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0016', 'Monsieur', 'TOUNSI', 'ADEM', '1', '', '', 'BIZERTE', 'TUNISIE', 'adem.tounsi@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0017', 'Monsieur', 'ZATLA', 'SERGIO', '1', '', '', 'DJERBA', 'France', 'sergio.zatla@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0018', 'Monsieur', 'ZIDANE', 'ALI', '1', '', '', 'HAMMAMET', 'TUNISIE', 'ali.zidane@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0019', 'Monsieur', 'MOHAMED', 'MOHAMED', '1', '', '', 'HAMMAMET', 'TUNISIE', 'mohamed.mohamed@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0020', 'Monsieur', 'LATIFOU', 'ELIAS', '1', '', '', 'HAMMAMET', 'TUNISIE', 'elias.latifou@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0021', 'Monsieur', 'LATIFOU', 'ABDERRAOUF', '1', '', '', 'HAMMAMET', 'TUNISIE', 'abderraouf.latifou@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0022', 'Monsieur', 'SOUSSI', 'KARIM', '1', '', '', 'SOUSSE', 'TUNISIE', 'karim.soussi@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0023', 'Monsieur', 'SOURIR', 'FATHI', '1', '', '', 'SOUSSE', 'TUNISIE', 'fathi.sourir@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0024', 'Monsieur', 'BAJBOUJ', 'BEJI', '1', '', '', 'SOUSSE', 'TUNISIE', 'beji.bajbouj@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('TN0025', 'Monsieur', 'RAIS', 'TAFI', '1', '', '', 'TUNIS', 'TUNISIE', 'tafi.rais@gmail.com', '+21624801801');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO CLIENTS_TN02 VALUES ('2997007', 'Monsieur', 'TRAIFOR', 'ADAM', '2', '13, AVENUE J. B. CLEMENT', '93430', 'VILLETANEUSE', 'FRANCE', 'adam.traifor@up13.fr', '+33617586567');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> -- Les articles du magasin TN02 c est celui de Sousse en Tunisie
+SQL> DROP TABLE ARTICLES_TN02;
+
+Table ARTICLES_TN02 supprimé(e).
+
+Elapsed: 00:00:00.012
+SQL> CREATE TABLE ARTICLES_TN02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+
+Table ARTICLES_TN02 créé(e).
+
+Elapsed: 00:00:00.006
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37291', 'SIEGE DE TABLE', '95.15 Dt', '10', '79.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37325', 'CASQUE CYCLISTE PROTECTION', '72.00 Dt', '20', '60.00 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37341', 'BONNET PARE-CHOCS', '20.56 Dt', '100', '17.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37366', 'STORE DE PROTECTION', '15.44 Dt', '5', '12.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37408', 'COINS DE PROTECTION', '06.16 Dt', '100', '05.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37424', 'CACHE PRISE DE COURANT', '02.56 Dt', '500', '02.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37432', 'BLOQUE PORTE', '08.24 Dt', '4', '06.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37457', 'BANDE DE FERMETURE', '06.16 Dt', '4', '05.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37465', 'PROTECTION DE FOUR', '95.15 Dt', '10', '79.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37473', 'PROTECTION DE CUISINIERE', '82.30 Dt', '10', '68.58 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37515', 'BABY PHONE', '164.56 Dt', '3', '137.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.37630', 'BRETELLE DE SECURITE REMOND', '41.15 Dt', '8', '34.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.39321', 'HAUSSE-CHAISE', '91.55 Dt', '1', '76.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('00.39495', 'COUVRE ROBINETTERIE', '15.44 Dt', '12', '12.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.36613', 'BARRIERE DE PORTE, EN BOIS', '92.56 Dt', '2', '77.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.36639', 'BARRIERE DE PORTE, EN METAL', '102.35 Dt', '3', '85.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.36860', 'BARRIERE DE LIT', '56.56 Dt', '10', '47.13 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.37108', 'PORTE-BEBE', '123.44 Dt', '6', '102.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.37173', 'SIEGE-AUTO COSMOS', '257.15 Dt', '2', '214.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('11.37280', 'SIEGE-AUTO EUROSEAT', '257.15 Dt', '2', '214.29 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('WD.001', 'K7 VIDEO - TOY STORY', '33.44 Dt', '10', '27.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('WD.002', 'DVD - TOY STORY 2', '43.70 Dt', '10', '36.42 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('WD.003', 'K7 VIDEO - WINNIE L OURSON', '33.44 Dt', '5', '27.87 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO ARTICLES_TN02 VALUES ('MV.001', 'Jeu VidÃ©o PS4 SPIDER-MAN', '68.40 Dt', '250', '57.00 Dt');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> -- Les commandes du magasin TN02 c est celui de Sousse en Tunisie
+SQL> DROP TABLE COMMANDES_TN02;
+
+Table COMMANDES_TN02 supprimé(e).
+
+Elapsed: 00:00:00.010
+SQL> CREATE TABLE COMMANDES_TN02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50));
+
+Table COMMANDES_TN02 créé(e).
+
+Elapsed: 00:00:00.005
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN001', 'TN0001', '17/09/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN002', 'TN0002', '17/09/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN003', 'TN0003', '16/10/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN004', 'TN0004', '24/10/2015');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN005', 'TN0001', '16/01/2012');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN006', 'TN0022', '17/01/2017');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO COMMANDES_TN02 VALUES ('KTN007', 'TN0022', '17/09/2018');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> -- Les dÃ©tails des commandes du magasin TN02 c est celui de Sousse en Tunisie
+SQL> DROP TABLE DETAILSCOM_TN02;
+
+Table DETAILSCOM_TN02 supprimé(e).
+
+Elapsed: 00:00:00.011
+SQL> CREATE TABLE DETAILSCOM_TN02 (Col1 VARCHAR(50), Col2 VARCHAR(50), Col3 VARCHAR(50), Col4 VARCHAR(50), Col5 VARCHAR(50));
+
+Table DETAILSCOM_TN02 créé(e).
+
+Elapsed: 00:00:00.005
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', '00.37291', '2', '95.15 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', '00.37341', '4', '20.56 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', '11.36639', '2', '102.35 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', 'WD.001', '1', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN002', '00.37291', '2', '95.15 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN002', 'WD.001', '1', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN002', 'WD.002', '1', '43.70 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN002', 'WD.003', '1', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', 'WD.001', '1', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.000
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', 'WD.002', '1', '43.70 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.003
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', 'WD.003', '1', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', '00.37457', '2', '06.16 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN001', 'WD.003', '2', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN005', 'WD.001', '5', '33.44 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN007', 'WD.002', '10', '43.70 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.001
+SQL> INSERT INTO DETAILSCOM_TN02 VALUES ('KTN007', 'MV.001', '2', '68.40 Dt', '30.00%');
+
+1 ligne inséré.
+
+Elapsed: 00:00:00.002
+SQL> COMMIT;
+Validation (commit) terminée.
+Elapsed: 00:00:00.002
