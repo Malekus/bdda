@@ -572,3 +572,24 @@ INSERT INTO DETAILSCOM_TN02 VALUES ('KTN007', 'WD.002', '10', '43.70 Dt', '30.00
 INSERT INTO DETAILSCOM_TN02 VALUES ('KTN007', 'MV.001', '2', '68.40 Dt', '30.00%');
 
 COMMIT;
+
+CREATE OR REPLACE PROCEDURE ajouteColonne(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+  colExiste NUMBER;
+  BEGIN
+    EXECUTE IMMEDIATE 'SELECT COUNT(*) FROM user_tab_cols WHERE column_name = ''MAGASIN'' AND table_name = UPPER('''|| maTable ||''')'
+    INTO colExiste;
+    IF colExiste = 0 THEN
+      EXECUTE IMMEDIATE 'ALTER TABLE ' || maTable || ' add Magasin VARCHAR(50)';
+      EXECUTE IMMEDIATE 'UPDATE ' || maTable || ' SET Magasin = ''' || maColonne || ''' where magasin is null';
+    END IF;
+  END;
+/
+
+
+exec ajouteColonne('Clients', 'FR01');
+exec ajouteColonne('CLIENTS_FR02', 'FR02');
+exec ajouteColonne('CLIENTS_TN02', 'TN02');
+select * from clients;
+select * from CLIENTS_FR02;
+select * from CLIENTS_TN02;
