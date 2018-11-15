@@ -2372,7 +2372,13 @@ END;
 
 CREATE OR REPLACE PROCEDURE creationCategorieClient(nomCategorieClient IN VARCHAR DEFAULT NULL, conditionCategorieClient IN VARCHAR DEFAULT NULL)
 AS
+  catExiste NUMBER;
 BEGIN
+  SELECT COUNT(*) INTO catExiste FROM CATEGORIECLIENT WHERE categorie = 'V_CAT_CLI_' || nomCategorieClient;
+  IF catExiste != 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Cette categorie existe');
+    RETURN;
+  END IF ;
   IF nomCategorieClient IS NULL THEN
     FOR nvCatClient IN (SELECT * FROM CATEGORIECLIENT where categorie = 'V_CAT_CLI_') LOOP
       EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatClient.requete, 'TEMPLATE_NAME', nomCategorieClient), 'TEMPLATE_COND', conditionCategorieClient);
@@ -2391,9 +2397,15 @@ END;
 
 CREATE OR REPLACE PROCEDURE creationCategorieArticle(nomCategorieArticle IN VARCHAR DEFAULT NULL, conditionCategorieArticle IN VARCHAR DEFAULT NULL)
 AS
+  catExiste NUMBER;
 BEGIN
+  SELECT COUNT(*) INTO catExiste FROM CATEGORIEARTICLE WHERE categorie = 'V_CAT_ART_' || nomCategorieArticle;
+  IF catExiste != 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Cette categorie existe');
+    RETURN;
+  END IF ;
   IF nomCategorieArticle IS NULL THEN
-    FOR nvCatArticle IN (SELECT * FROM CATEGORIEARTICLE where categorie = 'V_CAT_ART_') LOOP
+    FOR nvCatArticle IN (SELECT * FROM CATEGORIEARTICLE WHERE categorie = 'V_CAT_ART_') LOOP
       EXECUTE IMMEDIATE REPLACE(REPLACE(nvCatArticle.requete, 'TEMPLATE_NAME', nomCategorieArticle), 'TEMPLATE_COND', conditionCategorieArticle);
       RETURN;
     END LOOP;
@@ -2414,7 +2426,8 @@ BEGIN
   || categorieClient || ' GROUP BY client1, client2 HAVING getNbArtCmAv(client1, client2, ''V_CAT_ART_' 
   || categorieArticle || ''') >= (SELECT MAX(getNbArtCmAv(client1, client2, ''V_CAT_ART_' 
   || categorieArticle || ''')) as nbArticleCmn FROM V_CAT_CLI_' || categorieClient || ') * ' || seuil || ' / 100';
-    
+  
+  EXECUTE IMMEDIATE 'DROP MATERIALIZED VIEW MV_' || categorieClient || '_' || categorieArticle;  
   EXECUTE IMMEDIATE 'CREATE MATERIALIZED VIEW MV_' || categorieClient || '_' || categorieArticle || ' AS (SELECT DISTINCT article, V_' || categorieClient || '_' || categorieArticle || '.client1 as recommander, sysdate dateRecommander 
   from V_CAT_ART_' || categorieArticle || ', V_' || categorieClient || '_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client2 and article not in (SELECT DISTINCT article from V_CAT_ART_' || categorieArticle || ' where client = V_' || categorieClient || '_' || categorieArticle || '.client1)
   UNION
@@ -2442,3 +2455,5 @@ exec systemeRecommandationAvance(categorieClient=>'DAME', conditionCategorieClie
 select * from MV_FRANCAIS_V_CAT_ART_;
 
 select * from MV_DAME_REMISE_NN;
+
+select * from CategorieClient;
