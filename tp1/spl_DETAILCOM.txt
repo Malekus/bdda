@@ -1,0 +1,6 @@
+SELECT COL1 || ';' || COL2 || ';' || COL3 || ';' || COL4 || ';' || COL5 FROM detailcom
+                                                                             *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+

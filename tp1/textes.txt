@@ -1,0 +1,24 @@
+SELECT * FROM articles
+              *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+SELECT * FROM clients
+              *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+SELECT * FROM commandes
+              *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
+SELECT * FROM detailcom
+              *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+

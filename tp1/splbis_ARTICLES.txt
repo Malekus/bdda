@@ -1,0 +1,6 @@
+SELECT REFART || ';' || NOMART || ';' || PVART || ';' || QSART || ';' || PAART FROM articles
+                                                                                    *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+

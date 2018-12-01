@@ -1,4 +1,3 @@
-/*
 
 -- A.1
 exp M2EID_20/M2EID_20 parfile=param.dat
@@ -63,7 +62,7 @@ column COL4 HEADING 'COL4'
 column COL5 HEADING 'COL5'
 SELECT COL1 || ';' || COL2 || ';' || COL3 || ';' || COL4 || ';' || COL5 FROM detailcom;
 SPOOL OFF
-*/
+
 SET SERVEROUTPUT ON
 create or replace directory utl_dir as '/export/home/users/master/master2/m2eid/11510378/Documents/DBA/bdda/tp1';
 

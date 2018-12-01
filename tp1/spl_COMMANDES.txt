@@ -1,0 +1,6 @@
+SELECT  numcom || ';' || codcli || ';' || datcom FROM commandes
+                                                      *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+

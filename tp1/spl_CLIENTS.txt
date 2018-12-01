@@ -1,0 +1,6 @@
+SELECT CODCLI || ';' || CIVCLI || ';' || NOMCLI || ';' || PRENCLI || ';' || CATCLI || ';' || ADNCLI || ';' || ADRCLI || ';' || CPCLI || ';' || VILCLI || ';' || PAYSCLI || ';' || MAILCLI|| ';' || TELCLI FROM clients
+                                                                                                                                                                                                               *
+ERREUR à la ligne 1 :
+ORA-00942: Table ou vue inexistante 
+
+
