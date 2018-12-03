@@ -28,7 +28,14 @@ CREATE TABLE DATA_DICTIONARY_CITY(
 
 @data_dictionary_firstname
 @data_dictionary_country
-@data_dictionary_city
+@data_dictionary_city_1
+@data_dictionary_city_2
+@data_dictionary_city_3
+@data_dictionary_city_4
+@data_dictionary_city_5
+@data_dictionary_city_6
+@data_dictionary_city_7
+@data_dictionary_city_8
 
 select * from DATA_DICTIONARY_FIRSTNAME;
 select * from DATA_DICTIONARY_COUNTRY;

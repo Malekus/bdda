@@ -120,16 +120,21 @@ CREATE OR REPLACE PROCEDURE test1(nomtablee in varchar) IS
 	nbmindate varchar(10);
 	nbmaxdate varchar(10);
 	typee varchar(10);
+	testExiste NUMBER;
 	CURSOR curseur IS
 	SELECT column_name FROM user_tab_columns WHERE table_name = nomtable;
 BEGIN
+	select count(*) into testExiste from user_tables where table_name = UPPER(nomtable || '_mesures');
+	IF testExiste != 0 THEN
+		EXECUTE IMMEDIATE 'DROP TABLE ' || nomtable || '_mesures';
+	END IF;
 	counteur2:='SELECT column_name FROM user_tab_columns WHERE table_name =''|| nomtable ||'' ';
 		execute immediate counteur2;
 	DBMS_OUTPUT.PUT_LINE('SELECT column_name FROM user_tab_columns WHERE table_name = '''||nomtable||''' ');
 	DBMS_OUTPUT.PUT_LINE('nom table:' ||nomtable);
-	
 	counteur:='create table '||nomtable||'_mesures (nom_colonne varchar(10), nblignecol number(10), nbeltnulcol number(10),nbminchainechar number(10),nbmaxchainechar number(10),nbavgchainechar number(10),typecol varchar(10),nbminnum number(10),nbmaxnum number(10),nbavgnum number(10),nbmednum number(10),nbectynum number(10),nbmindate varchar(10),nbmaxdate varchar(10))';
-		execute immediate counteur;
+	execute immediate counteur;
+	
 	FOR i IN curseur LOOP
 		DBMS_OUTPUT.PUT_LINE( i.column_name || ''||nomtable||'');
 		typee := Get_type(i.column_name,''||nomtable||'');
@@ -160,7 +165,7 @@ BEGIN
 		end if;
 		execute immediate counteur3;
 
-
+		DBMS_OUTPUT.PUT_LINE('Nouvelle Table ' || nomtable || '_mesures');
 
 	END LOOP;
 END;
