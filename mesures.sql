@@ -129,14 +129,12 @@ BEGIN
 		EXECUTE IMMEDIATE 'DROP TABLE ' || nomtable || '_mesures';
 	END IF;
 	counteur2:='SELECT column_name FROM user_tab_columns WHERE table_name =''|| nomtable ||'' ';
-		execute immediate counteur2;
-	DBMS_OUTPUT.PUT_LINE('SELECT column_name FROM user_tab_columns WHERE table_name = '''||nomtable||''' ');
-	DBMS_OUTPUT.PUT_LINE('nom table:' ||nomtable);
+	EXECUTE IMMEDIATE counteur2;
+
 	counteur:='create table '||nomtable||'_mesures (nom_colonne varchar(10), nblignecol number(10), nbeltnulcol number(10),nbminchainechar number(10),nbmaxchainechar number(10),nbavgchainechar number(10),typecol varchar(10),nbminnum number(10),nbmaxnum number(10),nbavgnum number(10),nbmednum number(10),nbectynum number(10),nbmindate varchar(10),nbmaxdate varchar(10))';
-	execute immediate counteur;
+	EXECUTE IMMEDIATE counteur;
 	
 	FOR i IN curseur LOOP
-		DBMS_OUTPUT.PUT_LINE( i.column_name || ''||nomtable||'');
 		typee := Get_type(i.column_name,''||nomtable||'');
 		nbligne := fun_numLigne(i.column_name,''||nomtable||'');
 		nbeltnul := Fun_nbEltNull(i.column_name,''||nomtable||'');
@@ -145,7 +143,7 @@ BEGIN
 		nbminchainechar := Fun_min_chaine_car(i.column_name,''||nomtable||'');
 		nbmaxchainechar := Fun_max_chaine_car(i.column_name,''||nomtable||'');
 		nbavgchainechar := Fun_avg_chaine_car(i.column_name,''||nomtable||'');
-		DBMS_OUTPUT.PUT_LINE('INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||','||nbminchainechar||' ,'||nbmaxchainechar||','||nbavgchainechar||','''||typee||''',null,null,null,null,null,null,null)');
+		
 		counteur3:='INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||','||nbminchainechar||' ,'||nbmaxchainechar||','||nbavgchainechar||','''||typee||''',null,null,null,null,null,null,null)';
 		elsif typee = 'NUMBER' then 
 		nbminnum := Fun_min_numerique2(i.column_name,''||nomtable||'');
@@ -154,13 +152,12 @@ BEGIN
 		nbmednum := Fun_median_numerique2(i.column_name,''||nomtable||'');
 		nbectynum := Fun_ecartType_numerique2(i.column_name,''||nomtable||'');
 
-		DBMS_OUTPUT.PUT_LINE('INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||','||nbminchainechar||' ,'||nbmaxchainechar||','||nbavgchainechar||','''||typee||''','||nbminnum||','||nbmaxnum||','||nbavgnum||','||nbmednum||','||nbectynum||',null,null)');
+		
 		counteur3:='INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||',null ,null,null,'''||typee||''','||nbminnum||','||nbmaxnum||','||nbavgnum||','||nbmednum||','||nbectynum||',null,null)';
 		elsif typee ='DATE' then
 		nbmindate := Fun_mindate_numerique2(i.column_name,''||nomtable||'');
 		nbmaxdate := Fun_maxdate_numerique2(i.column_name,''||nomtable||'');
 		
-		DBMS_OUTPUT.PUT_LINE('INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||',null ,null,null,'''||typee||''',null,null,null,null,null,'''||nbmindate||''')');
 		counteur3:='INSERT INTO '||nomtable||'_mesures values ('''||i.column_name||''','||nbligne||','||nbeltnul||',null ,null,null,'''||typee||''',null,null,null,null,null,'''||nbmindate||''','''||nbmaxdate||''')';
 		end if;
 		execute immediate counteur3;
