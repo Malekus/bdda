@@ -593,3 +593,15 @@ exec ajouteColonne('CLIENTS_TN02', 'TN02');
 select * from clients;
 select * from CLIENTS_FR02;
 select * from CLIENTS_TN02;
+
+
+
+
+CREATE OR REPLACE FUNCTION nbOccColonne()
+RETURN NUMBER
+AS
+BEGIN 
+  DBMS_OUTPUT.PUT_LINE('Fonction chargé');
+  RETURN 0;
+END nbOccColonne;
+/

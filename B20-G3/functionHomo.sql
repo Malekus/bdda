@@ -1,0 +1,9 @@
+CREATE OR REPLACE FUNCTION nbOccColonne()
+RETURN NUMBER
+AS
+BEGIN 
+  DBMS_OUTPUT.PUT_LINE('Fonction chargé');
+  RETURN 0;
+END;
+/
+

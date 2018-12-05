@@ -22,21 +22,37 @@ CREATE TABLE DATA_DICTIONARY_COUNTRY(
 
 CREATE TABLE DATA_DICTIONARY_CITY(
   COUNTRY_ALPHA2 VARCHAR2(10),
-  CITY_ENGLISH VARCHAR2(255),
-  CITY_FRENCH VARCHAR2(255)
+  CITY_NAME VARCHAR2(255),
+  PRIMARY KEY (COUNTRY_ALPHA2, CITY_NAME)
 );
 
 @data_dictionary_firstname
 @data_dictionary_country
-@data_dictionary_city_1
-@data_dictionary_city_2
-@data_dictionary_city_3
-@data_dictionary_city_4
-@data_dictionary_city_5
-@data_dictionary_city_6
-@data_dictionary_city_7
-@data_dictionary_city_8
+@data_dictionary_city/DE.sql
+@data_dictionary_city/FR.sql
+@data_dictionary_city/MA.sql
+@data_dictionary_city/TN.sql
+@data_dictionary_city/FI.sql
+@data_dictionary_city/IT.sql
+@data_dictionary_city/IQ.sql
+@data_dictionary_city/BE.sql
 
-select * from DATA_DICTIONARY_FIRSTNAME;
+
 select * from DATA_DICTIONARY_COUNTRY;
 select count(*) from DATA_DICTIONARY_CITY;
+
+DROP TABLE ddColName;
+CREATE TABLE ddColName(
+	TAB_NAME VARCHAR2(100),
+	COL_NAME VARCHAR2(100),
+	PRIMARY KEY(TAB_NAME, COL_NAME)
+);
+
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_FIRSTNAME', 'FIRSTNAME');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_FIRSTNAME', 'SEXE');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_COUNTRY', 'COUNTRY_ENGLISH');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_COUNTRY', 'COUNTRY_FRENCH');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_COUNTRY', 'COUNTRY_ALPHA2');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_COUNTRY', 'COUNTRY_ALPHA3');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_CITY', 'COUNTRY_ALPHA2');
+INSERT INTO ddColName VALUES ('DATA_DICTIONARY_CITY', 'CITY_NAME');
