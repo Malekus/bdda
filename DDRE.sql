@@ -45,9 +45,9 @@ INSERT INTO DDRE VALUES ('SPEED','SPEED-KM/H','^[0-9]+[[:space:]]?(km|mille|mi)\
 -- vitesse: exemple 150 noeuds
 INSERT INTO DDRE VALUES ('SPEED','SPEED-NOEUDS','^[0-9]+[[:space:]]?(noeud|noeuds|nd|kt|kn|kts)$','SPEED003','');
 
-INSERT INTO DDRE VALUES ('TEMPERATURE','TEMPERATURE-Celsius', '[0-9]+[[:space:]]?(Â°C|Celsius)$','TEMPERATURE001','');
+INSERT INTO DDRE VALUES ('TEMPERATURE','TEMPERATURE-Celsius', '[0-9]+[[:space:]]?(°C|Celsius)$','TEMPERATURE001','');
 
-INSERT INTO DDRE VALUES ('TEMPERATURE','TEMPERATURE-Fahrenheit', '[0-9]+[[:space:]]?(Â°F|Fahrenheit)$','TEMPERATURE002','');
+INSERT INTO DDRE VALUES ('TEMPERATURE','TEMPERATURE-Fahrenheit', '[0-9]+[[:space:]]?(°F|Fahrenheit)$','TEMPERATURE002','');
 
 INSERT INTO DDRE VALUES ('TEMPERATURE','TEMPERATURE-Kelvin', '[0-9]+[[:space:]]?(K|Kelvin)$','TEMPERATURE003','');
 
@@ -65,8 +65,108 @@ INSERT INTO DDRE VALUES ('DATE','DATEYYYYMMDD','^(\d{4})[\/\-\.](0?[1-9]|1[012])
 
 INSERT INTO DDRE VALUES ('INTEGER','','^[[:digit:]]+$','INTEGER001','');
 
+INSERT INTO DDRE VALUES ('MONEY','EURO','^([0-9]+)(.[0-9]{1,2})? (\€)$','MONEY001','');
+
+INSERT INTO DDRE VALUES ('MONEY','DOLLAR','^([0-9]+)(.[0-9]{1,2})? (\$)$','MONEY002','');
+
+INSERT INTO DDRE VALUES ('MONEY','LIVRE','^([0-9]+)(.[0-9]{1,2})? (\£)$','MONEY003','');
+
+INSERT INTO DDRE VALUES ('MONEY','DINARTUNISIEN','^([0-9]+)(.[0-9]{1,2})? (D[tT])$','MONEY004','');
+
+INSERT INTO DDRE VALUES ('PEOPLE','ANYPEOPLE','^(F|FEMALE|FEMELLE|0|WOMEN|FEMME|M|MALE|MÂLE|MEN|HOMME|1|H|MADAME|MONSIEUR|MADEMOISELLE)$','PEOPLE001','');
+
+
 COMMIT;
 
 
 
 
+DROP TABLE DDTF;
+CREATE TABLE DDTF
+(
+CATEGORY    VARCHAR(50), 
+FORMAT  VARCHAR(50),
+PRIMARYKEY  VARCHAR(20),
+CONSTRAINT  PKDDTF PRIMARY KEY (PRIMARYKEY)
+);
+
+INSERT INTO DDTF VALUES ('DATE','YYYY-MM-DD','DATEFORMAT');
+
+INSERT INTO DDTF VALUES ('MONEY','MONEY $','MONEYFORMAT');
+
+INSERT INTO DDTF VALUES ('MAN','Monsieur','MANFORMAT');
+
+INSERT INTO DDTF VALUES ('WOMAN','Madame','WOMANFORMAT');
+
+INSERT INTO DDTF VALUES ('UPPER','UPPER(monUpper)','UPPERFORMAT');
+
+INSERT INTO DDTF VALUES ('INITCAP','INITCAP(monInicap)','INITCAPFORMAT');
+
+INSERT INTO DDTF VALUES ('TELFR','+33TELFR','TELFRFORMAT');
+
+COMMIT;
+
+-- Fonction qui renvoie 1 si le mot correspond a l'expression régulière
+CREATE OR REPLACE FUNCTION regValide(regex IN VARCHAR, word IN VARCHAR)
+RETURN NUMBER
+AS
+BEGIN
+	IF REGEXP_LIKE(word, regex) THEN
+		RETURN 1;
+	ELSE
+		RETURN 0;
+	END IF;
+  RETURN -1;
+END;
+/
+
+-- Fonction qui compte le nombre de valeur qui correspond a l'expression régulière
+CREATE OR REPLACE FUNCTION regValideCol(maTable IN VARCHAR, maColonne IN VARCHAR, regex IN VARCHAR)
+RETURN NUMBER
+AS
+	Type curseurType IS REF CURSOR;
+    monCurseur curseurType;
+    maVariable VARCHAR(200);
+    res NUMBER := 0;
+BEGIN
+	OPEN monCurseur FOR ('SELECT ' || maColonne || ' FROM ' || maTable);
+        LOOP
+            FETCH monCurseur INTO maVariable;
+            	res := res + regValide(UPPER(maVariable), regex);
+            EXIT WHEN monCurseur%NOTFOUND;
+        END LOOP;
+    CLOSE monCurseur;
+    RETURN res;
+END;
+/
+
+
+
+-- CREATE OR REPLACE VIEW TEMP_DESC AS 
+select category, SUBCATEGORY, NUMBEROCC 
+from (select CATEGORY, SUBCATEGORY, regValideCol('ARTICLES_TN02', 'Col5', REGEXPR) AS NUMBEROCC from DDRE) B
+group by category, SUBCATEGORY, NUMBEROCC
+HAVING NUMBEROCC = (select max(regValideCol('ARTICLES_TN02', 'Col5', REGEXPR)) from DDRE);
+
+-- Procedure qui donne la categorie et la sous-categorie qui possède le plus grande nombre d'occurence !
+CREATE OR REPLACE PROCEDURE findCol(maTable IN VARCHAR, maColonne IN VARCHAR, findCat OUT VARCHAR, findSubCat OUT VARCHAR)
+AS
+  x VARCHAR(20) := '';
+BEGIN
+  EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
+  || UPPER(maTable) || ''', ''' 
+  || UPPER(maColonne) || ''', REGEXPR) AS NUMBEROCC from DDRE) group by category, SUBCATEGORY, NUMBEROCC HAVING NUMBEROCC = (select max(regValideCol(''' 
+  || UPPER(maTable) || ''', ''' 
+  || UPPER(maColonne) || ''', REGEXPR)) from DDRE)'
+  INTO findCat, findSubCat;
+END;
+/
+
+DECLARE
+  ab VARCHAR(30) := '';
+  cd VARCHAR(30) := '';
+BEGIN
+  findCol('ARTICLES_TN02', 'Col5', ab, cd);
+  Dbms_Output.Put_Line(ab || ' ' || cd);
+END;
+/
