@@ -73,17 +73,23 @@ INSERT INTO DDRE VALUES ('MONEY','LIVRE','^([0-9]+)(.[0-9]{1,2})? (\£)$','MONEY0
 
 INSERT INTO DDRE VALUES ('MONEY','DINARTUNISIEN','^([0-9]+)(.[0-9]{1,2})? (D[tT])$','MONEY004','');
 
-INSERT INTO DDRE VALUES ('PEOPLE','ANYPEOPLE','^(F|FEMALE|FEMELLE|0|WOMEN|FEMME|M|MALE|MÂLE|MEN|HOMME|1|H|MADAME|MONSIEUR|MADEMOISELLE)$','PEOPLE001','');
+INSERT INTO DDRE VALUES ('PEOPLE','MEN','^(M|MALE|MÂLE|MEN|HOMME|H|MONSIEUR)$','PEOPLE001','');
 
-INSERT INTO DDRE VALUES ('ADRESSE','ALL','^([0-9])+, ([\w .]+)$','ADRESSE001','');
+INSERT INTO DDRE VALUES ('PEOPLE','WOMEN','^(F|FEMALE|FEMELLE|WOMEN|FEMME|MADAME|MADEMOISELLE)$','PEOPLE002','');
 
-INSERT INTO DDRE VALUES ('IDENTITY', 'ID', '^([0-9a-zA-Z]\1){2}([\w.\d])*([0-9])$', 'IDENTITY001','');
+INSERT INTO DDRE VALUES ('ADRESSE','ALL','^([0-9])+( BIS| bis)?, ([a-zA-Z .]+)$','ADRESSE001','');
 
+INSERT INTO DDRE VALUES ('IDENTITY', 'ID', '^([0-9a-zA-Z]\1){2}([a-zA-Z0-9.])*([0-9])$', 'IDENTITY001','');
+
+INSERT INTO DDRE VALUES ('TEL', 'TELINDI', '^(\+[1-9])([0-9]{1,2})?([0-9]{9})$', 'TELINDICATEUR001','');
+
+INSERT INTO DDRE VALUES ('CP', 'CPFR', '^([0-9]){5}$', 'CP001','');
+
+INSERT INTO DDRE VALUES ('CP', 'CPUK', '^([a-zA-Z])([0-9] |[0-9][0-9] |[0-9][a-zA-Z] |[a-zA-Z][0-9] |[a-zA-Z][0-9][0-9] |[a-zA-Z][0-9][a-zA-Z] )([0-9][a-zA-Z]{2})$', 'CP002','');
+
+INSERT INTO DDRE VALUES ('CP', 'CPBE', '^(((?!999[3-9]))([1-9])([0-9]){2}([0-9]))$', 'CP003','');
 
 COMMIT;
-
-
-
 
 DROP TABLE DDTF;
 CREATE TABLE DDTF
@@ -129,11 +135,11 @@ CREATE OR REPLACE FUNCTION regValideCol(maTable IN VARCHAR, maColonne IN VARCHAR
 RETURN NUMBER
 AS
 	Type curseurType IS REF CURSOR;
-    monCurseur curseurType;
-    maVariable VARCHAR(200);
-    res NUMBER := 0;
+  monCurseur curseurType;
+  maVariable VARCHAR(200);
+  res NUMBER := 0;
 BEGIN
-	OPEN monCurseur FOR ('SELECT ' || maColonne || ' FROM ' || maTable);
+	OPEN monCurseur FOR ('SELECT ' || UPPER(maColonne) || ' FROM ' || UPPER(maTable));
         LOOP
             FETCH monCurseur INTO maVariable;
             	res := res + regValide(UPPER(maVariable), regex);
@@ -144,41 +150,88 @@ BEGIN
 END;
 /
 
-
-
--- CREATE OR REPLACE VIEW TEMP_DESC AS 
+CREATE OR REPLACE VIEW TEMP_DESC AS 
 select category, SUBCATEGORY, NUMBEROCC 
-from (select CATEGORY, SUBCATEGORY, regValideCol('ARTICLES_TN02', 'Col5', REGEXPR) AS NUMBEROCC from DDRE) B
+from (select CATEGORY, SUBCATEGORY, regValideCol('CLIENTS', 'CIVCLI', REGEXPR) AS NUMBEROCC from DDRE) B
 group by category, SUBCATEGORY, NUMBEROCC
-HAVING NUMBEROCC = (select max(regValideCol('ARTICLES_TN02', 'Col5', REGEXPR)) from DDRE);
+HAVING NUMBEROCC = (select max(regValideCol('CLIENTS', 'CIVCLI', REGEXPR)) from DDRE);
 
+select category, SUBCATEGORY, max(numberocc) from TEMP_DESC group by CATEGORY, NUMBEROCC, SUBCATEGORY;
+DROP VIEW TEMP_DESC;
 -- Procedure qui donne la categorie et la sous-categorie qui possède le plus grande nombre d'occurence !
 CREATE OR REPLACE PROCEDURE findCol(maTable IN VARCHAR, maColonne IN VARCHAR, findCat OUT VARCHAR, findSubCat OUT VARCHAR)
 AS
-  x VARCHAR(20) := '';
+  v_Category VARCHAR(120) := '';
+  v_Subcategory VARCHAR(120) := '';
+  v_Number NUMBER;
+  v_test NUMBER;
 BEGIN
-  EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
+  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TEMP_CATE_SUBCAT AS SELECT category, SUBCATEGORY, NUMBEROCC  from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
   || UPPER(maTable) || ''', ''' 
   || UPPER(maColonne) || ''', REGEXPR) AS NUMBEROCC from DDRE) group by category, SUBCATEGORY, NUMBEROCC HAVING NUMBEROCC = (select max(regValideCol(''' 
   || UPPER(maTable) || ''', ''' 
-  || UPPER(maColonne) || ''', REGEXPR)) from DDRE)'
-  INTO findCat, findSubCat;
+  || UPPER(maColonne) || ''', REGEXPR)) from DDRE)';
+  EXECUTE IMMEDIATE 'SELECT sum(NUMBEROCC) FROM TEMP_CATE_SUBCAT'
+  INTO v_test;
+  IF v_test != 0 THEN
+    EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY, max(numberocc) from TEMP_CATE_SUBCAT group by CATEGORY, SUBCATEGORY, NUMBEROCC'
+    INTO v_Category, v_Subcategory, v_Number;
+    findCat := v_Category;
+    findSubCat := v_Subcategory;
+  ELSE
+    findCat := v_Category;
+    findSubCat := v_Subcategory;
+  END IF;
+  -- EXECUTE IMMEDIATE 'DROP VIEW TEMP_CATE_SUBCAT';
 END;
 /
 
-DECLARE
-  ab VARCHAR(30) := '';
-  cd VARCHAR(30) := '';
+-- Function qui retourne toute les lignes d'une colonne
+CREATE OR REPLACE FUNCTION getAllColumn(maTable IN VARCHAR)
+  RETURN SYS_REFCURSOR
+AS
+  mesColonnes SYS_REFCURSOR;
 BEGIN
-  findCol('ARTICLES_TN02', 'Col5', ab, cd);
-  Dbms_Output.Put_Line(ab || ' ' || cd);
+  OPEN mesColonnes FOR select column_name from user_Tab_Cols where Table_Name = UPPER(maTable);
+  RETURN mesColonnes;
 END;
 /
-
+-- Fonction qui trouve le type de colonne 
 CREATE OR REPLACE PROCEDURE detectionColonne(maTable IN VARCHAR)
 AS
+   monCurseur SYS_REFCURSOR;
+   ligne VARCHAR(200);
+   v_Category VARCHAR(50) := '';
+   v_SubCategory VARCHAR(50) := '';
 BEGIN
-  
-END
-;
+  monCurseur := getAllColumn(maTable);
+  LOOP
+    FETCH monCurseur into ligne;
+      v_Category := '';
+      v_SubCategory := '';
+      findCol(maTable, ligne, v_Category, v_SubCategory);
+      DBMS_OUTPUT.PUT_LINE(ligne || ' ' || v_Category || ' ' || v_SubCategory);
+    EXIT WHEN  monCurseur%NOTFOUND;
+  END LOOP;  
+END;
 /
+
+
+
+/*
+CODCLI
+CIVCLI
+NOMCLI
+PRENCLI
+CATCLI
+ADNCLI
+ADRCLI
+CPCLI
+VILCLI
+PAYSCLI
+MAILCLI
+TELCLI
+TELCLI
+
+
+*/
