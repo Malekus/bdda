@@ -165,6 +165,7 @@ AS
   v_Subcategory VARCHAR(120) := '';
   v_Number NUMBER;
   v_test NUMBER;
+  v_NumCol NUMBER;
 BEGIN
   EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TEMP_CATE_SUBCAT AS SELECT category, SUBCATEGORY, NUMBEROCC  from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
   || UPPER(maTable) || ''', ''' 
@@ -174,10 +175,19 @@ BEGIN
   EXECUTE IMMEDIATE 'SELECT sum(NUMBEROCC) FROM TEMP_CATE_SUBCAT'
   INTO v_test;
   IF v_test != 0 THEN
-    EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY, max(numberocc) from TEMP_CATE_SUBCAT group by CATEGORY, SUBCATEGORY, NUMBEROCC'
-    INTO v_Category, v_Subcategory, v_Number;
-    findCat := v_Category;
-    findSubCat := v_Subcategory;
+    EXECUTE IMMEDIATE 'SELECT COUNT(*) FROM TEMP_CATE_SUBCAT'
+    INTO v_NumCol;
+    IF v_NumCol = 1 THEN
+      EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY, max(numberocc) from TEMP_CATE_SUBCAT group by CATEGORY, SUBCATEGORY, NUMBEROCC'
+      INTO v_Category, v_Subcategory, v_Number;
+      findCat := v_Category;
+      findSubCat := v_Subcategory;
+    ELSE
+      EXECUTE IMMEDIATE 'SELECT category, SUBCATEGORY, max(numberocc) from TEMP_CATE_SUBCAT WHERE SUBCATEGORY IS NOT NULL GROUP BY CATEGORY, SUBCATEGORY, NUMBEROCC'
+      INTO v_Category, v_Subcategory, v_Number;
+      findCat := v_Category;
+      findSubCat := v_Subcategory;
+    END IF;    
   ELSE
     findCat := v_Category;
     findSubCat := v_Subcategory;
@@ -217,21 +227,5 @@ END;
 /
 
 
-
-/*
-CODCLI
-CIVCLI
-NOMCLI
-PRENCLI
-CATCLI
-ADNCLI
-ADRCLI
-CPCLI
-VILCLI
-PAYSCLI
-MAILCLI
-TELCLI
-TELCLI
-
-
-*/
+select * from DDVS where 'FRA' in (ABR, ENGLISH, FRENCH);
+select * from DDVS;

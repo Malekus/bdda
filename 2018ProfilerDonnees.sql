@@ -58,7 +58,7 @@
 
 -- ===============================================================================
 
-REM Une solution pour diagnstiquer/profiler une table et remplir les rapports d''anomalies
+-- Une solution pour diagnstiquer/profiler une table et remplir les rapports d''anomalies
 
 -- ===============================================================================
 
@@ -870,7 +870,7 @@ COL G  FORMAT A10
 -- ************************************************************************************************
 -- SIMULATION D'UN DIAGNOSTIC SUR LA TABLE DS1
 
-TTITLE 'Affichage des données de la table DS1';
+TTITLE 'Affichage des donees de la table DS1'
 select * from DS1;
 
 TTITLE 'DUPPLIQUER LA TABLE DS1'
@@ -936,19 +936,6 @@ TTITLE OFF
 -- =============================================================================== 
 -- =============================================================================== 
 
-REM ************************************************************************************
-
-REM Etant donné la table de nom DS1 dont la description est donnée ci-dessous :
-REM La table DS1 est le résultat de l intégration de plusieurs sources hétérogènes et distribuées
-REM Description des données : Création de la table Source de données, insertion des lignes
-REM La table DS1 provient de formulaires Web sous forme CSV transformée en table
-REM Toutes les colonnes sont des strings !
-REM Les noms des tables sont le plus souvent non significatifs
-REM Les noms des colonnes sont le plus souvent non représentatifs du contenu
-
-REM ************************************************************************************
-REM Description des données
-
 DROP TABLE DS1 ;
 CREATE TABLE DS1 
    (	N VARCHAR2(50), 
@@ -967,8 +954,6 @@ CREATE TABLE DS1
         FL VARCHAR2(100)
    );
 
-REM ************************************************************************************
-REM Insertion des données
 
 Insert into DS1 (N,PR,S,CI,M,T,V,P,DN,W,G, DPC, DDC, FL) values 
 ('Sweden','Abir','f','m','abir@gmail.com','+33698068000','Londres','Royaume-Uni','5/3/2000','www.hot mail.fr','m', '17/09/2007', '12/12/2012','Sweden Abir');
@@ -1016,8 +1001,6 @@ Insert into DS1 (N,PR,S,CI,M,T,V,P,DN,W,G, DPC, DDC, FL) values ('Grande','Clém
 Insert into DS1 (N,PR,S,CI,M,T,V,P,DN,W,G, DPC, DDC, FL) values ('Grande','Clémence','f','madame','clemence@gmail.com','0607080911',null,null,'(null)','boufares@lipn.fr','mdame', '17/09/2007', '12/12/2012', 'Grande Clémence');
 COMMIT;
 
-REM ************************************************************************************
-
 COL N   FORMAT A10
 COL PR  FORMAT A10
 COL S   FORMAT A2
@@ -1033,12 +1016,8 @@ COL DPC FORMAT A10
 COL DDC FORMAT A10
 COL FL  FORMAT A20
 
-REM ************************************************************************************
-REM Affichage des données de la table DS1
 
 select * from DS1;
-
-REM ************************************************************************************
 
 -- =============================================================================== 
 -- =============================================================================== 
@@ -1048,18 +1027,6 @@ REM ****************************************************************************
 -- =============================================================================== 
 -- =============================================================================== 
 -- =============================================================================== 
-REM ************************************************************************************
-
-REM Etant donné la table de nom DS2 dont la description est donnée ci-dessous :
-REM La table DS2 est le résultat de l intégration de plusieurs sources hétérogènes et distribuées
-REM Description des données : Création de la table Source de données, insertion des lignes
-REM La table DS2 provient de formulaires Web sous forme CSV transformée en table
-REM Toutes les colonnes sont des strings !
-REM Les noms des tables sont le plus souvent non significatifs
-REM Les noms des colonnes sont le plus souvent non représentatifs du contenu
-
-REM ************************************************************************************
-REM Description des données
 
 DROP TABLE DS2;
 
@@ -1071,9 +1038,6 @@ Col3 VARCHAR2(30),
 Col4 VARCHAR2(30)
 ); 
 
-
-REM ************************************************************************************
-REM Insertion des données
 
 INSERT INTO DS2 VALUES ('Adam LeBon', 'LeBon Adam', '75013 Paris', '10-11-2016');
 INSERT INTO DS2 VALUES ('Clémence Belle', 'Belle Clémence', '75014 Paris', '10-11-2016');
@@ -1111,12 +1075,8 @@ INSERT INTO DS2 VALUES ('Adam DOUBLE', 'DOUBLE Adam', '75013 Paris', '2016-11-10
 
 COMMIT;
 
-REM ************************************************************************************
-REM Affichage des données de la table DS2
 
 select * from DS2;
-
-REM ************************************************************************************
 
 
 
