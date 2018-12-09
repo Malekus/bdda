@@ -1,6 +1,4 @@
-drop table  DS2_mesures;
-drop table Clients_mesures;
-drop table t2_mesures;
+
 CREATE OR REPLACE FUNCTION Get_type (nom_col in varchar, NOM_TAB IN VARCHAR )
    RETURN VARCHAR 
    IS typee VARCHAR(50);
@@ -10,6 +8,39 @@ CREATE OR REPLACE FUNCTION Get_type (nom_col in varchar, NOM_TAB IN VARCHAR )
 	query := 'select coltype from col where tname='''||NOM_TAB||''' and cname='''||nom_col||''' ';
      	execute immediate query into typee  ;
       RETURN(typee); 
+    END;
+/
+
+CREATE OR REPLACE FUNCTION Fun_avg_chaine_car  (nom_col IN varchar, NOM_TAB IN VARCHAR )
+   RETURN NUMBER 
+   IS moy_char  NUMBER(11,2);
+	query varchar(500);
+   BEGIN 
+	query := ' select avg(length(' ||nom_col|| '))from ' || nom_tab ;
+     	execute immediate query into moy_char ;
+      RETURN(moy_char); 
+    END;
+/
+
+CREATE OR REPLACE FUNCTION Fun_max_chaine_car (nom_col IN varchar, NOM_TAB IN VARCHAR )
+   RETURN NUMBER 
+   IS max_char  NUMBER(11,2);
+	query varchar(500);
+   BEGIN 
+	query := ' select max(length(' ||nom_col|| ')) from ' || nom_tab ;
+     	execute immediate query into max_char ;
+      RETURN(max_char); 
+    END;
+/
+
+CREATE OR REPLACE FUNCTION Fun_min_chaine_car (nom_col IN varchar, NOM_TAB IN VARCHAR )
+   RETURN NUMBER 
+   IS min_char  NUMBER(11,2);
+	query varchar(500);
+   BEGIN 
+	query := ' select min(length(' ||nom_col|| ')) from ' || nom_tab  ;
+     	execute immediate query into min_char  ;
+      RETURN(min_char); 
     END;
 /
 
@@ -121,8 +152,8 @@ CREATE OR REPLACE PROCEDURE mesureTab(nomtablee in varchar) IS
 	nbmaxdate varchar(10);
 	typee varchar(10);
 	testExiste NUMBER;
-  nbOnlyNumber NUMBER := 0;
-  nbOnlyChar NUMBER := 0;
+	nbOnlyNumber NUMBER := 0;
+	nbOnlyChar NUMBER := 0;
 	CURSOR curseur IS
 	SELECT column_name FROM user_tab_columns WHERE table_name = nomtable;
 BEGIN
@@ -182,4 +213,3 @@ END;
 
 
 
-select * from CLIENTS_FR02_mesures;
