@@ -23,15 +23,22 @@ CONSTRAINT  PKDDRE PRIMARY KEY (PRIMARYKEY)
 
 
 -- Insertion des donnÃ©es dans DDRE
+INSERT INTO DDRE VALUES ('PHONE','PHONE-BASE','^([1-9]{1}[0-9]{8})|^([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2})$','PHONE000','');
+
+INSERT INTO DDRE VALUES ('PHONE','PHONE-FR','^(((\+33)|\(\+33\))\s?(0)?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE001','COUNTRYEUR001');
+INSERT INTO DDRE VALUES ('PHONE','PHONE-ES','^(((\+34)|\(\+34\))\s?(0)?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE002','COUNTRYEUR007');
+
+INSERT INTO DDRE VALUES ('BLOOD','','^([Aa]\+|[Bb]\+|[Oo]\+|[Aa][Bb]\+|[Aa]\-|[Bb]\-|[Aa][Bb]\-|[Oo]\-)$','BLOOD001','');
 
 -- poids: exemple 3kg500 3,5Kg 3 kg 5, dag, mg, cg
-INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([1-9]([0-9])*(,[1-9])?)( )?([kK][gG]|[kK][gG]( )?[0-9]+)$','WEIGHT001',''); 
+INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-G','^([0-9])+(,[0-9]+)?\s?([gG]|[gG][rR][aA][mM][mM][eE])$','WEIGHT003',''); 
+INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([0-9])+(,[0-9]+)?\s?(([kK][gG])|[kK][iI][lL][Oo][gG][rR][aA][mM][mM][eE])$','WEIGHT001',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-MM','^([1-9]([0-9])*(,[1-9])?)( )?([mM]{2})$','SIZE001',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-CM','^([1-9]([0-9])*(,[1-9])?)( )?([cC][mM])$','SIZE002',''); 
-INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9]([0-9])*(,[1-9])?)( )?([mM])$','SIZE003',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9])(([0-9])*)(,([1-9])(([0-9])*))?( )?([mM])$','SIZE003',''); 
 
  -- poids: exemple 3lb, tonne, once, pounds
-INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-TONNE','^[0-9]+[[:space:]]?(lb|oz|livre|once|tonne|t|pounds)$','WEIGHT002','');
+INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-TONNE','^([0-9])+(,[0-9]+)?\s?(lb|oz|livre|once|tonne|t|pounds)$','WEIGHT002','');
 
 -- longueur: exemple 3m50 3,5m, cm, dam
 INSERT INTO DDRE VALUES ('LENGTH','LENGTH-M','^[0-9]+[[:space:]]?([dDcCkKhHmMnNÂµ]m|m|dam)[0-9]*$','LENGTH001','');
@@ -58,7 +65,7 @@ INSERT INTO DDRE VALUES ('VOLUME','','^[0-9]+[[:space:]]?([dcmhknÂµ]l|litre|gall
 
 INSERT INTO DDRE VALUES ('URL', '','^((http|https):\/\/)?(www[.])?([a-zA-Z0-9]|-)+([.][a-zA-Z(-|\/|=|?)?]+)+$', 'URL001', '') ;
 
-INSERT INTO DDRE VALUES ('EMAIL','','^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$','EMAIL001', '') ;
+INSERT INTO DDRE VALUES ('EMAIL','','^[A-Za-zéèçàê0-9._%-]+@[A-Za-zéèçàê0-9.-]+\.[A-Za-zéèçàê]{2,4}$','EMAIL001', '') ;
 
 INSERT INTO DDRE VALUES ('DATE','DATEDDMMYYYY','^(0?[1-9]|[12][0-9]|3[01])[\/\-\.](0?[1-9]|1[012])[\/\-\.]\d{4}$','DATE001','');
 
@@ -232,6 +239,6 @@ BEGIN
 END;
 /
 
-
+/*
 select * from DDVS where 'FRA' in (ABR, ENGLISH, FRENCH);
-select * from DDVS;
+select * from DDVS;*/
