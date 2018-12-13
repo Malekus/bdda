@@ -19,34 +19,28 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE findCol2(maTable IN VARCHAR, maColonne IN VARCHAR, findCat OUT VARCHAR)
+-- Fonction qui compte le nombre de valeur qui correspond a l'expression régulière
+CREATE OR REPLACE FUNCTION regValideCol(maTable IN VARCHAR, maColonne IN VARCHAR, regex IN VARCHAR)
+RETURN NUMBER
 AS
-  v_Category VARCHAR(120) := '';
-  v_Subcategory VARCHAR(120) := '';
-  v_Number NUMBER;
-  v_test NUMBER;
-  v_NumCol NUMBER;
+	Type curseurType IS REF CURSOR;
+  monCurseur curseurType;
+  maVariable VARCHAR(200);
+  res NUMBER := 0;
 BEGIN
-  EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TEMP_CATE_SUBCAT AS SELECT category, SUBCATEGORY, NUMBEROCC  from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
-  || UPPER(maTable) || ''', ''' 
-  || UPPER(maColonne) || ''', REGEXPR) AS NUMBEROCC from DDRE) group by category, SUBCATEGORY, NUMBEROCC HAVING NUMBEROCC = (select max(regValideCol(''' 
-  || UPPER(maTable) || ''', ''' 
-  || UPPER(maColonne) || ''', REGEXPR)) from DDRE)';
-
-EXECUTE IMMEDIATE 'select count(*) from (select category, sum(numberocc) from TEMP_CATE_SUBCAT group by category having count(*) >= (select max(nbOCC) from (select category, sum(numberocc) as nbOcc from TEMP_CATE_SUBCAT group by category)))'
-INTO v_test;
-IF v_test = 1 THEN
-EXECUTE IMMEDIATE 'select category, sum(numberocc) from TEMP_CATE_SUBCAT group by category having count(*) >= (select max(nbOCC) from (select category, sum(numberocc) as nbOcc from TEMP_CATE_SUBCAT group by category))'
-INTO v_Category, v_Number;
-	findCat := v_Category;
-ELSE
-	findCat := 'NO FOUND';
-END IF;
-
-
+	OPEN monCurseur FOR ('SELECT ' || UPPER(maColonne) || ' FROM ' || UPPER(maTable));
+        LOOP
+            FETCH monCurseur INTO maVariable;
+            	res := res + regValide(UPPER(maVariable), regex);
+            EXIT WHEN monCurseur%NOTFOUND;
+        END LOOP;
+    CLOSE monCurseur;
+	IF res = 0 THEN
+		RETURN -1;
+	END IF;
+    RETURN res;
 END;
 /
--- select category, sum(numberocc) from TEMP_CATE_SUBCAT group by category having count(*) >= (select max(nbOCC) from (select category, sum(numberocc) as nbOcc from TEMP_CATE_SUBCAT group by category))
 
 -- Function qui retourne toute les lignes d'une colonne
 CREATE OR REPLACE FUNCTION getAllColumn(maTable IN VARCHAR)
@@ -58,6 +52,39 @@ BEGIN
   RETURN mesColonnes;
 END;
 /
+
+CREATE OR REPLACE FUNCTION takeColName(maTable IN VARCHAR, maColonne IN VARCHAR)
+RETURN VARCHAR
+IS
+	TYPE curType IS REF CURSOR;
+	vCursor curType;
+	maVariable_CAT VARCHAR(255);
+	maVariable_REG VARCHAR(255);
+	res VARCHAR(20) := '';
+	v_Number_AV NUMBER := 0;
+	v_Number_AP NUMBER := 0;
+BEGIN
+	OPEN vCursor FOR ('SELECT CATEGORY,  REGEXPR FROM DDRE');
+		LOOP
+			FETCH vCursor INTO maVariable_CAT, maVariable_REG;			
+			EXECUTE IMMEDIATE 'select regValideCol('''|| UPPER(maTable) || ''', ''' || UPPER(maColonne) || ''', ''' || maVariable_REG || ''') from dual'
+				INTO v_Number_AV;
+				IF v_Number_AP < v_Number_AV THEN
+					DBMS_OUTPUT.PUT_LINE(res);
+					DBMS_OUTPUT.PUT_LINE(v_Number_AV || '');
+					res := maVariable_CAT;
+					v_Number_AP := v_Number_AV;
+				END IF;
+					v_Number_AP := v_Number_AV;
+			EXIT WHEN vCursor%NOTFOUND;
+	    	END LOOP;
+	CLOSE vCursor;
+	RETURN res;
+END;
+/
+
+
+/*
 -- Fonction qui trouve le type de colonne 
 CREATE OR REPLACE PROCEDURE detectionColonne(maTable IN VARCHAR)
 AS
@@ -77,25 +104,11 @@ BEGIN
   END LOOP;  
 END;
 /
+*/
 
 
-create or replace function monTest(maTable IN VARCHAR, maColonne IN VARCHAR)
-return varchar
-as
-	res VARCHAR(255) := '';
-	v_Number NUMBER := 0;
-BEGIN
-	EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TEMP_CATE_SUBCAT AS SELECT category, SUBCATEGORY, NUMBEROCC  from (select CATEGORY, SUBCATEGORY, regValideCol(''' 
-	  || UPPER(maTable) || ''', ''' 
-	  || UPPER(maColonne) || ''', REGEXPR) AS NUMBEROCC from DDRE) group by category, SUBCATEGORY, NUMBEROCC HAVING NUMBEROCC = (select max(regValideCol(''' 
-	  || UPPER(maTable) || ''', ''' 
-	  || UPPER(maColonne) || ''', REGEXPR)) from DDRE)';
-	EXECUTE IMMEDIATE 'select category, sum(numberocc) from TEMP_CATE_SUBCAT group by category having count(*) >= (select max(nbOCC) from (select category, sum(numberocc) as nbOcc from TEMP_CATE_SUBCAT group by category))'
-	INTO res, v_Number;
-	RETURN res;
-END;
-/
 
+/*
 DROP TABLE DDRE;
 
 CREATE TABLE DDRE 
@@ -112,6 +125,9 @@ INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([1-9]([0-9])*(,[1-9])?)( )?([kK
 INSERT INTO DDRE VALUES ('SIZE','SIZE-MM','^([1-9]([0-9])*(,[1-9])?)( )?([mM]{2})$','SIZE001',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-CM','^([1-9]([0-9])*(,[1-9])?)( )?([cC][mM])$','SIZE002',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9]([0-9])*(,[1-9])?)( )?([mM])$','SIZE003',''); 
+
+INSERT INTO DDRE VALUES ('GS','GRSANG','^(A|B|O|AB)(\+|\-)$','GR001',''); 
+
 
  -- poids: exemple 3lb, tonne, once, pounds
 INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-TONNE','^[0-9]+[[:space:]]?(lb|oz|livre|once|tonne|t|pounds)$','WEIGHT002','');
@@ -169,10 +185,5 @@ INSERT INTO DDRE VALUES ('IDENTITY', 'ID', '^([0-9a-zA-Z]\1){2}([a-zA-Z0-9.])*([
 
 INSERT INTO DDRE VALUES ('TEL', 'TELINDI', '^(\+[1-9])([0-9]{1,2})?([0-9]{9})$', 'TELINDICATEUR001','');
 
-INSERT INTO DDRE VALUES ('CP', 'CPFR', '^([0-9]){5}$', 'CP001','');
-
-INSERT INTO DDRE VALUES ('CP', 'CPUK', '^([a-zA-Z])([0-9] |[0-9][0-9] |[0-9][a-zA-Z] |[a-zA-Z][0-9] |[a-zA-Z][0-9][0-9] |[a-zA-Z][0-9][a-zA-Z] )([0-9][a-zA-Z]{2})$', 'CP002','');
-
-INSERT INTO DDRE VALUES ('CP', 'CPBE', '^(((?!999[3-9]))([1-9])([0-9]){2}([0-9]))$', 'CP003','');
-
 COMMIT;
+*/
