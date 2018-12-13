@@ -2,9 +2,15 @@ CREATE OR REPLACE PROCEDURE corrpaysddvsfr(tablee in varchar,colonne in varchar)
 as
 	table1 varchar(1000) := '';
 	table2 varchar(1000) := '';
+	table3 varchar(1000) := '';
 	update1 varchar(1000) := '';
+	looper varchar(1000) := '';
+	distance varchar(1000) := '';
+	dist varchar(100) :='';
+	update2 varchar(1000) := '';
+	select1 varchar(1000) :='';
 BEGIN
-	table1:='create or replace view v1(pays) as select '||colonne||' from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(french) from DDVS where category=''COUNTRY'') ';
+	table1:='create or replace view v1(pays) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(french) from DDVS where category=''COUNTRY'') ';
 	
 	execute immediate table1;
 
@@ -12,6 +18,8 @@ BEGIN
 	execute immediate table2;
 	update1:='update t5 set '||colonne||'=(select french from v2 where english='||colonne||') where '||colonne||' in(select pays from v1) and '||colonne||' in(select upper(english) from ddvs where category=''COUNTRY'')';
 	execute immediate update1;
+	
+	
 
 END;
 /
@@ -21,9 +29,14 @@ CREATE OR REPLACE PROCEDURE corrpaysddvsen(tablee in varchar,colonne in varchar)
 as
 	table1 varchar(1000) := '';
 	table2 varchar(1000) := '';
+	table3 varchar(1000) := '';
 	update1 varchar(1000) := '';
+	looper varchar(1000) := '';
+	distance varchar(1000) := '';
+	dist varchar(100) :='';
+	update2 varchar(1000) := '';
 BEGIN
-	table1:='create or replace view v1(pays) as select '||colonne||' from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(english) from DDVS where category=''COUNTRY'') ';
+	table1:='create or replace view v1(pays) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(english) from DDVS where category=''COUNTRY'') ';
 	
 	execute immediate table1;
 
@@ -31,6 +44,10 @@ BEGIN
 	execute immediate table2;
 	update1:='update t5 set '||colonne||'=(select english from v2 where french='||colonne||') where '||colonne||' in(select pays from v1) and '||colonne||' in(select upper(french) from ddvs where category=''COUNTRY'')';
 	execute immediate update1;
+	
+	table3:='create or replace view v3(pays) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(english) from DDVS where category=''COUNTRY'') ';
+	execute immediate table3;
+	
 END;
 /
 
@@ -39,9 +56,14 @@ CREATE OR REPLACE PROCEDURE corrvilleddvsfr(tablee in varchar,colonne in varchar
 as
 	table1 varchar(1000) := '';
 	table2 varchar(1000) := '';
+	table3 varchar(1000) := '';
 	update1 varchar(1000) := '';
+	looper varchar(1000) := '';
+	distance varchar(1000) := '';
+	dist varchar(100) :='';
+	update2 varchar(1000) := '';
 BEGIN
-	table1:='create or replace view v1(ville) as select '||colonne||' from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(french) from DDVS where category=''CITY'') ';
+	table1:='create or replace view v1(ville) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(french) from DDVS where category=''CITY'') ';
 	
 	execute immediate table1;
 
@@ -50,6 +72,11 @@ BEGIN
 	update1:='update t5 set '||colonne||'=(select french from v2 where english='||colonne||') where '||colonne||' in(select ville from v1) and '||colonne||' in(select upper(english) from ddvs where category=''CITY'')';
 	
 	execute immediate update1;
+
+	table3:='create or replace view v4(ville) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(french) from DDVS where category=''CITY'') ';
+	execute immediate table3;
+	
+	
 END;
 /
 
@@ -58,9 +85,14 @@ CREATE OR REPLACE PROCEDURE corrvilleddvsen(tablee in varchar,colonne in varchar
 as
 	table1 varchar(1000) := '';
 	table2 varchar(1000) := '';
+	table3 varchar(1000) := '';
 	update1 varchar(1000) := '';
+	looper varchar(1000) := '';
+	distance varchar(1000) := '';
+	dist varchar(100) :='';
+	update2 varchar(1000) := '';
 BEGIN
-	table1:='create or replace view v1(ville) as select '||colonne||' from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(english) from DDVS where category=''CITY'') ';
+	table1:='create or replace view v1(ville) as select upper('||colonne||') from '||tablee||' where '||colonne||' is not null and upper('||colonne||') not in(select upper(english) from DDVS where category=''CITY'') ';
 	
 	execute immediate table1;
 
@@ -68,15 +100,20 @@ BEGIN
 	execute immediate table2;
 	update1:='update t5 set '||colonne||'=(select english from v2 where french='||colonne||') where '||colonne||' in(select ville from v1) and '||colonne||' in(select upper(french) from ddvs where category=''CITY'')';
 	
-execute immediate update1;
+	execute immediate update1;
+
+
+	
 END;
 /
 
 CREATE OR REPLACE PROCEDURE TESTPAYS(tabledfe in varchar)
 IS
+	TYPE TYPE_TAB IS TABLE OF VARCHAR2(100);
+	
 	tabledf varchar(1000):= UPPER(tabledfe);
 	looper varchar(1000) := '';
-
+	update1 varchar(1000) := '';
 	view1 varchar(1000) := '';
 	view2 varchar(1000) := '';
 	view3 varchar(1000) := '';
@@ -84,6 +121,8 @@ IS
 	view5 varchar(1000) := '';
 	view6 varchar(1000) := '';
 	view7 varchar(1000) := '';
+	viewpays varchar(1000) := '';
+	viewville varchar(1000) := '';
 	count1 varchar(1000) := '';
 	count2 varchar(1000) := '';
 	count3 varchar(1000) := '';
@@ -99,10 +138,25 @@ IS
 	counter6 number(10);
 	counter7 number(10);
 	procedure1 varchar(1000) := '';
+	testExiste NUMBER;
+	insert1 varchar(1000) := '';
+	selectfinloop varchar(1000) := '';
+	sel varchar(1000) := '';
 CURSOR curseur IS
 	SELECT column_name FROM user_tab_columns WHERE table_name = tabledf;
 BEGIN
-
+		select count(*) into testExiste from user_tables where table_name = UPPER(tabledf || '_pays');
+		IF testExiste != 0 THEN
+		EXECUTE IMMEDIATE 'DROP TABLE ' || tabledf || '_pays';
+		END IF;		
+		select count(*) into testExiste from user_tables where table_name = UPPER(tabledf || '_ville');
+		IF testExiste != 0 THEN
+		EXECUTE IMMEDIATE 'DROP TABLE ' || tabledf || '_ville';
+		END IF;	
+		viewpays:= 'create table '||tabledf||'_pays (pays varchar(100))';
+		execute immediate viewpays;
+		viewville:= 'create table '||tabledf||'_ville (ville varchar(100))';
+		execute immediate viewville;
 
 	looper:='SELECT column_name FROM user_tab_columns WHERE table_name =''|| tabledf ||'' ';
 	EXECUTE IMMEDIATE looper;
@@ -110,6 +164,10 @@ BEGIN
 
 
 	FOR i IN curseur LOOP
+
+
+		update1:='update '||tabledf||' set '||i.column_name||' = upper('||i.column_name||') ';
+		execute immediate update1;
 		
 	DBMS_OUTPUT.PUT_LINE(upper(i.column_name));
 		view1:= 'create or replace view tt(pays) as Select upper('||i.column_name||') from '|| tabledf ;
@@ -128,8 +186,12 @@ BEGIN
 		execute immediate count3 into counter3;
 
 		if(counter2*100/counter1>=60) then
-
+	
 	DBMS_OUTPUT.PUT_LINE('c''est une colonne pays');
+		insert1:= 'insert into ' || tabledf || '_pays values ('''||i.column_name||''')';
+		execute immediate insert1;
+
+
 		view6:= 'create or replace view tt6(pays) as Select upper('||i.column_name||') from '||tabledf||' where '||i.column_name||' is not null and upper('||i.column_name||') in(select upper(french) from DDVS where category=''COUNTRY'') ';
 		execute immediate view6;
 		view7:= 'create or replace view tt7(pays) as Select upper('||i.column_name||') from '||tabledf||' where '||i.column_name||' is not null and upper('||i.column_name||') in(select upper(english) from DDVS where category=''COUNTRY'') ';
@@ -151,8 +213,11 @@ BEGIN
 			end if;
 
 		elsif(counter3*100/counter1>=60)then
-
+		
+		
 		DBMS_OUTPUT.PUT_LINE('c''est une colonne ville');
+		insert1:= 'insert into ' || tabledf || '_ville values ('''||i.column_name||''')';
+		execute immediate insert1;
 		view4:= 'create or replace view tt4(ville) as Select upper('||i.column_name||') from '||tabledf||' where '||i.column_name||' is not null and upper('||i.column_name||') in(select upper(french) from DDVS where category=''CITY'') ';
 		execute immediate view4;
 		view5:= 'create or replace view tt5(ville) as Select upper('||i.column_name||') from '||tabledf||' where '||i.column_name||' is not null and upper('||i.column_name||') in(select upper(english) from DDVS where category=''CITY'') ';
@@ -175,7 +240,10 @@ BEGIN
 		end if;
 
 	END LOOP;
-	
+	selectfinloop:= 'select count(*) from '||tabledf||'_ville ';
+	execute immediate selectfinloop into sel;
+	DBMS_OUTPUT.PUT_LINE(sel);
+
 END;
 /
 /*
