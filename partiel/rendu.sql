@@ -70,8 +70,6 @@ BEGIN
 			EXECUTE IMMEDIATE 'select regValideCol('''|| UPPER(maTable) || ''', ''' || UPPER(maColonne) || ''', ''' || maVariable_REG || ''') from dual'
 				INTO v_Number_AV;
 				IF v_Number_AP < v_Number_AV THEN
-					DBMS_OUTPUT.PUT_LINE(res);
-					DBMS_OUTPUT.PUT_LINE(v_Number_AV || '');
 					res := maVariable_CAT;
 					v_Number_AP := v_Number_AV;
 				END IF;
@@ -84,30 +82,78 @@ END;
 /
 
 
-/*
+CREATE OR REPLACE FUNCTION takeColNameVS(maTable IN VARCHAR, maColonne IN VARCHAR)
+RETURN VARCHAR
+AS 
+  TYPE curType IS REF CURSOR;
+	vCursor curType;
+	maVariable_CAT VARCHAR(255);
+	v_NUMBER NUMBER(10);
+	res VARCHAR(20) := '';
+	v_Number_AV NUMBER := 0;
+	v_Number_AP NUMBER := 0;
+BEGIN
+  EXECUTE IMMEDIATE 'SELECT CATEGORY, COUNT(*) FROM DDVSP WHERE UPPER(NAME) in (select UPPER(' || maColonne || ') FROM ' || UPPER(maTable) || ') GROUP BY CATEGORY'
+  INTO maVariable_CAT, v_NUMBER;
+  RETURN maVariable_CAT;
+END;
+/
+
 -- Fonction qui trouve le type de colonne 
 CREATE OR REPLACE PROCEDURE detectionColonne(maTable IN VARCHAR)
 AS
    monCurseur SYS_REFCURSOR;
    ligne VARCHAR(200);
    v_Category VARCHAR(50) := '';
-   v_SubCategory VARCHAR(50) := '';
 BEGIN
-  monCurseur := getAllColumn(maTable);
-  LOOP
-    FETCH monCurseur into ligne;
-      v_Category := '';
-      v_SubCategory := '';
-      findCol2(maTable, ligne, v_Category);
-      DBMS_OUTPUT.PUT_LINE(ligne || ' ' || v_Category);
-    EXIT WHEN  monCurseur%NOTFOUND;
+  FOR maLigne IN (select column_name from user_Tab_Cols where Table_Name = UPPER(maTable)) LOOP
+    EXECUTE IMMEDIATE 'SELECT takeColName(''' || UPPER(maTable) || ''', ''' || UPPER(maLigne.column_name) || ''') FROM DUAL'
+    INTO v_Category;
+    IF v_Category IS NOT NULL THEN
+      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''REGEXP'')';
+    END IF;
   END LOOP;  
 END;
 /
-*/
 
+CREATE OR REPLACE PROCEDURE detectionColonneVS(maTable IN VARCHAR)
+AS
+  v_Category VARCHAR(255) := '';
+BEGIN
+  FOR maLigne IN (select column_name from user_Tab_Cols where Table_Name = UPPER(maTable)) LOOP
+    EXECUTE IMMEDIATE 'SELECT takeColNameVS(''' || UPPER(maTable) || ''', ''' || UPPER(maLigne.column_name) || ''') FROM DUAL'
+    INTO v_Category;
+    IF v_Category IS NOT NULL THEN
+      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''DD'')';
+    END IF;
+  END LOOP;
+END;
+/
 
+CREATE OR REPLACE PROCEDURE createTableRef(maTable IN VARCHAR)
+AS
+  v_test NUMBER := 0;
+BEGIN
+  EXECUTE IMMEDIATE 'select count(*) from user_Tab_Cols where Table_Name = UPPER(''tabPreCorr' || maTable || ''')'
+  INTO v_test;
+  IF v_test != 0 THEN
+    EXECUTE IMMEDIATE 'DROP TABLE tabPreCorr'|| INITCAP(maTable);
+  END IF;
+  EXECUTE IMMEDIATE 'CREATE TABLE tabPreCorr' || INITCAP(maTable) || ' (colum_tab VARCHAR(255), corr_Prop VARCHAR(255), corr_TECH VARCHAR(255))';
+  detectionColonne(maTable);
+  detectionColonneVS(maTable);
+END;
+/
 
+exec CREATETABLEREF('datasource');
+exec detectionColonne('datasource');
+exec detectionColonneVS('datasource');
+select * from tabPreCorrdatasource;
+
+DROP TABLE tabPreCorrdatasource;
+show error;
+
+/*
 DROP TABLE DDRE;
 
 CREATE TABLE DDRE 
@@ -159,3 +205,4 @@ INSERT INTO DDRE VALUES ('IDENTITY', 'ID', '^([0-9a-zA-Z]\1){2}([a-zA-Z0-9.])*([
 INSERT INTO DDRE VALUES ('TEL', 'TELINDI', '^(\+[1-9])([0-9]{1,2})?([0-9]{9})$', 'TELINDICATEUR001','');
 
 COMMIT;
+*/
