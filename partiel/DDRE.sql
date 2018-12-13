@@ -25,7 +25,10 @@ CONSTRAINT  PKDDRE PRIMARY KEY (PRIMARYKEY)
 -- Insertion des donnÃ©es dans DDRE
 
 -- poids: exemple 3kg500 3,5Kg 3 kg 5, dag, mg, cg
-INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^[0-9]+[[:space:]]?([dDcCkKhHmMnNÂµ]g|g|dag)[0-9]*$','WEIGHT001',''); 
+INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([1-9]([0-9])*(,[1-9])?)( )?([kK][gG]|[kK][gG]( )?[0-9]+)$','WEIGHT001',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-MM','^([1-9]([0-9])*(,[1-9])?)( )?([mM]{2})$','SIZE001',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-CM','^([1-9]([0-9])*(,[1-9])?)( )?([cC][mM])$','SIZE002',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9]([0-9])*(,[1-9])?)( )?([mM])$','SIZE003',''); 
 
  -- poids: exemple 3lb, tonne, once, pounds
 INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-TONNE','^[0-9]+[[:space:]]?(lb|oz|livre|once|tonne|t|pounds)$','WEIGHT002','');
@@ -65,7 +68,7 @@ INSERT INTO DDRE VALUES ('DATE','DATEYYYYMMDD','^(\d{4})[\/\-\.](0?[1-9]|1[012])
 
 INSERT INTO DDRE VALUES ('INTEGER','','^[[:digit:]]+$','INTEGER001','');
 
-INSERT INTO DDRE VALUES ('MONEY','EURO','^([0-9]+)(.[0-9]{1,2})? (\€)$','MONEY001','');
+INSERT INTO DDRE VALUES ('MONEY','EURO','^([0-9]+)(.[0-9]{1,2})? (\¤)$','MONEY001','');
 
 INSERT INTO DDRE VALUES ('MONEY','DOLLAR','^([0-9]+)(.[0-9]{1,2})? (\$)$','MONEY002','');
 
