@@ -63,7 +63,7 @@ END;
 /
 
 
-CREATE OR REPLACE FUNCTION corrdate(datee in VARCHAR)
+/*CREATE OR REPLACE FUNCTION corrdate(datee in VARCHAR)
   return VARCHAR
 as
 	requete VARCHAR(255);
@@ -98,7 +98,7 @@ BEGIN
   	END IF;
 END;
 /
-
+*/
 CREATE OR REPLACE FUNCTION corrgs(blood in VARCHAR)
   return VARCHAR
 as
