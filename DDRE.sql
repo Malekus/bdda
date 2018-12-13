@@ -23,6 +23,10 @@ CONSTRAINT  PKDDRE PRIMARY KEY (PRIMARYKEY)
 
 
 -- Insertion des données dans DDRE
+INSERT INTO DDRE VALUES ('SIZE','SIZE-MM','^([1-9]([0-9])*(,[1-9])?)( )?([mM]{2})$','SIZE001',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-CM','^([1-9]([0-9])*(,[1-9])?)( )?([cC][mM])$','SIZE002',''); 
+INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9])(([0-9]))(,([1-9])(([0-9])))?( )?([mM])$','SIZE003','');
+
 
 -- poids: exemple 3kg500 3,5Kg 3 kg 5, dag, mg, cg
 INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^[0-9]+[[:space:]]?([dDcCkKhHmMnNµ]g|g|dag)[0-9]*$','WEIGHT001',''); 
