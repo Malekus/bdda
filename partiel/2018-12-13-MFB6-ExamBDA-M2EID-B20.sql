@@ -3,13 +3,13 @@
 -- Université Sorbonne Paris Cité - Promotion 2018-2019 - Décembre 2018
 --====  FB ===========================================================================
 
--- Binôme Bxy :  NOM1 Prénom1            *** NOM2 Prénom2
+-- Binôme Bxy :  ELILTHAMILVALAVAN Magilan            *** ELILTHAMILVALAVAN Magilan
 
 -- Master 2 Informatique, Professionnel, Exploration Informatique des Données et Décisionnel
 -- Examen de Bases de Données Avancées
 --====  FB ===========================================================================
 
--- Nouveau nom du Fichier SQL : 2018-Profiler-Bxy.sql
+-- Nouveau nom du Fichier SQL : 2018-Profiler-B20.sql
 
 --====  FB ===========================================================================
 --====  FB ===========================================================================
