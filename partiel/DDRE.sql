@@ -149,6 +149,9 @@ BEGIN
             EXIT WHEN monCurseur%NOTFOUND;
         END LOOP;
     CLOSE monCurseur;
+	IF res = 0 THEN
+		RETURN -1;
+	END IF;
     RETURN res;
 END;
 /
