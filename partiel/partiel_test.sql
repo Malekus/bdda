@@ -246,12 +246,12 @@ BEGIN
 		execute immediate view1 into stock1;
 
 			if(stock1='0') then
-				view1:= 'select count(upper(french)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>80';
+				view1:= 'select count(upper(french)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>70';
 				execute immediate view1 into stock2;
 				if(stock2='0') then
 					return '';
 				else
-					view1:= 'select upper(french) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>80';
+					view1:= 'select upper(french) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>70';
 					execute immediate view1 into stock2;
 					return stock2;
 				end if;
@@ -267,12 +267,12 @@ BEGIN
 		execute immediate view1 into stock1;
 
 			if(stock1='0') then
-				view1:= 'select count(upper(english)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>80';
+				view1:= 'select count(upper(english)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>70';
 				execute immediate view1 into stock2;
 				if(stock2='0') then
 					return '';
 				else
-					view1:= 'select upper(english) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>80';
+					view1:= 'select upper(english) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>70';
 					execute immediate view1 into stock2;
 					return stock2;
 				end if;
@@ -310,7 +310,7 @@ BEGIN
 		execute immediate view1 into stock1;
 
 			if(stock1='0') then
-				view1:= 'select count(upper(french)) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||city||'''))>80';
+				view1:= 'select count(upper(french)) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||city||'''))>0';
 				execute immediate view1 into stock2;
 				if(stock2='0') then
 					return '';
