@@ -63,7 +63,8 @@ END;
 /
 
 
-/*CREATE OR REPLACE FUNCTION corrdate(datee in VARCHAR)
+/*
+CREATE OR REPLACE FUNCTION corrdate(datee in VARCHAR)
   return VARCHAR
 as
 	requete VARCHAR(255);
@@ -183,7 +184,6 @@ BEGIN
 END;
 /
 
-
 CREATE OR REPLACE FUNCTION corrphone(phone in VARCHAR,pay in VARCHAR)
   return VARCHAR
 as
@@ -196,82 +196,164 @@ as
 BEGIN
 
 	
-	requete:='select REGEXPR from DDRE where CATEGORY=''PHONE'' and SUBCATEGORY=''PHONE-FR'' ';
+	requete:='select REGEXPR from DDRE where CATEGORY=''PHONE'' ';
 	execute immediate requete into requete_stock; 
-	requete:='select REGEXPR from DDRE where CATEGORY=''PHONE'' and SUBCATEGORY=''PHONE-ES'' ';
-	execute immediate requete into requete_stock2;
-	requete:='select REGEXPR from DDRE where CATEGORY=''PHONE'' and SUBCATEGORY=''PHONE-BASE'' ';
-	execute immediate requete into requete_stock3;
-	
+	requete:='select numero from phone_num where pays='''||pays||''' ';
+	execute immediate requete into requete_stock2; 
+
 
 
 	IF(REGEXP_LIKE(phone,requete_stock)) THEN
-		envoie:=regexp_replace(phone ,'(\(\+33)\)+') ;
-		envoie:=regexp_replace(envoie ,'(\+33)+') ;
+		envoie:=regexp_replace(phone ,'(\(\+..)\)+') ;
+		envoie:=regexp_replace(envoie ,'(\+..)+') ;
 		envoie:=regexp_replace(envoie ,' +') ;
 		select length(envoie) into requete from dual;	
-		if(requete=10) then
-			if(pays='COUNTRYEUR001') then
-				envoie:='+33'||envoie;
+		if(requete=10) then							
+				envoie:='+'||requete_stock2||''||envoie;
 				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+34'||envoie;
-				return envoie;
-			end if;
+			
 		else
-			if(pays='COUNTRYEUR001') then
-				envoie:='+330'||envoie;
+				envoie:='+'||requete_stock2||'0'||envoie;
 				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+340'||envoie;
-				return envoie;
-			end if;
+			
 		end if;
-	ELSIF(REGEXP_LIKE(phone,requete_stock2)) then
-		envoie:=regexp_replace(phone ,'(\(\+34)\)+') ;
-		envoie:=regexp_replace(envoie ,'(\+34)+') ;
-		envoie:=regexp_replace(envoie ,' +') ;
-		select length(envoie) into requete from dual;	
-		if(requete=10) then
-			if(pays='COUNTRYEUR001') then
-				envoie:='+33'||envoie;
-				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+34'||envoie;
-				return envoie;
-			end if;
-		else
-			if(pays='COUNTRYEUR001') then
-				envoie:='+330'||envoie;
-				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+340'||envoie;
-				return envoie;
-			end if;
-		end if;
-	ELSIF(REGEXP_LIKE(phone,requete_stock3)) then
-		envoie:=regexp_replace(phone ,' +') ;
-		select length(envoie) into requete from dual;	
-		if(requete=10) then
-			if(pays='COUNTRYEUR001') then
-				envoie:='+33'||envoie;
-				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+34'||envoie;
-				return envoie;
-			end if;
-		else
-			if(pays='COUNTRYEUR001') then
-				envoie:='+330'||envoie;
-				return envoie;
-			elsif(pays='COUNTRYEUR007') then
-				envoie:='+340'||envoie;
-				return envoie;
-			end if;
-		end if;
+
+
 	else
 		return '';  	
 	END IF;
 	
 END;
 /
+
+--- fonction qui prend en parametre un pays et 'french' ou 'english' afin de savoir en quelle langue doit etre le pays
+CREATE OR REPLACE FUNCTION corrpays(pay VARCHAR, langu varchar)
+  return VARCHAR
+as
+	pays VARCHAR(255):=upper(pay);
+	langue VARCHAR(255):=upper(langu);
+	
+
+
+	view1 varchar(1000) := '';
+	stock1 varchar(100):= '';
+	stock2 varchar(100):= '';
+BEGIN
+
+		if(langue='FRENCH') THEN	
+		view1:= 'select count(upper(french)) from ddvs where category=''COUNTRY'' and upper(english)=upper('''||pays||''') ';
+
+		execute immediate view1 into stock1;
+
+			if(stock1='0') then
+				view1:= 'select count(upper(french)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>80';
+				execute immediate view1 into stock2;
+				if(stock2='0') then
+					return '';
+				else
+					view1:= 'select upper(french) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||pays||'''))>80';
+					execute immediate view1 into stock2;
+					return stock2;
+				end if;
+			else
+				view1:= 'select upper(french) from ddvs where category=''COUNTRY'' and upper(english)=upper('''||pays||''') ';
+
+				execute immediate view1 into stock1;
+				return stock1;
+			end if;
+		elsif(langue='ENGLISH') THEN
+
+		view1:= 'select count(upper(english)) from ddvs where category=''COUNTRY'' and upper(french)=upper('''||pays||''') ';
+		execute immediate view1 into stock1;
+
+			if(stock1='0') then
+				view1:= 'select count(upper(english)) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>80';
+				execute immediate view1 into stock2;
+				if(stock2='0') then
+					return '';
+				else
+					view1:= 'select upper(english) from ddvs where category=''COUNTRY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||pays||'''))>80';
+					execute immediate view1 into stock2;
+					return stock2;
+				end if;
+			else
+				view1:= 'select upper(english) from ddvs where category=''COUNTRY'' and upper(french)=upper('''||pays||''') ';
+				execute immediate view1 into stock1;
+
+				return stock1;
+			end if;
+		else
+			return 'hmm';		
+		end if;
+	
+END;
+/
+
+
+--- fonction qui prend en parametre une ville et 'french' ou 'english' afin de savoir en quelle langue doit etre la ville
+CREATE OR REPLACE FUNCTION corrville(cit VARCHAR, langu varchar)
+  return VARCHAR
+as
+	city VARCHAR(255):=upper(cit);
+	langue VARCHAR(255):=upper(langu);
+	
+
+
+	view1 varchar(1000) := '';
+	stock1 varchar(100):= '';
+	stock2 varchar(100):= '';
+BEGIN
+
+		if(langue='FRENCH') THEN	
+		view1:= 'select count(upper(french)) from ddvs where category=''CITY'' and upper(english)=upper('''||city||''') ';
+
+		execute immediate view1 into stock1;
+
+			if(stock1='0') then
+				view1:= 'select count(upper(french)) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||city||'''))>80';
+				execute immediate view1 into stock2;
+				if(stock2='0') then
+					return '';
+				else
+					view1:= 'select upper(french) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),upper('''||city||'''))>80';
+					execute immediate view1 into stock2;
+					return stock2;
+				end if;
+			else
+				view1:= 'select upper(french) from ddvs where category=''CITY'' and upper(english)=upper('''||city||''') ';
+
+				execute immediate view1 into stock1;
+				return stock1;
+			end if;
+		elsif(langue='ENGLISH') THEN
+
+		view1:= 'select count(upper(english)) from ddvs where category=''CITY'' and upper(french)=upper('''||city||''') ';
+		execute immediate view1 into stock1;
+
+			if(stock1='0') then
+				view1:= 'select count(upper(english)) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||city||'''))>80';
+				execute immediate view1 into stock2;
+				if(stock2='0') then
+					return '';
+				else
+					view1:= 'select upper(english) from ddvs where category=''CITY'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),upper('''||city||'''))>80';
+					execute immediate view1 into stock2;
+					return stock2;
+				end if;
+			else
+				view1:= 'select upper(english) from ddvs where category=''CITY'' and upper(french)=upper('''||city||''') ';
+				execute immediate view1 into stock1;
+
+				return stock1;
+			end if;
+		else
+			return '';		
+		end if;
+	
+END;
+/
+
+
+
+
+
