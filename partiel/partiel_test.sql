@@ -352,7 +352,137 @@ BEGIN
 	
 END;
 /
+---fonction qui prend en parametre le nom et la langue(french ou english)
+CREATE OR REPLACE FUNCTION corrfirstname(nam in VARCHAR, langu in varchar)
+  return VARCHAR
+as
+	name VARCHAR(255):=upper(nam);
+	langue VARCHAR(255):=upper(langu);
+	requete VARCHAR(255);
+	requete_stock VARCHAR(255);
+	requete_stock2 VARCHAR(255);
+	requete_stock3 VARCHAR(255);
+	requete_stock4 VARCHAR(255);
+	requete_stock5 VARCHAR(255);
+	envoie VARCHAR(255);
+BEGIN
 
+	
+	requete:='select REGEXPR from DDRE where CATEGORY=''FIRSTNAME'' ';
+	execute immediate requete into requete_stock; 
+
+
+	if(langue='FRENCH') THEN
+
+		IF(REGEXP_LIKE(name,requete_stock)) THEN
+			requete:='select count(french) from DDVS where CATEGORY=''FIRSTNAME'' and upper(french)='''||name||''' ';
+			execute immediate requete into requete_stock2;
+			if(requete_stock2='1') then
+				return name;
+			else
+				requete:='select count(french) from DDVS where CATEGORY=''FIRSTNAME'' and upper(english)='''||name||''' ';
+				execute immediate requete into requete_stock3;
+				if(requete_stock3='1') then
+					requete:='select french from DDVS where CATEGORY=''FIRSTNAME'' and upper(english)='''||name||''' ';
+					execute immediate requete into requete_stock4;
+					return upper(requete_stock4);
+				else
+					requete:='select count(french) from DDVS where CATEGORY=''FIRSTNAME'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),'''||name||''')>75 ';
+					execute immediate requete into requete_stock4;
+					if(requete_stock4='1') then
+						requete:='select french from DDVS where CATEGORY=''FIRSTNAME'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(french),'''||name||''')>75 ';
+						execute immediate requete into requete_stock5;
+						return upper(requete_stock5);
+					else
+						return '';
+					end if;
+				end if;
+			end if;
+		else
+			return '';  	
+		END IF;
+	elsif(langue='ENGLISH') THEN
+		IF(REGEXP_LIKE(name,requete_stock)) THEN
+			requete:='select count(english) from DDVS where CATEGORY=''FIRSTNAME'' and upper(english)='''||name||''' ';
+			execute immediate requete into requete_stock2;
+			if(requete_stock2='1') then
+				return name;
+			else
+				requete:='select count(english) from DDVS where CATEGORY=''FIRSTNAME'' and upper(french)='''||name||''' ';
+				execute immediate requete into requete_stock3;
+				if(requete_stock3='1') then
+					requete:='select english from DDVS where CATEGORY=''FIRSTNAME'' and upper(french)='''||name||''' ';
+					execute immediate requete into requete_stock4;
+					return upper(requete_stock4);
+				else
+					requete:='select count(english) from DDVS where CATEGORY=''FIRSTNAME'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),'''||name||''')>75 ';
+					execute immediate requete into requete_stock4;
+					if(requete_stock4='1') then
+						requete:='select english from DDVS where CATEGORY=''FIRSTNAME'' and UTL_MATCH.EDIT_DISTANCE_SIMILARITY(upper(english),'''||name||''')>75 ';
+						execute immediate requete into requete_stock5;
+						return upper(requete_stock5);
+					else
+						return '';
+					end if;
+				end if;
+			end if;
+		else
+			return '';  	
+		END IF;
+	else
+		return '';	
+	END IF;
+END;
+/
+---fonction qui donne le pays en fonction de la ville et de la langue de la ville (soit french soit english) (si une colonne a plus de ville de type french alors la langue donnée ici sera french) 
+CREATE OR REPLACE FUNCTION corrpaysdeville(vill in VARCHAR, langu in varchar)
+  return VARCHAR
+as
+	ville VARCHAR(255):=upper(vill);
+	langue VARCHAR(255):=upper(langu);
+	requete VARCHAR(255);
+	requete_stock VARCHAR(255);
+	requete_stock2 VARCHAR(255);
+	requete_stock3 VARCHAR(255);
+	requete_stock4 VARCHAR(255);
+	requete_stock1 VARCHAR(255);
+	envoie VARCHAR(255);
+BEGIN
+
+	
+	
+
+
+	if(langue='FRENCH') THEN
+		requete:='select count(FOREIGNKEY) from DDVS where CATEGORY=''CITY'' and upper(FRENCH)='''||ville||''' ';
+		execute immediate requete into requete_stock; 
+		if(requete_stock='0') then
+			return '';
+		else
+			requete:='select FOREIGNKEY from DDVS where CATEGORY=''CITY'' and upper(FRENCH)='''||ville||''' ';
+			execute immediate requete into requete_stock1;
+			requete:='select FRENCH from DDVS where CATEGORY=''COUNTRY'' and upper(PRIMARYKEY)='''||requete_stock1||''' ';
+			execute immediate requete into requete_stock2; 
+			return requete_stock2;
+		end if;
+		
+	elsif(langue='ENGLISH') THEN
+		requete:='select count(FOREIGNKEY) from DDVS where CATEGORY=''CITY'' and upper(english)='''||ville||''' ';
+		execute immediate requete into requete_stock; 
+		if(requete_stock='0') then
+			return '';
+		else
+			requete:='select FOREIGNKEY from DDVS where CATEGORY=''CITY'' and upper(english)='''||ville||''' ';
+			execute immediate requete into requete_stock1;
+			requete:='select english from DDVS where CATEGORY=''COUNTRY'' and upper(PRIMARYKEY)='''||requete_stock1||''' ';
+			execute immediate requete into requete_stock2; 
+			return requete_stock2;
+		end if;
+	else
+		return '';
+	END IF;
+END;
+/
 
 
 

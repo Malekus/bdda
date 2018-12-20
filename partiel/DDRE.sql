@@ -23,7 +23,7 @@ CONSTRAINT  PKDDRE PRIMARY KEY (PRIMARYKEY)
 
 
 -- Insertion des données dans DDRE
-
+INSERT INTO DDRE VALUES ('FIRSTNAME','','^[a-zA-Z \-]*$','FIRSTNAME001','');
 INSERT INTO DDRE VALUES ('PHONE','','^(((\+..)|\(\+..\))\s?0?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0?[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE001','');
 
 
