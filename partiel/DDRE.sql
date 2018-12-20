@@ -23,10 +23,9 @@ CONSTRAINT  PKDDRE PRIMARY KEY (PRIMARYKEY)
 
 
 -- Insertion des données dans DDRE
-INSERT INTO DDRE VALUES ('PHONE','PHONE-BASE','^([1-9]{1}[0-9]{8})|^([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2})$','PHONE000','');
+INSERT INTO DDRE VALUES ('FIRSTNAME','','^[a-zA-Z \-]*$','FIRSTNAME001','');
+INSERT INTO DDRE VALUES ('PHONE','','^(((\+..)|\(\+..\))\s?0?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0?[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE001','');
 
-INSERT INTO DDRE VALUES ('PHONE','PHONE-FR','^(((\+33)|\(\+33\))\s?(0)?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE001','COUNTRYEUR001');
-INSERT INTO DDRE VALUES ('PHONE','PHONE-ES','^(((\+34)|\(\+34\))\s?(0)?([1-9]{1}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}))|(0[1-9]{1}[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?[0-9]{2}\s?)$','PHONE002','COUNTRYEUR007');
 
 INSERT INTO DDRE VALUES ('BLOOD','','^([Aa]\+|[Bb]\+|[Oo]\+|[Aa][Bb]\+|[Aa]\-|[Bb]\-|[Aa][Bb]\-|[Oo]\-)$','BLOOD001','');
 
