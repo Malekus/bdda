@@ -142,16 +142,16 @@ BEGIN
   EXECUTE IMMEDIATE 'CREATE TABLE tabPreCorr' || INITCAP(maTable) || ' (colum_tab VARCHAR(255), corr_Prop VARCHAR(255), corr_TECH VARCHAR(255))';
   detectionColonne(maTable);
   detectionColonneVS(maTable);
+  DBMS_OUTPUT.PUT_LINE('La table tabPreCorr' || INITCAP(maTable) || ' a ete creee');
 END;
 /
-
-exec CREATETABLEREF('datasource');
+set serveroutput on
+exec createTableRef('datasource');
 exec detectionColonne('datasource');
 exec detectionColonneVS('datasource');
-select * from tabPreCorrdatasource;
+select * from tabPreCorrDatasource;
 
 DROP TABLE tabPreCorrdatasource;
-show error;
 
 /*
 DROP TABLE DDRE;
