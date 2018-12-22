@@ -57,7 +57,7 @@ INCorrect Data    : INVALID Records (with anomalies, at least one) DSWARNING
 -----??????????? V -----??????????? *******************************
 
 */
-
+set serveroutput on
 DROP TABLE DATASOURCE;
 CREATE TABLE DATASOURCE ( NOM VARCHAR2(20), PRENOM VARCHAR2(20), DATNAISS VARCHAR2(20), VILNAIS VARCHAR2(20), PAYSNAIS VARCHAR2(20), SEXE VARCHAR2(20), GS VARCHAR2(5),TAILLE VARCHAR2(20),POIDS VARCHAR2(20), TELMOBILE VARCHAR2(20), EMAIL VARCHAR2(40) );
 
@@ -133,11 +133,24 @@ REM C EST SMARTDATA QUI VA NOUS RENSEIGNER !
 
 @DDRE
 @DDVS
+@rendu
+@partiel_test
+COMMIT;
 
-CREATE OR REPLACE VIEW DDVSP AS select CATEGORY, ENGLISH AS NAME, PRIMARYKEY FROM DDVS
-UNION
-select CATEGORY, FRENCH AS NAME, PRIMARYKEY FROM DDVS
-UNION
-select CATEGORY, ABR AS NAME, PRIMARYKEY FROM DDVS WHERE ABR IS NOT NULL AND CATEGORY != 'CITY' ;
+/* Zone de test */
+INSERT INTO DDVS VALUES ('FIRSTNAME', 'Clement' ,'Clement', '', 'FNAMEARABE00830', '');
+INSERT INTO DDVS VALUES ('FIRSTNAME', 'Eve' ,'Eve', '', 'FNAMEARABE00831', '');
 
-SELECT CATEGORY, COUNT(*) FROM DDVSP WHERE UPPER(NAME) in (select UPPER(NOM) FROM DATASOURCE) GROUP BY CATEGORY;
+exec createTableRef('datasource');
+
+select nom from datasource;
+
+select * from tabPreCorrDatasource;
+
+select * from DDRE;
+
+select takeColNameVS('datasource', '') from dual;
+
+SELECT CATEGORY, COUNT(*) 
+FROM DDVSP WHERE UPPER(NAME) in (select nom FROM datasource) GROUP BY CATEGORY 
+HAVING count(*) >= (SELECT MAX(count(*)) from DDVSP WHERE UPPER(NAME) in (select nom FROM datasource) GROUP BY CATEGORY);

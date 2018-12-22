@@ -1,9 +1,4 @@
 
---CREATE TABLE DDCAT( TYPE VARCHAR2(100), FCT varchar2(100));
---INSERT INTO DDCAT VALUES ('SEXE','CORRSEXE');
-
-
-
 CREATE OR REPLACE FUNCTION corrsexe(sexe in VARCHAR)
   return VARCHAR
 as
@@ -62,44 +57,6 @@ BEGIN
 END;
 /
 
-
-/*
-CREATE OR REPLACE FUNCTION corrdate(datee in VARCHAR)
-  return VARCHAR
-as
-	requete VARCHAR(255);
-	requete_stock VARCHAR(255);
-	requete_stock2 VARCHAR(255);
-	requete_stock3 VARCHAR(255);
-	envoie VARCHAR(255);
-BEGIN
-	
-	requete:='select REGEXPR from DDRE where CATEGORY=''DATE'' and SUBCATEGORY=''DATEDDMMYYYY'' ';
-	execute immediate requete into requete_stock; 
-	requete:='select REGEXPR from DDRE where CATEGORY=''DATE'' and SUBCATEGORY=''DATEMMDDYYYY'' ';
-	execute immediate requete into requete_stock2; 
-	requete:='select REGEXPR from DDRE where CATEGORY=''DATE'' and SUBCATEGORY=''DATEYYYYMMDD'' ';
-	execute immediate requete into requete_stock3; 
-	
-
-	IF(REGEXP_LIKE(lower(datee),requete_stock)) THEN
-		envoie:=datee;
-		return envoie;
-
-	ELSIF(REGEXP_LIKE(lower(datee),requete_stock2)) then
-		envoie:='';
-		return envoie;
-		
-	elsif(REGEXP_LIKE(lower(datee),requete_stock3)) then
-		envoie:=''||regexp_replace(datee ,'[a-zA-Z]+')/1000||'m';
-		return envoie;
-
-	else
-		return '';
-  	END IF;
-END;
-/
-*/
 CREATE OR REPLACE FUNCTION corrgs(blood in VARCHAR)
   return VARCHAR
 as
@@ -483,6 +440,3 @@ BEGIN
 	END IF;
 END;
 /
-
-
-

@@ -13,3 +13,24 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE PROCEDURE CorretionColSexe(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  -- Correction date format car probleme d'encodage
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrsexe(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColGrpSng(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  -- Correction date format car probleme d'encodage
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrgs(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+exec CorretionColGrpSng('datasource', 'gs');
+
+select * from DDRE where category = 'BLOOD';
