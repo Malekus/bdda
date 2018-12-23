@@ -151,6 +151,8 @@ BEGIN
 END;
 /
 
-exec detectionColonneVS('datasource');
 
-select * from DDRE;
+exec CorretionColGrpSng('datasource', 'gs');
+
+select * from tabPreCorrDatasource;
+

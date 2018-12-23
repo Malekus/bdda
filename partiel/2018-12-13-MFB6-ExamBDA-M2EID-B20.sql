@@ -138,19 +138,7 @@ REM C EST SMARTDATA QUI VA NOUS RENSEIGNER !
 COMMIT;
 
 /* Zone de test */
-INSERT INTO DDVS VALUES ('FIRSTNAME', 'Clement' ,'Clement', '', 'FNAMEARABE00830', '');
-INSERT INTO DDVS VALUES ('FIRSTNAME', 'Eve' ,'Eve', '', 'FNAMEARABE00831', '');
 
 exec createTableRef('datasource');
 
-select nom from datasource;
-
-select * from tabPreCorrDatasource;
-
-select * from DDRE;
-
-select takeColNameVS('datasource', '') from dual;
-
-SELECT CATEGORY, COUNT(*) 
-FROM DDVSP WHERE UPPER(NAME) in (select nom FROM datasource) GROUP BY CATEGORY 
-HAVING count(*) >= (SELECT MAX(count(*)) from DDVSP WHERE UPPER(NAME) in (select nom FROM datasource) GROUP BY CATEGORY);
+select * from datasource;
