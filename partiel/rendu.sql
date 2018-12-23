@@ -159,3 +159,37 @@ select * from tabPreCorrDatasource;
 exec CorretionColDate('datasource', 'datnaiss');
 exec CorretionColSexe('datasource', 'sexe');
 exec CorretionColGrpSng('datasource', 'gs');
+exec CorretionColTaille('datasource', 'taille');
+exec CorretionColPoids('datasource', 'poids');
+
+exec CorretionColMail('datasource', 'email');
+
+CREATE OR REPLACE PROCEDURE runCorrectionExp(maTable IN VARCHAR2)
+AS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Correction avec expression régulière');
+END;
+/
+
+CREATE OR REPLACE PROCEDURE runCorrectionDD(maTable IN VARCHAR)
+AS
+  TYPE curType IS REF CURSOR;
+	vCursor curType;
+	maVariable_COL VARCHAR(255);
+	maVariable_PROP VARCHAR(255);
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Correction avec data dictionary');  
+  OPEN vCursor FOR ('SELECT colum_tab, corr_prop FROM ' || UPPER(maTable) || ' WHERE CORR_TECH = ''DD''');
+        LOOP
+            FETCH vCursor INTO maVariable_COL, maVariable_PROP;
+              DBMS_OUTPUT.PUT_LINE(maVariable_COL || ' ' || maVariable_PROP);
+            EXIT WHEN vCursor%NOTFOUND;
+    END LOOP;
+  CLOSE vCursor;
+  
+END;
+/
+
+exec runCorrectionDD('tabPreCorrDatasource');
+
+exec CORRETIONCOLPAYSDD('datasource', 'paysnais');

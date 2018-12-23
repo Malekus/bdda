@@ -116,7 +116,7 @@ BEGIN
 
 	IF(REGEXP_LIKE(poids,requete_stock)) THEN
 		--on renvoie le poids d'entrée en minuscule
-		envoie:=''||regexp_replace(poids ,'[a-zA-Z]+')||'kg';
+		envoie:=''||regexp_replace(poids ,'[a-zA-Z]+', '')||'kg';
 		return envoie;
 	
 	ELSIF(REGEXP_LIKE(poids,requete_stock2)) then
@@ -174,8 +174,8 @@ as
 	requete_stock2 VARCHAR(255);
 	requete_stock3 VARCHAR(255);
 	envoie VARCHAR(255);
+  v_tmp VARCHAR2(200) := '';
 BEGIN
-
 	--si l'entrée est bien un numéro de téléphone
 	requete:='select REGEXPR from DDRE where CATEGORY=''PHONE'' ';
 	execute immediate requete into requete_stock; 
@@ -185,9 +185,9 @@ BEGIN
 
 
 
-	IF(REGEXP_LIKE(phone,requete_stock)) THEN
+	IF(REGEXP_LIKE(REGEXP_REPLACE(phone, ' ', ''),requete_stock)) THEN
 		-- si il y a des parenthese avec l'indicateur dedans on les enleves ex: (+33)
-		envoie:=regexp_replace(phone ,'(\(\+..)\)+') ;
+		envoie:=regexp_replace(REGEXP_REPLACE(phone, ' ', '') ,'(\(\+..)\)+') ;
 		-- si il y a que l'indicateur on l'enleve ex: +33    
 		envoie:=regexp_replace(envoie ,'(\+..)+') ;
 		-- si il y a des espaces on les enleves
@@ -200,7 +200,7 @@ BEGIN
 			
 		else
 		       		--si il y a 9 chiffres on met l'indicateur puis un '0' devant et on retourne le numero
-				envoie:='+'||requete_stock2||'0'||envoie;
+				envoie:='+'||requete_stock2||''||envoie;
 				return envoie;
 			
 		end if;

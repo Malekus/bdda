@@ -31,6 +31,52 @@ BEGIN
 END;
 /
 
-exec CorretionColGrpSng('datasource', 'gs');
+CREATE OR REPLACE PROCEDURE CorretionColTaille(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrtaille(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
 
-select * from DDRE where category = 'BLOOD';
+CREATE OR REPLACE PROCEDURE CorretionColPoids(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrpoids(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColMail(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrmail(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+
+-- Coorection avec le dictionnaire
+
+CREATE OR REPLACE FUNCTION corrCountryDD(pays IN VARCHAR)
+RETURN VARCHAR
+AS
+  res VARCHAR(20) := '';
+BEGIN
+  IF pays IS NULL THEN
+    RETURN '';
+  END IF;
+  EXECUTE IMMEDIATE 'SELECT COUNTRY FROM (SELECT ENGLISH AS COUNTRY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || pays || ''')) AS SIMI FROM DDVS WHERE CATEGORY = ''COUNTRY'') 
+  GROUP BY COUNTRY, SIMI HAVING SIMI = (SELECT MAX(UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || pays || '''))) FROM DDVS WHERE CATEGORY = ''COUNTRY'')'
+  INTO res;
+  RETURN res;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColPaysDD(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrCountryDD(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
+END;
+/

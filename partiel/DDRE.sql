@@ -31,7 +31,7 @@ INSERT INTO DDRE VALUES ('BLOOD','','^([Aa]\+|[Bb]\+|[Oo]\+|[Aa][Bb]\+|[Aa]\-|[B
 
 -- poids: exemple 3kg500 3,5Kg 3 kg 5, dag, mg, cg
 INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-G','^([0-9])+(,[0-9]+)?\s?([gG]|[gG][rR][aA][mM][mM][eE])$','WEIGHT003',''); 
-INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([0-9])+(,[0-9]+)?\s?(([kK][gG])|[kK][iI][lL][Oo][gG][rR][aA][mM][mM][eE])$','WEIGHT001',''); 
+INSERT INTO DDRE VALUES ('WEIGHT','WEIGHT-KG','^([0-9])+(,[0-9]+)?\s?(([kK][gG])|[kK][iI][lL][Oo][gG][rR][aA][mM][mM][eE]|([kK][iI][Ll][oO][gG]))$','WEIGHT001',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-MM','^([1-9]([0-9])*(,[1-9])?)( )?([mM]{2})$','SIZE001',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-CM','^([1-9]([0-9])*(,[1-9])?)( )?([cC][mM])$','SIZE002',''); 
 INSERT INTO DDRE VALUES ('SIZE','SIZE-M','^([1-9])(([0-9])*)(,([1-9])(([0-9])*))?( )?([mM])$','SIZE003',''); 
@@ -241,3 +241,14 @@ END;
 /*
 select * from DDVS where 'FRA' in (ABR, ENGLISH, FRENCH);
 select * from DDVS;*/
+
+DROP TABLE phone_num;
+CREATE TABLE phone_num(pays VARCHAR2(50),numero NUMBER(10));
+INSERT INTO phone_num VALUES ('COUNTRYEUR001','33');
+INSERT INTO phone_num VALUES ('COUNTRYEUR002','49');
+INSERT INTO phone_num VALUES ('COUNTRYEUR003','32');
+INSERT INTO phone_num VALUES ('COUNTRYEUR004','45');
+INSERT INTO phone_num VALUES ('COUNTRYEUR005','30');
+INSERT INTO phone_num VALUES ('COUNTRYEUR006','39');
+INSERT INTO phone_num VALUES ('COUNTRYEUR007','34');
+

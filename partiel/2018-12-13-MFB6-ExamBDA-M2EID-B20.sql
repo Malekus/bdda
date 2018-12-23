@@ -137,10 +137,9 @@ REM C EST SMARTDATA QUI VA NOUS RENSEIGNER !
 @partiel_test
 COMMIT;
 
-/* Zone de test */
 
-exec createTableRef('datasource');
-
-select * from datasource;
-
-select taille, corrtaille(taille) from datasource;
+select * from DDVS;
+/*
+UTL_MATCH.JARO_WINKLER_SIMILARITY
+UTL_MATCH.edit_distance_similarity
+*/

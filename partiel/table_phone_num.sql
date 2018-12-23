@@ -1,8 +1,9 @@
-create table phone_num(pays varchar2(50),numero number(10));
-insert into phone_num values ('COUNTRYEUR001','33');
-insert into phone_num values ('COUNTRYEUR002','49');
-insert into phone_num values ('COUNTRYEUR003','32');
-insert into phone_num values ('COUNTRYEUR004','45');
-insert into phone_num values ('COUNTRYEUR005','30');
-insert into phone_num values ('COUNTRYEUR006','39');
-insert into phone_num values ('COUNTRYEUR007','34');
+DROP TABLE phone_num;
+CREATE TABLE phone_num(pays VARCHAR2(50),numero NUMBER(10));
+INSERT INTO phone_num VALUES ('COUNTRYEUR001','33');
+INSERT INTO phone_num VALUES ('COUNTRYEUR002','49');
+INSERT INTO phone_num VALUES ('COUNTRYEUR003','32');
+INSERT INTO phone_num VALUES ('COUNTRYEUR004','45');
+INSERT INTO phone_num VALUES ('COUNTRYEUR005','30');
+INSERT INTO phone_num VALUES ('COUNTRYEUR006','39');
+INSERT INTO phone_num VALUES ('COUNTRYEUR007','34');
