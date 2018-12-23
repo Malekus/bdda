@@ -47,7 +47,7 @@ BEGIN
 	
 	IF(REGEXP_LIKE(lower(taille),requete_stock)) THEN
 		-- alors on renvoie la taille en entrée avec 'm' derriere
-		envoie:=''||taille||'m';
+		envoie:=''||taille;
 		return envoie;
 
 	ELSIF(REGEXP_LIKE(lower(taille),requete_stock2)) then

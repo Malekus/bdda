@@ -142,3 +142,5 @@ COMMIT;
 exec createTableRef('datasource');
 
 select * from datasource;
+
+select taille, corrtaille(taille) from datasource;

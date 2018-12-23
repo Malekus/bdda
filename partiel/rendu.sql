@@ -152,7 +152,10 @@ END;
 /
 
 
-exec CorretionColGrpSng('datasource', 'gs');
+
 
 select * from tabPreCorrDatasource;
 
+exec CorretionColDate('datasource', 'datnaiss');
+exec CorretionColSexe('datasource', 'sexe');
+exec CorretionColGrpSng('datasource', 'gs');
