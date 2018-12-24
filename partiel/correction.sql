@@ -1,3 +1,6 @@
+/******************************************************************
+        Gestion des erreurs avec les expressions régulières
+******************************************************************/
 CREATE OR REPLACE PROCEDURE CorretionColDate(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
@@ -56,8 +59,76 @@ END;
 /
 
 
--- Coorection avec le dictionnaire
+/******************************************************************
+        Gestion des erreurs avec le data dictionary
+******************************************************************/
 
+/*
+        Correction des aéroports
+*/
+
+/*
+        Correction des groupes sanguins
+*/
+
+/*
+        Correction des villes
+*/
+CREATE OR REPLACE FUNCTION corrCityDD(city IN VARCHAR)
+RETURN VARCHAR
+AS
+  res VARCHAR(20) := '';
+BEGIN
+  IF city IS NULL OR NOT REGEXP_LIKE(UPPER(city), '([a-zA-Z]+)')THEN
+    RETURN '';
+  END IF;
+  EXECUTE IMMEDIATE 'SELECT CITY FROM (SELECT ENGLISH AS CITY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || ''')) AS SIMI FROM DDVS WHERE CATEGORY = ''CITY'') 
+  GROUP BY CITY, SIMI HAVING SIMI = (SELECT MAX(UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || '''))) FROM DDVS WHERE CATEGORY = ''CITY'')'
+  INTO res;
+  RETURN res;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColCityDD(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrCityDD(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
+END;
+/
+
+/*
+        Correction des civilités
+*/
+CREATE OR REPLACE FUNCTION corrCivilityDD(civility IN VARCHAR)
+RETURN VARCHAR
+AS
+  res VARCHAR(20) := '';
+BEGIN
+  IF civility IS NULL THEN
+    RETURN '';
+  END IF;
+  EXECUTE IMMEDIATE 'SELECT CITY FROM (SELECT ENGLISH AS CITY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || ''')) AS SIMI FROM DDVS WHERE CATEGORY = ''CITY'') 
+  GROUP BY CITY, SIMI HAVING SIMI = (SELECT MAX(UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || '''))) FROM DDVS WHERE CATEGORY = ''CITY'')'
+  INTO res;
+  RETURN res;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColCivilityDD(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrCivilityDD(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
+END;
+/
+/*
+        Correction des continents
+*/
+
+/*
+        Correction des pays
+*/
 CREATE OR REPLACE FUNCTION corrCountryDD(pays IN VARCHAR)
 RETURN VARCHAR
 AS
@@ -73,10 +144,18 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColPaysDD(maTable IN VARCHAR, maColonne IN VARCHAR)
+CREATE OR REPLACE PROCEDURE CorretionColCountryDD(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrCountryDD(' || UPPER(maColonne) || ')';
   DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
 END;
 /
+
+/*
+        Correction des prénoms
+*/
+
+/*
+        Correction des genres
+*/

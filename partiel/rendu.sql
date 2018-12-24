@@ -192,4 +192,4 @@ END;
 
 exec runCorrectionDD('tabPreCorrDatasource');
 
-exec CORRETIONCOLPAYSDD('datasource', 'paysnais');
+exec CorretionColCityDD('datasource', 'vilnais');

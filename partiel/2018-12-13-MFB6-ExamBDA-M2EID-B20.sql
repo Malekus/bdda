@@ -138,8 +138,99 @@ REM C EST SMARTDATA QUI VA NOUS RENSEIGNER !
 COMMIT;
 
 
-select * from DDVS;
+select * from clients_FR02;
+
+select * from DDVS  where CATEGORY = 'FIRSTNAME' AND ENGLISH LIKE '%rue%';
 /*
 UTL_MATCH.JARO_WINKLER_SIMILARITY
 UTL_MATCH.edit_distance_similarity
 */
+
+CREATE OR REPLACE FUNCTION corrCityDD(city IN VARCHAR)
+RETURN VARCHAR
+AS
+  res VARCHAR(20) := '';
+BEGIN
+  IF city IS NULL OR NOT REGEXP_LIKE(UPPER(city), '([a-zA-Z]+)')THEN
+    RETURN '';
+  END IF;
+  EXECUTE IMMEDIATE 'SELECT CITY FROM (SELECT ENGLISH AS CITY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || ''')) AS SIMI FROM DDVS WHERE CATEGORY = ''CITY'') 
+  GROUP BY CITY, SIMI HAVING SIMI = (SELECT MAX(UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(ENGLISH), UPPER(''' || city || '''))) FROM DDVS WHERE CATEGORY = ''CITY'')'
+  INTO res;
+  RETURN res;
+END;
+/
+
+DROP function CorretionColPaysDD;
+
+select * from datasource;
+
+
+
+desc DDVS;
+desc datasource;
+select english, french, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER('MME')), UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(french), UPPER('MME')) from DDVS where category = 'CIVILITY';
+select UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER('mme'), UPPER('MME')) from dual;
+
+-- Creation des vues du DDVS
+CREATE OR REPLACE VIEW V_DD_CIVILITY AS SELECT * FROM DDVS WHERE CATEGORY = 'CIVILITY';
+-- Recherche de la clé primaire
+
+
+desc V_DD_CIVILITY;
+
+CREATE OR REPLACE PROCEDURE createViewDD
+AS
+BEGIN
+  FOR ligne IN (select category from DDVS group by category order by category) LOOP
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW V_DD_' || ligne.category || ' AS SELECT * FROM DDVS WHERE CATEGORY = ''' || ligne.category || '''';
+  END LOOP;
+END;
+/
+
+exec createViewDD();
+select * from V_DD_FIRSTNAME;
+
+CREATE OR REPLACE FUNCTION getPrimaryKeyDD(monType IN VARCHAR, mot IN VARCHAR)
+ RETURN VARCHAR
+AS
+  Type curseurType IS REF CURSOR;
+  monCurseur curseurType;
+  maVariable VARCHAR(200);
+  res VARCHAR(10) := '';
+BEGIN
+  IF mot IS NULL THEN
+    RETURN '';
+  END IF;
+  -- Probleme de similarité donc on passe par un curseur
+  OPEN monCurseur FOR  'select primarykey from (SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||'
+    UNION
+  SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(french), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||') WHERE SIMI > 95
+  group by primarykey, simi having simi = (select max(simi) from (SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||'
+    UNION
+  SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(french), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||'))';
+    LOOP
+      FETCH monCurseur INTO maVariable;
+        RETURN maVariable;
+      EXIT WHEN monCurseur%NOTFOUND;
+    END LOOP;
+  CLOSE monCurseur;
+  RETURN res;
+END;
+/
+
+select english, vilnais, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER(vilnais)) from datasource, DDVS where  UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER(vilnais)) > 95; 
+
+CREATE OR REPLACE PROCEDURE CorretionColByPkDD(maTable IN VARCHAR, maColonne IN VARCHAR, monType IN VARCHAR, maLangue IN VARCHAR DEFAULT 'ENGLISH')
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = (select ' || maLangue || ' from DDVS where PRIMARYKEY = getPrimaryKeyDD(''' || UPPER(monType) || ''', ' || UPPER(maColonne) || '))';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
+END;
+/
+
+select * from Datasource;
+
+select nom, (select english from DDVS where DDVS.PRIMARYKEY = getPrimaryKeyDD('firstname', nom)) from datasource;
+
+exec CorretionColByPkDD('datasource', 'nom', 'firstName');
