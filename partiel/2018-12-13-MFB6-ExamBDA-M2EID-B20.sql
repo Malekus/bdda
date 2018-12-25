@@ -3,7 +3,7 @@
 -- Universite Sorbonne Paris Cite - Promotion 2018-2019 - Decembre 2018
 --====  FB ===========================================================================
 
--- Binôme Bxy :  ELILTHAMILVALAVAN Magilan            *** ELILTHAMILVALAVAN Magilan
+-- BinÃ´me Bxy :  ELILTHAMILVALAVAN Magilan            *** ELILTHAMILVALAVAN Magilan
 
 -- Master 2 Informatique, Professionnel, Exploration Informatique des Donnees et Decisionnel
 -- Examen de Bases de Donnees Avancees
@@ -21,7 +21,7 @@ Universite Sorbonne Paris Cite
 Universite Paris 13 ; Master 2 EID2
 Jeudi 13 decembre 2018
 
-Vous êtes le TOUBIB-TABIB des donnees : Un Data-Logue 
+Vous Ãªtes le TOUBIB-TABIB des donnees : Un Data-Logue 
 (Comme par exemple les Cardio-logues, les Pneumo-logues, les Uro-logues,...) !
 
 Vous disposez des outils qui vous permettent de DIAGNOSTIQUER les anomalies de votre patient la source de donnees DataSource !
@@ -34,7 +34,7 @@ Faites le diagnostic automatiquement qui vous permet :
 - de detecter les erreurs (les anomalies), et ensuite,
 - de corriger les anomalies
 
-Vous êtes entrain de developper un outil de qualite tres intelligent : --->>>>>> SmartDATA
+Vous Ãªtes entrain de developper un outil de qualite tres intelligent : --->>>>>> SmartDATA
 Est-ce une mission impossible ?! SiSi C PO CIBLE !!!
 
 -----??????????? V -----??????????? *******************************
@@ -120,9 +120,17 @@ REM C EST SMARTDATA QUI VA NOUS RENSEIGNER !
 
 -- Detaillez la maniere de definir un nouveau schema cible-destination (dit schema en etoile) extrait depuis toutes les sources
 -- Celui-ci permet de faire des croisements-analyses-extractions-exploitations des donnees tel que celui des ventes par rapport 
--- aux articles, aux magasins, aux clients et à la dimension temps...
+-- aux articles, aux magasins, aux clients et Ã  la dimension temps...
 
 -- Comparez le avec le schema global qui regroupe toutes les tables (l'Union-l'Integration de toutes les tables de toutes les BD)
+
+
+-----------------------------------------------------------
+-- VOIR la photo du schéma en FLOCON dans flocon-fin.png --
+-- 	      et son code sql dans flocon.sql		 --
+-----------------------------------------------------------
+
+
 
 --====  5 ===========================================================================
 
@@ -174,7 +182,7 @@ select UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER('mme'), UPPER('MME')) from dual;
 
 -- Creation des vues du DDVS
 CREATE OR REPLACE VIEW V_DD_CIVILITY AS SELECT * FROM DDVS WHERE CATEGORY = 'CIVILITY';
--- Recherche de la cl� primaire
+-- Recherche de la clé primaire
 
 
 desc V_DD_CIVILITY;
@@ -202,7 +210,7 @@ BEGIN
   IF mot IS NULL THEN
     RETURN '';
   END IF;
-  -- Probleme de similarit� donc on passe par un curseur
+  -- Probleme de similarité donc on passe par un curseur
   OPEN monCurseur FOR  'select primarykey from (SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||'
     UNION
   SELECT PRIMARYKEY, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(french), UPPER(''' || mot || ''')) AS SIMI FROM V_DD_'|| UPPER(monType) ||') WHERE SIMI > 95
