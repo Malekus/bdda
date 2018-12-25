@@ -115,7 +115,7 @@ BEGIN
     EXECUTE IMMEDIATE 'SELECT takeColName(''' || UPPER(maTable) || ''', ''' || UPPER(maLigne.column_name) || ''') FROM DUAL'
     INTO v_Category;
     IF v_Category IS NOT NULL THEN
-      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''REGEXP'')';
+      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''REGEXP'', ''No'')';
     END IF;
   END LOOP;  
 END;
@@ -129,7 +129,7 @@ BEGIN
     EXECUTE IMMEDIATE 'SELECT takeColNameVS(''' || UPPER(maTable) || ''', ''' || UPPER(maLigne.column_name) || ''') FROM DUAL'
     INTO v_Category;
     IF v_Category IS NOT NULL THEN
-      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''DD'')';
+      EXECUTE IMMEDIATE 'INSERT INTO tabPreCorr'|| UPPER(matable) ||' VALUES (''' || maLigne.column_name || ''', ''' || v_Category || ''' , ''DD'', ''No'' )';
     END IF;
   END LOOP;
 END;
@@ -144,30 +144,29 @@ BEGIN
   IF v_test != 0 THEN
     EXECUTE IMMEDIATE 'DROP TABLE tabPreCorr'|| INITCAP(maTable);
   END IF;
-  EXECUTE IMMEDIATE 'CREATE TABLE tabPreCorr' || INITCAP(maTable) || ' (colum_tab VARCHAR(255), corr_Prop VARCHAR(255), corr_TECH VARCHAR(255))';
+  EXECUTE IMMEDIATE 'CREATE TABLE tabPreCorr' || INITCAP(maTable) || ' (colum_tab VARCHAR(255), corr_Prop VARCHAR(255), corr_TECH VARCHAR(255), FIX VARCHAR(10) DEFAULT ''No'')';
   detectionColonne(maTable);
   detectionColonneVS(maTable);
   DBMS_OUTPUT.PUT_LINE('La table tabPreCorr' || INITCAP(maTable) || ' a ete creee');
 END;
 /
 
-
-
-
-select * from tabPreCorrDatasource;
-
-exec CorretionColDate('datasource', 'datnaiss');
-exec CorretionColSexe('datasource', 'sexe');
-exec CorretionColGrpSng('datasource', 'gs');
-exec CorretionColTaille('datasource', 'taille');
-exec CorretionColPoids('datasource', 'poids');
-
-exec CorretionColMail('datasource', 'email');
-
 CREATE OR REPLACE PROCEDURE runCorrectionExp(maTable IN VARCHAR2)
 AS
+  TYPE curType IS REF CURSOR;
+	vCursor curType;
+	maVariable_COL VARCHAR(255);
+	maVariable_PROP VARCHAR(255);
 BEGIN
   DBMS_OUTPUT.PUT_LINE('Correction avec expression régulière');
+  OPEN vCursor FOR ('SELECT colum_tab, corr_prop FROM ' || UPPER(maTable) || ' WHERE FIX = ''No'' AND CORR_PROP != ''NOT FOUND'' AND CORR_TECH = ''REGEXP''');
+        LOOP
+            FETCH vCursor INTO maVariable_COL, maVariable_PROP;
+              EXECUTE IMMEDIATE 'CALL CorretionCol'|| maVariable_PROP ||'(''' || REGEXP_REPLACE(maTable, 'tabPreCorr', '') || ''', ''' || maVariable_COL || ''')';
+              EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET FIX = ''Yes'' WHERE COLUM_TAB = ''' || UPPER(maVariable_COL) || ''' AND CORR_PROP = ''' || UPPER(maVariable_PROP) || ''' AND CORR_TECH = ''REGEXP''';
+            EXIT WHEN vCursor%NOTFOUND;
+    END LOOP;
+  CLOSE vCursor;
 END;
 /
 
@@ -179,17 +178,30 @@ AS
 	maVariable_PROP VARCHAR(255);
 BEGIN
   DBMS_OUTPUT.PUT_LINE('Correction avec data dictionary');  
-  OPEN vCursor FOR ('SELECT colum_tab, corr_prop FROM ' || UPPER(maTable) || ' WHERE CORR_TECH = ''DD''');
+  OPEN vCursor FOR ('SELECT colum_tab, corr_prop FROM ' || UPPER(maTable) || ' WHERE FIX = ''No'' AND CORR_TECH = ''DD''');
         LOOP
             FETCH vCursor INTO maVariable_COL, maVariable_PROP;
-              DBMS_OUTPUT.PUT_LINE(maVariable_COL || ' ' || maVariable_PROP);
+              CorretionColByPkDD(REGEXP_REPLACE(maTable, 'tabPreCorr', ''), maVariable_COL, maVariable_PROP);
+              EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET FIX = ''Yes'' WHERE COLUM_TAB = ''' || UPPER(maVariable_COL) || ''' AND CORR_PROP = ''' || UPPER(maVariable_PROP) || ''' AND CORR_TECH = ''DD''';
             EXIT WHEN vCursor%NOTFOUND;
     END LOOP;
   CLOSE vCursor;
-  
 END;
 /
 
-exec runCorrectionDD('tabPreCorrDatasource');
+-- Procedure qui lance les deux corrections
+CREATE OR REPLACE PROCEDURE runAllCorrection(maTable IN VARCHAR)
+AS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Coorection par expression régulière');
+  runCorrectionExp('tabPreCorr' || maTable);
+  DBMS_OUTPUT.PUT_LINE('Correction par dictionnaire');
+  runCorrectionDD('tabPreCorr' || maTable);
+END;
+/
 
-exec CorretionColCityDD('datasource', 'vilnais');
+select * from DATASOURCE;
+exec createTableRef('datasource');
+select * from tabPreCorrDatasource;
+exec runAllCorrection('datasource');
+select * from DATASOURCE;

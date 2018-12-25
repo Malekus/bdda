@@ -224,13 +224,38 @@ select english, vilnais, UTL_MATCH.JARO_WINKLER_SIMILARITY(UPPER(english), UPPER
 CREATE OR REPLACE PROCEDURE CorretionColByPkDD(maTable IN VARCHAR, maColonne IN VARCHAR, monType IN VARCHAR, maLangue IN VARCHAR DEFAULT 'ENGLISH')
 AS
 BEGIN
-  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = (select ' || maLangue || ' from DDVS where PRIMARYKEY = getPrimaryKeyDD(''' || UPPER(monType) || ''', ' || UPPER(maColonne) || '))';
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = (select ' || maLangue || ' from DDVS where PRIMARYKEY = getPrimaryKeyDD(''' || UPPER(monType) || ''', ' || UPPER(maColonne) || ') AND getPrimaryKeyDD(''' || UPPER(monType) || ''', ' || UPPER(maColonne) || ') IS NOT NULL)';
   DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee par data dictionary');
 END;
 /
 
-select * from Datasource;
 
-select nom, (select english from DDVS where DDVS.PRIMARYKEY = getPrimaryKeyDD('firstname', nom)) from datasource;
 
-exec CorretionColByPkDD('datasource', 'nom', 'firstName');
+select prenom, (select english from DDVS where DDVS.PRIMARYKEY = getPrimaryKeyDD('firstname', prenom)) from datasource where getPrimaryKeyDD('firstname', prenom) IS NOT NULL;
+
+exec CorretionColByPkDD('datasource', 'nom', 'firstname');
+
+CREATE OR REPLACE FUNCTION corrtel(tel VARCHAR)
+  return VARCHAR
+AS
+BEGIN
+  IF tel IS NOT NULL AND LENGTH(tel) > 8 THEN
+    RETURN '0' || SUBSTR(REGEXP_REPLACE(tel, ' ', ''), -9);
+  END IF;
+	RETURN '';
+END;
+/
+
+select corrtel(telmobile), LENGTH('625356555') from Datasource;
+
+CREATE OR REPLACE PROCEDURE CorretionColTel(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrtel(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+select * from datasource;
+
+exec CorretionColTel('datasource', 'telmobile');

@@ -214,6 +214,18 @@ BEGIN
 END;
 /
 
+-- fonction qui renvoie le numéro de telphone sans indicateur
+CREATE OR REPLACE FUNCTION corrtel(tel VARCHAR)
+  return VARCHAR
+AS
+BEGIN
+  IF tel IS NOT NULL AND LENGTH(tel) > 8 THEN
+    RETURN '0' || SUBSTR(REGEXP_REPLACE(tel, ' ', ''), -9);
+  END IF;
+	RETURN '';
+END;
+/
+
 --- fonction qui prend en parametre un pays et 'french' ou 'english' afin de savoir en quelle langue doit etre le pays
 CREATE OR REPLACE FUNCTION corrpays(pay VARCHAR, langu varchar)
   return VARCHAR

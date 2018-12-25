@@ -16,7 +16,8 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColSexe(maTable IN VARCHAR, maColonne IN VARCHAR)
+
+CREATE OR REPLACE PROCEDURE CorretionColPeople(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   -- Correction date format car probleme d'encodage
@@ -25,7 +26,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColGrpSng(maTable IN VARCHAR, maColonne IN VARCHAR)
+CREATE OR REPLACE PROCEDURE CorretionColBlood(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   -- Correction date format car probleme d'encodage
@@ -34,7 +35,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColTaille(maTable IN VARCHAR, maColonne IN VARCHAR)
+CREATE OR REPLACE PROCEDURE CorretionColSize(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrtaille(' || UPPER(maColonne) || ')';
@@ -42,7 +43,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColPoids(maTable IN VARCHAR, maColonne IN VARCHAR)
+CREATE OR REPLACE PROCEDURE CorretionColWeight(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrpoids(' || UPPER(maColonne) || ')';
@@ -50,7 +51,15 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CorretionColMail(maTable IN VARCHAR, maColonne IN VARCHAR)
+CREATE OR REPLACE PROCEDURE CorretionColTel(maTable IN VARCHAR, maColonne IN VARCHAR)
+AS
+BEGIN
+  EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrtel(' || UPPER(maColonne) || ')';
+  DBMS_OUTPUT.PUT_LINE('Colonne ' || UPPER(MACOLONNE) || ' de la table ' || UPPER(maTable) || ' corigee');
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CorretionColEmail(maTable IN VARCHAR, maColonne IN VARCHAR)
 AS
 BEGIN
   EXECUTE IMMEDIATE 'UPDATE ' || UPPER(maTable) || ' SET ' || UPPER(maColonne) || ' = corrmail(' || UPPER(maColonne) || ')';
