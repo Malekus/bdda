@@ -21,6 +21,31 @@ class Profil:
 class Personne:
     def __init__(self):
         self.nom = 'Toto'
+        self.prenom = ''
+        self.age = 0
+        self.sexe = 'M'
+        self.tel = '014334432343'
+        self.email = ''
+        self.metier = ''
+        self.adresse = ''
+
+#Classe Experience qui va etre dans la base de données
+class Experience:
+    def __init__(self):
+        self.date = 'Toto'
+        self.titre = 'Toto'
+        self.entreprise = 'Toto'
+        self.type = ''
+
+#Classe Formation qui va etre dans la base de données
+class Formation:
+    def __init__(self):
+        self.date = 'Toto'
+        self.diplome = 'Toto'
+        self.option = 'Toto'
+        self.ecole = ''
+
+
 
 #On cherche le dossier qui va contenir tous les CV
 directory = os.path.abspath("Bibliotheque_CV").replace("\\", "/")
@@ -57,3 +82,12 @@ re.findall(r'\w+ \d{5} \w+', profilage[5].text)
 
 profilage[7].filename
 
+metiers = open(os.path.abspath(".").replace('\\', '/') + "/metiers.txt", 'r', encoding='utf8').read()
+os.remove("metierCorpus.txt")
+metierCorpus = open("metierCorpus.txt", "a")
+for index, metier in enumerate(metiers.split('\n')):
+    metierCorpus.write(metier +"; "+ str(index) + "\n")
+    metierCorpus.write(metier.lower()+"; "+ str(index) + "\n")
+    metierCorpus.write(metier.replace(' ', '')+"; "+str(index) + "\n")
+    metierCorpus.write(metier.replace('é', 'e')+"; "+ str(index) + "\n")
+metierCorpus.close()

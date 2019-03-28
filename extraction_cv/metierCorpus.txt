@@ -1,0 +1,112 @@
+Chief Data Officer; 0
+chief data officer; 0
+ChiefDataOfficer; 0
+Chief Data Officer; 0
+Business Intelligence Manager; 1
+business intelligence manager; 1
+BusinessIntelligenceManager; 1
+Business Intelligence Manager; 1
+Master Data Manager; 2
+master data manager; 2
+MasterDataManager; 2
+Master Data Manager; 2
+Data Miner; 3
+data miner; 3
+DataMiner; 3
+Data Miner; 3
+Data Protection Officer; 4
+data protection officer; 4
+DataProtectionOfficer; 4
+Data Protection Officer; 4
+Chief Data Officer; 5
+chief data officer; 5
+ChiefDataOfficer; 5
+Chief Data Officer; 5
+analyse big data; 6
+analyse big data; 6
+analysebigdata; 6
+analyse big data; 6
+développeur big data; 7
+développeur big data; 7
+développeurbigdata; 7
+developpeur big data; 7
+data analyst; 8
+data analyst; 8
+dataanalyst; 8
+data analyst; 8
+data scientist; 9
+data scientist; 9
+datascientist; 9
+data scientist; 9
+consultant bi; 10
+consultant bi; 10
+consultantbi; 10
+consultant bi; 10
+consultant big data; 11
+consultant big data; 11
+consultantbigdata; 11
+consultant big data; 11
+développeur bi; 12
+développeur bi; 12
+développeurbi; 12
+developpeur bi; 12
+développeur décisionnel; 13
+développeur décisionnel; 13
+développeurdécisionnel; 13
+developpeur decisionnel; 13
+analyse développeur décisionnel; 14
+analyse développeur décisionnel; 14
+analysedéveloppeurdécisionnel; 14
+analyse developpeur decisionnel; 14
+Architecte Big Data; 15
+architecte big data; 15
+ArchitecteBigData; 15
+Architecte Big Data; 15
+Business Intelligence Manager; 16
+business intelligence manager; 16
+BusinessIntelligenceManager; 16
+Business Intelligence Manager; 16
+Master Data Manager; 17
+master data manager; 17
+MasterDataManager; 17
+Master Data Manager; 17
+Data Protection Officer; 18
+data protection officer; 18
+DataProtectionOfficer; 18
+Data Protection Officer; 18
+Data Scientist et Chef Data Scientist; 19
+data scientist et chef data scientist; 19
+DataScientistetChefDataScientist; 19
+Data Scientist et Chef Data Scientist; 19
+Data Miner; 20
+data miner; 20
+DataMiner; 20
+Data Miner; 20
+Data Analyst; 21
+data analyst; 21
+DataAnalyst; 21
+Data Analyst; 21
+Ingénieur Big Data; 22
+ingénieur big data; 22
+IngénieurBigData; 22
+Ingenieur Big Data; 22
+Ingénieur Bi; 23
+ingénieur bi; 23
+IngénieurBi; 23
+Ingenieur Bi; 23
+Architecte Data; 24
+architecte data; 24
+ArchitecteData; 24
+Architecte Data; 24
+Chef Data Scientist; 25
+chef data scientist; 25
+ChefDataScientist; 25
+Chef Data Scientist; 25
+Big Data Architect; 26
+big data architect; 26
+BigDataArchitect; 26
+Big Data Architect; 26
+Consultant machine learning; 27
+consultant machine learning; 27
+Consultantmachinelearning; 27
+Consultant machine learning; 27
